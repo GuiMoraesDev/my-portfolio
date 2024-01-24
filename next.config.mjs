@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+import withImages from "next-images";
+
+const nextConfig = withImages({});
 
 export default nextConfig;

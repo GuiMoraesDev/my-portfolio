@@ -8,9 +8,9 @@ export default function Home() {
   return (
     <main className="flex max-w-6xl w-full flex-col bg-plum-900">
       <Spheres />
-      <Header className="h-16" />
+      <Header className="relative z-10 h-16" />
 
-      <div className="flex h-[calc(80dvh-(16*4px))] justify-center items-center">
+      <div className="relative z-10 flex h-[calc(80dvh-(16*4px))] justify-center items-center">
         <section className="flex w-full h-full gap-10 justify-between items-center">
           <div className="flex flex-col text-white gap-10">
             <section className="flex flex-col gap-6 max-w-2xl">
@@ -34,24 +34,20 @@ export default function Home() {
             <div className="flex gap-10 items-center">
               <Link
                 href="https://github.com/GuiMoraesDev"
-                className="cursor-pointer relative group flex flex-col items-center justify-center p-4"
+                className="cursor-pointer group flex flex-col items-center justify-center p-4"
               >
                 <Github />
 
-                <span className="absolute -bottom-2 text-sm text-white opacity-0 transition group-hover:opacity-100">
-                  GitHub
-                </span>
+                <span className="text-sm text-white">GitHub</span>
               </Link>
 
               <Link
                 href="https://www.linkedin.com/in/guimoraesdev"
-                className="cursor-pointer relative group flex flex-col items-center justify-center p-4"
+                className="cursor-pointer group flex flex-col items-center justify-center p-4"
               >
                 <LinkedIn />
 
-                <span className="absolute -bottom-2 text-sm text-white opacity-0 transition group-hover:opacity-100">
-                  LinkedIn
-                </span>
+                <span className="text-sm text-white">LinkedIn</span>
               </Link>
             </div>
           </div>

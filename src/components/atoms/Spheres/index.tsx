@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 
 export const Spheres = () => (
-  <div>
+  <>
     <span
       className={twMerge(
         "fixed",
@@ -46,5 +46,5 @@ export const Spheres = () => (
         "bg-[radial-gradient(50%_50%_at_50%_50%,rgba(164,121,114,0.16)_0%,rgba(164,121,114,0)_100%)]"
       )}
     />
-  </div>
+  </>
 );

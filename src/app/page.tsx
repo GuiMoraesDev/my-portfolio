@@ -1,13 +1,13 @@
 import { Github, LinkedIn } from "@/assets/icons";
 import { Header } from "@/components/atoms/Header";
-import { MovingSpheres } from "@/components/atoms/MovingSpheres";
+import { Spheres } from "@/components/atoms/Spheres";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <main className="flex max-w-6xl w-full flex-col bg-plum-900">
-      <MovingSpheres />
+      <Spheres />
       <Header className="h-16" />
 
       <div className="flex h-[calc(80dvh-(16*4px))] justify-center items-center">

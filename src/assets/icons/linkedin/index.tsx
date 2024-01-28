@@ -1,10 +1,12 @@
+"use client";
+
+import { useRef } from "react";
 import "./styles.css";
 
 export const LinkedIn = () => {
-  const iconElement = document.querySelector(
-    "#linkedin path"
-  ) as SVGGeometryElement | null;
-  const iconLength = iconElement?.getTotalLength();
+  const biggestPathRef = useRef<SVGPathElement | null>(null);
+  const iconLength = biggestPathRef.current?.getTotalLength() || 240;
+
   return (
     <svg
       id="linkedin"
@@ -21,6 +23,7 @@ export const LinkedIn = () => {
         strokeDasharray={iconLength}
         strokeDashoffset={iconLength}
         d="M0.5 2.88235C0.5 1.84276 1.34276 1 2.38235 1H30.6176C31.6572 1 32.5 1.84276 32.5 2.88235V31.1176C32.5 32.1572 31.6572 33 30.6176 33H2.38235C1.34276 33 0.5 32.1572 0.5 31.1176V2.88235ZM30.6176 2.88235H2.38235V31.1176H30.6176V2.88235Z"
+        ref={biggestPathRef}
       />
       <path
         fill="black"

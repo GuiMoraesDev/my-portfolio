@@ -6,34 +6,22 @@
   transition: all 0.2s ease-in-out;
 }
 
-#hamburger-wrapper:hover #top-bread {
-  transform: translateY(-2px);
-}
-
-#hamburger-wrapper:hover #meat {
-  transform: translateY(-1px);
-}
-
-#hamburger-wrapper:hover #lettuce {
-  transform: translateY(1px);
-}
-
-#hamburger-wrapper:hover #bottom-bread {
-  transform: translateY(3px);
-}
-
+#hamburger-wrapper:hover #top-bread,
 #hamburger-opened #top-bread {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
+#hamburger-wrapper:hover #meat,
 #hamburger-opened #meat {
   transform: translateY(-1px);
 }
 
+#hamburger-wrapper:hover #lettuce,
 #hamburger-opened #lettuce {
   transform: translateY(1px);
 }
 
+#hamburger-wrapper:hover #bottom-bread,
 #hamburger-opened #bottom-bread {
-  transform: translateY(3px);
+  transform: translateY(4px);
 }

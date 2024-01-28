@@ -17,8 +17,8 @@ export const LinkedIn = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill="black"
-        stroke="black"
+        fill="white"
+        stroke="white"
         strokeWidth="1"
         strokeDasharray={iconLength}
         strokeDashoffset={iconLength}
@@ -26,8 +26,8 @@ export const LinkedIn = () => {
         ref={biggestPathRef}
       />
       <path
-        fill="black"
-        stroke="black"
+        fill="white"
+        stroke="white"
         strokeWidth="1"
         strokeDasharray={iconLength}
         strokeDashoffset={iconLength}
@@ -35,16 +35,16 @@ export const LinkedIn = () => {
         strokeLinecap="round"
       />
       <path
-        fill="black"
-        stroke="black"
+        fill="white"
+        stroke="white"
         strokeWidth="1"
         strokeDasharray={iconLength}
         strokeDashoffset={iconLength}
         d="M9 8C9.55228 8 10 7.55228 10 7C10 6.44772 9.55228 6 9 6C8.44772 6 8 6.44772 8 7C8 7.55228 8.44772 8 9 8ZM9 9C10.1046 9 11 8.10457 11 7C11 5.89543 10.1046 5 9 5C7.89543 5 7 5.89543 7 7C7 8.10457 7.89543 9 9 9Z"
       />
       <path
-        fill="black"
-        stroke="black"
+        fill="white"
+        stroke="white"
         strokeWidth="1"
         strokeDasharray={iconLength}
         strokeDashoffset={iconLength}

@@ -9,10 +9,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "dark-purple": "#0D020D",
-        purple: "#49213B",
-        lavender: "#F2E2EC",
-        yellow: "#EBB220",
+        "plum-50": "#F2E2EC",
+        "plum-100": "#E6C5D9",
+        "plum-200": "#DAA8C6",
+        "plum-300": "#CE8BB3",
+        "plum-400": "#C26E9F",
+        "plum-500": "#49213B",
+        "plum-600": "#3F1C31",
+        "plum-700": "#351726",
+        "plum-800": "#2B121C",
+        "plum-900": "#0D020D",
+
+        "yellow-500": "#EBB220",
       },
     },
   },

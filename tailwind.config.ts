@@ -8,6 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        wave: {
+          "0%, 100%": { transform: "rotate(0.0deg)" },
+          "50%": { transform: "rotate(14.0deg)" },
+        },
+      },
+      animation: {
+        wave: "wave 1s infinite",
+      },
       colors: {
         "plum-50": "#F2E2EC",
         "plum-100": "#E6C5D9",
@@ -20,7 +29,7 @@ const config: Config = {
         "plum-800": "#2B121C",
         "plum-900": "#0D020D",
 
-        "yellow-500": "#EBB220",
+        "gold-500": "#EBB220",
       },
     },
   },

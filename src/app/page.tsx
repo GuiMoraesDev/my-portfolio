@@ -1,4 +1,11 @@
-import { Chip, Github, LinkedIn } from "@/assets/icons";
+import {
+  Chip,
+  Code,
+  Github,
+  Globe,
+  LinkedIn,
+  MagnifyingGlass,
+} from "@/assets/icons";
 import { Header } from "@/components/atoms/Header";
 import { Spheres } from "@/components/atoms/Spheres";
 import Image from "next/image";
@@ -56,7 +63,8 @@ export default function Home() {
             src="/myPic.png"
             width={400}
             height={400}
-            className="h-full object-contain select-none"
+            className="h-auto aspect-square object-contain select-none"
+            priority
             alt=""
           />
 
@@ -93,43 +101,44 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex gap-10 items-center">
-            <p>
-              I&apos;m a passionate front-end developer who loves tackling
-              challenges to build awesome, user-friendly web interfaces.
-              I&apos;m all about making things look good and work seamlessly!
-              With my skills I&apos;m able to create engaging experiences that
-              people love. When it comes to projects, you can count on me to
-              bring fresh ideas and innovative solutions to the table. Ensuring
-              that web applications are not only functional but scalable is my
-              jam. Let&apos;s create something awesome together!
-            </p>
-          </div>
+          <p>
+            I&apos;m a passionate front-end developer who loves tackling
+            challenges to build awesome, user-friendly web interfaces. I&apos;m
+            all about making things look good and work seamlessly! With my
+            skills I&apos;m able to create engaging experiences that people
+            love. When it comes to projects, you can count on me to bring fresh
+            ideas and innovative solutions to the table. Ensuring that web
+            applications are not only functional but scalable is my jam.
+            Let&apos;s create something awesome together!
+          </p>
         </section>
 
         <section className="grid grid-cols-2 gap-4 items-center justify-center">
-          <div className="rounded-md flex flex-col items-center justify-center w-[110px] lg:w-[165px] xl:w-[220px] h-[90px] lg:h-[135px] xl:h-[180px] bg-plum-500 gap-2 xl:gap-4">
+          <div className="rounded-md flex flex-col items-center justify-center w-32 lg:w-44 xl:w-52 h-24 lg:h-36 xl:h-40 bg-plum-500 gap-2 xl:gap-4">
             <Chip />
-            <p className="text-xs lg:text-xl text-white w-4/5 xl:w-1/2 text-center">
+            <p className="text-xs lg:text-base xl:text-lg text-white w-4/5 text-center">
               4+ years of experience
             </p>
           </div>
-          <div className="rounded-md flex flex-col items-center justify-center w-[110px] lg:w-[165px] xl:w-[220px] h-[90px] lg:h-[135px] xl:h-[180px] bg-plum-500 gap-2 xl:gap-4">
-            <Chip />
-            <p className="text-xs lg:text-xl text-white w-4/5 xl:w-1/2 text-center">
-              4+ years of experience
+
+          <div className="rounded-md flex flex-col items-center justify-center w-32 lg:w-44 xl:w-52 h-24 lg:h-36 xl:h-40 bg-plum-500 gap-2 xl:gap-4">
+            <MagnifyingGlass />
+            <p className="text-xs lg:text-base xl:text-lg text-white w-4/5 text-center">
+              Attention to details for a good UX
             </p>
           </div>
-          <div className="rounded-md flex flex-col items-center justify-center w-[110px] lg:w-[165px] xl:w-[220px] h-[90px] lg:h-[135px] xl:h-[180px] bg-plum-500 gap-2 xl:gap-4">
-            <Chip />
-            <p className="text-xs lg:text-xl text-white w-4/5 xl:w-1/2 text-center">
-              4+ years of experience
+
+          <div className="rounded-md flex flex-col items-center justify-center w-32 lg:w-44 xl:w-52 h-24 lg:h-36 xl:h-40 bg-plum-500 gap-2 xl:gap-4">
+            <Code />
+            <p className="text-xs lg:text-base xl:text-lg text-white w-4/5 text-center">
+              Code easy to scale and maintain
             </p>
           </div>
-          <div className="rounded-md flex flex-col items-center justify-center w-[110px] lg:w-[165px] xl:w-[220px] h-[90px] lg:h-[135px] xl:h-[180px] bg-plum-500 gap-2 xl:gap-4">
-            <Chip />
-            <p className="text-xs lg:text-xl text-white w-4/5 xl:w-1/2 text-center">
-              4+ years of experience
+
+          <div className="rounded-md flex flex-col items-center justify-center w-32 lg:w-44 xl:w-52 h-24 lg:h-36 xl:h-40 bg-plum-500 gap-2 xl:gap-4">
+            <Globe />
+            <p className="text-xs lg:text-base xl:text-lg text-white w-4/5 text-center">
+              Working remote-first worldwide
             </p>
           </div>
         </section>

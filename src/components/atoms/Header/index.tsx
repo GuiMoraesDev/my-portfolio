@@ -9,7 +9,10 @@ export const Header = ({ className, ...props }: ComponentProps<"header">) => {
 
   return (
     <header
-      className={twMerge("flex items-center justify-center w-full", className)}
+      className={twMerge(
+        "flex items-center justify-center w-full py-2",
+        className
+      )}
       {...props}
     >
       <nav className="max-w-6xl w-full flex items-center justify-start">

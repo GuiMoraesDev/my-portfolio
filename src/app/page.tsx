@@ -1,10 +1,14 @@
 import {
+  Article,
   Chip,
+  Clock,
   Code,
+  Comments,
   Github,
   Globe,
   LinkedIn,
   MagnifyingGlass,
+  ThumbsUp,
 } from "@/assets/icons";
 import { Header } from "@/components/atoms/Header";
 import { Spheres } from "@/components/atoms/Spheres";
@@ -12,6 +16,30 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
+  const articles = [
+    {
+      id: 431466,
+      title: "How have I designed my portifolio",
+      reading_time_minutes: 7,
+      positive_reactions_count: 32,
+      comments_count: 8,
+    },
+    {
+      id: 431465,
+      title: "How to create a CSS tail whip animation",
+      reading_time_minutes: 7,
+      positive_reactions_count: 32,
+      comments_count: 8,
+    },
+    {
+      id: 431446,
+      title: "Adding multiple languages in a NextJS 14 app",
+      reading_time_minutes: 7,
+      positive_reactions_count: 32,
+      comments_count: 8,
+    },
+  ];
+
   return (
     <main className="flex max-w-6xl w-full flex-col bg-plum-900">
       <Spheres />
@@ -95,7 +123,7 @@ export default function Home() {
           <div className="flex flex-col gap-6 max-w-2xl">
             <h2 className="text-lg lg:text-2xl">Overview</h2>
 
-            <p className="leading-normal text-xs lg:text-2xl">
+            <p className="leading-normal text-xs lg:text-sm">
               &quot;Crafting code and stories, a snapshot of my digital
               odyssey&quot; - ChatGPT
             </p>
@@ -141,6 +169,55 @@ export default function Home() {
               Working remote-first worldwide
             </p>
           </div>
+        </section>
+      </div>
+
+      <div className="relative z-10 flex flex-col px-[10%] xl:px-0 pt-12 lg:pt-36 w-full h-full gap-10  justify-between items-center lg:items-start">
+        <section className="flex flex-col text-white gap-10 lg:w-1/2">
+          <div className="flex flex-col gap-6 max-w-2xl">
+            <h2 className="text-lg lg:text-2xl">Exploring my know-how</h2>
+
+            <p className="leading-normal text-xs lg:text-sm">
+              &quot;Lorem ipsum dolor sit amet&quot; - lipsum.com
+            </p>
+          </div>
+        </section>
+
+        <section className="flex flex-col gap-4 items-center justify-center w-full">
+          {articles.map(
+            ({
+              id,
+              title,
+              reading_time_minutes,
+              positive_reactions_count,
+              comments_count,
+            }) => (
+              <div
+                key={id}
+                className="rounded-md flex flex-col md:flex-row items-start md:items-center px-3 justify-center md:justify-between w-full h-24 md:h-14 bg-plum-500 gap-4 xl:gap-5"
+              >
+                <header className="flex gap-2 items-center justify-start">
+                  <Article />
+                  <p className="text-sm xl:text-lg text-white">{title}</p>
+                </header>
+
+                <div className="flex gap-9 md:gap-5 items-center justify-start">
+                  <span className="inline-flex items-center text-xs justify-center gap-1.5 text-white">
+                    <Clock />
+                    {reading_time_minutes} min
+                  </span>
+                  <span className="inline-flex items-center text-xs justify-center gap-1.5 text-white">
+                    <ThumbsUp />
+                    {positive_reactions_count}
+                  </span>
+                  <span className="inline-flex items-center text-xs justify-center gap-1.5 text-white">
+                    <Comments />
+                    {comments_count}
+                  </span>
+                </div>
+              </div>
+            )
+          )}
         </section>
       </div>
     </main>

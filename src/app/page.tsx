@@ -39,6 +39,29 @@ export default function Home() {
       comments_count: 8,
     },
   ];
+  const testimonials = [
+    {
+      id: 1,
+      name: "John Doe",
+      role: "CTO",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut bibendum diam. Nullam rutrum ac leo id commodo. Vestibulum quis est et ante lobortis congue viverra sed turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris tincidunt et velit at molestie.",
+    },
+    {
+      id: 2,
+      name: "Jane Doe",
+      role: "CEO",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut bibendum diam. Nullam rutrum ac leo id commodo. Vestibulum quis est et ante lobortis congue viverra sed turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris tincidunt et velit at molestie.",
+    },
+    {
+      id: 3,
+      name: "John Doe",
+      role: "CTO",
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut bibendum diam. Nullam rutrum ac leo id commodo. Vestibulum quis est et ante lobortis congue viverra sed turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris tincidunt et velit at molestie.",
+    },
+  ];
 
   return (
     <main className="flex max-w-6xl w-full flex-col bg-plum-900">
@@ -88,7 +111,7 @@ export default function Home() {
 
         <section className="flex flex-col gap-4 items-center justify-center">
           <Image
-            src="/myPic.png"
+            src="/profile.png"
             width={400}
             height={400}
             className="h-auto aspect-square object-contain select-none"
@@ -218,6 +241,47 @@ export default function Home() {
               </div>
             )
           )}
+        </section>
+      </div>
+
+      <div className="relative z-10 flex flex-col px-[10%] xl:px-0 pt-12 lg:pt-36 w-full h-full gap-10  justify-between items-center lg:items-start">
+        <section className="flex flex-col text-white gap-10 lg:w-1/2">
+          <div className="flex flex-col gap-6 max-w-2xl">
+            <h2 className="text-lg lg:text-2xl">
+              What&apos;s the buzz about me?
+            </h2>
+
+            <p className="leading-normal text-xs lg:text-sm">
+              &quot;He is my handsome pretty boy&quot; - Mom
+            </p>
+          </div>
+        </section>
+
+        <section className="flex flex-wrap gap-14 items-center justify-center w-full translate-y-10">
+          {testimonials.map(({ id, name, role, content }) => (
+            <div
+              key={id}
+              className="rounded-md flex flex-col max-w-xs items-center border-8 border-plum-500 px-3 justify-center md:justify-between w-full bg-plum-50"
+            >
+              <Image
+                src="/testimonial-placeholder.png"
+                width={75}
+                height={75}
+                className="h-auto aspect-square object-contain select-none -translate-y-1/3"
+                priority
+                alt=""
+              />
+
+              <div className="flex flex-col gap-4 md:gap-5 items-center justify-start w-full pb-6">
+                <p className="w-full text-sm leading-tight">{content}</p>
+
+                <strong className="leading-tight text-lg font-medium">
+                  {name}
+                </strong>
+                <p className="leading-tight text-sm font-bold">{role}</p>
+              </div>
+            </div>
+          ))}
         </section>
       </div>
     </main>

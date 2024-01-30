@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "../styles/globals.css";
+import { QueryProvider } from "@/provider/QueryProvider";
 
 const lato = Lato({
   weight: ["100", "300", "400", "700", "900"],
@@ -23,7 +24,7 @@ export default function RootLayout({
         style={lato.style}
         className="flex h-[100dvh] w-full flex-col items-center gap-3 bg-plum-900"
       >
-        {children}
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   );

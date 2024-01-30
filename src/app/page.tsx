@@ -12,6 +12,7 @@ import {
 } from "@/assets/icons";
 import { Header } from "@/components/atoms/Header";
 import { Spheres } from "@/components/atoms/Spheres";
+import { PinnedRepos } from "@/components/organisms/PinnedRepos";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -64,7 +65,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="flex max-w-6xl w-full flex-col bg-plum-900">
+    <main className="flex max-w-6xl w-full flex-col bg-plum-900 pb-12 lg:pb-36">
       <Spheres />
       <Header className="relative z-10 h-16 px-[10%] xl:px-0" />
 
@@ -282,6 +283,24 @@ export default function Home() {
               </div>
             </div>
           ))}
+        </section>
+      </div>
+
+      <div className="relative z-10 flex flex-col px-[10%] xl:px-0 pt-12 lg:pt-36 w-full h-full gap-10  justify-between items-center lg:items-start">
+        <section className="flex flex-col text-white gap-10 lg:w-1/2">
+          <div className="flex flex-col gap-6 max-w-2xl">
+            <h2 className="text-lg lg:text-2xl">
+              Talk is cheap. Show me the code.
+            </h2>
+
+            <p className="leading-normal text-xs lg:text-sm">
+              &quot;The code is the documentation&quot; - Unknown
+            </p>
+          </div>
+        </section>
+
+        <section className="flex flex-wrap gap-14 items-center justify-center w-full translate-y-10">
+          <PinnedRepos />
         </section>
       </div>
     </main>

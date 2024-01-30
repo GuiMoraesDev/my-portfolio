@@ -6,6 +6,7 @@ export * from "./comments";
 export * from "./github";
 export * from "./globe";
 export * from "./hamburger";
+export * from "./link";
 export * from "./linkedin";
 export * from "./magnifyingGlass";
 export * from "./thumbsUp";

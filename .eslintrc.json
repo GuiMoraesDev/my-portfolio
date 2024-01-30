@@ -1,5 +1,6 @@
 {
   "extends": "next/core-web-vitals",
+  "plugins": ["@tanstack/query"],
   "rules": {
     "no-console": "error"
   }

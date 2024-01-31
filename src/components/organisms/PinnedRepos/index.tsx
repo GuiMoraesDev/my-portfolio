@@ -8,7 +8,7 @@ export const PinnedRepos = () => {
   const { data = [] } = useGitHubPinnedRepositories();
 
   return (
-    <ul className="flex w-full flex-wrap lg:flex-row items-center justify-center gap-10">
+    <ul className="flex w-full flex-wrap xl:flex-nowrap items-center justify-center gap-10">
       {data?.map(({ id, project_link, github_link, title }) => (
         <li
           key={id}

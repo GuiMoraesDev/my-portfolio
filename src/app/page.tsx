@@ -84,7 +84,7 @@ export default function Home() {
               </strong>
             </h1>
 
-            <h2 className="text-4xl lg:text-6xl xl:text-8xl text-gold-500 font-bold">
+            <h2 className="text-4xl lg:text-6xl xl:text-7xl text-gold-500 font-bold">
               I am a Frontend developer
             </h2>
 
@@ -212,7 +212,7 @@ export default function Home() {
           quote='"He is my handsome pretty boy" - Mom'
         />
 
-        <section className="flex flex-wrap gap-14 items-center justify-center w-full">
+        <section className="flex flex-wrap xl:flex-nowrap gap-14 items-center justify-center w-full">
           {testimonials.map(({ id, name, role, content }) => (
             <div
               key={id}

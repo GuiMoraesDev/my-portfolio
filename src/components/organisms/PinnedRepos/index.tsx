@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Link } from "@/assets/icons";
+import { Icon } from "@/components/atoms/Icon";
 import { useGitHubPinnedRepositories } from "@/graphql/github-profile";
 import Image from "next/image";
 
@@ -12,29 +12,29 @@ export const PinnedRepos = () => {
       {data?.map(({ id, project_link, github_link, title }) => (
         <li
           key={id}
-          className="relative flex w-full max-w-xs flex-col items-center justify-center gap-3 overflow-hidden rounded-lg bg-plum-50 p-4 shadow-md md:max-w-[45%] lg:max-w-xs"
+          className="group relative flex w-full max-w-xs flex-col items-center justify-center gap-3 overflow-hidden rounded-lg bg-plum-50 p-4 shadow-md md:max-w-[45%] lg:max-w-xs"
         >
-          <nav className="absolute left-0.5 top-0.5 flex items-center gap-2 rounded-md bg-plum-500">
+          <nav className="absolute left-0.5 top-0.5 flex items-center gap-2 rounded-md bg-plum-500 group-hover:opacity-100 lg:opacity-0">
             {project_link ? (
               <a
-                className="p-2"
+                className="inline-flex p-2"
                 href={project_link}
                 aria-label={`${title} project link: ${project_link}`}
                 title={`${title} project link: ${project_link}`}
                 target="_blank"
               >
-                <Link />
+                <Icon icon="Link" size="sm" />
               </a>
             ) : null}
 
             <a
-              className="p-2"
+              className="inline-flex p-2"
               href={github_link}
               aria-label={`${title} github link: ${project_link}`}
               title={`${title} github link: ${project_link}`}
               target="_blank"
             >
-              <Github />
+              <Icon icon="Github" size="sm" />
             </a>
           </nav>
 
@@ -46,7 +46,7 @@ export const PinnedRepos = () => {
             className="aspect-video h-auto w-full overflow-hidden rounded-lg border border-plum-100 object-cover"
           />
 
-          <p className="absolute bottom-0.5 right-0.5 w-32 rounded-md bg-plum-500 p-2 text-center capitalize text-white ">
+          <p className="absolute bottom-0.5 right-0.5 w-32 rounded-md bg-plum-500 py-2 text-center capitalize text-white group-hover:opacity-100 lg:opacity-0 ">
             {title}
           </p>
         </li>

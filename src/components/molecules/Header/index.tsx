@@ -1,6 +1,6 @@
 "use client";
 
-import { Hamburger } from "@/assets/icons";
+import { Hamburger } from "./hamburger";
 import { ComponentProps, useState } from "react";
 import { twMerge } from "tailwind-merge";
 

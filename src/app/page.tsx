@@ -1,16 +1,5 @@
-import {
-  Article,
-  Chip,
-  Clock,
-  Code,
-  Comments,
-  Github,
-  Globe,
-  LinkedIn,
-  MagnifyingGlass,
-  ThumbsUp,
-} from "@/assets/icons";
-import { Header } from "@/components/atoms/Header";
+import { Icon } from "@/components/atoms/Icon";
+import { Header } from "@/components/molecules/Header";
 import { Spheres } from "@/components/atoms/Spheres";
 import { PinnedRepos } from "@/components/organisms/PinnedRepos";
 import Image from "next/image";
@@ -133,28 +122,28 @@ export default function Home() {
 
         <section className="grid grid-cols-2 items-center justify-center gap-4">
           <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
-            <Chip />
+            <Icon icon="Chip" />
             <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
               4+ years of experience
             </p>
           </div>
 
           <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
-            <MagnifyingGlass />
+            <Icon icon="MagnifyingGlass" />
             <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
               Attention to details for a good UX
             </p>
           </div>
 
           <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
-            <Code />
+            <Icon icon="Code" />
             <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
               Code easy to scale and maintain
             </p>
           </div>
 
           <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
-            <Globe />
+            <Icon icon="Globe" />
             <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
               Working remote-first worldwide
             </p>
@@ -182,21 +171,21 @@ export default function Home() {
                 className="flex h-24 w-full flex-col items-start justify-center gap-4 rounded-md bg-plum-500 px-3 md:h-14 md:flex-row md:items-center md:justify-between xl:gap-5"
               >
                 <header className="flex items-center justify-start gap-2">
-                  <Article />
+                  <Icon icon="Article" size="sm" />
                   <p className="text-sm text-white xl:text-lg">{title}</p>
                 </header>
 
                 <div className="flex items-center justify-start gap-9 md:gap-5">
                   <span className="inline-flex items-center justify-center gap-1.5 text-xs text-white">
-                    <Clock />
+                    <Icon icon="Clock" size="sm" />
                     {reading_time_minutes} min
                   </span>
                   <span className="inline-flex items-center justify-center gap-1.5 text-xs text-white">
-                    <ThumbsUp />
+                    <Icon icon="ThumbsUp" size="sm" />
                     {positive_reactions_count}
                   </span>
                   <span className="inline-flex items-center justify-center gap-1.5 text-xs text-white">
-                    <Comments />
+                    <Icon icon="Comments" size="sm" />
                     {comments_count}
                   </span>
                 </div>
@@ -281,7 +270,7 @@ const SocialMedia = ({ className, ...props }: ComponentProps<"div">) => (
       href="https://github.com/GuiMoraesDev"
       className="flex cursor-pointer flex-col items-center justify-center gap-2 p-4"
     >
-      <Github />
+      <Icon icon="Github" size="lg" />
       <span className="text-sm tracking-wider text-white">GitHub</span>
     </Link>
 
@@ -289,7 +278,7 @@ const SocialMedia = ({ className, ...props }: ComponentProps<"div">) => (
       href="https://www.linkedin.com/in/guimoraesdev"
       className="flex cursor-pointer flex-col items-center justify-center gap-2 p-4"
     >
-      <LinkedIn />
+      <Icon icon="LinkedIn" size="lg" />
       <span className="text-sm tracking-wider text-white">LinkedIn</span>
     </Link>
   </div>

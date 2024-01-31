@@ -8,11 +8,11 @@ export const PinnedRepos = () => {
   const { data = [] } = useGitHubPinnedRepositories();
 
   return (
-    <ul className="flex w-full flex-col lg:flex-row items-center justify-center gap-6">
+    <ul className="flex w-full flex-wrap lg:flex-row items-center justify-center gap-10">
       {data?.map(({ id, project_link, github_link, title }) => (
         <li
           key={id}
-          className="relative flex w-96 flex-col p-4 gap-3 bg-plum-50 justify-center items-center rounded-lg shadow-md overflow-hidden"
+          className="relative flex w-full max-w-xs md:max-w-[45%] lg:max-w-xs flex-col p-4 gap-3 bg-plum-50 justify-center items-center rounded-lg shadow-md overflow-hidden"
         >
           <nav className="absolute top-0.5 left-0.5 flex items-center gap-2 bg-plum-500 rounded-md">
             {project_link ? (

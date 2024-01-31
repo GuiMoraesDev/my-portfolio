@@ -15,6 +15,8 @@ import { Spheres } from "@/components/atoms/Spheres";
 import { PinnedRepos } from "@/components/organisms/PinnedRepos";
 import Image from "next/image";
 import Link from "next/link";
+import { ComponentProps } from "react";
+import { twMerge } from "tailwind-merge";
 
 export default function Home() {
   const articles = [
@@ -65,93 +67,57 @@ export default function Home() {
   ];
 
   return (
-    <main className="flex max-w-6xl w-full flex-col bg-plum-900 pb-12 lg:pb-36">
+    <main className="flex container flex-col items-center text-white bg-plum-900 pb-14 lg:pb-36">
       <Spheres />
-      <Header className="relative z-10 h-16 px-[10%] xl:px-0" />
+      <Header className="max-[2000px]:px-[10vw] max-w-7xl" />
 
-      <div className="relative z-10 flex flex-col md:flex-row px-[10%] xl:px-0 pt-12 lg:pt-36 w-full h-full gap-10  justify-between items-center">
-        <section className="flex flex-col text-white gap-10">
-          <div className="flex flex-col gap-6 max-w-2xl">
-            <h1 className="text-lg lg:text-2xl">
-              Hey, my name is Guilherme Moraes{" "}
-              <span className="animate-wave inline-block origin-bottom-right w-fit select-none">
-                👋
-              </span>
+      <SessionWrapper className="md:flex-row">
+        <section className="flex flex-col text-white gap-4">
+          <div className="flex flex-col gap-4 max-w-2xl">
+            <h1 className="inline-flex flex-col text-2xl lg:text-2xl">
+              Hey, my name is
+              <strong className="inline-flex gap-1">
+                Guilherme Moraes
+                <span className="animate-wave text-base inline-block origin-bottom-right w-fit select-none">
+                  👋
+                </span>
+              </strong>
             </h1>
 
-            <h2 className="text-2xl lg:text-5xl text-gold-500 font-bold">
+            <h2 className="text-4xl lg:text-6xl xl:text-8xl text-gold-500 font-bold">
               I am a Frontend developer
             </h2>
 
-            <p className="leading-normal text-lg lg:text-2xl">
+            <p className="leading-normal lg:text-2xl">
               Crafting seamless User Experiences with React, TypeScript, and
               Testing Library
             </p>
           </div>
 
-          <div className="gap-10 items-center hidden md:flex">
-            <Link
-              href="https://github.com/GuiMoraesDev"
-              className="cursor-pointer group flex flex-col items-center justify-center p-4"
-            >
-              <Github />
-
-              <span className="text-sm text-white">GitHub</span>
-            </Link>
-
-            <Link
-              href="https://www.linkedin.com/in/guimoraesdev"
-              className="cursor-pointer group flex flex-col items-center justify-center p-4"
-            >
-              <LinkedIn />
-
-              <span className="text-sm text-white">LinkedIn</span>
-            </Link>
-          </div>
+          <SocialMedia className="hidden md:flex" />
         </section>
 
-        <section className="flex flex-col gap-4 items-center justify-center">
+        <section className="flex flex-col gap-2 items-center justify-center">
           <Image
             src="/profile.png"
             width={400}
             height={400}
-            className="h-auto aspect-square object-contain select-none"
+            className="h-72 md:h-auto aspect-square object-contain select-none"
             priority
             alt=""
           />
 
-          <div className="flex gap-10 items-center md:hidden">
-            <Link
-              href="https://github.com/GuiMoraesDev"
-              className="cursor-pointer group flex flex-col items-center justify-center p-4"
-            >
-              <Github />
-
-              <span className="text-sm text-white">GitHub</span>
-            </Link>
-
-            <Link
-              href="https://www.linkedin.com/in/guimoraesdev"
-              className="cursor-pointer group flex flex-col items-center justify-center p-4"
-            >
-              <LinkedIn />
-
-              <span className="text-sm text-white">LinkedIn</span>
-            </Link>
-          </div>
+          <SocialMedia className="flex md:hidden" />
         </section>
-      </div>
+      </SessionWrapper>
 
-      <div className="relative z-10 flex flex-col lg:flex-row px-[10%] xl:px-0 pt-12 lg:pt-36 w-full h-full gap-10  justify-between items-center">
-        <section className="flex flex-col text-white gap-10 lg:w-1/2">
-          <div className="flex flex-col gap-6 max-w-2xl">
-            <h2 className="text-lg lg:text-2xl">Overview</h2>
-
-            <p className="leading-normal text-xs lg:text-sm">
-              &quot;Crafting code and stories, a snapshot of my digital
-              odyssey&quot; - ChatGPT
-            </p>
-          </div>
+      <SessionWrapper className="lg:flex-row">
+        <section className="flex flex-col gap-10 lg:w-1/2">
+          <SessionHeader
+            title="Overview"
+            quote='"Crafting code and stories, a snapshot of my digital
+              odyssey" - ChatGPT'
+          />
 
           <p>
             I&apos;m a passionate front-end developer who loves tackling
@@ -194,20 +160,15 @@ export default function Home() {
             </p>
           </div>
         </section>
-      </div>
+      </SessionWrapper>
 
-      <div className="relative z-10 flex flex-col px-[10%] xl:px-0 pt-12 lg:pt-36 w-full h-full gap-10  justify-between items-center lg:items-start">
-        <section className="flex flex-col text-white gap-10 lg:w-1/2">
-          <div className="flex flex-col gap-6 max-w-2xl">
-            <h2 className="text-lg lg:text-2xl">Exploring my know-how</h2>
+      <SessionWrapper className="pt-20 lg:items-start">
+        <SessionHeader
+          title="Exploring my know-how"
+          quote='"Lorem ipsum dolor sit amet" - lipsum.com'
+        />
 
-            <p className="leading-normal text-xs lg:text-sm">
-              &quot;Lorem ipsum dolor sit amet&quot; - lipsum.com
-            </p>
-          </div>
-        </section>
-
-        <section className="flex flex-col gap-4 items-center justify-center w-full">
+        <section className="flex flex-col gap-6 items-center justify-center w-full">
           {articles.map(
             ({
               id,
@@ -243,26 +204,19 @@ export default function Home() {
             )
           )}
         </section>
-      </div>
+      </SessionWrapper>
 
-      <div className="relative z-10 flex flex-col px-[10%] xl:px-0 pt-12 lg:pt-36 w-full h-full gap-10  justify-between items-center lg:items-start">
-        <section className="flex flex-col text-white gap-10 lg:w-1/2">
-          <div className="flex flex-col gap-6 max-w-2xl">
-            <h2 className="text-lg lg:text-2xl">
-              What&apos;s the buzz about me?
-            </h2>
+      <SessionWrapper className="lg:items-start">
+        <SessionHeader
+          title="What's the buzz about me?"
+          quote='"He is my handsome pretty boy" - Mom'
+        />
 
-            <p className="leading-normal text-xs lg:text-sm">
-              &quot;He is my handsome pretty boy&quot; - Mom
-            </p>
-          </div>
-        </section>
-
-        <section className="flex flex-wrap gap-14 items-center justify-center w-full translate-y-10">
+        <section className="flex flex-wrap gap-14 items-center justify-center w-full">
           {testimonials.map(({ id, name, role, content }) => (
             <div
               key={id}
-              className="rounded-md flex flex-col max-w-xs items-center border-8 border-plum-500 px-3 justify-center md:justify-between w-full bg-plum-50"
+              className="rounded-md flex flex-col max-w-xs md:max-w-[45%] lg:max-w-xs items-center border-8 border-plum-500 px-3 justify-center md:justify-between w-full bg-plum-50"
             >
               <Image
                 src="/testimonial-placeholder.png"
@@ -274,35 +228,92 @@ export default function Home() {
               />
 
               <div className="flex flex-col gap-4 md:gap-5 items-center justify-start w-full pb-6">
-                <p className="w-full text-sm leading-tight">{content}</p>
+                <p className="w-full text-sm leading-tight text-gray-800">
+                  {content}
+                </p>
 
-                <strong className="leading-tight text-lg font-medium">
+                <strong className="leading-tight text-lg font-medium text-gray-900">
                   {name}
                 </strong>
-                <p className="leading-tight text-sm font-bold">{role}</p>
+                <p className="leading-tight text-sm font-bold text-gray-950">
+                  {role}
+                </p>
               </div>
             </div>
           ))}
         </section>
-      </div>
+      </SessionWrapper>
 
-      <div className="relative z-10 flex flex-col px-[10%] xl:px-0 pt-12 lg:pt-36 w-full h-full gap-10  justify-between items-center lg:items-start">
-        <section className="flex flex-col text-white gap-10 lg:w-1/2">
-          <div className="flex flex-col gap-6 max-w-2xl">
-            <h2 className="text-lg lg:text-2xl">
-              Talk is cheap. Show me the code.
-            </h2>
+      <SessionWrapper className="justify-start items-start">
+        <SessionHeader
+          title="Talk is cheap. Show me the code."
+          quote='"The code is the documentation" - Unknown'
+        />
 
-            <p className="leading-normal text-xs lg:text-sm">
-              &quot;The code is the documentation&quot; - Unknown
-            </p>
-          </div>
-        </section>
-
-        <section className="flex flex-wrap gap-14 items-center justify-center w-full translate-y-10">
+        <section className="flex flex-wrap gap-14 items-center justify-center w-full">
           <PinnedRepos />
         </section>
-      </div>
+      </SessionWrapper>
     </main>
   );
 }
+
+const SessionWrapper = ({
+  children,
+  className,
+  ...props
+}: ComponentProps<"div">) => (
+  <div
+    className={twMerge(
+      "relative z-10 flex flex-col max-[2000px]:px-[10vw] w-full max-w-7xl h-full gap-10 items-center justify-between",
+      "pt-14 xl:pt-36",
+      className
+    )}
+    {...props}
+  >
+    {children}
+  </div>
+);
+
+const SocialMedia = ({ className, ...props }: ComponentProps<"div">) => (
+  <div className={twMerge("gap-10 items-center", className)} {...props}>
+    <Link
+      href="https://github.com/GuiMoraesDev"
+      className="cursor-pointer group flex flex-col items-center justify-center p-4"
+    >
+      <Github />
+
+      <span className="text-xs text-white">GitHub</span>
+    </Link>
+
+    <Link
+      href="https://www.linkedin.com/in/guimoraesdev"
+      className="cursor-pointer group flex flex-col items-center justify-center p-4"
+    >
+      <LinkedIn />
+
+      <span className="text-xs text-white">LinkedIn</span>
+    </Link>
+  </div>
+);
+
+type SessionHeaderProps = ComponentProps<"h2"> & {
+  title: string;
+  quote: string;
+};
+
+const SessionHeader = ({
+  title,
+  quote,
+  className,
+  ...props
+}: SessionHeaderProps) => (
+  <header
+    className={twMerge("flex flex-col gap-6 w-full", className)}
+    {...props}
+  >
+    <h2 className="text-xl font-bold lg:text-2xl">{title}</h2>
+
+    <p className="leading-normal text-sm">{quote}</p>
+  </header>
+);

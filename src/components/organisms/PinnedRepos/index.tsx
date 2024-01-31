@@ -46,7 +46,7 @@ export const PinnedRepos = () => {
             className="aspect-video h-auto w-full overflow-hidden rounded-lg border border-plum-100 object-cover"
           />
 
-          <p className=" absolute bottom-0.5 right-1/2 translate-x-1/2 capitalize  bg-plum-500 rounded-md p-2 text-white ">
+          <p className="absolute bottom-0.5 right-0.5 capitalize w-32 text-center bg-plum-500 rounded-md p-2 text-white ">
             {title}
           </p>
         </li>

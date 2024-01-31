@@ -1,9 +1,9 @@
 export const MagnifyingGlass = () => (
-  <span className="w-7 h-7 lg:w-8 lg:h-8">
+  <span className="h-7 w-7 lg:h-8 lg:w-8">
     <svg
       width="40"
       height="40"
-      className="w-full h-full"
+      className="h-full w-full"
       viewBox="0 0 40 40"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

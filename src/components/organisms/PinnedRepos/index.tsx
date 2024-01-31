@@ -8,13 +8,13 @@ export const PinnedRepos = () => {
   const { data = [] } = useGitHubPinnedRepositories();
 
   return (
-    <ul className="flex w-full flex-wrap xl:flex-nowrap items-center justify-center gap-10">
+    <ul className="flex w-full flex-wrap items-center justify-center gap-10 xl:flex-nowrap">
       {data?.map(({ id, project_link, github_link, title }) => (
         <li
           key={id}
-          className="relative flex w-full max-w-xs md:max-w-[45%] lg:max-w-xs flex-col p-4 gap-3 bg-plum-50 justify-center items-center rounded-lg shadow-md overflow-hidden"
+          className="relative flex w-full max-w-xs flex-col items-center justify-center gap-3 overflow-hidden rounded-lg bg-plum-50 p-4 shadow-md md:max-w-[45%] lg:max-w-xs"
         >
-          <nav className="absolute top-0.5 left-0.5 flex items-center gap-2 bg-plum-500 rounded-md">
+          <nav className="absolute left-0.5 top-0.5 flex items-center gap-2 rounded-md bg-plum-500">
             {project_link ? (
               <a
                 className="p-2"
@@ -46,7 +46,7 @@ export const PinnedRepos = () => {
             className="aspect-video h-auto w-full overflow-hidden rounded-lg border border-plum-100 object-cover"
           />
 
-          <p className="absolute bottom-0.5 right-0.5 capitalize w-32 text-center bg-plum-500 rounded-md p-2 text-white ">
+          <p className="absolute bottom-0.5 right-0.5 w-32 rounded-md bg-plum-500 p-2 text-center capitalize text-white ">
             {title}
           </p>
         </li>

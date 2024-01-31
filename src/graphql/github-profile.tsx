@@ -41,7 +41,7 @@ const fetchRepos = async () => {
     "https://api.github.com/graphql",
     query,
     undefined,
-    headers
+    headers,
   );
 
   return response.user.pinnedItems.nodes.map((node) => ({

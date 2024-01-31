@@ -11,12 +11,12 @@ export const Header = ({ className, ...props }: ComponentProps<"header">) => {
     <header
       className={twMerge(
         "flex items-center justify-center",
-        "relative z-10 h-16 py-4 w-full",
-        className
+        "relative z-10 h-16 w-full py-4",
+        className,
       )}
       {...props}
     >
-      <nav className="w-full flex items-center justify-start">
+      <nav className="flex w-full items-center justify-start">
         <button onClick={() => setIsOpen((state) => !state)}>
           <Hamburger isOpen={isOpen} />
         </button>

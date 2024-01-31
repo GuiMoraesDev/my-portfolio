@@ -67,24 +67,24 @@ export default function Home() {
   ];
 
   return (
-    <main className="flex container flex-col items-center text-white bg-plum-900 pb-14 lg:pb-36">
+    <main className="container flex flex-col items-center bg-plum-900 pb-14 text-white lg:pb-36">
       <Spheres />
-      <Header className="max-[2000px]:px-[10vw] max-w-7xl" />
+      <Header className="max-w-7xl max-[2000px]:px-[10vw]" />
 
       <SessionWrapper className="md:flex-row">
-        <section className="flex flex-col text-white gap-4">
-          <div className="flex flex-col gap-4 max-w-2xl">
+        <section className="flex flex-col gap-4 text-white">
+          <div className="flex max-w-2xl flex-col gap-4">
             <h1 className="inline-flex flex-col text-2xl lg:text-2xl">
               Hey, my name is
               <strong className="inline-flex gap-1">
                 Guilherme Moraes
-                <span className="animate-wave text-base inline-block origin-bottom-right w-fit select-none">
+                <span className="inline-block w-fit origin-bottom-right animate-wave select-none text-base">
                   👋
                 </span>
               </strong>
             </h1>
 
-            <h2 className="text-4xl lg:text-6xl xl:text-7xl text-gold-500 font-bold">
+            <h2 className="text-4xl font-bold text-gold-500 lg:text-6xl xl:text-7xl">
               I am a Frontend developer
             </h2>
 
@@ -97,12 +97,12 @@ export default function Home() {
           <SocialMedia className="hidden md:flex" />
         </section>
 
-        <section className="flex flex-col gap-2 items-center justify-center">
+        <section className="flex flex-col items-center justify-center gap-2">
           <Image
             src="/profile.png"
             width={400}
             height={400}
-            className="h-72 md:h-auto aspect-square object-contain select-none"
+            className="aspect-square h-72 select-none object-contain md:h-auto"
             priority
             alt=""
           />
@@ -131,31 +131,31 @@ export default function Home() {
           </p>
         </section>
 
-        <section className="grid grid-cols-2 gap-4 items-center justify-center">
-          <div className="rounded-md flex flex-col items-center justify-center w-32 lg:w-44 xl:w-52 h-24 lg:h-36 xl:h-40 bg-plum-500 gap-2 xl:gap-4">
+        <section className="grid grid-cols-2 items-center justify-center gap-4">
+          <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Chip />
-            <p className="text-xs lg:text-base xl:text-lg text-white w-4/5 text-center">
+            <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
               4+ years of experience
             </p>
           </div>
 
-          <div className="rounded-md flex flex-col items-center justify-center w-32 lg:w-44 xl:w-52 h-24 lg:h-36 xl:h-40 bg-plum-500 gap-2 xl:gap-4">
+          <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <MagnifyingGlass />
-            <p className="text-xs lg:text-base xl:text-lg text-white w-4/5 text-center">
+            <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
               Attention to details for a good UX
             </p>
           </div>
 
-          <div className="rounded-md flex flex-col items-center justify-center w-32 lg:w-44 xl:w-52 h-24 lg:h-36 xl:h-40 bg-plum-500 gap-2 xl:gap-4">
+          <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Code />
-            <p className="text-xs lg:text-base xl:text-lg text-white w-4/5 text-center">
+            <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
               Code easy to scale and maintain
             </p>
           </div>
 
-          <div className="rounded-md flex flex-col items-center justify-center w-32 lg:w-44 xl:w-52 h-24 lg:h-36 xl:h-40 bg-plum-500 gap-2 xl:gap-4">
+          <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Globe />
-            <p className="text-xs lg:text-base xl:text-lg text-white w-4/5 text-center">
+            <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
               Working remote-first worldwide
             </p>
           </div>
@@ -168,7 +168,7 @@ export default function Home() {
           quote='"Lorem ipsum dolor sit amet" - lipsum.com'
         />
 
-        <section className="flex flex-col gap-6 items-center justify-center w-full">
+        <section className="flex w-full flex-col items-center justify-center gap-6">
           {articles.map(
             ({
               id,
@@ -179,29 +179,29 @@ export default function Home() {
             }) => (
               <div
                 key={id}
-                className="rounded-md flex flex-col md:flex-row items-start md:items-center px-3 justify-center md:justify-between w-full h-24 md:h-14 bg-plum-500 gap-4 xl:gap-5"
+                className="flex h-24 w-full flex-col items-start justify-center gap-4 rounded-md bg-plum-500 px-3 md:h-14 md:flex-row md:items-center md:justify-between xl:gap-5"
               >
-                <header className="flex gap-2 items-center justify-start">
+                <header className="flex items-center justify-start gap-2">
                   <Article />
-                  <p className="text-sm xl:text-lg text-white">{title}</p>
+                  <p className="text-sm text-white xl:text-lg">{title}</p>
                 </header>
 
-                <div className="flex gap-9 md:gap-5 items-center justify-start">
-                  <span className="inline-flex items-center text-xs justify-center gap-1.5 text-white">
+                <div className="flex items-center justify-start gap-9 md:gap-5">
+                  <span className="inline-flex items-center justify-center gap-1.5 text-xs text-white">
                     <Clock />
                     {reading_time_minutes} min
                   </span>
-                  <span className="inline-flex items-center text-xs justify-center gap-1.5 text-white">
+                  <span className="inline-flex items-center justify-center gap-1.5 text-xs text-white">
                     <ThumbsUp />
                     {positive_reactions_count}
                   </span>
-                  <span className="inline-flex items-center text-xs justify-center gap-1.5 text-white">
+                  <span className="inline-flex items-center justify-center gap-1.5 text-xs text-white">
                     <Comments />
                     {comments_count}
                   </span>
                 </div>
               </div>
-            )
+            ),
           )}
         </section>
       </SessionWrapper>
@@ -212,30 +212,30 @@ export default function Home() {
           quote='"He is my handsome pretty boy" - Mom'
         />
 
-        <section className="flex flex-wrap xl:flex-nowrap gap-14 items-center justify-center w-full">
+        <section className="flex w-full flex-wrap items-center justify-center gap-14 xl:flex-nowrap">
           {testimonials.map(({ id, name, role, content }) => (
             <div
               key={id}
-              className="rounded-md flex flex-col max-w-xs md:max-w-[45%] lg:max-w-xs items-center border-8 border-plum-500 px-3 justify-center md:justify-between w-full bg-plum-50"
+              className="flex w-full max-w-xs flex-col items-center justify-center rounded-md border-8 border-plum-500 bg-plum-50 px-3 md:max-w-[45%] md:justify-between lg:max-w-xs"
             >
               <Image
                 src="/testimonial-placeholder.png"
                 width={75}
                 height={75}
-                className="h-auto aspect-square object-contain select-none -translate-y-1/3"
+                className="aspect-square h-auto -translate-y-1/3 select-none object-contain"
                 priority
                 alt=""
               />
 
-              <div className="flex flex-col gap-4 md:gap-5 items-center justify-start w-full pb-6">
+              <div className="flex w-full flex-col items-center justify-start gap-4 pb-6 md:gap-5">
                 <p className="w-full text-sm leading-tight text-gray-800">
                   {content}
                 </p>
 
-                <strong className="leading-tight text-lg font-medium text-gray-900">
+                <strong className="text-lg font-medium leading-tight text-gray-900">
                   {name}
                 </strong>
-                <p className="leading-tight text-sm font-bold text-gray-950">
+                <p className="text-sm font-bold leading-tight text-gray-950">
                   {role}
                 </p>
               </div>
@@ -244,13 +244,13 @@ export default function Home() {
         </section>
       </SessionWrapper>
 
-      <SessionWrapper className="justify-start items-start">
+      <SessionWrapper className="items-start justify-start">
         <SessionHeader
           title="Talk is cheap. Show me the code."
           quote='"The code is the documentation" - Unknown'
         />
 
-        <section className="flex flex-wrap gap-14 items-center justify-center w-full">
+        <section className="flex w-full flex-wrap items-center justify-center gap-14">
           <PinnedRepos />
         </section>
       </SessionWrapper>
@@ -265,9 +265,9 @@ const SessionWrapper = ({
 }: ComponentProps<"div">) => (
   <div
     className={twMerge(
-      "relative z-10 flex flex-col max-[2000px]:px-[10vw] w-full max-w-7xl h-full gap-10 items-center justify-between",
+      "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-10 max-[2000px]:px-[10vw]",
       "pt-14 xl:pt-36",
-      className
+      className,
     )}
     {...props}
   >
@@ -276,10 +276,10 @@ const SessionWrapper = ({
 );
 
 const SocialMedia = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={twMerge("gap-10 items-center", className)} {...props}>
+  <div className={twMerge("items-center gap-10", className)} {...props}>
     <Link
       href="https://github.com/GuiMoraesDev"
-      className="cursor-pointer group flex flex-col items-center justify-center p-4"
+      className="group flex cursor-pointer flex-col items-center justify-center p-4"
     >
       <Github />
 
@@ -288,7 +288,7 @@ const SocialMedia = ({ className, ...props }: ComponentProps<"div">) => (
 
     <Link
       href="https://www.linkedin.com/in/guimoraesdev"
-      className="cursor-pointer group flex flex-col items-center justify-center p-4"
+      className="group flex cursor-pointer flex-col items-center justify-center p-4"
     >
       <LinkedIn />
 
@@ -309,11 +309,11 @@ const SessionHeader = ({
   ...props
 }: SessionHeaderProps) => (
   <header
-    className={twMerge("flex flex-col gap-6 w-full", className)}
+    className={twMerge("flex w-full flex-col gap-6", className)}
     {...props}
   >
     <h2 className="text-xl font-bold lg:text-2xl">{title}</h2>
 
-    <p className="leading-normal text-sm">{quote}</p>
+    <p className="text-sm leading-normal">{quote}</p>
   </header>
 );

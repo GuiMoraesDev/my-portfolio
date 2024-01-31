@@ -1,7 +1,7 @@
 export const Chip = () => (
-  <span className="w-7 h-7 lg:w-8 lg:h-8">
+  <span className="h-7 w-7 lg:h-8 lg:w-8">
     <svg
-      className="w-full h-full"
+      className="h-full w-full"
       width="42"
       height="42"
       viewBox="0 0 42 42"

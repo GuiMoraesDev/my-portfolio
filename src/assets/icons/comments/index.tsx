@@ -1,7 +1,7 @@
 export const Comments = () => (
-  <span className="w-6 h-6 lg:w-7 lg:h-7">
+  <span className="h-6 w-6 lg:h-7 lg:w-7">
     <svg
-      className="w-full h-full"
+      className="h-full w-full"
       width="20"
       height="18"
       viewBox="0 0 20 18"

@@ -279,20 +279,18 @@ const SocialMedia = ({ className, ...props }: ComponentProps<"div">) => (
   <div className={twMerge("items-center gap-10", className)} {...props}>
     <Link
       href="https://github.com/GuiMoraesDev"
-      className="group flex cursor-pointer flex-col items-center justify-center p-4"
+      className="flex cursor-pointer flex-col items-center justify-center gap-2 p-4"
     >
       <Github />
-
-      <span className="text-xs text-white">GitHub</span>
+      <span className="text-sm tracking-wider text-white">GitHub</span>
     </Link>
 
     <Link
       href="https://www.linkedin.com/in/guimoraesdev"
-      className="group flex cursor-pointer flex-col items-center justify-center p-4"
+      className="flex cursor-pointer flex-col items-center justify-center gap-2 p-4"
     >
       <LinkedIn />
-
-      <span className="text-xs text-white">LinkedIn</span>
+      <span className="text-sm tracking-wider text-white">LinkedIn</span>
     </Link>
   </div>
 );

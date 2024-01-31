@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
+import { DrawContainer } from "@/components/atoms/Draws";
 
 export default function Home() {
   const articles = [
@@ -56,8 +57,10 @@ export default function Home() {
   ];
 
   return (
-    <main className="container flex flex-col items-center bg-plum-900 pb-14 text-white lg:pb-36">
+    <main className="container relative flex flex-col items-center bg-plum-900 pb-14 text-white lg:pb-36">
       <Spheres />
+      <DrawContainer />
+
       <Header className="max-w-7xl max-[2000px]:px-[10vw]" />
 
       <SessionWrapper className="md:flex-row">

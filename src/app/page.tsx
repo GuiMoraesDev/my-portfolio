@@ -123,7 +123,7 @@ export default function Home() {
           </p>
         </section>
 
-        <section className="grid grid-cols-2 items-center justify-center gap-4">
+        <section className="grid grid-cols-1 items-center justify-center gap-4 min-[340px]:grid-cols-2">
           <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Icon icon="Chip" />
             <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
@@ -173,9 +173,11 @@ export default function Home() {
                 key={id}
                 className="flex h-24 w-full flex-col items-start justify-center gap-4 rounded-md bg-plum-500 px-3 md:h-14 md:flex-row md:items-center md:justify-between xl:gap-5"
               >
-                <header className="flex items-center justify-start gap-2">
+                <header className="flex items-start justify-start gap-2">
                   <Icon icon="Article" size="sm" />
-                  <p className="text-sm text-white xl:text-lg">{title}</p>
+                  <p className="text-xs text-white min-[340px]:text-sm xl:text-lg">
+                    {title}
+                  </p>
                 </header>
 
                 <div className="flex items-center justify-start gap-9 md:gap-5">

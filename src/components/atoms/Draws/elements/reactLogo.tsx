@@ -13,6 +13,7 @@ export const ReactLogo = () => {
       <svg
         width={492}
         height={1080}
+        className="h-full w-auto"
         viewBox="0 0 492 1080"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

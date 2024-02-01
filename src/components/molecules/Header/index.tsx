@@ -1,8 +1,9 @@
 "use client";
 
-import { Hamburger } from "./hamburger";
 import { ComponentProps, useState } from "react";
 import { twMerge } from "tailwind-merge";
+
+import { Hamburger } from "./hamburger";
 
 export const Header = ({ className, ...props }: ComponentProps<"header">) => {
   const [isOpen, setIsOpen] = useState(false);

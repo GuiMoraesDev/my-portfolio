@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
+
 import { Icon } from "@/components/atoms/Icon";
 import { useGitHubPinnedRepositories } from "@/graphql/github-profile";
-import Image from "next/image";
 
 export const PinnedRepos = () => {
   const { data = [] } = useGitHubPinnedRepositories();

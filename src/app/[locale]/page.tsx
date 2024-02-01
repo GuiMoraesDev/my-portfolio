@@ -1,13 +1,16 @@
-import { Icon } from "@/components/atoms/Icon";
-import { Header } from "@/components/molecules/Header";
-import { Spheres } from "@/components/atoms/Spheres";
-import { PinnedRepos } from "@/components/organisms/PinnedRepos";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
+
 import { DrawContainer } from "@/components/atoms/Draws";
-import { useTranslations } from "next-intl";
+import { Icon } from "@/components/atoms/Icon";
+import { Spheres } from "@/components/atoms/Spheres";
+import { Header } from "@/components/molecules/Header";
+import { PinnedRepos } from "@/components/organisms/PinnedRepos";
+
+
 
 export default function Home() {
   const t = useTranslations("Home");

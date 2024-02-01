@@ -1,19 +1,24 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
-export const DrawContainer = () => {
+const ReactDraw = () => {
   const [stroke, setStroke] = useState({
-    dashOffset: Number.MAX_SAFE_INTEGER,
-    dashArray: Number.MAX_SAFE_INTEGER,
+    dashArray: 0,
+    dashOffset: 0,
   });
 
   useEffect(() => {
     if (!window || !document) return;
 
-    const reactDrawPath = document.querySelector(
-      "#react-draw path",
+    const reactDrawWrapper = document.querySelector(
+      "#react-draw-wrapper",
     ) as SVGGeometryElement;
+    const reactDrawPath = document.querySelector(
+      "#react-draw-element path",
+    ) as SVGGeometryElement;
+
     const pathLength = reactDrawPath.getTotalLength();
 
     setStroke((state) => ({
@@ -26,6 +31,10 @@ export const DrawContainer = () => {
         (document.body.scrollTop + document.documentElement.scrollTop) /
         (document.documentElement.scrollHeight -
           document.documentElement.clientHeight);
+
+      if (scrollpercent !== 0) {
+        reactDrawWrapper.classList.remove("hidden");
+      }
 
       const drawLength = pathLength * scrollpercent;
 
@@ -41,23 +50,34 @@ export const DrawContainer = () => {
   }, []);
 
   return (
-    <div className="absolute bottom-0 top-0 h-full overflow-hidden">
+    <div
+      id="react-draw-wrapper"
+      className="fixed top-0 hidden h-[100dvh] overflow-hidden"
+    >
       <svg
-        id="react-draw"
-        width="471"
-        height="3483"
-        viewBox="0 0 471 3483"
+        id="react-draw-element"
+        width="452"
+        height="1080"
+        viewBox="0 0 452 1080"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M467.5 -4C467.5 -4 371.5 89 371.5 173C371.5 266.961 528.5 315 383.5 506C278.846 643.854 267.49 817.5 267.49 817.5C257.5 817.5 244.34 825.566 245 839C245.624 851.699 254.286 862.858 267 863C279.846 863.144 288.904 851.834 289.5 839C290.128 825.483 277 818 267.5 818L267 791.713H293.5C293.5 791.713 243.726 737.634 214.5 731C164.055 719.55 225.5 863 225.5 863C225.5 863 273.073 962.663 318 945C366.338 925.996 294 792.5 294 792.5L271.5 792C271.5 792 151.457 782.227 146.5 832C141.349 883.718 267 888.5 267 888.5C267 888.5 382.973 892.661 386 843C389.098 792.158 299 793.91 269 791.828L240 791.314L219 829.5C219 829.5 171.133 917.576 208 941.5C247.219 966.95 302.5 868 302.5 868C302.5 868 370.814 770.424 330 739C286.072 705.178 214.5 840 214.5 840C214.5 840 269 945 311 1001C367.171 1075.9 368.928 1137.02 383.5 1229.5C437.725 1573.62 21.1851 1689.49 5.5 2037.5C-10.7921 2398.98 368.464 2543.2 335 2903.5C312.541 3145.31 90 3486 90 3486"
+          d="M389.279 -6C389.279 -6 448.675 90.3634 373.969 154.99C252.961 259.67 283.867 398.774 283.867 398.774C274.631 398.774 262.464 406.232 263.074 418.653C263.65 430.394 271.659 440.711 283.414 440.843C295.291 440.976 303.665 430.518 304.216 418.653C304.796 406.155 292.65 398.818 283.867 398.818C283.867 398.818 316.794 401.447 313.802 388.278C309.773 370.539 261.896 324.932 234.875 318.798C188.237 308.211 245.045 440.843 245.045 440.843C245.045 440.843 289.029 532.989 330.565 516.658C375.255 499.088 308.376 375.66 308.376 375.66L287.574 375.197C287.574 375.197 176.589 366.162 172.006 412.181C167.244 459.999 283.414 464.42 283.414 464.42C283.414 464.42 390.636 468.267 393.434 422.351C396.299 375.343 312.999 376.963 285.263 375.038C285.263 375.038 282.044 375.332 280 375.66C248.196 380.753 229.836 430.534 226 438C222.164 445.466 194.781 491.303 228.866 513.422C265.125 536.953 316.235 445.466 316.235 445.466C316.235 445.466 379.394 355.249 341.66 326.195C301.047 294.924 248.039 365.766 234.875 419.577C229.673 440.843 272.884 528.847 324.093 568.435C460 673.5 473 738 415 794C258.252 945.344 -29 919 8.00034 1110.5"
           stroke="#376E84"
           strokeWidth="8"
-          strokeDasharray={stroke.dashArray}
-          strokeDashoffset={stroke.dashOffset}
+          strokeDasharray={stroke?.dashArray}
+          strokeDashoffset={stroke?.dashOffset}
         />
       </svg>
     </div>
+  );
+};
+
+export const DrawContainer = () => {
+  return (
+    <>
+      <ReactDraw />
+    </>
   );
 };

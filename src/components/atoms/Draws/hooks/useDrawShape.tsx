@@ -27,7 +27,7 @@ export const useDrawShape = () => {
       dashArray: pathLength,
     }));
 
-    const handleScroll = () => {
+    const paintShape = () => {
       const scrollpercent =
         (document.body.scrollTop + document.documentElement.scrollTop) /
         (document.documentElement.scrollHeight -
@@ -45,9 +45,10 @@ export const useDrawShape = () => {
       }));
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", paintShape);
+    paintShape();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", paintShape);
   }, [pathId, wrapperId]);
 
   return {

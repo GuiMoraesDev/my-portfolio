@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
-import "../styles/globals.css";
+import "@/styles/globals.css";
 import { QueryProvider } from "@/provider/QueryProvider";
 
 const lato = Lato({
@@ -15,11 +15,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params: { locale },
 }: Readonly<{
   children: React.ReactNode;
+  params: { locale: string };
 }>) {
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body
         style={lato.style}
         className="flex h-[100dvh] w-full flex-col items-center gap-3 bg-plum-900"

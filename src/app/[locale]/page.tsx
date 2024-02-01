@@ -7,8 +7,11 @@ import Link from "next/link";
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 import { DrawContainer } from "@/components/atoms/Draws";
+import { useTranslations } from "next-intl";
 
 export default function Home() {
+  const t = useTranslations("Home");
+
   const articles = [
     {
       id: 431466,
@@ -67,7 +70,7 @@ export default function Home() {
         <section className="flex flex-col gap-4 text-white">
           <div className="flex max-w-2xl flex-col gap-4">
             <h1 className="inline-flex flex-col text-2xl lg:text-2xl">
-              Hey, my name is
+              {t("presentation.name")}
               <strong className="inline-flex gap-1">
                 Guilherme Moraes
                 <span className="inline-block w-fit origin-bottom-right animate-wave select-none text-base">
@@ -77,12 +80,11 @@ export default function Home() {
             </h1>
 
             <h2 className="text-4xl font-bold text-gold-500 lg:text-6xl xl:text-7xl">
-              I am a Frontend developer
+              {t("presentation.title")}
             </h2>
 
             <p className="leading-normal lg:text-2xl">
-              Crafting seamless User Experiences with React, TypeScript, and
-              Testing Library
+              {t("presentation.subtitle")}
             </p>
           </div>
 
@@ -106,49 +108,39 @@ export default function Home() {
       <SessionWrapper className="lg:flex-row">
         <section className="flex flex-col gap-10 lg:w-1/2">
           <SessionHeader
-            title="Overview"
-            quote='"Crafting code and stories, a snapshot of my digital
-              odyssey" - ChatGPT'
+            title={t("overview.title")}
+            quote={t("overview.quote")}
           />
 
-          <p>
-            I&apos;m a passionate front-end developer who loves tackling
-            challenges to build awesome, user-friendly web interfaces. I&apos;m
-            all about making things look good and work seamlessly! With my
-            skills I&apos;m able to create engaging experiences that people
-            love. When it comes to projects, you can count on me to bring fresh
-            ideas and innovative solutions to the table. Ensuring that web
-            applications are not only functional but scalable is my jam.
-            Let&apos;s create something awesome together!
-          </p>
+          <p>{t("overview.description")}</p>
         </section>
 
         <section className="grid grid-cols-1 items-center justify-center gap-4 min-[340px]:grid-cols-2">
           <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Icon icon="Chip" />
             <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
-              4+ years of experience
+              {t("overview.cards.years-experience")}
             </p>
           </div>
 
           <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Icon icon="MagnifyingGlass" />
             <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
-              Attention to details for a good UX
+              {t("overview.cards.attention-details")}
             </p>
           </div>
 
           <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Icon icon="Code" />
             <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
-              Code easy to scale and maintain
+              {t("overview.cards.scalable-code")}
             </p>
           </div>
 
           <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Icon icon="Globe" />
             <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
-              Working remote-first worldwide
+              {t("overview.cards.remote-work")}
             </p>
           </div>
         </section>
@@ -156,8 +148,8 @@ export default function Home() {
 
       <SessionWrapper className="pt-20 lg:items-start">
         <SessionHeader
-          title="Exploring my know-how"
-          quote='"Lorem ipsum dolor sit amet" - lipsum.com'
+          title={t("know-how.title")}
+          quote={t("know-how.quote")}
         />
 
         <section className="flex w-full flex-col items-center justify-center gap-6">
@@ -202,8 +194,8 @@ export default function Home() {
 
       <SessionWrapper className="lg:items-start">
         <SessionHeader
-          title="What's the buzz about me?"
-          quote='"He is my handsome pretty boy" - Mom'
+          title={t("about-me.title")}
+          quote={t("about-me.quote")}
         />
 
         <section className="flex w-full flex-wrap items-center justify-center gap-14 xl:flex-nowrap">
@@ -239,10 +231,7 @@ export default function Home() {
       </SessionWrapper>
 
       <SessionWrapper className="items-start justify-start">
-        <SessionHeader
-          title="Talk is cheap. Show me the code."
-          quote='"The code is the documentation" - Unknown'
-        />
+        <SessionHeader title={t("code.title")} quote={t("code.quote")} />
 
         <section className="flex w-full flex-wrap items-center justify-center gap-14">
           <PinnedRepos />

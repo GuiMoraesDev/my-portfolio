@@ -1,10 +1,12 @@
-/** @type {import('next').NextConfig} */
-import withImages from "next-images";
+import createNextIntlPlugin from "next-intl/plugin";
 
-const nextConfig = withImages({
+const withNextIntl = createNextIntlPlugin();
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     domains: ["raw.githubusercontent.com"],
   },
-});
+};
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

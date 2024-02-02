@@ -28,10 +28,12 @@ export const useDrawShape = () => {
     }));
 
     const paintShape = () => {
-      const scrollpercent =
+      const scrollpercent = Math.min(
         (document.body.scrollTop + document.documentElement.scrollTop) /
-        (document.documentElement.scrollHeight -
-          document.documentElement.clientHeight);
+          (document.documentElement.scrollHeight -
+            document.documentElement.clientHeight),
+        1,
+      );
 
       if (scrollpercent > 0.01) {
         drawWrapper?.classList.remove("hidden");

@@ -10,8 +10,6 @@ import { Spheres } from "@/components/atoms/Spheres";
 import { Header } from "@/components/molecules/Header";
 import { PinnedRepos } from "@/components/organisms/PinnedRepos";
 
-
-
 export default function Home() {
   const t = useTranslations("Home");
 
@@ -69,7 +67,7 @@ export default function Home() {
 
       <Header className="max-w-7xl max-[2000px]:px-[10vw]" />
 
-      <SessionWrapper className="md:flex-row">
+      <SessionWrapper className="md:flex-row" id="home">
         <section className="flex flex-col gap-4 text-white">
           <div className="flex max-w-2xl flex-col gap-4">
             <h1 className="inline-flex flex-col text-2xl lg:text-2xl">
@@ -108,7 +106,7 @@ export default function Home() {
         </section>
       </SessionWrapper>
 
-      <SessionWrapper className="lg:flex-row">
+      <SessionWrapper className="lg:flex-row" id="overview">
         <section className="flex flex-col gap-10 lg:w-1/2">
           <SessionHeader
             title={t("overview.title")}
@@ -149,7 +147,7 @@ export default function Home() {
         </section>
       </SessionWrapper>
 
-      <SessionWrapper className="pt-20 lg:items-start">
+      <SessionWrapper className="pt-20 lg:items-start" id="know-how">
         <SessionHeader
           title={t("know-how.title")}
           quote={t("know-how.quote")}
@@ -195,7 +193,7 @@ export default function Home() {
         </section>
       </SessionWrapper>
 
-      <SessionWrapper className="lg:items-start">
+      <SessionWrapper className="lg:items-start" id="about-me">
         <SessionHeader
           title={t("about-me.title")}
           quote={t("about-me.quote")}
@@ -233,7 +231,7 @@ export default function Home() {
         </section>
       </SessionWrapper>
 
-      <SessionWrapper className="items-start justify-start">
+      <SessionWrapper className="items-start justify-start" id="code">
         <SessionHeader title={t("code.title")} quote={t("code.quote")} />
 
         <section className="flex w-full flex-wrap items-center justify-center gap-14">

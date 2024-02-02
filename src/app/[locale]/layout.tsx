@@ -69,7 +69,7 @@ export default function RootLayout({
   params: { locale: string };
 }>) {
   return (
-    <html lang={locale}>
+    <html lang={locale} className="scroll-smooth">
       <body
         style={lato.style}
         className="flex h-[100dvh] w-full flex-col items-center gap-3 bg-plum-900"

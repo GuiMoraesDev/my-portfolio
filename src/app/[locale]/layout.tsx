@@ -9,7 +9,8 @@ const lato = Lato({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
+  metadataBase: new URL("https://www.guimoraes.dev"),
   referrer: "origin-when-cross-origin",
   keywords: ["confer-all", "Confer All", "Next.js", "React", "JavaScript"],
   authors: { name: "Guilherme Moraes" },
@@ -28,11 +29,11 @@ export const metadata = {
   openGraph: {
     title: "Guilherme Moraes",
     description: "I am a passionate front-end engineer",
-    url: "https://www.guimoraes.dev/",
+    url: "/",
     siteName: "Guilherme Moraes | Frontend engineer",
     images: [
       {
-        url: "https://www.guimoraes.dev/img/cover.webp",
+        url: "/img/cover.png",
         width: 1200,
         height: 630,
       },
@@ -56,7 +57,7 @@ export const metadata = {
     title: "Guilherme Moraes | Frontend engineer",
     description: "I am a passionate front-end engineer",
     creator: "Guilherme Moraes",
-    images: ["https://www.guimoraes.dev/img/cover.webp"],
+    images: ["/img/cover.png"],
   },
 };
 

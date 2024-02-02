@@ -5,7 +5,11 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/index.ts");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["raw.githubusercontent.com"],
+    remotePatterns: [
+      {
+        hostname: "raw.githubusercontent.com",
+      },
+    ],
   },
 };
 

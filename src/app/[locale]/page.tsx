@@ -9,6 +9,7 @@ import { Icon } from "@/components/atoms/Icon";
 import { Spheres } from "@/components/atoms/Spheres";
 import { Header } from "@/components/molecules/Header";
 import { PinnedRepos } from "@/components/organisms/PinnedRepos";
+import { Testimonials } from "@/components/organisms/Testimonials";
 
 export default function Home() {
   const t = useTranslations("Home");
@@ -34,29 +35,6 @@ export default function Home() {
       reading_time_minutes: 7,
       positive_reactions_count: 32,
       comments_count: 8,
-    },
-  ];
-  const testimonials = [
-    {
-      id: 1,
-      name: "John Doe",
-      role: "CTO",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut bibendum diam. Nullam rutrum ac leo id commodo. Vestibulum quis est et ante lobortis congue viverra sed turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris tincidunt et velit at molestie.",
-    },
-    {
-      id: 2,
-      name: "Jane Doe",
-      role: "CEO",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut bibendum diam. Nullam rutrum ac leo id commodo. Vestibulum quis est et ante lobortis congue viverra sed turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris tincidunt et velit at molestie.",
-    },
-    {
-      id: 3,
-      name: "John Doe",
-      role: "CTO",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut bibendum diam. Nullam rutrum ac leo id commodo. Vestibulum quis est et ante lobortis congue viverra sed turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris tincidunt et velit at molestie.",
     },
   ];
 
@@ -200,34 +178,7 @@ export default function Home() {
         />
 
         <section className="flex w-full flex-wrap items-center justify-center gap-14 xl:flex-nowrap">
-          {testimonials.map(({ id, name, role, content }) => (
-            <div
-              key={id}
-              className="flex w-full max-w-xs flex-col items-center justify-center rounded-md border-8 border-plum-500 bg-plum-50 px-3 md:max-w-[45%] md:justify-between lg:max-w-xs"
-            >
-              <Image
-                src="/testimonial-placeholder.png"
-                width={75}
-                height={75}
-                className="aspect-square h-auto -translate-y-1/3 select-none object-contain"
-                priority
-                alt=""
-              />
-
-              <div className="flex w-full flex-col items-center justify-start gap-4 pb-6 md:gap-5">
-                <p className="w-full text-sm leading-tight text-gray-800">
-                  {content}
-                </p>
-
-                <strong className="text-lg font-medium leading-tight text-gray-900">
-                  {name}
-                </strong>
-                <p className="text-sm font-bold leading-tight text-gray-950">
-                  {role}
-                </p>
-              </div>
-            </div>
-          ))}
+          <Testimonials />
         </section>
       </SessionWrapper>
 

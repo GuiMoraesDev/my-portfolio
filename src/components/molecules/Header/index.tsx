@@ -28,7 +28,7 @@ export const Header = ({ className, ...props }: ComponentProps<"header">) => {
       className={twMerge(
         "fixed flex items-center justify-center ",
         "z-20 h-14 w-full pb-px",
-        "bg-gradient-to-r from-transparent from-5% via-plum-500 via-50% to-transparent",
+        "animate-pulse bg-gradient-to-r from-transparent from-5% via-plum-500 via-50% to-transparent",
         className,
       )}
       {...props}

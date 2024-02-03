@@ -68,7 +68,9 @@ export const Header = ({ className, ...props }: ComponentProps<"header">) => {
                 key={label}
                 className="transition hover:scale-105 hover:font-semibold"
               >
-                <a href={href}>{label}</a>
+                <a href={href} className="inline-flex h-full">
+                  {label}
+                </a>
               </li>
             ))}
           </ul>

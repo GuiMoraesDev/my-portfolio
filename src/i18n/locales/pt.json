@@ -1,46 +1,44 @@
 {
-  "Home": {
-    "presentation": {
-      "name": "Oi, meu nome é",
-      "title": "Desenvolvedor Frontend",
-      "subtitle": "Criando Experiências do Usuário perfeitas com React, TypeScript e Testing Library"
-    },
-    "overview": {
-      "title": "Visão Geral",
-      "quote": "'Codificando códigos e histórias, um instantâneo da minha odisseia digital' - ChatGPT",
-      "description": "Sou um apaixonado desenvolvedor front-end que adora enfrentar desafios para construir interfaces web incríveis e amigáveis ao usuário. Estou focado em fazer as coisas parecerem boas e funcionarem perfeitamente! Com minhas habilidades, consigo criar experiências envolventes que as pessoas adoram. Quando se trata de projetos, pode contar comigo para trazer ideias frescas e soluções inovadoras para a mesa. Garantir que as aplicações web não sejam apenas funcionais, mas escaláveis é minha especialidade. Vamos criar algo incrível juntos!",
-      "cards": {
-        "years-experience": "Mais de 4 anos de experiência",
-        "attention-details": "Atenção aos detalhes para uma boa UX",
-        "scalable-code": "Código fácil de escalar e manter",
-        "remote-work": "Trabalhando remote-first para todo o mundo"
-      }
-    },
-    "know-how": {
-      "title": "Explorando meu conhecimento",
-      "quote": "'Lorem ipsum dolor sit amet' - lipsum.com"
-    },
-    "about-me": {
-      "title": "Sobre mim",
-      "quote": "'Ele é o garoto mais lindo do mundo' - Mãe",
-      "testimonials": {
-        "vitor-leonardo": {
-          "role": "Designer gráfico",
-          "text": "Além de um excelente colega de equipe, é uma pessoa muito sensata e responsável. seu trabalho é sempre muito eficiente e também muito assertivo. Possui uma sincronia ótima com a equipe e é muito dedicado em seus projetos."
-        },
-        "saulo-bulhoes": {
-          "role": "UX Designer",
-          "text": "Guilherme é um profissional extremamente competente, apaixonado pelo que faz, apresentando resultados de qualidade e excelência. Em todo projeto que se dedica apresenta boas soluções, observando e sugerindo pontos que podem ser melhorados no processo e no produto. Inteligente, proativo, criativo e perspicaz, sempre trata a equipe com muito carinho, respeito e profissionalismo. Está sempre em busca de superar qualquer desafio."
-        },
-        "osmane-fonseca": {
-          "role": "Web Designer",
-          "text": "Guilherme possui um amplo conhecimento técnico como front-end, mas o que me surpreendeu é como agregou na arquitetura de sites, pensando sempre na experiência do usuário voltado para os objetivos do projeto. Guilherme não só atua como desenvolvedor com bastante técnica como deixa a navegação fácil de entender e ações simples de realizar."
-        }
-      }
-    },
-    "code": {
-      "title": "Palavras são baratas. Mostre-me o código.",
-      "quote": "'O código é a documentação' - Desconhecido"
+  "presentation": {
+    "name": "Oi, meu nome é",
+    "title": "Desenvolvedor Frontend",
+    "subtitle": "Criando Experiências do Usuário perfeitas com React, TypeScript e Testing Library"
+  },
+  "overview": {
+    "title": "Visão Geral",
+    "quote": "'Codificando códigos e histórias, um instantâneo da minha odisseia digital' - ChatGPT",
+    "description": "Sou um apaixonado desenvolvedor front-end que adora enfrentar desafios para construir interfaces web incríveis e amigáveis ao usuário. Estou focado em fazer as coisas parecerem boas e funcionarem perfeitamente! Com minhas habilidades, consigo criar experiências envolventes que as pessoas adoram. Quando se trata de projetos, pode contar comigo para trazer ideias frescas e soluções inovadoras para a mesa. Garantir que as aplicações web não sejam apenas funcionais, mas escaláveis é minha especialidade. Vamos criar algo incrível juntos!",
+    "cards": {
+      "years-experience": "Mais de 4 anos de experiência",
+      "attention-details": "Atenção aos detalhes para uma boa UX",
+      "scalable-code": "Código fácil de escalar e manter",
+      "remote-work": "Trabalhando remote-first para todo o mundo"
     }
+  },
+  "know-how": {
+    "title": "Explorando meu conhecimento",
+    "quote": "'Lorem ipsum dolor sit amet' - lipsum.com"
+  },
+  "buzz-about-me": {
+    "title": "Sobre mim",
+    "quote": "'Ele é o garoto mais lindo do mundo' - Mãe",
+    "testimonials": {
+      "vitor-leonardo": {
+        "role": "Designer gráfico",
+        "text": "Além de um excelente colega de equipe, é uma pessoa muito sensata e responsável. seu trabalho é sempre muito eficiente e também muito assertivo. Possui uma sincronia ótima com a equipe e é muito dedicado em seus projetos."
+      },
+      "saulo-bulhoes": {
+        "role": "UX Designer",
+        "text": "Guilherme é um profissional extremamente competente, apaixonado pelo que faz, apresentando resultados de qualidade e excelência. Em todo projeto que se dedica apresenta boas soluções, observando e sugerindo pontos que podem ser melhorados no processo e no produto. Inteligente, proativo, criativo e perspicaz, sempre trata a equipe com muito carinho, respeito e profissionalismo. Está sempre em busca de superar qualquer desafio."
+      },
+      "osmane-fonseca": {
+        "role": "Web Designer",
+        "text": "Guilherme possui um amplo conhecimento técnico como front-end, mas o que me surpreendeu é como agregou na arquitetura de sites, pensando sempre na experiência do usuário voltado para os objetivos do projeto. Guilherme não só atua como desenvolvedor com bastante técnica como deixa a navegação fácil de entender e ações simples de realizar."
+      }
+    }
+  },
+  "code": {
+    "title": "Palavras são baratas. Mostre-me o código.",
+    "quote": "'O código é a documentação' - Desconhecido"
   }
 }

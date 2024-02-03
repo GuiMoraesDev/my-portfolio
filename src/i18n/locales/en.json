@@ -1,46 +1,44 @@
 {
-  "Home": {
-    "presentation": {
-      "name": "Hey, my name is",
-      "title": "I am a Frontend developer",
-      "subtitle": "Crafting seamless User Experiences with React, TypeScript, and Testing Library"
-    },
-    "overview": {
-      "title": "Overview",
-      "quote": "'Crafting code and stories, a snapshot of my digital odyssey' - ChatGPT",
-      "description": "I'm a passionate front-end developer who loves tackling challenges to build awesome, user-friendly web interfaces. I'm all about making things look good and work seamlessly! With my skills I'm able to create engaging experiences that people love. When it comes to projects, you can count on me to bring fresh ideas and innovative solutions to the table. Ensuring that web applications are not only functional but scalable is my jam. Let's create something awesome together!",
-      "cards": {
-        "years-experience": "4+ years of experience",
-        "attention-details": "Attention to details for a good UX",
-        "scalable-code": "Code easy to scale and maintain",
-        "remote-work": "Working remote-first worldwide"
-      }
-    },
-    "know-how": {
-      "title": "Exploring my know-how",
-      "quote": "'Lorem ipsum dolor sit amet' - lipsum.com"
-    },
-    "about-me": {
-      "title": "What's the buzz about me?",
-      "quote": "'He is the most handsome boy in the world' - Mom",
-      "testimonials": {
-        "vitor-leonardo": {
-          "role": "Graphic Designer",
-          "text": "In addition to being an excellent teammate, he is a very sensible and responsible person. His work is always very efficient and also very assertive. He has great synchronization with the team and is very dedicated to his projects."
-        },
-        "saulo-bulhoes": {
-          "role": "UX Designer",
-          "text": "Guilherme is an extremely competent professional, passionate about what he does, delivering quality and excellent results. In every project he undertakes, he presents good solutions, observing and suggesting points that can be improved in the process and product. Intelligent, proactive, creative and insightful, he always treats the team with great affection, respect and professionalism. He is always looking to overcome any challenge."
-        },
-        "osmane-fonseca": {
-          "role": "Web Designer",
-          "text": "Guilherme has extensive technical knowledge as a front-end, but what surprised me is how he added it to the website architecture, always thinking about the user experience focused on the project objectives. Guilherme not only acts as a very technical developer but also makes the navigation easy to understand and actions simple to perform."
-        }
-      }
-    },
-    "code": {
-      "title": "Talk is cheap. Show me the code.",
-      "quote": "'The code is the documentation' - Unknown"
+  "presentation": {
+    "name": "Hey, my name is",
+    "title": "I am a Frontend developer",
+    "subtitle": "Crafting seamless User Experiences with React, TypeScript, and Testing Library"
+  },
+  "overview": {
+    "title": "Overview",
+    "quote": "'Crafting code and stories, a snapshot of my digital odyssey' - ChatGPT",
+    "description": "I'm a passionate front-end developer who loves tackling challenges to build awesome, user-friendly web interfaces. I'm all about making things look good and work seamlessly! With my skills I'm able to create engaging experiences that people love. When it comes to projects, you can count on me to bring fresh ideas and innovative solutions to the table. Ensuring that web applications are not only functional but scalable is my jam. Let's create something awesome together!",
+    "cards": {
+      "years-experience": "4+ years of experience",
+      "attention-details": "Attention to details for a good UX",
+      "scalable-code": "Code easy to scale and maintain",
+      "remote-work": "Working remote-first worldwide"
     }
+  },
+  "know-how": {
+    "title": "Exploring my know-how",
+    "quote": "'Lorem ipsum dolor sit amet' - lipsum.com"
+  },
+  "buzz-about-me": {
+    "title": "What's the buzz about me?",
+    "quote": "'He is the most handsome boy in the world' - Mom",
+    "testimonials": {
+      "vitor-leonardo": {
+        "role": "Graphic Designer",
+        "text": "In addition to being an excellent teammate, he is a very sensible and responsible person. His work is always very efficient and also very assertive. He has great synchronization with the team and is very dedicated to his projects."
+      },
+      "saulo-bulhoes": {
+        "role": "UX Designer",
+        "text": "Guilherme is an extremely competent professional, passionate about what he does, delivering quality and excellent results. In every project he undertakes, he presents good solutions, observing and suggesting points that can be improved in the process and product. Intelligent, proactive, creative and insightful, he always treats the team with great affection, respect and professionalism. He is always looking to overcome any challenge."
+      },
+      "osmane-fonseca": {
+        "role": "Web Designer",
+        "text": "Guilherme has extensive technical knowledge as a front-end, but what surprised me is how he added it to the website architecture, always thinking about the user experience focused on the project objectives. Guilherme not only acts as a very technical developer but also makes the navigation easy to understand and actions simple to perform."
+      }
+    }
+  },
+  "code": {
+    "title": "Talk is cheap. Show me the code.",
+    "quote": "'The code is the documentation' - Unknown"
   }
 }

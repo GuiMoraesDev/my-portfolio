@@ -2,23 +2,23 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 export const Testimonials = () => {
-  const t = useTranslations("Home");
+  const t = useTranslations("buzz-about-me");
   return (
     <>
       <TestimonialCard
         name="Vitor Leonardo"
-        role={t("about-me.testimonials.vitor-leonardo.role")}
-        content={t("about-me.testimonials.vitor-leonardo.text")}
+        role={t("testimonials.vitor-leonardo.role")}
+        content={t("testimonials.vitor-leonardo.text")}
       />
       <TestimonialCard
         name="Saulo Bulhões"
-        role={t("about-me.testimonials.saulo-bulhoes.role")}
-        content={t("about-me.testimonials.saulo-bulhoes.text")}
+        role={t("testimonials.saulo-bulhoes.role")}
+        content={t("testimonials.saulo-bulhoes.text")}
       />
       <TestimonialCard
         name="Osmane Fonseca"
-        role={t("about-me.testimonials.osmane-fonseca.role")}
-        content={t("about-me.testimonials.osmane-fonseca.text")}
+        role={t("testimonials.osmane-fonseca.role")}
+        content={t("testimonials.osmane-fonseca.text")}
       />
     </>
   );

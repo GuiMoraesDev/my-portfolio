@@ -12,7 +12,11 @@ import { PinnedRepos } from "@/components/organisms/PinnedRepos";
 import { Testimonials } from "@/components/organisms/Testimonials";
 
 export default function Home() {
-  const t = useTranslations("Home");
+  const presentationT = useTranslations("presentation");
+  const overviewT = useTranslations("overview");
+  const knowHowT = useTranslations("know-how");
+  const buzzAboutMeT = useTranslations("buzz-about-me");
+  const codeT = useTranslations("code");
 
   const articles = [
     {
@@ -49,7 +53,7 @@ export default function Home() {
         <section className="flex flex-col gap-4 text-white">
           <div className="flex max-w-2xl flex-col gap-4">
             <h1 className="inline-flex flex-col text-2xl lg:text-2xl">
-              {t("presentation.name")}
+              {presentationT("name")}
               <strong className="inline-flex gap-1">
                 Guilherme Moraes
                 <span className="inline-block w-fit origin-bottom-right animate-wave select-none text-base">
@@ -59,11 +63,11 @@ export default function Home() {
             </h1>
 
             <h2 className="text-4xl font-bold text-gold-500 lg:text-6xl xl:text-7xl">
-              {t("presentation.title")}
+              {presentationT("title")}
             </h2>
 
             <p className="leading-normal lg:text-2xl">
-              {t("presentation.subtitle")}
+              {presentationT("subtitle")}
             </p>
           </div>
 
@@ -87,49 +91,46 @@ export default function Home() {
       <SessionWrapper className="lg:flex-row" id="overview">
         <section className="flex flex-col gap-10 lg:w-1/2">
           <SessionHeader
-            title={t("overview.title")}
-            quote={t("overview.quote")}
+            title={overviewT("title")}
+            quote={overviewT("quote")}
           />
 
-          <p>{t("overview.description")}</p>
+          <p>{overviewT("description")}</p>
         </section>
 
         <section className="grid grid-cols-1 items-center justify-center gap-4 min-[340px]:grid-cols-2">
           <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Icon icon="Chip" />
             <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
-              {t("overview.cards.years-experience")}
+              {overviewT("cards.years-experience")}
             </p>
           </div>
 
           <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Icon icon="MagnifyingGlass" />
             <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
-              {t("overview.cards.attention-details")}
+              {overviewT("cards.attention-details")}
             </p>
           </div>
 
           <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Icon icon="Code" />
             <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
-              {t("overview.cards.scalable-code")}
+              {overviewT("cards.scalable-code")}
             </p>
           </div>
 
           <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Icon icon="Globe" />
             <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
-              {t("overview.cards.remote-work")}
+              {overviewT("cards.remote-work")}
             </p>
           </div>
         </section>
       </SessionWrapper>
 
       <SessionWrapper className="pt-20 lg:items-start" id="know-how">
-        <SessionHeader
-          title={t("know-how.title")}
-          quote={t("know-how.quote")}
-        />
+        <SessionHeader title={knowHowT("title")} quote={knowHowT("quote")} />
 
         <section className="flex w-full flex-col items-center justify-center gap-6">
           {articles.map(
@@ -173,8 +174,8 @@ export default function Home() {
 
       <SessionWrapper className="lg:items-start" id="about-me">
         <SessionHeader
-          title={t("about-me.title")}
-          quote={t("about-me.quote")}
+          title={buzzAboutMeT("title")}
+          quote={buzzAboutMeT("quote")}
         />
 
         <section className="flex w-full flex-wrap items-center justify-center gap-14 xl:flex-nowrap">
@@ -183,7 +184,7 @@ export default function Home() {
       </SessionWrapper>
 
       <SessionWrapper className="items-start justify-start" id="code">
-        <SessionHeader title={t("code.title")} quote={t("code.quote")} />
+        <SessionHeader title={codeT("title")} quote={codeT("quote")} />
 
         <section className="flex w-full flex-wrap items-center justify-center gap-14">
           <PinnedRepos />

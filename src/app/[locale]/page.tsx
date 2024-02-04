@@ -1,6 +1,9 @@
+import { formatDistanceToNow } from "date-fns";
+import { ptBR, enUS } from "date-fns/locale";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -13,6 +16,8 @@ import { PinnedRepos } from "@/components/organisms/PinnedRepos";
 import { Testimonials } from "@/components/organisms/Testimonials";
 
 export default function Home() {
+  const locale = useLocale();
+
   const presentationT = useTranslations("presentation");
   const overviewT = useTranslations("overview");
   const knowHowT = useTranslations("know-how");
@@ -79,7 +84,11 @@ export default function Home() {
           <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Icon icon="Chip" />
             <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
-              {overviewT("cards.years-experience")}
+              {overviewT("cards.years-experience", {
+                time: formatDistanceToNow(new Date(2019, 5, 11), {
+                  locale: locale === "pt" ? ptBR : enUS,
+                }),
+              })}
             </p>
           </div>
 

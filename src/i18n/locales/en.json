@@ -9,7 +9,7 @@
     "quote": "'Crafting code and stories, a snapshot of my digital odyssey' - ChatGPT",
     "description": "I'm a passionate front-end developer who loves tackling challenges to build awesome, user-friendly web interfaces. I'm all about making things look good and work seamlessly! With my skills I'm able to create engaging experiences that people love. When it comes to projects, you can count on me to bring fresh ideas and innovative solutions to the table. Ensuring that web applications are not only functional but scalable is my jam. Let's create something awesome together!",
     "cards": {
-      "years-experience": "4+ years of experience",
+      "years-experience": "{time} of experience",
       "attention-details": "Attention to details for a good UX",
       "scalable-code": "Code easy to scale and maintain",
       "remote-work": "Working remote-first worldwide"

@@ -9,7 +9,7 @@
     "quote": "'Codificando códigos e histórias, um instantâneo da minha odisseia digital' - ChatGPT",
     "description": "Sou um apaixonado desenvolvedor front-end que adora enfrentar desafios para construir interfaces web incríveis e amigáveis ao usuário. Estou focado em fazer as coisas parecerem boas e funcionarem perfeitamente! Com minhas habilidades, consigo criar experiências envolventes que as pessoas adoram. Quando se trata de projetos, pode contar comigo para trazer ideias frescas e soluções inovadoras para a mesa. Garantir que as aplicações web não sejam apenas funcionais, mas escaláveis é minha especialidade. Vamos criar algo incrível juntos!",
     "cards": {
-      "years-experience": "Mais de 4 anos de experiência",
+      "years-experience": "{time} de experiência",
       "attention-details": "Atenção aos detalhes para uma boa UX",
       "scalable-code": "Código fácil de escalar e manter",
       "remote-work": "Trabalhando remote-first para todo o mundo"

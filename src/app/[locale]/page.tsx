@@ -49,7 +49,7 @@ export default function Home() {
 
       <Header className="max-w-7xl max-[2000px]:px-[10vw]" />
 
-      <SessionWrapper className="md:flex-row" id="home">
+      <SessionWrapper className="mt-14 md:flex-row" id="home">
         <section className="flex flex-col gap-4 text-white">
           <div className="flex max-w-2xl flex-col gap-4">
             <h1 className="inline-flex flex-col text-2xl lg:text-2xl">
@@ -62,7 +62,7 @@ export default function Home() {
               </strong>
             </h1>
 
-            <h2 className="text-4xl font-bold text-gold-500 lg:text-6xl xl:text-7xl">
+            <h2 className="text-3xl font-bold text-gold-500 sm:text-4xl lg:text-6xl xl:text-7xl">
               {presentationT("title")}
             </h2>
 
@@ -178,7 +178,7 @@ export default function Home() {
           quote={buzzAboutMeT("quote")}
         />
 
-        <section className="flex w-full flex-wrap items-center justify-center gap-14 xl:flex-nowrap">
+        <section className="flex w-full flex-wrap items-start justify-start gap-14 xl:flex-nowrap">
           <Testimonials />
         </section>
       </SessionWrapper>

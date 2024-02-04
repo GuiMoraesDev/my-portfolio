@@ -6,11 +6,6 @@ export const Testimonials = () => {
   return (
     <>
       <TestimonialCard
-        name="Vitor Leonardo"
-        role={t("testimonials.vitor-leonardo.role")}
-        content={t("testimonials.vitor-leonardo.text")}
-      />
-      <TestimonialCard
         name="Saulo Bulhões"
         role={t("testimonials.saulo-bulhoes.role")}
         content={t("testimonials.saulo-bulhoes.text")}
@@ -19,6 +14,11 @@ export const Testimonials = () => {
         name="Osmane Fonseca"
         role={t("testimonials.osmane-fonseca.role")}
         content={t("testimonials.osmane-fonseca.text")}
+      />
+      <TestimonialCard
+        name="Vitor Leonardo"
+        role={t("testimonials.vitor-leonardo.role")}
+        content={t("testimonials.vitor-leonardo.text")}
       />
     </>
   );
@@ -31,7 +31,7 @@ type TestimonialCardProps = {
 };
 
 const TestimonialCard = ({ name, role, content }: TestimonialCardProps) => (
-  <div className="flex h-full w-full max-w-xs flex-1 flex-col items-center justify-between rounded-md border-8 border-plum-500 bg-plum-50 px-3 md:max-w-[45%] md:justify-between lg:max-w-xs">
+  <div className="flex h-auto w-full max-w-xs flex-col items-center justify-between rounded-md border-8 border-plum-500 bg-plum-50 px-3 md:max-w-[45%] md:justify-between lg:h-full lg:max-w-xs lg:flex-1">
     <Image
       src="/testimonial-placeholder.png"
       width={75}
@@ -41,7 +41,7 @@ const TestimonialCard = ({ name, role, content }: TestimonialCardProps) => (
       alt=""
     />
 
-    <p className="h-full w-full text-sm leading-tight tracking-wide text-gray-800">
+    <p className=" inline-flex h-max w-full items-start justify-start px-2 text-sm leading-tight tracking-wide text-gray-800 lg:h-full">
       {content}
     </p>
 

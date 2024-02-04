@@ -5,11 +5,14 @@ import "./styles.css";
 import { icons } from "./icons";
 
 const iconVariants = tv({
-  base: "inline-flex items-center justify-center",
+  base: "inline-flex items-center justify-center overflow-hidden",
   variants: {
+    rounded: {
+      full: "rounded-full",
+    },
     size: {
-      sm: "size-5 md:size-6 lg:size-7",
-      md: "size-6 md:size-7 lg:size-8",
+      sm: "size-3 md:size-4 lg:size-5",
+      md: "size-5 md:size-6 lg:size-7",
       lg: "size-7 md:size-8 lg:size-9",
     },
   },
@@ -26,6 +29,7 @@ type IconProps = ComponentProps<"span"> &
 export const Icon = ({
   size,
   icon,
+  rounded,
   className,
   children,
   ...props
@@ -35,6 +39,7 @@ export const Icon = ({
     <span
       className={iconVariants({
         size,
+        rounded,
         className,
       })}
       {...props}

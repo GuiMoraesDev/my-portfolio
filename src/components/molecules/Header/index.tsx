@@ -1,14 +1,22 @@
 "use client";
 
+import { usePathname, useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 import { ComponentProps, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Hamburger } from "./hamburger";
 import { useHandleClickOutside } from "./hooks/useDetectClickOutside";
 
+import { Icon } from "@/components/atoms/Icon";
+import { Select } from "@/components/atoms/Select";
+
 export const Header = ({ className, ...props }: ComponentProps<"header">) => {
   const wrapperRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
 
   useHandleClickOutside({
     ref: wrapperRef,
@@ -28,14 +36,14 @@ export const Header = ({ className, ...props }: ComponentProps<"header">) => {
       className={twMerge(
         "fixed flex items-center justify-center ",
         "z-20 h-14 w-full pb-px",
-        "animate-pulse bg-gradient-to-r from-transparent from-5% via-plum-500 via-50% to-transparent",
+        "bg-gradient-to-r from-transparent from-5% via-plum-500 via-50% to-transparent",
         className,
       )}
       {...props}
     >
       <nav
         className={twMerge(
-          "relative flex h-full w-full items-center justify-start",
+          "relative flex h-full w-full items-center justify-end",
           "before:absolute before:bottom-0 before:left-1/2 before:top-0 before:w-[100vw] before:-translate-x-1/2 before:bg-plum-900 before:content-['']",
         )}
       >
@@ -74,6 +82,26 @@ export const Header = ({ className, ...props }: ComponentProps<"header">) => {
               </li>
             ))}
           </ul>
+        </div>
+
+        <div className="relative z-10 inline-flex items-center">
+          <Select.Root
+            onValueChange={(locale) => router.replace(locale)}
+            defaultValue={locale}
+          >
+            <Select.Trigger>
+              <Select.Value />
+            </Select.Trigger>
+
+            <Select.Content className="bg-white/[.98] text-plum-900">
+              <Select.Item value="pt" className="cursor-pointer">
+                <Icon size="sm" rounded="full" icon="FlagBr" /> PT
+              </Select.Item>
+              <Select.Item value="en" className="cursor-pointer">
+                <Icon size="sm" rounded="full" icon="FlagUs" /> EN
+              </Select.Item>
+            </Select.Content>
+          </Select.Root>
         </div>
       </nav>
     </header>

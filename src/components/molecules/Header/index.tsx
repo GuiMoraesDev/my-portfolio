@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { ComponentProps, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
@@ -14,9 +14,6 @@ import { Select } from "@/components/atoms/Select";
 export const Header = ({ className, ...props }: ComponentProps<"header">) => {
   const wrapperRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
-  const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
 
   useHandleClickOutside({
     ref: wrapperRef,
@@ -65,9 +62,9 @@ export const Header = ({ className, ...props }: ComponentProps<"header">) => {
 
           <ul
             className={twMerge(
-              "flex min-w-24 flex-col items-start gap-4 overflow-hidden px-2 py-5 font-medium text-plum-800 transition delay-200",
+              "flex min-w-24 flex-col items-start gap-4 overflow-hidden px-2 py-5 font-medium text-plum-800 transition",
               isOpen
-                ? "translate-x-0 scale-x-100"
+                ? "translate-x-0 scale-x-100 delay-200"
                 : "-translate-x-full scale-x-0",
             )}
           >
@@ -82,28 +79,48 @@ export const Header = ({ className, ...props }: ComponentProps<"header">) => {
               </li>
             ))}
           </ul>
+
+          <LanguageSelector
+            className={twMerge(
+              "px-2 lg:hidden",
+              isOpen
+                ? "translate-x-0 scale-x-100 delay-200"
+                : "-translate-x-full scale-x-0",
+            )}
+          />
         </div>
 
-        <div className="relative z-10 inline-flex items-center">
-          <Select.Root
-            onValueChange={(locale) => router.replace(locale)}
-            defaultValue={locale}
-          >
-            <Select.Trigger>
-              <Select.Value />
-            </Select.Trigger>
-
-            <Select.Content className="bg-white/[.98] text-plum-900">
-              <Select.Item value="pt" className="cursor-pointer">
-                <Icon size="sm" rounded="full" icon="FlagBr" /> PT
-              </Select.Item>
-              <Select.Item value="en" className="cursor-pointer">
-                <Icon size="sm" rounded="full" icon="FlagUs" /> EN
-              </Select.Item>
-            </Select.Content>
-          </Select.Root>
-        </div>
+        <LanguageSelector className="hidden lg:flex" />
       </nav>
     </header>
+  );
+};
+
+const LanguageSelector = ({ className }: ComponentProps<"div">) => {
+  const locale = useLocale();
+  const router = useRouter();
+
+  return (
+    <div
+      className={twMerge("relative z-10 inline-flex items-center", className)}
+    >
+      <Select.Root
+        onValueChange={(locale) => router.replace(locale)}
+        defaultValue={locale}
+      >
+        <Select.Trigger className="bg-plum-900 text-white/[.98]">
+          <Select.Value />
+        </Select.Trigger>
+
+        <Select.Content className="bg-plum-900 text-white/[.98]">
+          <Select.Item value="pt" className="cursor-pointer">
+            <Icon size="sm" rounded="full" icon="FlagBr" /> PT
+          </Select.Item>
+          <Select.Item value="en" className="cursor-pointer">
+            <Icon size="sm" rounded="full" icon="FlagUs" /> EN
+          </Select.Item>
+        </Select.Content>
+      </Select.Root>
+    </div>
   );
 };

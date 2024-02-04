@@ -33,9 +33,19 @@ export const metadata: Metadata = {
     siteName: "Guilherme Moraes | Frontend engineer",
     images: [
       {
-        url: "/img/cover.png",
-        width: 1200,
-        height: 630,
+        url: "/img/cover/256p.png",
+        width: 256,
+        height: 256,
+      },
+      {
+        url: "/img/cover/800p.png",
+        width: 800,
+        height: 600,
+      },
+      {
+        url: "/img/cover/1800p.png",
+        width: 1800,
+        height: 1600,
       },
     ],
     locale: "en",
@@ -57,7 +67,7 @@ export const metadata: Metadata = {
     title: "Guilherme Moraes | Frontend engineer",
     description: "I am a passionate front-end engineer",
     creator: "Guilherme Moraes",
-    images: ["/img/cover.png"],
+    images: ["/img/cover/800p.png"],
   },
 };
 

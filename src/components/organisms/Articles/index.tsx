@@ -1,0 +1,108 @@
+"use client";
+
+import { useQuery } from "@tanstack/react-query";
+import { twMerge } from "tailwind-merge";
+
+import { Icon } from "@/components/atoms/Icon";
+
+type DevToArticle = {
+  type_of: string;
+  id: number;
+  title: string;
+  description: string;
+  readable_publish_date: string;
+  slug: string;
+  path: string;
+  url: string;
+  comments_count: number;
+  public_reactions_count: number;
+  collection_id: null;
+  published_timestamp: string;
+  positive_reactions_count: number;
+  cover_image: string;
+  social_image: string;
+  canonical_url: string;
+  created_at: string;
+  edited_at: string;
+  crossposted_at: null;
+  published_at: string;
+  last_comment_at: string;
+  reading_time_minutes: 7;
+  tag_list: string[];
+  tags: string;
+  user: {
+    name: string;
+    username: string;
+    twitter_username: string;
+    github_username: string;
+    user_id: number;
+    website_url: string;
+    profile_image: string;
+    profile_image_90: string;
+  };
+};
+
+const fetchArticles = async (): Promise<DevToArticle[]> => {
+  const response = await fetch(
+    "https://dev.to/api/articles?username=guimoraes",
+  );
+  return await response.json();
+};
+
+export const Articles = () => {
+  const { data: articles = [] } = useQuery({
+    queryKey: ["articles"],
+    queryFn: fetchArticles,
+  });
+
+  return (
+    <>
+      {articles.map(
+        ({
+          id,
+          title,
+          url,
+          reading_time_minutes,
+          positive_reactions_count,
+          comments_count,
+        }) => (
+          <a
+            key={id}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex h-24 w-full flex-col items-start justify-center gap-4 rounded-md bg-plum-500 px-3 md:h-14 md:flex-row md:items-center md:justify-between xl:gap-5"
+          >
+            <header className="flex items-start justify-start gap-2 md:items-center">
+              <Icon icon="Article" size="sm" />
+              <p
+                className={twMerge(
+                  "relative text-xs text-white min-[340px]:text-sm xl:text-base",
+                  "before:absolute before:bottom-0 before:left-0 before:h-px before:w-0 before:rounded-md before:bg-white before:transition-all before:content-['']",
+                  "group-hover:before:w-full",
+                )}
+              >
+                {title}
+              </p>
+            </header>
+
+            <section className="flex items-center justify-start gap-9 md:gap-5">
+              <span className="inline-flex items-center justify-center gap-1.5 text-xs text-white">
+                <Icon icon="Clock" size="sm" />
+                {reading_time_minutes} min
+              </span>
+              <span className="inline-flex items-center justify-center gap-1.5 text-xs text-white">
+                <Icon icon="ThumbsUp" size="sm" />
+                {positive_reactions_count}
+              </span>
+              <span className="inline-flex items-center justify-center gap-1.5 text-xs text-white">
+                <Icon icon="Comments" size="sm" />
+                {comments_count}
+              </span>
+            </section>
+          </a>
+        ),
+      )}
+    </>
+  );
+};

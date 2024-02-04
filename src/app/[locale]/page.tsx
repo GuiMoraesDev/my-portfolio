@@ -8,6 +8,7 @@ import { DrawContainer } from "@/components/atoms/Draws";
 import { Icon } from "@/components/atoms/Icon";
 import { Spheres } from "@/components/atoms/Spheres";
 import { Header } from "@/components/molecules/Header";
+import { Articles } from "@/components/organisms/Articles";
 import { PinnedRepos } from "@/components/organisms/PinnedRepos";
 import { Testimonials } from "@/components/organisms/Testimonials";
 
@@ -17,30 +18,6 @@ export default function Home() {
   const knowHowT = useTranslations("know-how");
   const buzzAboutMeT = useTranslations("buzz-about-me");
   const codeT = useTranslations("code");
-
-  const articles = [
-    {
-      id: 431466,
-      title: "How have I designed my portifolio",
-      reading_time_minutes: 7,
-      positive_reactions_count: 32,
-      comments_count: 8,
-    },
-    {
-      id: 431465,
-      title: "How to create a CSS tail whip animation",
-      reading_time_minutes: 7,
-      positive_reactions_count: 32,
-      comments_count: 8,
-    },
-    {
-      id: 431446,
-      title: "Adding multiple languages in a NextJS 14 app",
-      reading_time_minutes: 7,
-      positive_reactions_count: 32,
-      comments_count: 8,
-    },
-  ];
 
   return (
     <main className="container relative flex flex-col items-center bg-plum-900 pb-14 text-white lg:pb-36">
@@ -133,42 +110,7 @@ export default function Home() {
         <SessionHeader title={knowHowT("title")} quote={knowHowT("quote")} />
 
         <section className="flex w-full flex-col items-center justify-center gap-6">
-          {articles.map(
-            ({
-              id,
-              title,
-              reading_time_minutes,
-              positive_reactions_count,
-              comments_count,
-            }) => (
-              <div
-                key={id}
-                className="flex h-24 w-full flex-col items-start justify-center gap-4 rounded-md bg-plum-500 px-3 md:h-14 md:flex-row md:items-center md:justify-between xl:gap-5"
-              >
-                <header className="flex items-start justify-start gap-2">
-                  <Icon icon="Article" size="sm" />
-                  <p className="text-xs text-white min-[340px]:text-sm xl:text-lg">
-                    {title}
-                  </p>
-                </header>
-
-                <div className="flex items-center justify-start gap-9 md:gap-5">
-                  <span className="inline-flex items-center justify-center gap-1.5 text-xs text-white">
-                    <Icon icon="Clock" size="sm" />
-                    {reading_time_minutes} min
-                  </span>
-                  <span className="inline-flex items-center justify-center gap-1.5 text-xs text-white">
-                    <Icon icon="ThumbsUp" size="sm" />
-                    {positive_reactions_count}
-                  </span>
-                  <span className="inline-flex items-center justify-center gap-1.5 text-xs text-white">
-                    <Icon icon="Comments" size="sm" />
-                    {comments_count}
-                  </span>
-                </div>
-              </div>
-            ),
-          )}
+          <Articles />
         </section>
       </SessionWrapper>
 

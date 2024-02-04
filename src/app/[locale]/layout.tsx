@@ -10,7 +10,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.guimoraes.dev"),
+  metadataBase: new URL("https://portfoliov2-pearl-one.vercel.app/"),
   referrer: "origin-when-cross-origin",
   keywords: ["confer-all", "Confer All", "Next.js", "React", "JavaScript"],
   authors: { name: "Guilherme Moraes" },

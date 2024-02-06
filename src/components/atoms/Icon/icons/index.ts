@@ -10,6 +10,7 @@ import { Globe } from "./globe";
 import { Link } from "./link";
 import { LinkedIn } from "./linkedin";
 import { MagnifyingGlass } from "./magnifyingGlass";
+import { Mail } from "./mail";
 import { ThumbsUp } from "./thumbsUp";
 
 export const icons = {
@@ -25,5 +26,6 @@ export const icons = {
   Link,
   LinkedIn,
   MagnifyingGlass,
+  Mail,
   ThumbsUp,
 };

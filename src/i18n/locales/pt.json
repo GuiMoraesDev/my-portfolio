@@ -40,5 +40,12 @@
   "code": {
     "title": "Palavras são baratas. Mostre-me o código.",
     "quote": "'O código é a documentação' - Desconhecido"
+  },
+  "contact": {
+    "title": "Vamos conversar!",
+    "subtitle": "Olá! Tem algo em mente? Mande uma mensagem para mim. Estou todo ouvidos e pronto para uma boa conversa. Sinta-se à vontade para me contatar para qualquer projeto ou colaboração.",
+    "buttons": {
+      "close": "Fechar"
+    }
   }
 }

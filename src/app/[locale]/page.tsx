@@ -10,6 +10,7 @@ import { twMerge } from "tailwind-merge";
 import { DrawContainer } from "@/components/atoms/Draws";
 import { Icon } from "@/components/atoms/Icon";
 import { Spheres } from "@/components/atoms/Spheres";
+import { EmailDialog } from "@/components/molecules/EmailDialog";
 import { Header } from "@/components/molecules/Header";
 import { Articles } from "@/components/organisms/Articles";
 import { PinnedRepos } from "@/components/organisms/PinnedRepos";
@@ -139,6 +140,18 @@ export default function Home() {
 
         <section className="flex w-full flex-wrap items-center justify-center gap-14">
           <PinnedRepos />
+        </section>
+      </SessionWrapper>
+
+      <SessionWrapper className="items-start justify-start" id="code">
+        <section className="flex h-full min-h-32 w-full flex-col items-center justify-between gap-10 rounded-md bg-plum-500 px-8 py-6 md:flex-row md:py-4">
+          <SessionHeader
+            title="Let's talk!"
+            quote="Hey there! Got something on your mind? Shoot me a message—I'm all ears and ready for a good chat."
+            className="md:max-w-[50%]"
+          />
+
+          <EmailDialog />
         </section>
       </SessionWrapper>
     </main>

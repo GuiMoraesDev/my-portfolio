@@ -45,7 +45,8 @@
     "title": "Let's talk!",
     "subtitle": "Hey there! Got something on your mind? Shoot me a message. I'm all ears and ready for a good chat. Feel free to reach out to me for any project or collaboration.",
     "buttons": {
-      "close": "Close"
+      "close": "Close",
+      "send": "Send"
     }
   }
 }

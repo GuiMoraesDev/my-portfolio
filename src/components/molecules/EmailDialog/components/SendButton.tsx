@@ -7,5 +7,14 @@ import { useSendEmail } from "../hooks/useSendEmail";
 export const SendButton = (props: ComponentProps<"button">) => {
   const { mutate } = useSendEmail();
 
-  return <button onClick={() => mutate()} {...props} />;
+  return (
+    <button
+      onClick={() =>
+        mutate({
+          name: "Guilherme",
+        })
+      }
+      {...props}
+    />
+  );
 };

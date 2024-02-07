@@ -2,15 +2,24 @@ import { Resend } from "resend";
 
 import { EmailTemplate } from "@/components/molecules/EmailDialog/templates/helloWorld";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const { RESEND_API_KEY } = process.env;
+const resend = new Resend(RESEND_API_KEY);
 
-export async function POST() {
+export type SendEmailProps = {
+  name: string;
+  email?: string;
+};
+
+export async function POST(request: Request) {
+  const req = (await request.json()) as SendEmailProps;
+  const { name, email = "delivered@resend.dev" } = req;
+
   try {
     const data = await resend.emails.send({
-      from: "Acme <onboarding@resend.dev>",
-      to: ["delivered@resend.dev"],
-      subject: "Hello world",
-      react: EmailTemplate({ firstName: "John" }),
+      from: "No answer <no-answer@guimoraes.dev>",
+      to: email,
+      subject: `Hello, ${name}`,
+      react: EmailTemplate({ firstName: name }),
     });
 
     return Response.json(data);

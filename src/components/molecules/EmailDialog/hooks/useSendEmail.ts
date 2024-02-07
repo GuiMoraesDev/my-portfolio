@@ -2,7 +2,7 @@
 
 import { useMutation } from "@tanstack/react-query";
 
-import { SendEmailProps } from "@/app/api/send/route";
+import { SendEmailProps } from "@/schemas/emailSchema";
 
 const sendEmail = async (props: SendEmailProps) =>
   fetch("/api/send", {

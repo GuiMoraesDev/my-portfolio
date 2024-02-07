@@ -1,8 +1,8 @@
 {
   "presentation": {
     "name": "Hey, my name is",
-    "title": "I am a Frontend developer",
-    "subtitle": "Crafting seamless User Experiences with React, TypeScript, and Testing Library"
+    "title": "I am Frontend developer",
+    "subtitle": "I craft seamless User Experiences with React, TypeScript, and Testing Library"
   },
   "overview": {
     "title": "Overview",
@@ -43,7 +43,7 @@
   },
   "contact": {
     "title": "Let's talk!",
-    "subtitle": "Hey there! Got something on your mind? Shoot me a message. I'm all ears and ready for a good chat. Feel free to reach out to me for any project or collaboration.",
+    "subtitle": "Hey there! Got something on your mind? Shoot me a message. I'm all ears and ready for a good chat or collaboration.",
     "buttons": {
       "close": "Close",
       "send": "Send"

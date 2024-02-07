@@ -1,6 +1,6 @@
 import { Html, Head, Container, Text } from "@react-email/components";
 
-import { SendEmailProps } from "@/app/api/send/route";
+import { SendEmailProps } from "@/schemas/emailSchema";
 
 export const ContactEmailTemplate = ({
   first_name,

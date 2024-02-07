@@ -5,9 +5,10 @@ import { SendEmailProps } from "@/app/api/send/route";
 export const ContactEmailTemplate = ({
   first_name,
   last_name,
+  email,
   subject,
   message,
-}: Readonly<Omit<SendEmailProps, "email">>) => {
+}: Readonly<SendEmailProps>) => {
   return (
     <Html>
       <Head>
@@ -16,8 +17,10 @@ export const ContactEmailTemplate = ({
 
       <Container>
         <Text>
-          Hi, my name is {first_name} {last_name}
+          Hi, my name is {first_name} {last_name}.
         </Text>
+
+        <Text>You can contact me by {email}.</Text>
 
         <Text>I want to talk about {subject}</Text>
         <Text>{message}</Text>

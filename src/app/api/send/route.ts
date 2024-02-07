@@ -45,11 +45,12 @@ export async function POST(request: Request) {
 
     const data = await resend.emails.send({
       from: "No answer <no-answer@guimoraes.dev>",
-      to: [email, "delivered@resend.dev"],
+      to: ["guimoraes.dev@gmail.com", "delivered@resend.dev"],
       subject,
       react: ContactEmailTemplate({
         first_name,
         last_name,
+        email,
         subject,
         message,
       }),

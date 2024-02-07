@@ -43,7 +43,7 @@
   },
   "contact": {
     "title": "Let's talk!",
-    "subtitle": "Hey there! Got something on your mind? Shoot me a message. I'm all ears and ready for a good chat or collaboration.",
+    "subtitle": "Hey there! Got something on your mind? Shoot me a message.",
     "buttons": {
       "close": "Close",
       "send": "Send"

@@ -24,7 +24,6 @@ export const FormEmail = (props: ComponentProps<"form">) => {
   const { mutate } = useSendEmail();
 
   const onSubmit = async (values: SendEmailProps) => {
-    console.log(values);
     return mutate(values);
   };
 
@@ -88,7 +87,7 @@ export const FormEmail = (props: ComponentProps<"form">) => {
         <Textarea
           id="message"
           placeholder="Type your message here"
-          rows={6}
+          rows={3}
           {...register("message")}
         />
         <ErrorMessage hasError={!!errors.message}>

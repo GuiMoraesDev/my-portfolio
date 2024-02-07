@@ -14,7 +14,7 @@ export const EmailDialog = () => {
         <Icon icon="Mail" size="lg" />
       </Dialog.Trigger>
 
-      <Dialog.Content className="flex flex-col gap-8">
+      <Dialog.Content className="flex flex-col gap-4 md:gap-8">
         <Dialog.Header>
           <Dialog.Title>{t("title")}</Dialog.Title>
           <Dialog.Description>{t("subtitle")}</Dialog.Description>
@@ -22,7 +22,7 @@ export const EmailDialog = () => {
 
         <FormEmail className="flex flex-col gap-4" id="email-form" />
 
-        <Dialog.Footer className="sm:justify-between">
+        <Dialog.Footer className="gap-2 sm:justify-between">
           <Dialog.Close className="rounded-md border border-plum-800 px-4 py-2 transition hover:bg-plum-500 hover:text-white">
             {t("buttons.close")}
           </Dialog.Close>

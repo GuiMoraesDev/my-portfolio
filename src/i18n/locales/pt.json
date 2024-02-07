@@ -43,7 +43,7 @@
   },
   "contact": {
     "title": "Vamos conversar!",
-    "subtitle": "E aí! Tem algo em mente? Manda uma mensagem pra mim. Estou aqui para trocar uma ideia ou colaborar contigo.",
+    "subtitle": "E aí! Tem algo em mente? Manda uma mensagem pra mim.",
     "buttons": {
       "close": "Fechar",
       "send": "Enviar"

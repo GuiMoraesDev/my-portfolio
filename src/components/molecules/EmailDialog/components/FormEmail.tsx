@@ -7,13 +7,13 @@ import { useForm } from "react-hook-form";
 
 import { useSendEmail } from "../hooks/useSendEmail";
 
-import { emailSchema, SendEmailProps } from "@/app/api/send/route";
 import { Dialog } from "@/components/atoms/Dialog";
 import { ErrorMessage } from "@/components/atoms/ErrorMessage";
 import { Icon } from "@/components/atoms/Icon";
 import { Input } from "@/components/atoms/Input";
 import { Label } from "@/components/atoms/Label";
 import { Textarea } from "@/components/atoms/TextArea";
+import { SendEmailProps, emailSchema } from "@/schemas/emailSchema";
 
 export const FormEmail = (props: ComponentProps<"form">) => {
   const [isOpened, setIsOpened] = useState(false);

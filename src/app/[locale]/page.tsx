@@ -148,7 +148,7 @@ export default function Home() {
       </SessionWrapper>
 
       <SessionWrapper className="justify-start" id="code">
-        <section className="flex h-full min-h-32 w-2/3 flex-col items-start justify-between gap-10 rounded-md bg-plum-500 px-8 py-6 md:py-4">
+        <section className="flex h-full min-h-32 w-full flex-col items-start justify-between gap-10 rounded-md bg-plum-500 px-8 py-6 md:w-4/5 md:py-4 lg:w-2/3">
           <SessionHeader
             title="Let's talk!"
             quote="Hey there! Got something on your mind? Shoot me a message—I'm all ears and ready for a good chat."

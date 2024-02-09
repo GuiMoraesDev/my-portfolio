@@ -31,7 +31,6 @@ export const Icon = ({
   icon,
   rounded,
   className,
-  children,
   ...props
 }: IconProps) => {
   const IconComponent = icons[icon];

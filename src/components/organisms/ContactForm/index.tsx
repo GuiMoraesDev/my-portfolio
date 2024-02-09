@@ -4,9 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
 import { useId, useMemo, useState } from "react";
-import { useForm } from "react-hook-form";
+import { UseFormSetValue, useForm } from "react-hook-form";
 
 import { ErrorMessage } from "@/components/atoms/ErrorMessage";
+import { Icon } from "@/components/atoms/Icon";
 import { Input } from "@/components/atoms/Input";
 import { Label } from "@/components/atoms/Label";
 import { Textarea } from "@/components/atoms/TextArea";
@@ -36,9 +37,6 @@ export const ContactForm = () => {
 
   const { toast } = useToast();
 
-  const locale = useLocale();
-  const [isRecording, setIsRecording] = useState(false);
-
   const t = useTranslations("contact");
   const {
     register,
@@ -48,47 +46,6 @@ export const ContactForm = () => {
   } = useEmailForm();
 
   const { mutateAsync, isPending } = useSendEmail();
-
-  const isSpeechRecognitionSupported =
-    "SpeechRecognition" in window || "webkitSpeechRecognition" in window;
-
-  const speechRecognition = useMemo(() => {
-    if (!isSpeechRecognitionSupported) return null;
-
-    const SpeechRecognitionApi =
-      window?.SpeechRecognition || window?.webkitSpeechRecognition;
-
-    const instance = new SpeechRecognitionApi();
-
-    instance.lang = locale;
-    instance.continuous = true;
-    instance.interimResults = true;
-    instance.maxAlternatives = 1;
-
-    instance.onresult = (event) => {
-      const speechToText = Array.from(event.results).reduce(
-        (text, result) => text.concat(result[0].transcript),
-        "",
-      );
-
-      setValue("message", speechToText);
-    };
-
-    return instance;
-  }, [isSpeechRecognitionSupported, locale, setValue]);
-
-  const handleStartRecording = () => {
-    if (!speechRecognition) return;
-
-    speechRecognition.start();
-    setIsRecording(true);
-  };
-  const handleStopRecording = () => {
-    if (!speechRecognition) return;
-
-    speechRecognition.stop();
-    setIsRecording(false);
-  };
 
   const onFormSubmit = async (values: SendEmailProps) => {
     try {
@@ -184,25 +141,7 @@ export const ContactForm = () => {
             />
 
             <div className="absolute bottom-0 right-0 flex gap-4 p-2">
-              {isSpeechRecognitionSupported &&
-                speechRecognition &&
-                (isRecording ? (
-                  <button
-                    type="button"
-                    disabled={!speechRecognition}
-                    onClick={handleStopRecording}
-                  >
-                    Stop
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    disabled={!speechRecognition}
-                    onClick={handleStartRecording}
-                  >
-                    Rec
-                  </button>
-                ))}
+              <RecordButton setValue={setValue} />
             </div>
           </section>
           <ErrorMessage hasError={!!errors.message}>
@@ -211,14 +150,84 @@ export const ContactForm = () => {
         </Label>
       </form>
 
-      <button
-        type="submit"
-        form={formId}
-        disabled={isPending}
-        className="w-28 rounded-md border border-plum-800 bg-white px-4 py-2 text-plum-900 transition hover:bg-white/80 disabled:bg-gray-500"
-      >
-        {t("buttons.send")}
-      </button>
+      <section className="flex w-full items-center justify-end">
+        <button
+          type="submit"
+          form={formId}
+          disabled={isPending}
+          className="flex w-28 items-center justify-center gap-2 rounded-md border border-plum-800 bg-white px-4 py-2 text-plum-900 transition hover:bg-white/80 disabled:bg-gray-500"
+        >
+          {t("buttons.send")}
+          <Icon size="sm" icon="PaperPlane" className="lg:size-4" />
+        </button>
+      </section>
     </div>
+  );
+};
+
+type RecordButtonProps = {
+  setValue: UseFormSetValue<SendEmailProps>;
+};
+
+const RecordButton = ({ setValue }: RecordButtonProps) => {
+  const locale = useLocale();
+  const [isRecording, setIsRecording] = useState(false);
+
+  const isSpeechRecognitionSupported =
+    "SpeechRecognition" in window || "webkitSpeechRecognition" in window;
+
+  const speechRecognition = useMemo(() => {
+    if (!isSpeechRecognitionSupported) return null;
+
+    const SpeechRecognitionApi =
+      window?.SpeechRecognition || window?.webkitSpeechRecognition;
+
+    const instance = new SpeechRecognitionApi();
+
+    instance.lang = locale;
+    instance.continuous = true;
+    instance.interimResults = true;
+    instance.maxAlternatives = 1;
+
+    instance.onresult = (event) => {
+      const speechToText = Array.from(event.results).reduce(
+        (text, result) => text.concat(result[0].transcript),
+        "",
+      );
+
+      setValue("message", speechToText);
+    };
+
+    return instance;
+  }, [isSpeechRecognitionSupported, locale, setValue]);
+
+  if (!isSpeechRecognitionSupported || !speechRecognition) return null;
+
+  const handleStartRecording = () => {
+    if (!speechRecognition) return;
+
+    speechRecognition.start();
+    setIsRecording(true);
+  };
+  const handleStopRecording = () => {
+    if (!speechRecognition) return;
+
+    speechRecognition.stop();
+    setIsRecording(false);
+  };
+
+  return (
+    <button
+      type="button"
+      disabled={!speechRecognition}
+      className=""
+      onClick={isRecording ? handleStopRecording : handleStartRecording}
+    >
+      {isRecording ? (
+        <Icon size="sm" icon="MicrophoneSlash" />
+      ) : (
+        <Icon size="sm" icon="Microphone" />
+      )}
+    </button>
   );
 };

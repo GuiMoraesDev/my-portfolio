@@ -11,6 +11,9 @@ import { Link } from "./link";
 import { LinkedIn } from "./linkedin";
 import { MagnifyingGlass } from "./magnifyingGlass";
 import { Mail } from "./mail";
+import { Microphone } from "./microphone";
+import { MicrophoneSlash } from "./microphoneSlash";
+import { PaperPlane } from "./paperPlane";
 import { ThumbsUp } from "./thumbsUp";
 
 export const icons = {
@@ -27,5 +30,8 @@ export const icons = {
   LinkedIn,
   MagnifyingGlass,
   Mail,
+  Microphone,
+  MicrophoneSlash,
+  PaperPlane,
   ThumbsUp,
 };

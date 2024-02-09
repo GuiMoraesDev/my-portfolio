@@ -2,8 +2,8 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { useTranslations } from "next-intl";
-import { useId } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { useId, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { ErrorMessage } from "@/components/atoms/ErrorMessage";
@@ -33,14 +33,64 @@ const useEmailForm = () =>
 export const ContactForm = () => {
   const formId = useId();
 
+  const locale = useLocale();
+  const [isRecording, setIsRecording] = useState(false);
+
   const t = useTranslations("contact");
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useEmailForm();
 
   const { mutateAsync, isPending } = useSendEmail();
+
+  const isSpeechRecognitionSupported =
+    "SpeechRecognition" in window || "webkitSpeechRecognition" in window;
+
+  const speechRecognition = useMemo(() => {
+    if (!isSpeechRecognitionSupported) return null;
+
+    const SpeechRecognitionApi =
+      window?.SpeechRecognition || window?.webkitSpeechRecognition;
+
+    const instance = new SpeechRecognitionApi();
+
+    instance.lang = locale;
+    instance.continuous = true;
+    instance.interimResults = true;
+    instance.maxAlternatives = 1;
+
+    instance.onresult = (event) => {
+      const speechToText = Array.from(event.results).reduce(
+        (text, result) => text.concat(result[0].transcript),
+        "",
+      );
+
+      setValue("message", speechToText);
+    };
+
+    instance.onerror = (event) => {
+      // eslint-disable-next-line no-console
+      console.error(event);
+    };
+
+    return instance;
+  }, [isSpeechRecognitionSupported, locale, setValue]);
+
+  const handleStartRecording = () => {
+    if (!speechRecognition) return;
+
+    speechRecognition.start();
+    setIsRecording(true);
+  };
+  const handleStopRecording = () => {
+    if (!speechRecognition) return;
+
+    speechRecognition.stop();
+    setIsRecording(false);
+  };
 
   const onFormSubmit = async (values: SendEmailProps) => {
     return mutateAsync(values);
@@ -66,6 +116,7 @@ export const ContactForm = () => {
             {errors.first_name?.message}
           </ErrorMessage>
         </Label>
+
         <Label className="flex flex-col items-baseline justify-between gap-2">
           Your last name:
           <Input
@@ -79,6 +130,7 @@ export const ContactForm = () => {
             {errors.last_name?.message}
           </ErrorMessage>
         </Label>
+
         <Label className="flex flex-col items-baseline justify-between gap-2">
           Your best email:
           <Input
@@ -108,12 +160,36 @@ export const ContactForm = () => {
 
         <Label className="flex flex-1 flex-col items-baseline justify-between gap-2">
           Message:
-          <Textarea
-            id="message"
-            placeholder="Type your message here"
-            rows={3}
-            {...register("message")}
-          />
+          <section className="h-ull relative w-full">
+            <Textarea
+              id="message"
+              placeholder="Type your message here"
+              rows={3}
+              {...register("message")}
+            />
+
+            <div className="absolute bottom-0 right-0 flex gap-4 p-2">
+              {isSpeechRecognitionSupported &&
+                speechRecognition &&
+                (isRecording ? (
+                  <button
+                    type="button"
+                    disabled={!speechRecognition}
+                    onClick={handleStopRecording}
+                  >
+                    Stop
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    disabled={!speechRecognition}
+                    onClick={handleStartRecording}
+                  >
+                    Rec
+                  </button>
+                ))}
+            </div>
+          </section>
           <ErrorMessage hasError={!!errors.message}>
             {errors.message?.message}
           </ErrorMessage>

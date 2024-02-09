@@ -67,6 +67,9 @@ devDependencies:
   '@tanstack/eslint-plugin-query':
     specifier: ^5.18.1
     version: 5.18.1(eslint@8.56.0)(typescript@5.3.3)
+  '@types/dom-speech-recognition':
+    specifier: ^0.0.4
+    version: 0.0.4
   '@types/lodash':
     specifier: ^4.14.202
     version: 4.14.202
@@ -1150,6 +1153,10 @@ packages:
       '@tanstack/query-core': 5.18.1
       react: 18.2.0
     dev: false
+
+  /@types/dom-speech-recognition@0.0.4:
+    resolution: {integrity: sha512-zf2GwV/G6TdaLwpLDcGTIkHnXf8JEf/viMux+khqKQKDa8/8BAUtXXZS563GnvJ4Fg0PBLGAaFf2GekEVSZ6GQ==}
+    dev: true
 
   /@types/eslint-scope@3.7.7:
     resolution: {integrity: sha512-MzMFlSLBqNF2gcHWO0G1vP/YQyfvrxZ0bF+u7mzUdZ1/xK4A4sru+nraZz5i3iEIk1l1uyicaDVTB4QbbEkAYg==}

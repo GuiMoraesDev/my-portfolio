@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.18.1",
+    "@types/dom-speech-recognition": "^0.0.4",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.11.16",
     "@types/react": "^18.2.55",

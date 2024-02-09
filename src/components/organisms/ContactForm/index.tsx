@@ -10,6 +10,7 @@ import { ErrorMessage } from "@/components/atoms/ErrorMessage";
 import { Input } from "@/components/atoms/Input";
 import { Label } from "@/components/atoms/Label";
 import { Textarea } from "@/components/atoms/TextArea";
+import { useToast } from "@/components/atoms/Toaster/hooks/useToast";
 import { SendEmailProps, emailSchema } from "@/schemas/emailSchema";
 
 const useSendEmail = () =>
@@ -32,6 +33,8 @@ const useEmailForm = () =>
 
 export const ContactForm = () => {
   const formId = useId();
+
+  const { toast } = useToast();
 
   const locale = useLocale();
   const [isRecording, setIsRecording] = useState(false);
@@ -71,11 +74,6 @@ export const ContactForm = () => {
       setValue("message", speechToText);
     };
 
-    instance.onerror = (event) => {
-      // eslint-disable-next-line no-console
-      console.error(event);
-    };
-
     return instance;
   }, [isSpeechRecognitionSupported, locale, setValue]);
 
@@ -93,7 +91,24 @@ export const ContactForm = () => {
   };
 
   const onFormSubmit = async (values: SendEmailProps) => {
-    return mutateAsync(values);
+    try {
+      await mutateAsync(values);
+
+      toast({
+        title: "Email sent",
+        description: "I will get back to you as soon as possible",
+        variant: "success",
+      });
+    } catch (error) {
+      toast({
+        title: "Something is wrong",
+        description: "Please try again later",
+        variant: "error",
+      });
+
+      // eslint-disable-next-line no-console
+      console.error(error);
+    }
   };
 
   return (

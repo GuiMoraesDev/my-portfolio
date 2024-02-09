@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 
 import "@/styles/globals.css";
+import { Toaster } from "@/components/atoms/Toaster";
 import { QueryProvider } from "@/provider/QueryProvider";
 
 const lato = Lato({
@@ -84,7 +85,10 @@ export default function RootLayout({
         style={lato.style}
         className="flex h-[100dvh] w-full flex-col items-center gap-3 bg-plum-900"
       >
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          {children}
+          <Toaster />
+        </QueryProvider>
       </body>
     </html>
   );

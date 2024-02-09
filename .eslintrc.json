@@ -3,6 +3,10 @@
   "plugins": ["@tanstack/query"],
   "rules": {
     "no-console": "error",
+    "no-unused-vars": [
+      "error",
+      { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
+    ],
     "import/order": [
       "error",
       {

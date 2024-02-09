@@ -1,7 +1,6 @@
 import { Resend } from "resend";
-import { z } from "zod";
 
-import { ContactEmailTemplate } from "@/components/molecules/EmailDialog/templates/contact";
+import { ContactEmailTemplate } from "@/emails/templates/contact";
 import { SendEmailProps, emailSchema } from "@/schemas/emailSchema";
 
 const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);

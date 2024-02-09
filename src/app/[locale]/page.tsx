@@ -1,23 +1,27 @@
 import { formatDistanceToNow } from "date-fns";
 import { ptBR, enUS } from "date-fns/locale";
+import { pick } from "lodash";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
+import { NextIntlClientProvider, useMessages } from "next-intl";
 import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { DrawContainer } from "@/components/atoms/Draws";
 import { Icon } from "@/components/atoms/Icon";
 import { Spheres } from "@/components/atoms/Spheres";
-import { EmailDialog } from "@/components/molecules/EmailDialog";
 import { Header } from "@/components/molecules/Header";
 import { Articles } from "@/components/organisms/Articles";
+import { ContactForm } from "@/components/organisms/ContactForm";
 import { PinnedRepos } from "@/components/organisms/PinnedRepos";
 import { Testimonials } from "@/components/organisms/Testimonials";
 
 export default function Home() {
   const locale = useLocale();
+
+  const messages = useMessages();
 
   const presentationT = useTranslations("presentation");
   const overviewT = useTranslations("overview");
@@ -143,15 +147,17 @@ export default function Home() {
         </section>
       </SessionWrapper>
 
-      <SessionWrapper className="items-start justify-start" id="code">
-        <section className="flex h-full min-h-32 w-full flex-col items-center justify-between gap-10 rounded-md bg-plum-500 px-8 py-6 md:flex-row md:py-4">
+      <SessionWrapper className="justify-start" id="code">
+        <section className="flex h-full min-h-32 w-2/3 flex-col items-start justify-between gap-10 rounded-md bg-plum-500 px-8 py-6 md:py-4">
           <SessionHeader
             title="Let's talk!"
             quote="Hey there! Got something on your mind? Shoot me a message—I'm all ears and ready for a good chat."
             className="md:max-w-[50%]"
           />
 
-          <EmailDialog />
+          <NextIntlClientProvider messages={pick(messages, "contact")}>
+            <ContactForm />
+          </NextIntlClientProvider>
         </section>
       </SessionWrapper>
     </main>

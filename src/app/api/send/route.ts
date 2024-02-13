@@ -15,8 +15,8 @@ export async function POST(request: Request) {
       req as SendEmailProps;
 
     const data = await resend.emails.send({
-      from: "No answer <no-answer@guimoraes.dev>",
-      to: ["guimoraes.dev@gmail.com", "delivered@resend.dev"],
+      from: "New contact <no-answer@guimoraes.dev>",
+      to: "guimoraes.dev@gmail.com",
       subject,
       react: ContactEmailTemplate({
         first_name,

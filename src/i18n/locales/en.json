@@ -1,4 +1,12 @@
 {
+  "links": {
+    "home": "Home",
+    "overview": "Overview",
+    "know-how": "Know-how",
+    "about-me": "About me",
+    "code": "Code",
+    "contact": "Get in touch"
+  },
   "presentation": {
     "name": "Hey, my name is",
     "title": "I am Frontend developer",

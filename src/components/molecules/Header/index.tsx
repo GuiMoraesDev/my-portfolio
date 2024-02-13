@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { ComponentProps, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -15,17 +15,20 @@ export const Header = ({ className, ...props }: ComponentProps<"header">) => {
   const wrapperRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
+  const t = useTranslations("links");
+
   useHandleClickOutside({
     ref: wrapperRef,
     callback: () => setIsOpen(false),
   });
 
   const links = [
-    { href: "#home", label: "Home" },
-    { href: "#overview", label: "Overview" },
-    { href: "#know-how", label: "Know-how" },
-    { href: "#about-me", label: "About me" },
-    { href: "#code", label: "Code" },
+    { href: "#home", label: t("home") },
+    { href: "#overview", label: t("overview") },
+    { href: "#know-how", label: t("know-how") },
+    { href: "#about-me", label: t("about-me") },
+    { href: "#code", label: t("code") },
+    { href: "#contact", label: t("contact") },
   ];
 
   return (
@@ -46,9 +49,9 @@ export const Header = ({ className, ...props }: ComponentProps<"header">) => {
       >
         <div
           className={twMerge(
-            "absolute left-0 top-1",
+            "absolute left-0 top-1 flex flex-col items-start justify-start gap-4",
             isOpen
-              ? "min-h-80 min-w-52 rounded-lg bg-white/[.98] shadow-[0_1px_6px_rgba(255,255,255,0.66)] transition-all duration-200"
+              ? "min-h-96 min-w-52 rounded-lg bg-white/[.98] pb-4 shadow-[0_1px_6px_rgba(255,255,255,0.66)] transition-all duration-200 lg:min-h-80"
               : "h-full w-12",
           )}
           ref={wrapperRef}
@@ -62,7 +65,7 @@ export const Header = ({ className, ...props }: ComponentProps<"header">) => {
 
           <ul
             className={twMerge(
-              "flex min-w-24 flex-col items-start gap-4 overflow-hidden px-2 py-5 font-medium text-plum-800 transition",
+              "flex h-full w-full min-w-24 flex-col items-start gap-4 overflow-hidden px-2 py-5 font-medium text-plum-800 transition",
               isOpen
                 ? "translate-x-0 scale-x-100 delay-200"
                 : "-translate-x-full scale-x-0",

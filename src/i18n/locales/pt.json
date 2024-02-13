@@ -1,4 +1,12 @@
 {
+  "links": {
+    "home": "Home",
+    "overview": "Visão Geral",
+    "know-how": "Meu Conhecimento",
+    "about-me": "Sobre Mim",
+    "code": "Código",
+    "contact": "Entrar em contato"
+  },
   "presentation": {
     "name": "E aí, meu nome é",
     "title": "Sou desenvolvedor Frontend",

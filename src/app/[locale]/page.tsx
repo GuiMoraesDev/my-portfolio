@@ -34,7 +34,9 @@ export default function Home() {
       <Spheres />
       <DrawContainer />
 
-      <Header className="max-w-7xl max-[2000px]:px-[10vw]" />
+      <NextIntlClientProvider messages={pick(messages, "links")}>
+        <Header className="max-w-7xl max-[2000px]:px-[10vw]" />
+      </NextIntlClientProvider>
 
       <SessionWrapper className="mt-14 md:flex-row" id="home">
         <section className="flex flex-col gap-4 text-white">
@@ -147,7 +149,7 @@ export default function Home() {
         </section>
       </SessionWrapper>
 
-      <SessionWrapper className="justify-start" id="code">
+      <SessionWrapper className="justify-start" id="contact">
         <section className="flex h-full min-h-32 w-full flex-col items-start justify-between gap-10 rounded-md bg-plum-500 px-8 py-6 md:w-4/5 md:py-4 lg:w-2/3">
           <SessionHeader
             title="Let's talk!"

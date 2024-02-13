@@ -87,7 +87,7 @@ export const ContactForm = () => {
         onSubmit={handleSubmit(onFormSubmit)}
       >
         <Label className="flex flex-col items-baseline justify-between gap-2">
-          Your first name:
+          {t("form.labels.first_name")}
           <Input
             type="text"
             id="first_name"
@@ -101,7 +101,7 @@ export const ContactForm = () => {
         </Label>
 
         <Label className="flex flex-col items-baseline justify-between gap-2">
-          Your last name:
+          {t("form.labels.last_name")}
           <Input
             type="text"
             id="last_name"
@@ -115,11 +115,11 @@ export const ContactForm = () => {
         </Label>
 
         <Label className="flex flex-col items-baseline justify-between gap-2">
-          Your best email:
+          {t("form.labels.email")}
           <Input
             type="email"
             id="email"
-            placeholder="johndoe@example.com"
+            placeholder={t("form.placeholders.email")}
             autoComplete="email"
             {...register("email")}
           />
@@ -129,11 +129,11 @@ export const ContactForm = () => {
         </Label>
 
         <Label className="flex flex-col items-baseline justify-between gap-2">
-          Subject:
+          {t("form.labels.subject")}
           <Input
             type="text"
             id="subject"
-            placeholder="I have a great opportunity for you"
+            placeholder={t("form.placeholders.subject")}
             {...register("subject")}
           />
           <ErrorMessage hasError={!!errors.subject}>
@@ -142,11 +142,11 @@ export const ContactForm = () => {
         </Label>
 
         <Label className="flex flex-1 flex-col items-baseline justify-between gap-2">
-          Message:
+          {t("form.labels.message")}
           <section className="h-ull relative w-full">
             <Textarea
               id="message"
-              placeholder="Type your message here"
+              placeholder={t("form.placeholders.message")}
               rows={3}
               {...register("message")}
             />
@@ -168,7 +168,7 @@ export const ContactForm = () => {
           disabled={isPending}
           className="flex w-28 items-center justify-center gap-2 rounded-md border border-plum-800 bg-white px-4 py-2 text-plum-900 transition hover:bg-white/80 disabled:bg-gray-500"
         >
-          {t("buttons.send")}
+          {t("form.buttons.send")}
           <Icon size="sm" icon="PaperPlane" className="lg:size-4" />
         </button>
       </section>

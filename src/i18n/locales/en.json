@@ -52,9 +52,23 @@
   "contact": {
     "title": "Let's talk!",
     "subtitle": "Hey there! Got something on your mind? Shoot me a message.",
-    "buttons": {
-      "close": "Close",
-      "send": "Send"
+    "form": {
+      "labels": {
+        "first_name": "Your first name:",
+        "last_name": "Your last name:",
+        "email": "Your best email",
+        "subject": "Subject",
+        "message": "Message"
+      },
+      "placeholders": {
+        "email": "johnDoe@example.com",
+        "subject": "I have a great opportunity for you",
+        "message": "Type your message here..."
+      },
+      "buttons": {
+        "close": "Close",
+        "send": "Send"
+      }
     }
   }
 }

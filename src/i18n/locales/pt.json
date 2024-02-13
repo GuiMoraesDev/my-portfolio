@@ -52,9 +52,23 @@
   "contact": {
     "title": "Vamos conversar!",
     "subtitle": "E aí! Tem algo em mente? Manda uma mensagem pra mim.",
-    "buttons": {
-      "close": "Fechar",
-      "send": "Enviar"
+    "form": {
+      "labels": {
+        "first_name": "Seu nome:",
+        "last_name": "Seu sobrenome:",
+        "email": "Seu melhor e-mail:",
+        "subject": "Assunto:",
+        "message": "Mensagem"
+      },
+      "placeholders": {
+        "email": "johnDoe@exemplo.com.br",
+        "subject": "Eu tenho uma ótima oportunidade pra você",
+        "message": "Digite sua mensagem aqui..."
+      },
+      "buttons": {
+        "close": "Fechar",
+        "send": "Enviar"
+      }
     }
   }
 }

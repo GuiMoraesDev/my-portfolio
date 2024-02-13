@@ -3,8 +3,11 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
-import { useId, useMemo, useState } from "react";
+import { useId } from "react";
 import { UseFormSetValue, useForm } from "react-hook-form";
+import { twMerge } from "tailwind-merge";
+
+import { useSpeech } from "./hooks/useSpeech";
 
 import { ErrorMessage } from "@/components/atoms/ErrorMessage";
 import { Icon } from "@/components/atoms/Icon";
@@ -171,57 +174,18 @@ type RecordButtonProps = {
 
 const RecordButton = ({ setValue }: RecordButtonProps) => {
   const locale = useLocale();
-  const [isRecording, setIsRecording] = useState(false);
-
-  const isSpeechRecognitionSupported =
-    "SpeechRecognition" in window || "webkitSpeechRecognition" in window;
-
-  const speechRecognition = useMemo(() => {
-    if (!isSpeechRecognitionSupported) return null;
-
-    const SpeechRecognitionApi =
-      window?.SpeechRecognition || window?.webkitSpeechRecognition;
-
-    const instance = new SpeechRecognitionApi();
-
-    instance.lang = locale;
-    instance.continuous = true;
-    instance.interimResults = true;
-    instance.maxAlternatives = 1;
-
-    instance.onresult = (event) => {
-      const speechToText = Array.from(event.results).reduce(
-        (text, result) => text.concat(result[0].transcript),
-        "",
-      );
-
-      setValue("message", speechToText);
-    };
-
-    return instance;
-  }, [isSpeechRecognitionSupported, locale, setValue]);
-
-  if (!isSpeechRecognitionSupported || !speechRecognition) return null;
-
-  const handleStartRecording = () => {
-    if (!speechRecognition) return;
-
-    speechRecognition.start();
-    setIsRecording(true);
-  };
-  const handleStopRecording = () => {
-    if (!speechRecognition) return;
-
-    speechRecognition.stop();
-    setIsRecording(false);
-  };
+  const { isDisabled, isRecording, onStartRecording, onStopRecording } =
+    useSpeech({ locale, callback: setValue });
 
   return (
     <button
       type="button"
-      disabled={!speechRecognition}
-      className=""
-      onClick={isRecording ? handleStopRecording : handleStartRecording}
+      disabled={isDisabled}
+      className={twMerge([
+        "flex size-8 items-center justify-center gap-2 rounded-full border border-plum-800 transition disabled:bg-gray-500",
+        isRecording && "bg-white/80",
+      ])}
+      onClick={isRecording ? onStopRecording : onStartRecording}
     >
       {isRecording ? (
         <Icon size="sm" icon="MicrophoneSlash" />

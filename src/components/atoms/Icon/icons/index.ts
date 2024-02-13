@@ -9,6 +9,7 @@ import { Github } from "./github";
 import { Globe } from "./globe";
 import { Link } from "./link";
 import { LinkedIn } from "./linkedin";
+import { MagicWand } from "./magicWand";
 import { MagnifyingGlass } from "./magnifyingGlass";
 import { Mail } from "./mail";
 import { Microphone } from "./microphone";
@@ -28,6 +29,7 @@ export const icons = {
   Globe,
   Link,
   LinkedIn,
+  MagicWand,
   MagnifyingGlass,
   Mail,
   Microphone,

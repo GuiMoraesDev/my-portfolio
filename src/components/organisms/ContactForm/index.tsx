@@ -5,8 +5,8 @@ import { useMutation } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
 import { useId } from "react";
 import { UseFormSetValue, useForm } from "react-hook-form";
-import { twMerge } from "tailwind-merge";
 
+import { Action } from "./components/ActionButton";
 import { useSpeech } from "./hooks/useSpeech";
 
 import { ErrorMessage } from "@/components/atoms/ErrorMessage";
@@ -16,6 +16,7 @@ import { Label } from "@/components/atoms/Label";
 import { Textarea } from "@/components/atoms/TextArea";
 import { useToast } from "@/components/atoms/Toaster/hooks/useToast";
 import { SendEmailProps, emailSchema } from "@/schemas/emailSchema";
+import { GenerateMessageProps } from "@/schemas/generateMessageSchema";
 
 const useSendEmail = () => {
   const { toast } = useToast();
@@ -153,6 +154,7 @@ export const ContactForm = () => {
 
             <div className="absolute bottom-0 right-0 flex gap-4 p-2">
               <RecordButton setValue={setValue} />
+              <GenerateButton setValue={setValue} />
             </div>
           </section>
           <ErrorMessage hasError={!!errors.message}>
@@ -186,19 +188,88 @@ const RecordButton = ({ setValue }: RecordButtonProps) => {
     useSpeech({ locale, callback: setValue });
 
   return (
-    <button
-      type="button"
+    <Action.Button
       disabled={isDisabled}
-      className={twMerge([
-        "group inline-flex h-8 w-8 origin-right items-center justify-center rounded-full border border-white/80 p-1 transition-[width] hover:w-32 hover:gap-2 disabled:bg-gray-500",
-        isRecording ? "bg-white text-black" : "bg-transparent text-white",
-      ])}
+      isActive={isRecording}
       onClick={isRecording ? onStopRecording : onStartRecording}
     >
-      <Icon size="sm" icon={isRecording ? "MicrophoneSlash" : "Microphone"} />
-      <p className="w-0 origin-right scale-x-0 truncate text-xs leading-normal transition-all group-hover:inline-flex group-hover:w-auto group-hover:scale-x-100">
-        {isRecording ? "Stop recording" : "Start recording"}
-      </p>
-    </button>
+      <Action.Icon icon={isRecording ? "MicrophoneSlash" : "Microphone"} />
+      <Action.Label
+        isActive={isRecording}
+        activeLabel="Stop recording"
+        inactiveLabel="Start recording"
+      />
+    </Action.Button>
+  );
+};
+
+const useGenerateEmail = ({ setValue }: GenerateButtonProps) => {
+  const { toast } = useToast();
+
+  return useMutation({
+    mutationKey: ["generate-email"],
+    mutationFn: async (props: GenerateMessageProps) =>
+      fetch("/api/generate_message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(props),
+      }),
+    onMutate: () => {
+      toast({
+        title: "Generating message",
+        description: "Please wait",
+        variant: "info",
+      });
+    },
+    onError: (error) => {
+      toast({
+        title: "Something is wrong",
+        description: "Please try again later",
+        variant: "error",
+      });
+
+      // eslint-disable-next-line no-console
+      console.error(error);
+    },
+    onSuccess: async (data) => {
+      const response = await data.json();
+
+      setValue("message", response);
+      toast({
+        title: "Email sent",
+        description: "I will get back to you as soon as possible",
+        variant: "success",
+      });
+    },
+  });
+};
+
+type GenerateButtonProps = {
+  setValue: UseFormSetValue<SendEmailProps>;
+};
+
+const GenerateButton = ({ setValue }: GenerateButtonProps) => {
+  const { isPending, mutateAsync } = useGenerateEmail({ setValue });
+
+  return (
+    <Action.Button
+      isActive={isPending}
+      onClick={() =>
+        mutateAsync({
+          first_name: "John",
+          last_name: "Doe",
+          subject: "I have an offer for you",
+        })
+      }
+    >
+      <Action.Icon icon="MagicWand" />
+      <Action.Label
+        isActive={isPending}
+        activeLabel="Generating..."
+        inactiveLabel="Generate with AI"
+      />
+    </Action.Button>
   );
 };

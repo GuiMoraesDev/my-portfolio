@@ -21,7 +21,7 @@ const iconVariants = tv({
   },
 });
 
-type IconProps = ComponentProps<"span"> &
+export type IconProps = ComponentProps<"span"> &
   VariantProps<typeof iconVariants> & {
     icon: keyof typeof icons;
   };

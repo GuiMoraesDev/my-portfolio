@@ -190,16 +190,15 @@ const RecordButton = ({ setValue }: RecordButtonProps) => {
       type="button"
       disabled={isDisabled}
       className={twMerge([
-        "flex size-8 items-center justify-center gap-2 rounded-full border border-plum-800 transition disabled:bg-gray-500",
-        isRecording && "bg-white/80",
+        "group inline-flex h-8 w-8 origin-right items-center justify-center rounded-full border border-white/80 p-1 transition-[width] hover:w-32 hover:gap-2 disabled:bg-gray-500",
+        isRecording ? "bg-white text-black" : "bg-transparent text-white",
       ])}
       onClick={isRecording ? onStopRecording : onStartRecording}
     >
-      {isRecording ? (
-        <Icon size="sm" icon="MicrophoneSlash" />
-      ) : (
-        <Icon size="sm" icon="Microphone" />
-      )}
+      <Icon size="sm" icon={isRecording ? "MicrophoneSlash" : "Microphone"} />
+      <p className="w-0 origin-right scale-x-0 truncate text-xs leading-normal transition-all group-hover:inline-flex group-hover:w-auto group-hover:scale-x-100">
+        {isRecording ? "Stop recording" : "Start recording"}
+      </p>
     </button>
   );
 };

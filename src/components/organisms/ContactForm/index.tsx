@@ -60,13 +60,6 @@ const useSendEmail = () => {
 const useEmailForm = () =>
   useForm<SendEmailProps>({
     resolver: zodResolver(emailSchema),
-    defaultValues: {
-      first_name: "test",
-      last_name: "test",
-      email: "test@example.com",
-      subject: "test",
-      message: "test",
-    },
   });
 
 export const ContactForm = () => {

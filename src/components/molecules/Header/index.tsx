@@ -103,14 +103,15 @@ const LanguageSelector = ({ className }: ComponentProps<"div">) => {
   const locale = useLocale();
   const router = useRouter();
 
+  const handleLanguageChange = (locale: string) => {
+    router.replace(`/${locale}${window?.location.hash || ""}`);
+  };
+
   return (
     <div
       className={twMerge("relative z-10 inline-flex items-center", className)}
     >
-      <Select.Root
-        onValueChange={(locale) => router.replace(locale)}
-        defaultValue={locale}
-      >
+      <Select.Root onValueChange={handleLanguageChange} defaultValue={locale}>
         <Select.Trigger className="bg-plum-900 text-white/[.98]">
           <Select.Value />
         </Select.Trigger>

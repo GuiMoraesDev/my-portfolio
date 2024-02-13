@@ -17,6 +17,7 @@ import { Articles } from "@/components/organisms/Articles";
 import { ContactForm } from "@/components/organisms/ContactForm";
 import { PinnedRepos } from "@/components/organisms/PinnedRepos";
 import { Testimonials } from "@/components/organisms/Testimonials";
+import { capitalizeFirstLetter } from "@/util/capitalizeFirstLetter";
 
 export default function Home() {
   const locale = useLocale();
@@ -92,9 +93,11 @@ export default function Home() {
             <Icon icon="Chip" />
             <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
               {overviewT("cards.years-experience", {
-                time: formatDistanceToNow(new Date(2019, 5, 11), {
-                  locale: locale === "pt" ? ptBR : enUS,
-                }),
+                time: capitalizeFirstLetter(
+                  formatDistanceToNow(new Date(2019, 5, 11), {
+                    locale: locale === "pt" ? ptBR : enUS,
+                  }),
+                ),
               })}
             </p>
           </div>

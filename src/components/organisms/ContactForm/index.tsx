@@ -17,8 +17,10 @@ import { Textarea } from "@/components/atoms/TextArea";
 import { useToast } from "@/components/atoms/Toaster/hooks/useToast";
 import { SendEmailProps, emailSchema } from "@/schemas/emailSchema";
 
-const useSendEmail = () =>
-  useMutation({
+const useSendEmail = () => {
+  const { toast } = useToast();
+
+  return useMutation({
     mutationKey: ["send-email"],
     mutationFn: async (props: SendEmailProps) =>
       fetch("/api/send", {
@@ -28,17 +30,47 @@ const useSendEmail = () =>
         },
         body: JSON.stringify(props),
       }),
+    onMutate: () => {
+      toast({
+        title: "Sending email",
+        description: "Please wait",
+        variant: "info",
+      });
+    },
+    onError: (error) => {
+      toast({
+        title: "Something is wrong",
+        description: "Please try again later",
+        variant: "error",
+      });
+
+      // eslint-disable-next-line no-console
+      console.error(error);
+    },
+    onSuccess: () => {
+      toast({
+        title: "Email sent",
+        description: "I will get back to you as soon as possible",
+        variant: "success",
+      });
+    },
   });
+};
 
 const useEmailForm = () =>
   useForm<SendEmailProps>({
     resolver: zodResolver(emailSchema),
+    defaultValues: {
+      first_name: "test",
+      last_name: "test",
+      email: "test@example.com",
+      subject: "test",
+      message: "test",
+    },
   });
 
 export const ContactForm = () => {
   const formId = useId();
-
-  const { toast } = useToast();
 
   const t = useTranslations("contact");
   const {
@@ -51,24 +83,7 @@ export const ContactForm = () => {
   const { mutateAsync, isPending } = useSendEmail();
 
   const onFormSubmit = async (values: SendEmailProps) => {
-    try {
-      await mutateAsync(values);
-
-      toast({
-        title: "Email sent",
-        description: "I will get back to you as soon as possible",
-        variant: "success",
-      });
-    } catch (error) {
-      toast({
-        title: "Something is wrong",
-        description: "Please try again later",
-        variant: "error",
-      });
-
-      // eslint-disable-next-line no-console
-      console.error(error);
-    }
+    await mutateAsync(values);
   };
 
   return (

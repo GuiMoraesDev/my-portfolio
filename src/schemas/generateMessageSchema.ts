@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import { Locale } from "@/i18n/locales";
+
 export const generateMessageSchema = z.object({
   first_name: z
     .string()
@@ -21,4 +23,6 @@ export const generateMessageSchema = z.object({
     .max(100),
   message: z.string().trim().optional(),
 });
-export type GenerateMessageProps = z.infer<typeof generateMessageSchema>;
+export type GenerateMessageProps = z.infer<typeof generateMessageSchema> & {
+  locale: Locale;
+};

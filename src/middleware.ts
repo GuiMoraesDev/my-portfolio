@@ -1,7 +1,8 @@
 import { NextRequest } from "next/server";
 import createIntlMiddleware from "next-intl/middleware";
 
-import { locales, defaultLocale, Locale } from "./i18n/settings";
+import { Locale } from "./i18n/locales";
+import { locales, defaultLocale } from "./i18n/settings";
 
 export default async function middleware(request: NextRequest) {
   const headerLocale =

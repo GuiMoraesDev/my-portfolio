@@ -15,18 +15,16 @@ export async function POST(request: Request) {
 
     await generateMessageSchema.parseAsync(req);
 
-    const { first_name, last_name, subject, message } =
+    const { first_name, last_name, subject, message, locale } =
       req as GenerateMessageProps;
 
     const chatCompletion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
-        { role: "user", content: `I'm ${first_name} ${last_name}.` },
         {
           role: "user",
-          content: `Create an email body about ${subject} to Guilherme Moraes in no more than 50 tokens`,
+          content: `I'm ${first_name} ${last_name}. Create a pleasant message about ${subject} to Guilherme Moraes in no more than 50 tokens. Base your answer in it ${message}, and write it in ${locale} language`,
         },
-        { role: "user", content: `That's what I have by now ${message}` },
       ],
     });
 

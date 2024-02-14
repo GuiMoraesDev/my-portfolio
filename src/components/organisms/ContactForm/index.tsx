@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
 import { useId } from "react";
-import { UseFormSetValue, useForm } from "react-hook-form";
+import { UseFormReturn, useForm } from "react-hook-form";
 
 import { Action } from "./components/ActionButton";
 import { useSpeech } from "./hooks/useSpeech";
@@ -15,6 +15,7 @@ import { Input } from "@/components/atoms/Input";
 import { Label } from "@/components/atoms/Label";
 import { Textarea } from "@/components/atoms/TextArea";
 import { useToast } from "@/components/atoms/Toaster/hooks/useToast";
+import { Tooltip } from "@/components/atoms/Tooltip";
 import { SendEmailProps, emailSchema } from "@/schemas/emailSchema";
 import { GenerateMessageProps } from "@/schemas/generateMessageSchema";
 
@@ -67,12 +68,12 @@ export const ContactForm = () => {
   const formId = useId();
 
   const t = useTranslations("contact");
+  const formMethods = useEmailForm();
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
-  } = useEmailForm();
+  } = formMethods;
 
   const { mutateAsync, isPending } = useSendEmail();
 
@@ -87,7 +88,7 @@ export const ContactForm = () => {
         id={formId}
         onSubmit={handleSubmit(onFormSubmit)}
       >
-        <Label className="flex flex-col items-baseline justify-between gap-2">
+        <Label className="mx-auto flex w-4/5 flex-col items-baseline justify-between gap-2">
           {t("form.labels.first_name")}
           <Input
             type="text"
@@ -101,7 +102,7 @@ export const ContactForm = () => {
           </ErrorMessage>
         </Label>
 
-        <Label className="flex flex-col items-baseline justify-between gap-2">
+        <Label className="mx-auto flex w-4/5 flex-col items-baseline justify-between gap-2">
           {t("form.labels.last_name")}
           <Input
             type="text"
@@ -115,7 +116,7 @@ export const ContactForm = () => {
           </ErrorMessage>
         </Label>
 
-        <Label className="flex flex-col items-baseline justify-between gap-2">
+        <Label className="mx-auto flex w-4/5 flex-col items-baseline justify-between gap-2">
           {t("form.labels.email")}
           <Input
             type="email"
@@ -129,7 +130,7 @@ export const ContactForm = () => {
           </ErrorMessage>
         </Label>
 
-        <Label className="flex flex-col items-baseline justify-between gap-2">
+        <Label className="mx-auto flex w-4/5 flex-col items-baseline justify-between gap-2">
           {t("form.labels.subject")}
           <Input
             type="text"
@@ -142,19 +143,19 @@ export const ContactForm = () => {
           </ErrorMessage>
         </Label>
 
-        <Label className="flex flex-1 flex-col items-baseline justify-between gap-2">
+        <Label className="mx-auto flex w-4/5 flex-1 flex-col items-baseline justify-between gap-2">
           {t("form.labels.message")}
-          <section className="h-ull relative w-full">
+          <section className="relative flex h-full w-full gap-2">
             <Textarea
               id="message"
               placeholder={t("form.placeholders.message")}
-              rows={3}
+              rows={4}
               {...register("message")}
             />
 
-            <div className="absolute bottom-0 right-0 flex gap-4 p-2">
-              <RecordButton setValue={setValue} />
-              <GenerateButton setValue={setValue} />
+            <div className="absolute right-0 flex translate-x-full flex-col gap-4 p-2">
+              <RecordButton {...formMethods} />
+              <GenerateButton {...formMethods} />
             </div>
           </section>
           <ErrorMessage hasError={!!errors.message}>
@@ -178,11 +179,9 @@ export const ContactForm = () => {
   );
 };
 
-type RecordButtonProps = {
-  setValue: UseFormSetValue<SendEmailProps>;
-};
+type ActionButtonProps = UseFormReturn<SendEmailProps>;
 
-const RecordButton = ({ setValue }: RecordButtonProps) => {
+const RecordButton = ({ setValue }: ActionButtonProps) => {
   const locale = useLocale();
   const { isDisabled, isRecording, onStartRecording, onStopRecording } =
     useSpeech({ locale, callback: setValue });
@@ -203,7 +202,7 @@ const RecordButton = ({ setValue }: RecordButtonProps) => {
   );
 };
 
-const useGenerateEmail = ({ setValue }: GenerateButtonProps) => {
+const useGenerateEmail = () => {
   const { toast } = useToast();
 
   return useMutation({
@@ -233,10 +232,7 @@ const useGenerateEmail = ({ setValue }: GenerateButtonProps) => {
       // eslint-disable-next-line no-console
       console.error(error);
     },
-    onSuccess: async (data) => {
-      const response = await data.json();
-
-      setValue("message", response);
+    onSuccess: () => {
       toast({
         title: "Email sent",
         description: "I will get back to you as soon as possible",
@@ -246,30 +242,61 @@ const useGenerateEmail = ({ setValue }: GenerateButtonProps) => {
   });
 };
 
-type GenerateButtonProps = {
-  setValue: UseFormSetValue<SendEmailProps>;
-};
+const GenerateButton = ({
+  getValues,
+  setValue,
+  trigger,
+  watch,
+}: ActionButtonProps) => {
+  const locale = useLocale();
+  const { isPending, mutateAsync } = useGenerateEmail();
+  const [firstNameValue, lastNameValue, subjectValue] = watch([
+    "first_name",
+    "last_name",
+    "subject",
+  ]);
 
-const GenerateButton = ({ setValue }: GenerateButtonProps) => {
-  const { isPending, mutateAsync } = useGenerateEmail({ setValue });
+  const isFormFilled =
+    firstNameValue?.length > 0 &&
+    lastNameValue?.length > 0 &&
+    subjectValue?.length > 0;
+
+  const handleSubmit = async () => {
+    await trigger?.(["first_name", "last_name", "subject"]);
+
+    if (!isFormFilled) return;
+
+    const values = getValues();
+    const response = await mutateAsync({ locale, ...values });
+    const data = await response.json();
+    setValue("message", data);
+  };
 
   return (
-    <Action.Button
-      isActive={isPending}
-      onClick={() =>
-        mutateAsync({
-          first_name: "John",
-          last_name: "Doe",
-          subject: "I have an offer for you",
-        })
-      }
-    >
-      <Action.Icon icon="MagicWand" />
-      <Action.Label
-        isActive={isPending}
-        activeLabel="Generating..."
-        inactiveLabel="Generate with AI"
-      />
-    </Action.Button>
+    <Tooltip.Provider>
+      <Tooltip.Root>
+        <Tooltip.Trigger asChild>
+          <Action.Button
+            isActive={isPending}
+            disabled={!isFormFilled}
+            onClick={handleSubmit}
+          >
+            <Action.Icon
+              icon="MagicWand"
+              className={isPending ? "[&_path]:fill-black" : ""}
+            />
+            <Action.Label
+              isActive={isPending}
+              activeLabel="Generating..."
+              inactiveLabel="Generate with AI"
+            />
+          </Action.Button>
+        </Tooltip.Trigger>
+
+        <Tooltip.Content className={isFormFilled ? "hidden" : ""}>
+          Fill the form to generate a message with AI
+        </Tooltip.Content>
+      </Tooltip.Root>
+    </Tooltip.Provider>
   );
 };

@@ -1,4 +1,6 @@
-import { ComponentProps } from "react";
+"use client";
+
+import { ComponentProps, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Icon, IconProps } from "@/components/atoms/Icon";
@@ -9,19 +11,24 @@ type ActionProps = {
 
 type ActionButtonProps = ComponentProps<"button"> & ActionProps;
 
-const ActionButton = ({ isActive, ...props }: ActionButtonProps) => (
-  <button
-    type="button"
-    className={twMerge([
-      "group inline-flex h-8 w-8 origin-right items-center justify-center rounded-full border border-white/80 p-1 transition-[width] hover:w-36 hover:gap-2 disabled:bg-gray-500",
-      isActive ? "bg-white text-black" : "bg-transparent text-white",
-    ])}
-    {...props}
-  />
+const ActionButton = forwardRef<HTMLButtonElement, ActionButtonProps>(
+  ({ isActive, className, ...props }, ref) => (
+    <button
+      type="button"
+      className={twMerge([
+        "group inline-flex h-8 w-8 origin-right items-center justify-center rounded-full border border-white/80 p-1 transition-[width] hover:w-36 hover:gap-2 disabled:cursor-not-allowed disabled:bg-gray-500",
+        isActive ? "bg-white text-black" : "bg-plum-500 text-white",
+        className,
+      ])}
+      {...props}
+      ref={ref}
+    />
+  ),
 );
+ActionButton.displayName = "ActionButton";
 
-const ActionIcon = (props: IconProps) => (
-  <Icon size="sm" className="lg:size-4" {...props} />
+const ActionIcon = ({ className, ...props }: IconProps) => (
+  <Icon size="sm" className={twMerge("lg:size-4", className)} {...props} />
 );
 
 type ActionLabelProps = ComponentProps<"p"> &

@@ -40,7 +40,7 @@ export const PinnedRepos = () => {
           </nav>
 
           <Image
-            src={`https://raw.githubusercontent.com/GuiMoraesDev/${title}/main/public/img/cover.png`}
+            src={`https://raw.githubusercontent.com/GuiMoraesDev/${title}/main/public/cover.png`}
             alt={title}
             width={320}
             height={168}

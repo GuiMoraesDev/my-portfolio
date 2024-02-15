@@ -28,6 +28,7 @@ export const ContactForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = formMethods;
 
@@ -35,6 +36,7 @@ export const ContactForm = () => {
 
   const onFormSubmit = async (values: SendEmailProps) => {
     await mutateAsync(values);
+    reset();
   };
 
   return (

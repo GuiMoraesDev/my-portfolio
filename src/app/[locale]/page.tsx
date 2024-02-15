@@ -42,7 +42,7 @@ export default function Home() {
 
       <SessionWrapper className="mt-14 md:flex-row" id="home">
         <section className="flex flex-col gap-4 text-white">
-          <div className="flex max-w-2xl flex-col gap-4">
+          <div className="flex max-w-2xl flex-col gap-6 md:gap-8">
             <h1 className="inline-flex flex-col text-2xl lg:text-2xl">
               {presentationT("name")}
               <strong className="inline-flex gap-1">
@@ -53,11 +53,11 @@ export default function Home() {
               </strong>
             </h1>
 
-            <h2 className="text-3xl font-bold text-gold-500 sm:text-4xl lg:text-6xl xl:text-7xl">
+            <h2 className="text-3xl font-bold text-gold-500 md:my-2 md:text-5xl lg:text-6xl xl:text-7xl">
               {presentationT("title")}
             </h2>
 
-            <p className="leading-normal lg:text-2xl">
+            <p className="leading-relaxed lg:text-2xl">
               {presentationT("subtitle")}
             </p>
           </div>
@@ -90,9 +90,9 @@ export default function Home() {
         </section>
 
         <section className="grid grid-cols-1 items-center justify-center gap-4 min-[340px]:grid-cols-2">
-          <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
+          <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 md:h-36 md:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Icon icon="Chip" />
-            <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
+            <p className="w-4/5 text-center text-xs text-white md:text-base xl:text-lg">
               {overviewT("cards.years-experience", {
                 time: capitalizeFirstLetter(
                   formatDistanceToNow(new Date(2019, 5, 11), {
@@ -103,23 +103,23 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
+          <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 md:h-36 md:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Icon icon="MagnifyingGlass" />
-            <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
+            <p className="w-4/5 text-center text-xs text-white md:text-base xl:text-lg">
               {overviewT("cards.attention-details")}
             </p>
           </div>
 
-          <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
+          <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 md:h-36 md:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Icon icon="Code" />
-            <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
+            <p className="w-4/5 text-center text-xs text-white md:text-base xl:text-lg">
               {overviewT("cards.scalable-code")}
             </p>
           </div>
 
-          <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 lg:h-36 lg:w-44 xl:h-40 xl:w-52 xl:gap-4">
+          <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 md:h-36 md:w-44 xl:h-40 xl:w-52 xl:gap-4">
             <Icon icon="Globe" />
-            <p className="w-4/5 text-center text-xs text-white lg:text-base xl:text-lg">
+            <p className="w-4/5 text-center text-xs text-white md:text-base xl:text-lg">
               {overviewT("cards.remote-work")}
             </p>
           </div>
@@ -176,8 +176,8 @@ const SessionWrapper = ({
 }: ComponentProps<"div">) => (
   <div
     className={twMerge(
-      "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-10 max-[2000px]:px-[10vw]",
-      "pt-14 xl:pt-36",
+      "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-6 max-[2000px]:px-[10vw]",
+      "pt-8 min-[300px]:pt-16 md:pt-28 xl:pt-44",
       className,
     )}
     {...props}

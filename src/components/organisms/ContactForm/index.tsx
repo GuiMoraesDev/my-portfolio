@@ -123,7 +123,7 @@ export const ContactForm = () => {
         </Label>
       </form>
 
-      <section className="flex w-full items-center justify-end">
+      <section className="flex w-full items-center justify-center lg:justify-end">
         <button
           type="submit"
           form={formId}

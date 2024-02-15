@@ -73,8 +73,12 @@ export const Articles = () => {
             rel="noopener noreferrer"
             className="group flex h-24 w-full flex-col items-start justify-center gap-4 rounded-md bg-plum-500 px-3 md:h-14 md:flex-row md:items-center md:justify-between xl:gap-5"
           >
-            <header className="flex items-start justify-start gap-2 md:items-center">
-              <Icon icon="Article" size="sm" />
+            <header className="flex items-center justify-start gap-2">
+              <Icon
+                icon="Article"
+                size="sm"
+                className="hidden sm:inline-flex"
+              />
               <p
                 className={twMerge(
                   "relative text-xs text-white min-[340px]:text-sm xl:text-base",
@@ -87,15 +91,15 @@ export const Articles = () => {
             </header>
 
             <section className="flex items-center justify-start gap-9 md:gap-5">
-              <span className="inline-flex items-center justify-center gap-1.5 text-xs text-white">
+              <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-white">
                 <Icon icon="Clock" size="sm" />
                 {reading_time_minutes} min
               </span>
-              <span className="inline-flex items-center justify-center gap-1.5 text-xs text-white">
+              <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-white">
                 <Icon icon="ThumbsUp" size="sm" />
                 {positive_reactions_count}
               </span>
-              <span className="inline-flex items-center justify-center gap-1.5 text-xs text-white">
+              <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-white">
                 <Icon icon="Comments" size="sm" />
                 {comments_count}
               </span>

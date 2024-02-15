@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 
@@ -88,6 +89,7 @@ export default function RootLayout({
         <QueryProvider>
           {children}
           <Toaster />
+          <Analytics />
         </QueryProvider>
       </body>
     </html>

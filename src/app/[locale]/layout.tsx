@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 
@@ -90,6 +91,7 @@ export default function RootLayout({
           {children}
           <Toaster />
           <Analytics />
+          <SpeedInsights />
         </QueryProvider>
       </body>
     </html>

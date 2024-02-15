@@ -25,7 +25,7 @@ const useSendEmail = () => {
   return useMutation({
     mutationKey: ["send-email"],
     mutationFn: async (props: SendEmailProps) =>
-      fetch("/api/send", {
+      fetch("/api/email/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -208,7 +208,7 @@ const useGenerateEmail = () => {
   return useMutation({
     mutationKey: ["generate-email"],
     mutationFn: async (props: GenerateMessageProps) =>
-      fetch("/api/generate_message", {
+      fetch("/api/email/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

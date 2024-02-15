@@ -54,10 +54,10 @@
     "subtitle": "E aí! Tem algo em mente? Manda uma mensagem pra mim.",
     "form": {
       "labels": {
-        "first_name": "Seu nome:",
-        "last_name": "Seu sobrenome:",
-        "email": "Seu melhor e-mail:",
-        "subject": "Assunto:",
+        "first_name": "Seu nome",
+        "last_name": "Seu sobrenome",
+        "email": "Seu melhor e-mail",
+        "subject": "Assunto",
         "message": "Mensagem"
       },
       "placeholders": {

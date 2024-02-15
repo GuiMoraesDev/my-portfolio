@@ -15,22 +15,22 @@ const ActionRoot = forwardRef<HTMLDivElement, ActionProps>(
   ({ children, isActive, label, inactiveLabel, className, ...props }, ref) => (
     <div
       className={twMerge(
-        "group box-content inline-flex h-8 w-8 origin-right items-center justify-start rounded-full border border-white/80 transition-[width] hover:w-36",
+        "group box-content inline-flex h-7 w-7 origin-right items-center justify-end rounded-full border border-white/80 transition-[width] hover:w-36",
         isActive ? "bg-white text-black" : "bg-plum-500 text-white",
         className,
       )}
       {...props}
       ref={ref}
     >
-      {children}
       <p
         className={twMerge(
           "w-0 origin-right truncate text-xs transition-all",
-          "group-hover:w-2/3 group-hover:pl-2",
+          "group-hover:w-2/3 group-hover:pr-2",
         )}
       >
         {isActive ? label : inactiveLabel}
       </p>
+      {children}
     </div>
   ),
 );
@@ -40,7 +40,7 @@ const ActionButton = ({ className, ...props }: ComponentProps<"button">) => (
   <button
     type="button"
     className={twMerge([
-      "block h-8 w-8 rounded-full border border-white/80",
+      "block h-7 w-7 rounded-full border border-white/80",
       "disabled:cursor-not-allowed disabled:bg-gray-500",
 
       className,
@@ -50,7 +50,11 @@ const ActionButton = ({ className, ...props }: ComponentProps<"button">) => (
 );
 
 const ActionIcon = ({ className, ...props }: IconProps) => (
-  <Icon size="sm" className={twMerge("lg:size-4", className)} {...props} />
+  <Icon
+    size="sm"
+    className={twMerge("size-4 lg:size-4", className)}
+    {...props}
+  />
 );
 
 export const Action = {

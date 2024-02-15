@@ -44,7 +44,7 @@ export const ContactForm = () => {
         id={formId}
         onSubmit={handleSubmit(onFormSubmit)}
       >
-        <Label className="mx-auto flex w-4/5 flex-col items-baseline justify-between gap-2">
+        <Label className="mx-auto flex w-full flex-col items-baseline justify-between gap-2">
           {t("form.labels.first_name")}
           <Input
             type="text"
@@ -58,7 +58,7 @@ export const ContactForm = () => {
           </ErrorMessage>
         </Label>
 
-        <Label className="mx-auto flex w-4/5 flex-col items-baseline justify-between gap-2">
+        <Label className="mx-auto flex w-full flex-col items-baseline justify-between gap-2">
           {t("form.labels.last_name")}
           <Input
             type="text"
@@ -72,7 +72,7 @@ export const ContactForm = () => {
           </ErrorMessage>
         </Label>
 
-        <Label className="mx-auto flex w-4/5 flex-col items-baseline justify-between gap-2">
+        <Label className="mx-auto flex w-full flex-col items-baseline justify-between gap-2">
           {t("form.labels.email")}
           <Input
             type="email"
@@ -86,7 +86,7 @@ export const ContactForm = () => {
           </ErrorMessage>
         </Label>
 
-        <Label className="mx-auto flex w-4/5 flex-col items-baseline justify-between gap-2">
+        <Label className="mx-auto flex w-full flex-col items-baseline justify-between gap-2">
           {t("form.labels.subject")}
           <Input
             type="text"
@@ -99,17 +99,18 @@ export const ContactForm = () => {
           </ErrorMessage>
         </Label>
 
-        <Label className="mx-auto flex w-4/5 flex-1 flex-col items-baseline justify-between gap-2">
+        <Label className="mx-auto flex w-full flex-1 flex-col items-baseline justify-between gap-2">
           {t("form.labels.message")}
           <section className="relative flex h-full w-full gap-2">
             <Textarea
               id="message"
               placeholder={t("form.placeholders.message")}
+              className="pr-14"
               rows={4}
               {...register("message")}
             />
 
-            <div className="absolute right-0 flex translate-x-full flex-col gap-4 p-2">
+            <div className="absolute right-2 top-1/2 flex -translate-y-1/2 flex-col items-end justify-center gap-2">
               <RecordButton {...formMethods} />
               <GenerateButton {...formMethods} />
             </div>

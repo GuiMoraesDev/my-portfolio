@@ -1,12 +1,15 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
 import { useId } from "react";
-import { UseFormReturn, useForm } from "react-hook-form";
+import { UseFormReturn } from "react-hook-form";
 
 import { Action } from "./components/ActionButton";
+import {
+  useEmailForm,
+  useGenerateEmailMutation,
+  useSendEmailMutation,
+} from "./hooks";
 import { useSpeech } from "./hooks/useSpeech";
 
 import { ErrorMessage } from "@/components/atoms/ErrorMessage";
@@ -14,55 +17,8 @@ import { Icon } from "@/components/atoms/Icon";
 import { Input } from "@/components/atoms/Input";
 import { Label } from "@/components/atoms/Label";
 import { Textarea } from "@/components/atoms/TextArea";
-import { useToast } from "@/components/atoms/Toaster/hooks/useToast";
 import { Tooltip } from "@/components/atoms/Tooltip";
-import { SendEmailProps, emailSchema } from "@/schemas/emailSchema";
-import { GenerateMessageProps } from "@/schemas/generateMessageSchema";
-
-const useSendEmail = () => {
-  const { toast } = useToast();
-
-  return useMutation({
-    mutationKey: ["send-email"],
-    mutationFn: async (props: SendEmailProps) =>
-      fetch("/api/email/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(props),
-      }),
-    onMutate: () => {
-      toast({
-        title: "Sending email",
-        description: "Please wait",
-        variant: "info",
-      });
-    },
-    onError: (error) => {
-      toast({
-        title: "Something is wrong",
-        description: "Please try again later",
-        variant: "error",
-      });
-
-      // eslint-disable-next-line no-console
-      console.error(error);
-    },
-    onSuccess: () => {
-      toast({
-        title: "Email sent",
-        description: "I will get back to you as soon as possible",
-        variant: "success",
-      });
-    },
-  });
-};
-
-const useEmailForm = () =>
-  useForm<SendEmailProps>({
-    resolver: zodResolver(emailSchema),
-  });
+import { SendEmailProps } from "@/schemas/emailSchema";
 
 export const ContactForm = () => {
   const formId = useId();
@@ -75,7 +31,7 @@ export const ContactForm = () => {
     formState: { errors },
   } = formMethods;
 
-  const { mutateAsync, isPending } = useSendEmail();
+  const { mutateAsync, isPending } = useSendEmailMutation();
 
   const onFormSubmit = async (values: SendEmailProps) => {
     await mutateAsync(values);
@@ -202,46 +158,6 @@ const RecordButton = ({ setValue }: ActionButtonProps) => {
   );
 };
 
-const useGenerateEmail = () => {
-  const { toast } = useToast();
-
-  return useMutation({
-    mutationKey: ["generate-email"],
-    mutationFn: async (props: GenerateMessageProps) =>
-      fetch("/api/email/generate", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(props),
-      }),
-    onMutate: () => {
-      toast({
-        title: "Generating message",
-        description: "Please wait",
-        variant: "info",
-      });
-    },
-    onError: (error) => {
-      toast({
-        title: "Something is wrong",
-        description: "Please try again later",
-        variant: "error",
-      });
-
-      // eslint-disable-next-line no-console
-      console.error(error);
-    },
-    onSuccess: () => {
-      toast({
-        title: "Email sent",
-        description: "I will get back to you as soon as possible",
-        variant: "success",
-      });
-    },
-  });
-};
-
 const GenerateButton = ({
   getValues,
   setValue,
@@ -249,7 +165,7 @@ const GenerateButton = ({
   watch,
 }: ActionButtonProps) => {
   const locale = useLocale();
-  const { isPending, mutateAsync } = useGenerateEmail();
+  const { isPending, mutateAsync } = useGenerateEmailMutation();
   const [firstNameValue, lastNameValue, subjectValue] = watch([
     "first_name",
     "last_name",

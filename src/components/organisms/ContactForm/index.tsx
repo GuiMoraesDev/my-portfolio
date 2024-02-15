@@ -187,18 +187,18 @@ const RecordButton = ({ setValue }: ActionButtonProps) => {
     useSpeech({ locale, callback: setValue });
 
   return (
-    <Action.Button
-      disabled={isDisabled}
+    <Action.Root
       isActive={isRecording}
-      onClick={isRecording ? onStopRecording : onStartRecording}
+      label="Stop recording"
+      inactiveLabel="Start recording"
     >
-      <Action.Icon icon={isRecording ? "MicrophoneSlash" : "Microphone"} />
-      <Action.Label
-        isActive={isRecording}
-        activeLabel="Stop recording"
-        inactiveLabel="Start recording"
-      />
-    </Action.Button>
+      <Action.Button
+        disabled={isDisabled}
+        onClick={isRecording ? onStopRecording : onStartRecording}
+      >
+        <Action.Icon icon={isRecording ? "MicrophoneSlash" : "Microphone"} />
+      </Action.Button>
+    </Action.Root>
   );
 };
 
@@ -276,21 +276,18 @@ const GenerateButton = ({
     <Tooltip.Provider>
       <Tooltip.Root>
         <Tooltip.Trigger asChild>
-          <Action.Button
+          <Action.Root
             isActive={isPending}
-            disabled={!isFormFilled}
-            onClick={handleSubmit}
+            label="Generating..."
+            inactiveLabel="Generate with AI"
           >
-            <Action.Icon
-              icon="MagicWand"
-              className={isPending ? "[&_path]:fill-black" : ""}
-            />
-            <Action.Label
-              isActive={isPending}
-              activeLabel="Generating..."
-              inactiveLabel="Generate with AI"
-            />
-          </Action.Button>
+            <Action.Button disabled={!isFormFilled} onClick={handleSubmit}>
+              <Action.Icon
+                icon="MagicWand"
+                className={isPending ? "[&_path]:fill-black" : ""}
+              />
+            </Action.Button>
+          </Action.Root>
         </Tooltip.Trigger>
 
         <Tooltip.Content className={isFormFilled ? "hidden" : ""}>

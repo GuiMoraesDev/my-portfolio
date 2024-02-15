@@ -6,7 +6,7 @@
 </br>
 
 <a href="https://www.linkedin.com/in/guimoraesdev/">
-  <img src="./public/cover/800p.png" alt="" height="300px"/>
+  <img src="./public/cover.png" alt="" height="300px"/>
 </a>
 
 </br>

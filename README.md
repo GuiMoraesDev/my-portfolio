@@ -2,8 +2,14 @@
 
 [![next](https://img.shields.io/badge/nextjs-%5E14.1.0-white?logo=Next.js)](https://nextjs.org/)
 [![typescript](https://img.shields.io/badge/typescript-%5E5.0.2-blue?logo=Typescript)](https://www.typescriptlang.org/)
-
+[![@tanstack/react-query](https://img.shields.io/badge/@tanstack/react--query-%5E5.18.1-FF4154?logo=ReactQuery)](https://tanstack.com/query/v5)
+[![openai](https://img.shields.io/badge/openai-%5E4.28.0-412991?logo=openai)](https://platform.openai.com/docs/overview)
+[![react-email](https://img.shields.io/badge/react--email-%5E2.0.0-214c69)](https://react.email/)
+[![zod](https://img.shields.io/badge/zod-%5E3.22.4-3E67B1?logo=zod)](https://zod.dev/)
+[![tailwindcss](https://img.shields.io/badge/talwind-%5E3.4.1-06B6D4?logo=tailwindcss)](https://tailwindcss.com/docs/installation)
+[![react-hook-form](https://img.shields.io/badge/react--hook--form-%5E7.50.1-EC5990?logo=reacthookform)](https://react-hook-form.com/)
 </br>
+<small>Every badge are links to their doc</small>
 
 <a href="https://www.linkedin.com/in/guimoraesdev/">
   <img src="./public/cover.png" alt="" height="300px"/>
@@ -11,11 +17,9 @@
 
 </br>
 
-<small>All badges are links to each doc</small>
-
 ## Description of that project 📖
 
-A static website to be my personal portfolio;
+A SSR website to be my personal portfolio;
 
 ## Project Links
 
@@ -24,41 +28,36 @@ A static website to be my personal portfolio;
 
 ## Requirements 🛑
 
-### Mandatory
-
 For development, you will need some software installed in your environment.
 
-- [NodeJS](https://nodejs.org/en/download/),
+- [Node LTS](https://nodejs.org/en/download/)
+- [PNPM](https://pnpm.io/installation)
 
-### Optional
+## Running the project 🧰
 
-To improve your experience and enjoy each linter, here are some extensions </br>
-<small>For VSCode, if you use another editor, please look at your marketplace</small>
+Create a copy of the `.env.example` file, rename it to `.env.local` and add your own keys.
 
-- [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
-- [Color Highlight](https://marketplace.visualstudio.com/items?itemName=naumovs.color-highlight)
-- [Editorconfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- [vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components)
+Use PNPM to install all dependencies into the project.
 
-## Configuring your Project 🧰
-
-Use NPM to install all dependencies into the project and start the developer server
-
-```batch
-npm install
-npm run dev
+```sh
+pnpm install
 ```
 
-## Project structure
+You can run the project with the following script.
 
-Use [Atomic design](https://bradfrost.com/blog/post/atomic-web-design/) to organize and maintain this project
+```sh
+pnpm dev
+```
 
-## Project Linters 🧹
+There are two dev scripts in the project, one for the next.js dev server, and another to the react-email dev server.
 
-- [ESLint](https://eslint.org/)
+```sh
+pnpm dev:app # Next.JS dev server
+pnpm dev:email # React Email dev server
+```
 
 ## Project Maintenance 👨‍🔧
 
 - Project is using Angular Commits Guide Line, for more information, click on this [link](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format).
+- Use [Atomic design](https://bradfrost.com/blog/post/atomic-web-design/) to organize and maintain this project.
+- [Husky](https://typicode.github.io/husky/) will run commit hooks before every commit message to test the types and run the linting, do not bypass it.

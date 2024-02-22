@@ -51,8 +51,9 @@
   },
   "contact": {
     "title": "Let's talk!",
-    "subtitle": "Hey there! Got something on your mind? Shoot me a message.",
+    "subtitle": "Hey there! Got something on your mind? Shoot me a message",
     "form": {
+      "title": "Contact",
       "labels": {
         "first_name": "Your first name",
         "last_name": "Your last name",

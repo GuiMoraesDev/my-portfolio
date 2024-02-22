@@ -16,9 +16,9 @@ export const PinnedRepos = () => {
         data?.map(({ id, project_link, github_link, title }) => (
           <li
             key={id}
-            className="group relative flex w-full max-w-xs flex-col items-center justify-center gap-3 overflow-hidden rounded-lg bg-plum-50 p-4 shadow-md md:max-w-[45%] lg:max-w-xs"
+            className="group relative flex w-full max-w-xs flex-col items-center justify-center gap-3 overflow-hidden rounded-lg bg-plum-50 p-4 shadow-md md:max-w-[45%] lg:max-w-sm xl:max-w-md"
           >
-            <nav className="absolute left-0.5 top-0.5 flex items-center gap-2 rounded-md bg-plum-500 group-hover:opacity-100 lg:opacity-0">
+            <nav className="absolute left-0.5 top-0.5 flex items-center gap-2 rounded-md bg-plum-500">
               {project_link ? (
                 <a
                   className="inline-flex p-2"
@@ -50,7 +50,7 @@ export const PinnedRepos = () => {
               className="aspect-video h-auto w-full overflow-hidden rounded-lg border border-plum-100 object-cover"
             />
 
-            <p className="absolute bottom-0.5 right-0.5 w-1/2 rounded-md bg-plum-500 py-2 text-center text-xs capitalize text-white group-hover:opacity-100 min-[340px]:text-sm lg:opacity-0">
+            <p className="absolute bottom-0.5 right-0.5 w-1/2 rounded-md bg-plum-500 py-2 text-center text-xs capitalize text-white min-[340px]:text-sm">
               {title}
             </p>
           </li>

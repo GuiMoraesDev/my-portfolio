@@ -56,6 +56,7 @@ export const ContactForm = () => {
 
   return (
     <div className="flex w-full flex-col items-center justify-center gap-8">
+      <strong className="w-full text-lg">{t("form.title")}</strong>
       <form
         className="flex w-full flex-col gap-4"
         id={formId}

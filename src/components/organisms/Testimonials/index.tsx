@@ -31,25 +31,23 @@ type TestimonialCardProps = {
 };
 
 const TestimonialCard = ({ name, role, content }: TestimonialCardProps) => (
-  <div className="flex h-auto w-full max-w-xs flex-col items-center justify-between rounded-md border-8 border-plum-500 bg-plum-50 px-3 md:max-w-[45%] md:justify-between lg:h-full lg:max-w-xs lg:flex-1">
+  <div className="mt-8 flex h-auto w-full max-w-xs border-collapse flex-col items-center justify-between rounded-md bg-plum-500/95 px-3 text-white backdrop-blur-sm md:max-w-[45%] md:justify-between lg:h-full lg:max-w-xs lg:flex-1">
     <Image
       src="/testimonial-placeholder.png"
       width={75}
       height={75}
-      className="aspect-square h-auto -translate-y-1/3 select-none object-contain"
+      className="aspect-square h-auto -translate-y-1/2 select-none object-contain"
       priority
       alt=""
     />
 
-    <p className=" inline-flex h-max w-full items-start justify-start px-2 text-sm leading-tight tracking-wide text-gray-800 lg:h-full">
+    <p className="inline-flex h-max w-full items-start justify-start px-2 leading-tight tracking-wide  lg:h-full">
       {content}
     </p>
 
     <section className="flex w-full flex-col items-center justify-start gap-3 pb-6 pt-4 md:gap-5">
-      <strong className="text-lg font-bold leading-tight text-gray-900">
-        {name}
-      </strong>
-      <p className="text-sm font-medium leading-tight text-gray-950">{role}</p>
+      <strong className="text-lg font-bold leading-tight">{name}</strong>
+      <p className="text-sm font-medium leading-tight">{role}</p>
     </section>
   </div>
 );

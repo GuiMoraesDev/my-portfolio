@@ -9,6 +9,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        lato: ["Lato", "sans-serif"],
+        "fira-sans": ["Fira Sans", "sans-serif"],
+      },
       keyframes: {
         wave: {
           "0%, 100%": { transform: "rotate(0.0deg)" },

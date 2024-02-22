@@ -1,15 +1,23 @@
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Lato } from "next/font/google";
-
+import { Lato, Fira_Sans } from "next/font/google";
 import "@/styles/globals.css";
+import { twMerge } from "tailwind-merge";
+
 import { Toaster } from "@/components/atoms/Toaster";
 import { QueryProvider } from "@/provider/QueryProvider";
 
 const lato = Lato({
   weight: ["100", "300", "400", "700", "900"],
   subsets: ["latin"],
+  variable: "--font-lato",
+});
+
+const firaSans = Fira_Sans({
+  weight: ["100", "300", "400", "700", "900"],
+  subsets: ["latin"],
+  variable: "--font-fira",
 });
 
 export const metadata: Metadata = {
@@ -84,8 +92,11 @@ export default function RootLayout({
   return (
     <html lang={locale} className="scroll-smooth">
       <body
-        style={lato.style}
-        className="flex h-[100dvh] w-full flex-col items-center gap-3 bg-plum-900"
+        className={twMerge(
+          "flex h-[100dvh] w-full flex-col items-center gap-3 bg-plum-900",
+          lato.className,
+          firaSans.className,
+        )}
       >
         <QueryProvider>
           {children}

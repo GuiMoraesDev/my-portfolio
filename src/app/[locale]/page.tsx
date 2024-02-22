@@ -10,7 +10,7 @@ import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { DrawContainer } from "@/components/atoms/Draws";
-import { Icon } from "@/components/atoms/Icon";
+import { Icon, type IconProp } from "@/components/atoms/Icon";
 import { Spheres } from "@/components/atoms/Spheres";
 import { Header } from "@/components/molecules/Header";
 import { Articles } from "@/components/organisms/Articles";
@@ -32,7 +32,7 @@ export default function Home() {
   const contactT = useTranslations("contact");
 
   return (
-    <main className="container relative flex flex-col items-center bg-plum-900 pb-14 text-white lg:pb-36">
+    <main className="font-lato container relative flex flex-col items-center bg-plum-900 pb-14 text-white lg:pb-36">
       <Spheres />
       <DrawContainer />
 
@@ -53,11 +53,11 @@ export default function Home() {
               </strong>
             </h1>
 
-            <h2 className="text-3xl font-bold text-gold-500 md:my-2 md:text-5xl lg:text-6xl xl:text-7xl">
+            <h2 className="font-fira-sans text-3xl font-bold text-gold-500 md:my-2 md:text-5xl lg:text-6xl lg:leading-tight xl:text-7xl xl:leading-tight">
               {presentationT("title")}
             </h2>
 
-            <p className="leading-relaxed lg:text-2xl">
+            <p className="tracking-wide lg:text-2xl">
               {presentationT("subtitle")}
             </p>
           </div>
@@ -86,43 +86,33 @@ export default function Home() {
             quote={overviewT("quote")}
           />
 
-          <p>{overviewT("description")}</p>
+          <p className="text-lg leading-snug tracking-wide">
+            {overviewT("description")}
+          </p>
         </section>
 
         <section className="grid grid-cols-1 items-center justify-center gap-4 min-[340px]:grid-cols-2">
-          <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 md:h-36 md:w-44 xl:h-40 xl:w-52 xl:gap-4">
-            <Icon icon="Chip" />
-            <p className="w-4/5 text-center text-xs text-white md:text-base xl:text-lg">
-              {overviewT("cards.years-experience", {
-                time: capitalizeFirstLetter(
-                  formatDistanceToNow(new Date(2019, 5, 11), {
-                    locale: locale === "pt" ? ptBR : enUS,
-                  }),
-                ),
-              })}
-            </p>
-          </div>
+          <OverviewCard icon="Chip">
+            {overviewT("cards.years-experience", {
+              time: capitalizeFirstLetter(
+                formatDistanceToNow(new Date(2019, 5, 11), {
+                  locale: locale === "pt" ? ptBR : enUS,
+                }),
+              ),
+            })}
+          </OverviewCard>
 
-          <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 md:h-36 md:w-44 xl:h-40 xl:w-52 xl:gap-4">
-            <Icon icon="MagnifyingGlass" />
-            <p className="w-4/5 text-center text-xs text-white md:text-base xl:text-lg">
-              {overviewT("cards.attention-details")}
-            </p>
-          </div>
+          <OverviewCard icon="MagnifyingGlass">
+            {overviewT("cards.attention-details")}
+          </OverviewCard>
 
-          <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 md:h-36 md:w-44 xl:h-40 xl:w-52 xl:gap-4">
-            <Icon icon="Code" />
-            <p className="w-4/5 text-center text-xs text-white md:text-base xl:text-lg">
-              {overviewT("cards.scalable-code")}
-            </p>
-          </div>
+          <OverviewCard icon="Code">
+            {overviewT("cards.scalable-code")}
+          </OverviewCard>
 
-          <div className="flex h-24 w-32 flex-col items-center justify-center gap-2 rounded-md bg-plum-500 md:h-36 md:w-44 xl:h-40 xl:w-52 xl:gap-4">
-            <Icon icon="Globe" />
-            <p className="w-4/5 text-center text-xs text-white md:text-base xl:text-lg">
-              {overviewT("cards.remote-work")}
-            </p>
-          </div>
+          <OverviewCard icon="Globe">
+            {overviewT("cards.remote-work")}
+          </OverviewCard>
         </section>
       </SessionWrapper>
 
@@ -154,12 +144,9 @@ export default function Home() {
       </SessionWrapper>
 
       <SessionWrapper className="justify-start" id="contact">
-        <section className="flex h-full min-h-32 w-full flex-col items-start justify-between gap-10 rounded-md bg-plum-500 px-8 py-6 md:w-4/5 md:py-4 lg:w-2/3">
-          <SessionHeader
-            title={contactT("title")}
-            quote={contactT("subtitle")}
-          />
+        <SessionHeader title={contactT("title")} quote={contactT("subtitle")} />
 
+        <section className="flex h-full min-h-32 w-full flex-col items-start justify-between gap-10 rounded-md bg-plum-500/95 px-8 py-6 md:w-4/5 md:py-4 lg:w-2/3">
           <NextIntlClientProvider messages={pick(messages, "contact")}>
             <ContactForm />
           </NextIntlClientProvider>
@@ -169,21 +156,15 @@ export default function Home() {
   );
 }
 
-const SessionWrapper = ({
-  children,
-  className,
-  ...props
-}: ComponentProps<"div">) => (
+const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={twMerge(
-      "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-6 max-[2000px]:px-[10vw]",
+      "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-12 max-[2000px]:px-[10vw]",
       "pt-8 min-[300px]:pt-16 md:pt-28 xl:pt-44",
       className,
     )}
     {...props}
-  >
-    {children}
-  </div>
+  />
 );
 
 const SocialMedia = ({ className, ...props }: ComponentProps<"div">) => (
@@ -218,11 +199,25 @@ const SessionHeader = ({
   ...props
 }: SessionHeaderProps) => (
   <header
-    className={twMerge("flex w-full flex-col gap-6", className)}
+    className={twMerge("flex w-full flex-col gap-2", className)}
     {...props}
   >
-    <h2 className="text-xl font-bold lg:text-2xl">{title}</h2>
+    <h2 className="font-fira-sans text-xl font-bold lg:text-2xl">{title}</h2>
 
-    <p className="text-sm leading-normal">{quote}</p>
+    <p className="leading-snug tracking-wide">{quote}</p>
   </header>
+);
+
+type OverviewCardProps = ComponentProps<"p"> & {
+  icon: IconProp;
+};
+
+const OverviewCard = ({ icon, ...props }: OverviewCardProps) => (
+  <div className="flex h-28 w-40 flex-col items-center justify-center gap-2 rounded-md bg-plum-500/95 shadow-sm transition hover:shadow-plum-100/80 min-[340px]:w-36 md:h-36 md:w-44 xl:h-40 xl:w-52 xl:gap-4">
+    <Icon icon={icon} />
+    <p
+      className="font-fira-sans w-4/5 text-center text-xs text-white md:text-base xl:text-lg"
+      {...props}
+    />
+  </div>
 );

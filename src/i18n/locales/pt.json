@@ -53,6 +53,7 @@
     "title": "Vamos conversar!",
     "subtitle": "E aí! Tem algo em mente? Manda uma mensagem pra mim.",
     "form": {
+      "title": "Contato",
       "labels": {
         "first_name": "Seu nome",
         "last_name": "Seu sobrenome",

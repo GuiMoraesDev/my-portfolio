@@ -1,5 +1,6 @@
 "use client";
 
+import { startSpan } from "@sentry/nextjs";
 import { useLocale, useTranslations } from "next-intl";
 import { useId } from "react";
 import { UseFormReturn } from "react-hook-form";
@@ -35,7 +36,21 @@ export const ContactForm = () => {
   const { mutateAsync, isPending } = useSendEmailMutation();
 
   const onFormSubmit = async (values: SendEmailProps) => {
-    await mutateAsync(values);
+    startSpan(
+      {
+        name: "Submit form span",
+        attributes: {
+          ...values,
+        },
+      },
+      async () => {
+        const response = await mutateAsync(values);
+
+        if (!response.ok) {
+          throw new Error("Error on form mutation");
+        }
+      },
+    );
     reset();
   };
 
@@ -186,9 +201,24 @@ const GenerateButton = ({
     if (!isFormFilled) return;
 
     const values = getValues();
-    const response = await mutateAsync({ locale, ...values });
-    const data = await response.json();
-    setValue("message", data);
+    startSpan(
+      {
+        name: "Generate email message from AI span",
+        attributes: {
+          ...values,
+        },
+      },
+      async () => {
+        const response = await mutateAsync({ locale, ...values });
+
+        if (!response.ok) {
+          throw new Error("Error on AI generate mutation");
+        }
+
+        const data = await response.json();
+        setValue("message", data);
+      },
+    );
   };
 
   return (

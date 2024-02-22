@@ -34,9 +34,8 @@ export const Header = ({ className, ...props }: ComponentProps<"header">) => {
   return (
     <header
       className={twMerge(
-        "fixed flex items-center justify-center ",
-        "z-20 h-14 w-full pb-px",
-        "bg-gradient-to-r from-transparent from-5% via-plum-500 via-50% to-transparent",
+        "fixed z-20 flex h-20 w-full items-center justify-center",
+        "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-[100vw] before:-translate-x-1/2 before:bg-plum-900 before:opacity-95 before:content-['']",
         className,
       )}
       {...props}
@@ -44,39 +43,41 @@ export const Header = ({ className, ...props }: ComponentProps<"header">) => {
       <nav
         className={twMerge(
           "relative flex h-full w-full items-center justify-end",
-          "before:absolute before:bottom-0 before:left-1/2 before:top-0 before:w-[100vw] before:-translate-x-1/2 before:bg-plum-900 before:content-['']",
         )}
       >
         <div
           className={twMerge(
-            "absolute left-0 top-1 flex flex-col items-start justify-start gap-4",
+            "absolute left-0 top-0 flex flex-col items-start justify-start p-5",
             isOpen
-              ? "min-h-96 min-w-52 rounded-lg bg-white/[.98] pb-4 shadow-[0_1px_6px_rgba(255,255,255,0.66)] transition-all duration-200 lg:min-h-80"
-              : "h-full w-12",
+              ? "min-h-96 min-w-52 rounded-lg bg-white/[.98] shadow-[0_1px_6px_rgba(255,255,255,0.66)] transition-all duration-200 lg:min-h-80"
+              : "h-full w-auto",
           )}
           ref={wrapperRef}
         >
           <button
             onClick={() => setIsOpen((state) => !state)}
-            className="relative rounded-full p-2 transition-colors hover:bg-white hover:bg-opacity-30"
+            className="rounded-full"
           >
             <Hamburger isOpen={isOpen} />
           </button>
 
           <ul
             className={twMerge(
-              "flex h-full w-full min-w-24 flex-col items-start gap-4 overflow-hidden px-2 py-5 font-medium text-plum-800 transition",
+              "flex w-full min-w-24 flex-col items-start gap-4 self-end overflow-hidden font-medium text-plum-800 transition",
               isOpen
-                ? "translate-x-0 scale-x-100 delay-200"
-                : "-translate-x-full scale-x-0",
+                ? "mt-8 h-full translate-x-0 scale-x-100 delay-200"
+                : "h-0 -translate-x-full scale-x-0",
             )}
           >
             {links.map(({ href, label }) => (
               <li
                 key={label}
-                className="transition hover:scale-105 hover:font-semibold"
+                className="h-full origin-left uppercase transition hover:scale-105 hover:font-semibold"
               >
-                <a href={href} className="inline-flex h-full">
+                <a
+                  href={href}
+                  className="inline-flex h-full leading-snug tracking-wide"
+                >
                   {label}
                 </a>
               </li>

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { Locale } from "@/i18n/locales";
+import { type Locale } from "@/i18n/locales";
 
 export const generateMessageSchema = z.object({
   first_name: z

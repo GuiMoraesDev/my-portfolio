@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { UseFormSetValue } from "react-hook-form";
+import { type UseFormSetValue } from "react-hook-form";
 
-import { SendEmailProps } from "@/schemas/emailSchema";
+import { type SendEmailProps } from "@/schemas/emailSchema";
 
 type UseSpeechProps = {
   locale: string;

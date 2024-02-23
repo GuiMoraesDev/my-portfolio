@@ -1,7 +1,7 @@
 import { Resend } from "resend";
 
 import { ContactEmailTemplate } from "@/emails/templates/contact";
-import { SendEmailProps, emailSchema } from "@/schemas/emailSchema";
+import { type SendEmailProps, emailSchema } from "@/schemas/emailSchema";
 
 const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
 

@@ -1,7 +1,7 @@
 "use client";
 
 import * as LabelPrimitive from "@radix-ui/react-label";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import { type ComponentPropsWithoutRef, type ElementRef, forwardRef } from "react";
 import { type VariantProps, tv } from "tailwind-variants";
 
 const labelVariants = tv({

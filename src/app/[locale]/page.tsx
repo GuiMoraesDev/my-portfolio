@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import { NextIntlClientProvider, useMessages } from "next-intl";
-import { ComponentProps } from "react";
+import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { DrawContainer } from "@/components/atoms/Draws";

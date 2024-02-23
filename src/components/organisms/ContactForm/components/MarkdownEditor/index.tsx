@@ -4,7 +4,7 @@ import UnderlineMark from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 
-import { Toolbar, FormProps } from "./Toolbar";
+import { Toolbar, type FormProps } from "./Toolbar";
 
 export const MarkdownEditor = (formMethods: FormProps) => {
   const { register, setValue } = formMethods;

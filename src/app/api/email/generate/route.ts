@@ -2,7 +2,7 @@ import OpenAI from "openai";
 
 import {
   generateMessageSchema,
-  GenerateMessageProps,
+  type GenerateMessageProps,
 } from "@/schemas/generateMessageSchema";
 
 const openai = new OpenAI({

@@ -1,13 +1,13 @@
 import { Cross2Icon } from "@radix-ui/react-icons";
 import * as ToastPrimitives from "@radix-ui/react-toast";
 import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  ReactElement,
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  type ReactElement,
   forwardRef,
 } from "react";
 import { twMerge } from "tailwind-merge";
-import { VariantProps, tv } from "tailwind-variants";
+import { type VariantProps, tv } from "tailwind-variants";
 
 const ToastProvider = ToastPrimitives.Provider;
 

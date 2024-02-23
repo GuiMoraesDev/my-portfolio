@@ -1,6 +1,6 @@
-import { ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 
-import { ToastActionElement, ToastProps } from "../components/toast";
+import { type ToastActionElement, type ToastProps } from "../components/toast";
 
 const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 1000000;

@@ -13,14 +13,14 @@ import {
 import { startSpan } from "@sentry/nextjs";
 import { type Editor } from "@tiptap/react";
 import { useLocale } from "next-intl";
-import { ComponentProps } from "react";
-import { UseFormReturn } from "react-hook-form";
+import { type ComponentProps } from "react";
+import { type UseFormReturn } from "react-hook-form";
 import { twMerge } from "tailwind-merge";
 
 import { useGenerateEmailMutation } from "../../hooks";
 
 import { Tooltip } from "@/components/atoms/Tooltip";
-import { SendEmailProps } from "@/schemas/emailSchema";
+import { type SendEmailProps } from "@/schemas/emailSchema";
 
 export type FormProps = UseFormReturn<SendEmailProps>;
 

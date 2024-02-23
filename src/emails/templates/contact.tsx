@@ -13,7 +13,7 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-import { SendEmailProps } from "@/schemas/emailSchema";
+import { type SendEmailProps } from "@/schemas/emailSchema";
 
 export const ContactEmailTemplate = ({
   first_name,

@@ -12,7 +12,7 @@ import { ErrorMessage } from "@/components/atoms/ErrorMessage";
 import { Icon } from "@/components/atoms/Icon";
 import { Input } from "@/components/atoms/Input";
 import { Label } from "@/components/atoms/Label";
-import { SendEmailProps } from "@/schemas/emailSchema";
+import { type SendEmailProps } from "@/schemas/emailSchema";
 
 export const ContactForm = () => {
   const formId = useId();

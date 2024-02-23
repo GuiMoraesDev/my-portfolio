@@ -7,7 +7,7 @@ import {
   ChevronUpIcon,
 } from "@radix-ui/react-icons";
 import * as SelectPrimitive from "@radix-ui/react-select";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import { type ComponentPropsWithoutRef, type ElementRef, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 const SelectRoot = SelectPrimitive.Root;

@@ -1,9 +1,9 @@
 "use client";
 
-import { ComponentProps, forwardRef } from "react";
+import { type ComponentProps, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Icon, IconProps } from "@/components/atoms/Icon";
+import { Icon, type IconProps } from "@/components/atoms/Icon";
 
 type ActionProps = ComponentProps<"div"> & {
   isActive: boolean;

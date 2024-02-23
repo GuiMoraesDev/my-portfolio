@@ -26,6 +26,9 @@ dependencies:
   '@react-email/components':
     specifier: 0.0.14
     version: 0.0.14(@types/react@18.2.55)(react@18.2.0)
+  '@react-email/markdown':
+    specifier: 0.0.8
+    version: 0.0.8(react-email@2.0.0)(react@18.2.0)
   '@sentry/nextjs':
     specifier: ^7.102.1
     version: 7.102.1(next@14.1.0)(react@18.2.0)(webpack@5.90.1)
@@ -1778,6 +1781,18 @@ packages:
       react: 18.2.0
     dependencies:
       react: 18.2.0
+    dev: false
+
+  /@react-email/markdown@0.0.8(react-email@2.0.0)(react@18.2.0):
+    resolution: {integrity: sha512-x/2iTWskE0XoM13Rx80ckwbWaWdS6koYvxW6PHkOJ/k88NPnDIm+TaYvvg2DYSFJAUI0gK/LmIwenbebgNDS+w==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: 18.2.0
+    dependencies:
+      md-to-react-email: 4.1.0(react-email@2.0.0)(react@18.2.0)
+      react: 18.2.0
+    transitivePeerDependencies:
+      - react-email
     dev: false
 
   /@react-email/preview@0.0.8(react@18.2.0):
@@ -5354,6 +5369,23 @@ packages:
       mdurl: 2.0.0
       punycode.js: 2.3.1
       uc.micro: 2.0.0
+    dev: false
+
+  /marked@7.0.4:
+    resolution: {integrity: sha512-t8eP0dXRJMtMvBojtkcsA7n48BkauktUKzfkPSCq85ZMTJ0v76Rke4DYz01omYpPTUh4p/f7HePgRo3ebG8+QQ==}
+    engines: {node: '>= 16'}
+    hasBin: true
+    dev: false
+
+  /md-to-react-email@4.1.0(react-email@2.0.0)(react@18.2.0):
+    resolution: {integrity: sha512-aQvj4dCuy0wmBVvSB377qTErlpjN5Pl61+5v+B8Z76KoxOgKhbzvK3qnO94eOsuGSWwI+9n4zb3xD3/MypxM4w==}
+    peerDependencies:
+      react: 18.x
+      react-email: '>1.9.3'
+    dependencies:
+      marked: 7.0.4
+      react: 18.2.0
+      react-email: 2.0.0(eslint@8.56.0)
     dev: false
 
   /md5@2.3.0:

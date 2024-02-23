@@ -32,7 +32,7 @@ export default function Home() {
   const contactT = useTranslations("contact");
 
   return (
-    <main className="font-lato container relative flex flex-col items-center bg-plum-900 pb-14 text-white lg:pb-36">
+    <main className="container relative flex flex-col items-center bg-plum-900 pb-14 font-lato text-white lg:pb-36">
       <Spheres />
       <DrawContainer />
 
@@ -146,7 +146,7 @@ export default function Home() {
       <SessionWrapper className="justify-start" id="contact">
         <SessionHeader title={contactT("title")} quote={contactT("subtitle")} />
 
-        <section className="flex h-full min-h-32 w-full flex-col items-start justify-between gap-10 rounded-md bg-plum-500/95 px-8 py-6 md:w-4/5 md:py-4 lg:w-2/3">
+        <section className="flex h-full min-h-32 w-full flex-col items-start justify-between gap-10 rounded-md bg-plum-500/95 p-4 md:p-8">
           <NextIntlClientProvider messages={pick(messages, "contact")}>
             <ContactForm />
           </NextIntlClientProvider>
@@ -216,7 +216,7 @@ const OverviewCard = ({ icon, ...props }: OverviewCardProps) => (
   <div className="flex h-28 w-40 flex-col items-center justify-center gap-2 rounded-md bg-plum-500/95 shadow-sm transition hover:shadow-plum-100/80 min-[340px]:w-36 md:h-36 md:w-44 xl:h-40 xl:w-52 xl:gap-4">
     <Icon icon={icon} />
     <p
-      className="font-fira-sans w-4/5 text-center text-xs text-white md:text-base xl:text-lg"
+      className="w-4/5 text-center font-fira-sans text-xs text-white md:text-base xl:text-lg"
       {...props}
     />
   </div>

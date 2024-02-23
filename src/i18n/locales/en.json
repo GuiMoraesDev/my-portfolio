@@ -9,7 +9,7 @@
   },
   "presentation": {
     "name": "Hey, my name is",
-    "title": "I am Frontend developer",
+    "title": "Frontend developer",
     "subtitle": "I craft seamless User Experiences with React, TypeScript, and Testing Library"
   },
   "overview": {
@@ -70,6 +70,9 @@
         "close": "Close",
         "send": "Send"
       }
+    },
+    "preview": {
+      "title": "Preview"
     }
   }
 }

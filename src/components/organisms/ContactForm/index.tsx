@@ -1,24 +1,17 @@
 "use client";
 
+import { Preview } from "@react-email/components";
 import { startSpan } from "@sentry/nextjs";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useId } from "react";
-import { UseFormReturn } from "react-hook-form";
 
-import { Action } from "./components/ActionButton";
-import {
-  useEmailForm,
-  useGenerateEmailMutation,
-  useSendEmailMutation,
-} from "./hooks";
-import { useSpeech } from "./hooks/useSpeech";
+import { MarkdownEditor } from "./components/MarkdownEditor";
+import { useEmailForm, useSendEmailMutation } from "./hooks";
 
 import { ErrorMessage } from "@/components/atoms/ErrorMessage";
 import { Icon } from "@/components/atoms/Icon";
 import { Input } from "@/components/atoms/Input";
 import { Label } from "@/components/atoms/Label";
-import { Textarea } from "@/components/atoms/TextArea";
-import { Tooltip } from "@/components/atoms/Tooltip";
 import { SendEmailProps } from "@/schemas/emailSchema";
 
 export const ContactForm = () => {
@@ -29,6 +22,7 @@ export const ContactForm = () => {
   const {
     register,
     handleSubmit,
+    watch,
     reset,
     formState: { errors },
   } = formMethods;
@@ -57,6 +51,7 @@ export const ContactForm = () => {
   return (
     <div className="flex w-full flex-col items-center justify-center gap-8">
       <strong className="w-full text-lg">{t("form.title")}</strong>
+
       <form
         className="flex w-full flex-col gap-4"
         id={formId}
@@ -119,23 +114,12 @@ export const ContactForm = () => {
 
         <Label className="mx-auto flex w-full flex-1 flex-col items-baseline justify-between gap-2">
           {t("form.labels.message")}
-          <section className="relative flex h-full w-full gap-2">
-            <Textarea
-              id="message"
-              placeholder={t("form.placeholders.message")}
-              className="pr-14"
-              rows={4}
-              {...register("message")}
-            />
 
-            <div className="absolute right-2 top-1/2 flex -translate-y-1/2 flex-col items-end justify-center gap-2">
-              <RecordButton {...formMethods} />
-              <GenerateButton {...formMethods} />
-            </div>
-          </section>
-          <ErrorMessage hasError={!!errors.message}>
+          <MarkdownEditor {...formMethods} />
+
+          {/* <ErrorMessage hasError={!!errors.message}>
             {errors.message?.message}
-          </ErrorMessage>
+          </ErrorMessage> */}
         </Label>
       </form>
 
@@ -150,100 +134,10 @@ export const ContactForm = () => {
           <Icon size="sm" icon="PaperPlane" className="lg:size-4" />
         </button>
       </section>
+
+      <Preview>{watch("message")}</Preview>
     </div>
   );
 };
 
-type ActionButtonProps = UseFormReturn<SendEmailProps>;
-
-const RecordButton = ({ setValue }: ActionButtonProps) => {
-  const locale = useLocale();
-  const { isDisabled, isRecording, onStartRecording, onStopRecording } =
-    useSpeech({ locale, callback: setValue });
-
-  return (
-    <Action.Root
-      isActive={isRecording}
-      label="Stop recording"
-      inactiveLabel="Start recording"
-    >
-      <Action.Button
-        disabled={isDisabled}
-        onClick={isRecording ? onStopRecording : onStartRecording}
-      >
-        <Action.Icon icon={isRecording ? "MicrophoneSlash" : "Microphone"} />
-      </Action.Button>
-    </Action.Root>
-  );
-};
-
-const GenerateButton = ({
-  getValues,
-  setValue,
-  trigger,
-  watch,
-}: ActionButtonProps) => {
-  const locale = useLocale();
-  const { isPending, mutateAsync } = useGenerateEmailMutation();
-  const [firstNameValue, lastNameValue, subjectValue] = watch([
-    "first_name",
-    "last_name",
-    "subject",
-  ]);
-
-  const isFormFilled =
-    firstNameValue?.length > 0 &&
-    lastNameValue?.length > 0 &&
-    subjectValue?.length > 0;
-
-  const handleSubmit = async () => {
-    await trigger?.(["first_name", "last_name", "subject"]);
-
-    if (!isFormFilled) return;
-
-    const values = getValues();
-    startSpan(
-      {
-        name: "Generate email message from AI span",
-        attributes: {
-          ...values,
-        },
-      },
-      async () => {
-        const response = await mutateAsync({ locale, ...values });
-
-        if (!response.ok) {
-          throw new Error("Error on AI generate mutation");
-        }
-
-        const data = await response.json();
-        setValue("message", data);
-      },
-    );
-  };
-
-  return (
-    <Tooltip.Provider>
-      <Tooltip.Root>
-        <Tooltip.Trigger asChild>
-          <Action.Root
-            isActive={isPending}
-            label="Generating..."
-            inactiveLabel="Generate with AI"
-          >
-            <Action.Button disabled={!isFormFilled} onClick={handleSubmit}>
-              <Action.Icon
-                icon="MagicWand"
-                className={isPending ? "[&_path]:fill-black" : ""}
-              />
-            </Action.Button>
-          </Action.Root>
-        </Tooltip.Trigger>
-
-        <Tooltip.Content className={isFormFilled ? "hidden" : ""}>
-          Fill the form to generate a message with AI
-        </Tooltip.Content>
-      </Tooltip.Root>
-    </Tooltip.Provider>
-  );
-};
+/*  */

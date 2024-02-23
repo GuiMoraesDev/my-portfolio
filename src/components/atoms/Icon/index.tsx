@@ -1,5 +1,5 @@
-import { ComponentProps } from "react";
-import { VariantProps, tv } from "tailwind-variants";
+import { type ComponentProps } from "react";
+import { type VariantProps, tv } from "tailwind-variants";
 
 import "./styles.css";
 import { icons } from "./icons";

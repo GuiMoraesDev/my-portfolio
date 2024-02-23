@@ -3,7 +3,7 @@
 import { startSpan } from "@sentry/nextjs";
 import { useLocale, useTranslations } from "next-intl";
 import { useId } from "react";
-import { UseFormReturn } from "react-hook-form";
+import { type UseFormReturn } from "react-hook-form";
 
 import { Action } from "./components/ActionButton";
 import {
@@ -19,7 +19,7 @@ import { Input } from "@/components/atoms/Input";
 import { Label } from "@/components/atoms/Label";
 import { Textarea } from "@/components/atoms/TextArea";
 import { Tooltip } from "@/components/atoms/Tooltip";
-import { SendEmailProps } from "@/schemas/emailSchema";
+import { type SendEmailProps } from "@/schemas/emailSchema";
 
 export const ContactForm = () => {
   const formId = useId();

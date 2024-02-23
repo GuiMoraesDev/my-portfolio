@@ -1,7 +1,7 @@
-import { NextRequest } from "next/server";
+import { type NextRequest } from "next/server";
 import createIntlMiddleware from "next-intl/middleware";
 
-import { Locale } from "./i18n/locales";
+import { type Locale } from "./i18n/locales";
 import { locales, defaultLocale } from "./i18n/settings";
 
 export default async function middleware(request: NextRequest) {

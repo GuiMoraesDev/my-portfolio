@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { ComponentProps, useRef, useState } from "react";
+import { type ComponentProps, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Hamburger } from "./hamburger";

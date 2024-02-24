@@ -18,9 +18,20 @@ const config: Config = {
           "0%, 100%": { transform: "rotate(0.0deg)" },
           "50%": { transform: "rotate(14.0deg)" },
         },
+        "gradient-x": {
+          "0%, 100%": {
+            "background-size": "200% 200%",
+            "background-position": "left center",
+          },
+          "50%": {
+            "background-size": "200% 200%",
+            "background-position": "right center",
+          },
+        },
       },
       animation: {
         wave: "wave 1s infinite",
+        "gradient-x": "gradient-x 3s ease infinite",
       },
       colors: {
         "plum-50": "#F2E2EC",

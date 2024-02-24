@@ -31,7 +31,7 @@ type TestimonialCardProps = {
 };
 
 const TestimonialCard = ({ name, role, content }: TestimonialCardProps) => (
-  <div className="mt-8 flex h-auto w-full max-w-xs border-collapse flex-col items-center justify-between rounded-md bg-plum-500/95 px-3 text-white backdrop-blur-sm md:max-w-[45%] md:justify-between lg:h-full lg:max-w-xs lg:flex-1">
+  <div className="mt-8 flex h-auto w-full max-w-xs border-collapse flex-col items-center justify-between rounded-md bg-plum-500/90 px-3 text-white backdrop-blur-sm md:max-w-[45%] md:justify-between lg:h-full lg:max-w-xs lg:flex-1">
     <Image
       src="/testimonial-placeholder.png"
       width={75}

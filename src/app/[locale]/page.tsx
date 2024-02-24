@@ -146,7 +146,7 @@ export default function Home() {
       <SessionWrapper className="justify-start" id="contact">
         <SessionHeader title={contactT("title")} quote={contactT("subtitle")} />
 
-        <section className="flex h-full min-h-32 w-full flex-col items-start justify-between gap-10 rounded-md bg-plum-500/95 p-4 md:p-8">
+        <section className="flex h-full min-h-32 w-full flex-col items-start justify-between gap-10 rounded-md bg-plum-500/90 p-4 md:p-8">
           <NextIntlClientProvider messages={pick(messages, "contact")}>
             <ContactForm />
           </NextIntlClientProvider>
@@ -155,9 +155,9 @@ export default function Home() {
 
       <SessionWrapper
         className={twMerge(
-          "mt-8 bg-black min-[300px]:mt-16 md:mt-28 xl:mt-44",
+          "mt-8 min-[300px]:mt-16 md:mt-28 xl:mt-44",
           "py-4 min-[300px]:py-8 md:py-14 xl:py-24",
-          "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-[100vw] before:-translate-x-1/2 before:bg-black before:opacity-95 before:content-['']",
+          "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-[100vw] before:-translate-x-1/2 before:bg-black/90 before:opacity-95 before:content-['']",
         )}
       >
         <footer className="z-10 flex h-full w-full items-end justify-between gap-4 text-sm text-white">
@@ -165,7 +165,7 @@ export default function Home() {
             <strong
               className={twMerge(
                 "mb-2 text-2xl leading-normal tracking-wide",
-                "inline-block bg-gradient-to-r from-plum-300 via-plum-400 to-plum-200 bg-clip-text text-transparent",
+                "animate-gradient-x inline-block bg-gradient-to-r from-plum-200 via-plum-400 to-plum-50 bg-clip-text text-transparent",
               )}
             >
               Nice to have you here!
@@ -247,7 +247,7 @@ type OverviewCardProps = ComponentProps<"p"> & {
 };
 
 const OverviewCard = ({ icon, ...props }: OverviewCardProps) => (
-  <div className="flex h-28 w-40 flex-col items-center justify-center gap-2 rounded-md bg-plum-500/95 shadow-sm transition hover:shadow-plum-100/80 min-[340px]:w-36 md:h-36 md:w-44 xl:h-40 xl:w-52 xl:gap-4">
+  <div className="flex h-28 w-40 flex-col items-center justify-center gap-2 rounded-md bg-plum-500/90 shadow-sm transition hover:shadow-plum-100/80 min-[340px]:w-36 md:h-36 md:w-44 xl:h-40 xl:w-52 xl:gap-4">
     <Icon icon={icon} />
     <p
       className="w-4/5 text-center font-fira-sans text-xs text-white md:text-base xl:text-lg"

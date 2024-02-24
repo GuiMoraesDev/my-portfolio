@@ -58,11 +58,6 @@ export const ContactEmailTemplate = ({
 
             <Markdown
               key="message"
-              markdownCustomStyles={{
-                h1: { color: "red" },
-                h2: { color: "blue" },
-                codeInline: { background: "grey" },
-              }}
               markdownContainerStyles={{
                 padding: "4px",
               }}

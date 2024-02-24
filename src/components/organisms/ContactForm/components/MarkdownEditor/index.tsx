@@ -1,37 +1,22 @@
 "use client";
 
-import Placeholder from "@tiptap/extension-placeholder";
-import UnderlineMark from "@tiptap/extension-underline";
-import { EditorContent, useEditor } from "@tiptap/react";
-import StarterKit from "@tiptap/starter-kit";
+import { EditorContent } from "@tiptap/react";
 import { twMerge } from "tailwind-merge";
 
-import { type FormProps } from "../../@types";
+import { type FormProps, type EditorProps } from "../../@types";
 
 import { Toolbar } from "./Toolbar";
 
-export const MarkdownEditor = (formMethods: FormProps) => {
-  const { register, setValue } = formMethods;
+export type MarkdownEditorProps = FormProps & EditorProps;
 
-  const editor = useEditor({
-    extensions: [
-      StarterKit,
-      UnderlineMark,
-      Placeholder.configure({
-        placeholder: "Type your message here...",
-      }),
-    ],
-    onUpdate({ editor }) {
-      setValue("message", editor.getHTML());
-    },
-  });
-
-  if (!editor) {
-    return null;
-  }
+export const MarkdownEditor = ({
+  editor,
+  ...formMethods
+}: MarkdownEditorProps) => {
+  const { register } = formMethods;
 
   return (
-    <div className="flex w-full flex-col gap-1 divide-y rounded-md border border-gray-300 p-2 pb-0">
+    <div className="flex h-32 w-full flex-col gap-1 divide-y rounded-md border border-gray-300 p-2 pb-0">
       <EditorContent
         editor={editor}
         placeholder="Type your message here..."

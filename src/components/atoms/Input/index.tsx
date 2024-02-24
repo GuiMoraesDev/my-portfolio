@@ -1,8 +1,18 @@
 import { type ComponentProps, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-export const Input = forwardRef<HTMLInputElement, ComponentProps<"input">>(
-  ({ className, type, ...props }, ref) => {
+type InputProps = ComponentProps<"input"> & {
+  isLoading?: boolean;
+};
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ isLoading, className, type, ...props }, ref) => {
+    if (isLoading) {
+      return (
+        <div className="flex h-9 w-full animate-pulse rounded-md border border-gray-300 bg-gray-200" />
+      );
+    }
+
     return (
       <input
         type={type}

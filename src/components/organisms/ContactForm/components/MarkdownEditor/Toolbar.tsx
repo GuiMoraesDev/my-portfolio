@@ -11,7 +11,6 @@ import {
   UnderlineIcon,
 } from "@radix-ui/react-icons";
 import { startSpan } from "@sentry/nextjs";
-import { type Editor } from "@tiptap/react";
 import { useLocale } from "next-intl";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
@@ -19,14 +18,11 @@ import { twMerge } from "tailwind-merge";
 import { type FormProps } from "../../@types";
 import { useGenerateEmailMutation } from "../../hooks";
 
+import { type MarkdownEditorProps } from ".";
+
 import { Tooltip } from "@/components/atoms/Tooltip";
 
-type EditorProps = {
-  editor: Editor;
-};
-
-type ToolBarProps = FormProps & EditorProps;
-export const Toolbar = ({ editor, ...formMethods }: ToolBarProps) => (
+export const Toolbar = ({ editor, ...formMethods }: MarkdownEditorProps) => (
   <nav className="flex w-full items-center gap-4 p-2">
     <section className="flex items-center gap-2">
       <ToolButton

@@ -36,7 +36,7 @@ export const MarkdownEditor = (formMethods: FormProps) => {
   return (
     <label
       htmlFor={editorId}
-      className="flex w-full flex-col gap-1 divide-y rounded-md border border-gray-300 p-2"
+      className="flex w-full flex-col gap-1 divide-y rounded-md border border-gray-300 p-2 pb-0"
     >
       <EditorContent
         editor={editor}

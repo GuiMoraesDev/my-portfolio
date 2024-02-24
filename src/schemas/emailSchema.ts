@@ -24,7 +24,6 @@ export const emailSchema = z.object({
     .string()
     .trim()
     .min(1, "Message is required")
-    .min(2, "Message should have at least 2 characters")
-    .max(1000),
+    .min(2, "Message should have at least 2 characters"),
 });
 export type SendEmailProps = z.infer<typeof emailSchema>;

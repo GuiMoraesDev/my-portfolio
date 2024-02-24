@@ -11,6 +11,7 @@ import {
   Tailwind,
   Text,
 } from "@react-email/components";
+import { Markdown } from "@react-email/markdown";
 import * as React from "react";
 
 import { type SendEmailProps } from "@/schemas/emailSchema";
@@ -29,7 +30,7 @@ export const ContactEmailTemplate = ({
       <Preview>Hey, you have a new message 📫</Preview>
 
       <Body className="bg-white font-sans">
-        <Container className="mx-auto my-0 px-5 pb-12 pt-6">
+        <Container className="mx-auto my-0 px-5 pb-12 pt-6  text-black">
           <Heading className="mt-12 text-3xl font-bold">
             Hey, you have a new message 📫
           </Heading>
@@ -50,17 +51,19 @@ export const ContactEmailTemplate = ({
             <Hr className="bg-gray-400" />
           </Section>
 
-          <Section
-            className="mx-0 my-3 rounded-md bg-gray-50 px-4 py-3"
-            key="message"
-          >
+          <Section className="mx-0 my-3 rounded-md px-4 py-3" key="message">
             <Text className="text-xl font-semibold" key="subject">
               {subject}
             </Text>
 
-            <Text className="text-lg" key="message">
+            <Markdown
+              key="message"
+              markdownContainerStyles={{
+                padding: "4px",
+              }}
+            >
               {message}
-            </Text>
+            </Markdown>
           </Section>
         </Container>
       </Body>

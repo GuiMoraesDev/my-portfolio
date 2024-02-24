@@ -72,7 +72,7 @@ export default function Home() {
             height={400}
             className="aspect-square h-72 select-none object-contain md:h-auto"
             priority
-            alt=""
+            alt="An IA generated avatar from myself"
           />
 
           <SocialMedia className="flex md:hidden" />

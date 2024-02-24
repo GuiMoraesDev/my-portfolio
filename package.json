@@ -10,7 +10,10 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit --incremental",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test": "jest --runInBand",
+    "test:watch": "jest --runInBand --watchAll",
+    "test:debug": "node --inspect-brk node_modules/jest/bin/jest.js --runInBand --watchAll"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -46,6 +49,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@jest/globals": "^29.7.0",
     "@tanstack/eslint-plugin-query": "^5.18.1",
     "@types/dom-speech-recognition": "^0.0.4",
     "@types/lodash": "^4.14.202",
@@ -59,10 +63,14 @@
     "eslint-config-next": "14.1.0",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.0.10",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8.4.34",
     "prettier": "3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.1",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
 }

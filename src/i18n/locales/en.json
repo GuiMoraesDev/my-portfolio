@@ -59,7 +59,7 @@
         "last_name": "Your last name",
         "email": "Your best email",
         "subject": "Subject",
-        "message": "Message"
+        "message": "Message <small>(markdown supported)</small>"
       },
       "placeholders": {
         "email": "johnDoe@example.com",

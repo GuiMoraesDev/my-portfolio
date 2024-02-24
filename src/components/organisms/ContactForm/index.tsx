@@ -137,7 +137,11 @@ export const ContactForm = () => {
           </Label>
 
           <Label className="mx-auto flex w-full flex-1 flex-col items-baseline justify-between gap-2">
-            {t("form.labels.message")}
+            <p>
+              {t.rich("form.labels.message", {
+                small: (chunks) => <small>{chunks}</small>,
+              })}
+            </p>
 
             {isLoading ? (
               <div className="flex h-32 w-full animate-pulse rounded-md border border-gray-300 bg-gray-200" />

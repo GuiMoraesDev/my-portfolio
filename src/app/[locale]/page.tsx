@@ -32,7 +32,7 @@ export default function Home() {
   const contactT = useTranslations("contact");
 
   return (
-    <main className="container relative flex flex-col items-center bg-plum-900 pb-14 font-lato text-white lg:pb-36">
+    <main className="container relative flex flex-col items-center bg-plum-900 font-lato text-white">
       <Spheres />
       <DrawContainer />
 
@@ -152,6 +152,40 @@ export default function Home() {
           </NextIntlClientProvider>
         </section>
       </SessionWrapper>
+
+      <SessionWrapper
+        className={twMerge(
+          "mt-8 bg-black min-[300px]:mt-16 md:mt-28 xl:mt-44",
+          "py-4 min-[300px]:py-8 md:py-14 xl:py-24",
+          "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-[100vw] before:-translate-x-1/2 before:bg-black before:opacity-95 before:content-['']",
+        )}
+      >
+        <footer className="z-10 flex h-full w-full items-end justify-between gap-4 text-sm text-white">
+          <div className="flex flex-col gap-3">
+            <strong
+              className={twMerge(
+                "mb-2 text-2xl leading-normal tracking-wide",
+                "inline-block bg-gradient-to-r from-plum-300 via-plum-400 to-plum-200 bg-clip-text text-transparent",
+              )}
+            >
+              Nice to have you here!
+            </strong>
+            <p className="inline-flex gap-1 leading-normal tracking-wide">
+              Contact me directly:
+              <a href="mailto:guimoraes.dev@gmail.com" className="underline">
+                guimoraes.dev@gmail.com
+              </a>
+            </p>
+
+            <span className="inline-flex gap-1 leading-relaxed tracking-wider">
+              <span className="uppercase">Made with love</span> © 2023
+              Guilherme Moraes
+            </span>
+          </div>
+
+          <SocialMedia />
+        </footer>
+      </SessionWrapper>
     </main>
   );
 }
@@ -168,12 +202,12 @@ const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
 );
 
 const SocialMedia = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={twMerge("items-center gap-10", className)} {...props}>
+  <div className={twMerge("flex items-center gap-10", className)} {...props}>
     <Link
       href="https://github.com/GuiMoraesDev"
       className="flex cursor-pointer flex-col items-center justify-center gap-2 p-4"
     >
-      <Icon icon="Github" size="lg" />
+      <Icon icon="Github" size="md" />
       <span className="text-sm tracking-wider text-white">GitHub</span>
     </Link>
 
@@ -181,7 +215,7 @@ const SocialMedia = ({ className, ...props }: ComponentProps<"div">) => (
       href="https://www.linkedin.com/in/guimoraesdev"
       className="flex cursor-pointer flex-col items-center justify-center gap-2 p-4"
     >
-      <Icon icon="LinkedIn" size="lg" />
+      <Icon icon="LinkedIn" size="md" />
       <span className="text-sm tracking-wider text-white">LinkedIn</span>
     </Link>
   </div>

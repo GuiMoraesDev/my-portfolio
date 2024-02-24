@@ -166,6 +166,7 @@ export const ContactForm = () => {
 
       <div className="flex h-full w-fit min-w-72 flex-1 flex-col items-start gap-8 transition">
         <strong className="text-lg">{t("preview.title")}</strong>
+
         <EmailRenderPreview {...formMethods} />
       </div>
     </div>

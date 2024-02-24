@@ -178,7 +178,7 @@ export default function Home() {
             </p>
 
             <span className="inline-flex gap-1 leading-relaxed tracking-wider">
-              <span className="uppercase">Made with love</span> © 2023
+              <span className="uppercase">Made with love</span> © 2024
               Guilherme Moraes
             </span>
           </div>

@@ -1,5 +1,11 @@
 name: Type-check & Lint
-on: [pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - "*"
 jobs:
   Type-And-Lint:
     runs-on: ubuntu-latest

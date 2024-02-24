@@ -48,46 +48,6 @@ export const Toolbar = ({ editor, ...formMethods }: ToolBarProps) => (
 
     <section className="flex items-center gap-2">
       <ToolButton
-        handleClick={() =>
-          editor.chain().focus().toggleHeading({ level: 1 }).run()
-        }
-        isActive={editor.isActive("heading", { level: 1 })}
-        description="Heading 1"
-      >
-        H1
-      </ToolButton>
-
-      <ToolButton
-        handleClick={() =>
-          editor.chain().focus().toggleHeading({ level: 2 }).run()
-        }
-        isActive={editor.isActive("heading", { level: 2 })}
-        description="Heading 2"
-      >
-        H2
-      </ToolButton>
-
-      <ToolButton
-        handleClick={() =>
-          editor.chain().focus().toggleHeading({ level: 3 }).run()
-        }
-        isActive={editor.isActive("heading", { level: 3 })}
-        description="Heading 3"
-      >
-        H3
-      </ToolButton>
-
-      <ToolButton
-        handleClick={() => editor.chain().focus().setParagraph().run()}
-        isActive={editor.isActive("paragraph")}
-        description="Paragraph"
-      >
-        P
-      </ToolButton>
-    </section>
-
-    <section className="flex items-center gap-2">
-      <ToolButton
         handleClick={() => editor.chain().focus().toggleBold().run()}
         disabled={!editor.can().chain().focus().toggleBold().run()}
         isActive={editor.isActive("bold")}
@@ -205,13 +165,14 @@ type ToolButtonProps = Omit<ComponentProps<"button">, "onClick"> & {
 
 const ToolButton = ({
   isActive,
+  disabled,
   description,
   handleClick,
   className,
   ...props
 }: ToolButtonProps) => {
   const onClick = () => {
-    if (!isActive || props.disabled) return;
+    if (disabled) return;
 
     handleClick?.();
   };
@@ -222,11 +183,13 @@ const ToolButton = ({
         <Tooltip.Trigger asChild>
           <button
             className={twMerge(
-              "cursor-pointer p-px text-sm transition hover:scale-125",
+              "cursor-pointer p-px text-sm",
+              "disabled:cursor-not-allowed disabled:text-gray-300",
               isActive && "font-bold text-plum-900",
               className,
             )}
             {...props}
+            disabled={disabled}
             type="button"
             onClick={onClick}
           />

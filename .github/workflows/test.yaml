@@ -1,4 +1,4 @@
-name: Type-check & Lint
+name: Test
 on:
   push:
     branches:
@@ -7,7 +7,7 @@ on:
     branches:
       - "*"
 jobs:
-  Type-And-Lint:
+  Test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -27,8 +27,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Type-check
-        run: pnpm run type-check
-
-      - name: Lint
-        run: pnpm run lint
+      - name: Test
+        run: pnpm run test

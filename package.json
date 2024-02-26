@@ -11,9 +11,9 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit --incremental",
     "prepare": "husky",
-    "test": "jest --runInBand",
-    "test:watch": "jest --runInBand --watchAll",
-    "test:debug": "node --inspect-brk node_modules/jest/bin/jest.js --runInBand --watchAll"
+    "test": "jest --injectGlobals false --runInBand",
+    "test:watch": "jest --injectGlobals false --runInBand --watchAll",
+    "test:debug": "node --inspect-brk node_modules/jest/bin/jest.js --injectGlobals false --runInBand --watchAll"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

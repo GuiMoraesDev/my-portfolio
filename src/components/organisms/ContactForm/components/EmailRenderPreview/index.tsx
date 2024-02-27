@@ -21,17 +21,17 @@ export const EmailRenderPreview = (props: FormProps) => {
     <div
       className={twMerge(
         "h-full w-full rounded-md border border-gray-50 bg-gray-50 p-4 ring-2 ring-gray-800 transition-colors duration-300",
-        state.awaiting ? "bg-gray-50" : "bg-plum-600/80",
+        state.awaiting ? "bg-plum-600/80" : "bg-gray-50",
       )}
     >
       {state.awaiting ? (
-        <div dangerouslySetInnerHTML={{ __html }} />
-      ) : (
         <div className="flex h-full w-full items-center justify-center">
           <p className="text-center text-gray-500">
             Your email preview will be shown here
           </p>
         </div>
+      ) : (
+        <div dangerouslySetInnerHTML={{ __html }} />
       )}
     </div>
   );

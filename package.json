@@ -11,9 +11,14 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit --incremental",
     "prepare": "husky",
-    "test": "jest --injectGlobals false --runInBand",
-    "test:watch": "jest --injectGlobals false --runInBand --watchAll",
-    "test:debug": "node --inspect-brk node_modules/jest/bin/jest.js --injectGlobals false --runInBand --watchAll"
+    "test": "concurrently \"pnpm test:unit\" \"pnpm test:e2e\"",
+    "test:e2e": "pnpm exec playwright test",
+    "test:e2e:ui": "pnpm exec playwright test --ui",
+    "test:e2e:watch": "pnpm exec playwright test --watch",
+    "test:e2e:debug": "pnpm exec playwright test --debug",
+    "test:unit": "jest --injectGlobals false --runInBand",
+    "test:unit:watch": "jest --injectGlobals false --runInBand --watchAll",
+    "test:unit:debug": "node --inspect-brk node_modules/jest/bin/jest.js --injectGlobals false --runInBand --watchAll"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -50,6 +55,7 @@
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
+    "@playwright/test": "^1.42.0",
     "@tanstack/eslint-plugin-query": "^5.18.1",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.11.16",

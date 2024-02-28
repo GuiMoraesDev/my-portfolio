@@ -37,7 +37,7 @@ export default function Home() {
       <DrawContainer />
 
       <NextIntlClientProvider messages={pick(messages, "links")}>
-        <Header className="max-w-7xl max-[2000px]:px-[10vw]" />
+        <Header className="max-w-7xl max-[2000px]:px-[10vw]" id="header" />
       </NextIntlClientProvider>
 
       <SessionWrapper className="mt-14 md:flex-row" id="home">
@@ -159,13 +159,14 @@ export default function Home() {
           "py-4 min-[300px]:py-8 md:py-14 xl:py-24",
           "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-[100vw] before:-translate-x-1/2 before:bg-black/90 before:opacity-95 before:content-['']",
         )}
+        id="footer"
       >
         <footer className="z-10 flex h-full w-full items-end justify-between gap-4 text-sm text-white">
           <div className="flex flex-col gap-3">
             <strong
               className={twMerge(
                 "mb-2 text-2xl leading-normal tracking-wide",
-                "animate-gradient-x inline-block bg-gradient-to-r from-plum-200 via-plum-400 to-plum-50 bg-clip-text text-transparent",
+                "inline-block animate-gradient-x bg-gradient-to-r from-plum-200 via-plum-400 to-plum-50 bg-clip-text text-transparent",
               )}
             >
               Nice to have you here!

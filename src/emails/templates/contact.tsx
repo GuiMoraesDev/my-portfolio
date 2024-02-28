@@ -14,7 +14,7 @@ import {
 import { Markdown } from "@react-email/markdown";
 import * as React from "react";
 
-import { type SendEmailProps } from "@/schemas/emailSchema";
+import { type SendEmailProps } from "@/schemas/email/schema";
 
 export const ContactEmailTemplate = ({
   first_name,

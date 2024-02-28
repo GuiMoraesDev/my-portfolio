@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 
 import { useToast } from "@/components/atoms/Toaster/hooks/useToast";
-import { type GenerateMessageProps } from "@/schemas/generateMessageSchema";
+import { type GenerateMessageProps } from "@/schemas/generateMessage/schema";
 
 export const useGenerateEmailMutation = () => {
   const { toast } = useToast();

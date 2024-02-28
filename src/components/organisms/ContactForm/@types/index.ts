@@ -1,7 +1,7 @@
 import { type Editor } from "@tiptap/react";
 import { type UseFormReturn } from "react-hook-form";
 
-import { type SendEmailProps } from "@/schemas/emailSchema";
+import { type SendEmailProps } from "@/schemas/email/schema";
 
 export type FormProps = UseFormReturn<SendEmailProps>;
 

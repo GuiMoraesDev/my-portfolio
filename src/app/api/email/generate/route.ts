@@ -3,7 +3,7 @@ import OpenAI from "openai";
 import {
   generateMessageSchema,
   type GenerateMessageProps,
-} from "@/schemas/generateMessageSchema";
+} from "@/schemas/generateMessage/schema";
 
 const openai = new OpenAI({
   apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,

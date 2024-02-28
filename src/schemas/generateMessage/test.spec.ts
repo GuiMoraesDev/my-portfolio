@@ -2,7 +2,7 @@ import { describe, expect, it } from "@jest/globals";
 
 import { generateMessageSchema } from "./schema";
 
-describe.only("GenerateMessageSchema", () => {
+describe("GenerateMessageSchema", () => {
   it("should return false if first_name field are not fill", async () => {
     const data = {
       first_name: "",

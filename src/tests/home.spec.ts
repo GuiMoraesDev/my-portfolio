@@ -55,7 +55,7 @@ test.describe("Email form", () => {
     await expect(page.locator("#contact")).toBeInViewport();
   });
 
-  test.only("if the email form fields can be filled", async ({ page }) => {
+  test("if the email form fields can be filled", async ({ page }) => {
     await page.route(/.*\/api\/.*/, async (route, request) => {
       // eslint-disable-next-line no-console
       console.log("Aborted URL:", request.url());

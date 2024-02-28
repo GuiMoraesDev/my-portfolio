@@ -44,7 +44,7 @@ const fillField = async (page: Page, selector: string, value: string) => {
   await element.fill(value);
 };
 
-test.describe.only("Email form", () => {
+test.describe("Email form", () => {
   test("if the email form is in the viewport", async ({ page }) => {
     await page.goto("./");
 

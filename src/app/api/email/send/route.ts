@@ -1,34 +1,27 @@
-import { Resend } from "resend";
+import { type NextRequest, NextResponse } from "next/server";
 
-import { ContactEmailTemplate } from "@/emails/templates/contact";
-import { type SendEmailProps, emailSchema } from "@/schemas/emailSchema";
+import email from "@/lib/email";
+import { emailSchema } from "@/schemas/emailSchema";
 
-const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY);
+export async function POST(request: NextRequest) {
+  const data = await request.json();
 
-export async function POST(request: Request) {
   try {
-    const req = await request.json();
+    await emailSchema.parseAsync(data);
 
-    await emailSchema.parseAsync(req);
+    await email.send(data);
 
-    const { first_name, last_name, email, subject, message } =
-      req as SendEmailProps;
-
-    const data = await resend.emails.send({
-      from: "New contact <no-answer@guimoraes.dev>",
-      to: "guimoraes.dev@gmail.com",
-      subject,
-      react: ContactEmailTemplate({
-        first_name,
-        last_name,
-        email,
-        subject,
-        message,
-      }),
+    return new NextResponse(null, {
+      status: 200,
+      headers: { "content-type": "application/json" },
+      statusText: "Email sent",
     });
-
-    return Response.json(data);
   } catch (error) {
-    return Response.json({ error });
+    if (process.env.NODE_ENV !== "production") {
+      // eslint-disable-next-line no-console
+      console.error(error);
+    }
+
+    return NextResponse.error();
   }
 }

@@ -51,6 +51,8 @@
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@tanstack/eslint-plugin-query": "^5.18.1",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^14.2.1",
     "@types/dom-speech-recognition": "^0.0.4",
     "@types/lodash": "^4.14.202",
     "@types/node": "^20.11.16",
@@ -69,8 +71,8 @@
     "prettier": "3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.1",
-    "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "whatwg-fetch": "^3.6.20"
   }
 }

@@ -1,6 +1,6 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, type Page } from "@playwright/test";
 
-test.describe("Home page", () => {
+test.describe("Page elements", () => {
   test("if the page has title", async ({ page }) => {
     await page.goto("./");
 
@@ -34,5 +34,61 @@ test.describe("Home page", () => {
     await page.goto("./");
 
     await expect(page.locator("#home")).toBeInViewport();
+  });
+});
+
+const fillField = async (page: Page, selector: string, value: string) => {
+  const element = page.locator(selector);
+  await element.scrollIntoViewIfNeeded();
+
+  await element.fill(value);
+};
+
+test.describe.only("Email form", () => {
+  test("if the email form is in the viewport", async ({ page }) => {
+    await page.goto("./");
+
+    await page.locator("#contact").scrollIntoViewIfNeeded({
+      timeout: 1000,
+    });
+
+    await expect(page.locator("#contact")).toBeInViewport();
+  });
+
+  test.only("if the email form fields can be filled", async ({ page }) => {
+    await page.route(/.*\/api\/.*/, async (route, request) => {
+      // eslint-disable-next-line no-console
+      console.log("Aborted URL:", request.url());
+      await route.abort();
+    });
+
+    await page.goto("./");
+
+    const form = page.locator("data-testid=contact-form");
+    await form.scrollIntoViewIfNeeded();
+
+    const testDate = new Date().toLocaleString();
+
+    await fillField(page, "#first_name", "Test");
+    await fillField(page, "#last_name", testDate);
+    await fillField(page, "#email", "contacte@test.com");
+    await fillField(page, "#subject", "Test subject");
+    await fillField(page, "#editor>.tiptap", "This is a test message");
+
+    const submitButton = page.locator("button[type=submit]");
+
+    const requestPromise = page.waitForRequest(/.*\/api\/email\/send\.*/);
+    await submitButton.click();
+
+    const request = await requestPromise;
+    const sentData = request.postDataJSON();
+
+    expect(sentData).toEqual({
+      first_name: "Test",
+      last_name: testDate,
+      email: "contacte@test.com",
+      subject: "Test subject",
+      message: "<p>This is a test message</p>",
+    });
   });
 });

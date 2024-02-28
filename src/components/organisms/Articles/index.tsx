@@ -53,6 +53,7 @@ export const Articles = () => {
   const { data: articles = [], isLoading } = useQuery({
     queryKey: ["articles"],
     queryFn: fetchArticles,
+    retry: process.env.NODE_ENV === "development" ? false : 3,
   });
 
   if (isLoading) return <ArticlesSkeleton />;

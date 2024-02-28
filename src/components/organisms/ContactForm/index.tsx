@@ -74,6 +74,7 @@ export const ContactForm = () => {
 
         <form
           className="flex w-full flex-col gap-4"
+          data-testid="contact-form"
           id={formId}
           onSubmit={handleSubmit(onFormSubmit)}
         >

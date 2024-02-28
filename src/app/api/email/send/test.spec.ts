@@ -3,7 +3,7 @@ import { type NextRequest } from "next/server";
 
 import { POST } from "./route";
 
-import email from "@/lib/email";
+import email from "@/services/email";
 
 describe("Send Email", () => {
   it("should send an email", async () => {

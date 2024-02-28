@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-import email from "@/lib/email";
 import { emailSchema } from "@/schemas/email/schema";
+import email from "@/services/email";
 
 export async function POST(request: NextRequest) {
   const data = await request.json();

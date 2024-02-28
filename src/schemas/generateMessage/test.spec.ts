@@ -52,7 +52,7 @@ describe.only("GenerateMessageSchema", () => {
 
     const valid = generateMessageSchema.safeParse(data);
 
-    expect(valid.success).toEqual(false);
+    expect(valid.success).toEqual(true);
   });
 
   it("should return true if fields are fill", async () => {

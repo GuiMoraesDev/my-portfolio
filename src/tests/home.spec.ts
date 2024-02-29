@@ -1,5 +1,76 @@
 import { test, expect, type Page } from "@playwright/test";
 
+import enTranslations from "../i18n/locales/en.json";
+import ptTranslations from "../i18n/locales/pt.json";
+
+test.describe("US locale user", () => {
+  test.use({
+    locale: "en-US",
+  });
+
+  test("if the HTML lang attribute is in english", async ({ page }) => {
+    await page.goto("./");
+
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+  });
+
+  test("if the page text is in english for US located users", async ({
+    page,
+  }) => {
+    await page.goto("./");
+
+    await expect(page.locator("#my-title")).toHaveText(
+      enTranslations.presentation.title,
+    );
+  });
+});
+
+test.describe("Brazil locale", () => {
+  test.use({
+    locale: "pt-BR",
+  });
+
+  test("if the HTML lang attribute is in brazilian portuguese", async ({
+    page,
+  }) => {
+    await page.goto("./");
+
+    await expect(page.locator("html")).toHaveAttribute("lang", "pt");
+  });
+
+  test("if the page text is in brazilian portuguese for Brazil located users", async ({
+    page,
+  }) => {
+    await page.goto("./");
+
+    await expect(page.locator("#my-title")).toHaveText(
+      ptTranslations.presentation.title,
+    );
+  });
+});
+
+test.describe("Default locale", () => {
+  test.use({
+    locale: "zh-CN",
+  });
+
+  test("if the HTML lang attribute is in english", async ({ page }) => {
+    await page.goto("./");
+
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+  });
+
+  test("if the page text is in english for non Brazil nor US located users", async ({
+    page,
+  }) => {
+    await page.goto("./");
+
+    await expect(page.locator("#my-title")).toHaveText(
+      enTranslations.presentation.title,
+    );
+  });
+});
+
 test.describe("Page elements", () => {
   test("if the page has title", async ({ page }) => {
     await page.goto("./");
@@ -48,11 +119,10 @@ test.describe("Email form", () => {
   test("if the email form is in the viewport", async ({ page }) => {
     await page.goto("./");
 
-    await page.locator("#contact").scrollIntoViewIfNeeded({
-      timeout: 1000,
-    });
+    const contactElement = page.locator("#contact");
+    await contactElement.scrollIntoViewIfNeeded();
 
-    await expect(page.locator("#contact")).toBeInViewport();
+    await expect(contactElement).toBeInViewport();
   });
 
   test("if the email form fields can be filled", async ({ page }) => {

@@ -53,7 +53,10 @@ export default function Home() {
               </strong>
             </h1>
 
-            <h2 className="font-fira-sans text-3xl font-bold text-gold-500 md:my-2 md:text-5xl lg:text-6xl lg:leading-tight xl:text-7xl xl:leading-tight">
+            <h2
+              id="my-title"
+              className="font-fira-sans text-3xl font-bold text-gold-500 md:my-2 md:text-5xl lg:text-6xl lg:leading-tight xl:text-7xl xl:leading-tight"
+            >
               {presentationT("title")}
             </h2>
 

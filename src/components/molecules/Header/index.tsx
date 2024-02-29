@@ -10,8 +10,11 @@ import { useHandleClickOutside } from "./hooks/useDetectClickOutside";
 
 import { Icon } from "@/components/atoms/Icon";
 import { Select } from "@/components/atoms/Select";
+import { printInConsole } from "@/services/console";
 
 export const Header = ({ className, ...props }: ComponentProps<"header">) => {
+  printInConsole();
+
   const wrapperRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 

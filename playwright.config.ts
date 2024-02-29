@@ -23,28 +23,23 @@ export default defineConfig({
     },
 
     {
+      name: "edge",
+      use: { ...devices["Desktop Edge"], channel: "msedge" },
+    },
+
+    {
       name: "webkit",
       use: { ...devices["Desktop Safari"] },
     },
 
-    /* Test against mobile viewports. */
     {
-      name: "Mobile Chrome",
+      name: "mobile_chrome",
       use: { ...devices["Pixel 5"] },
     },
-    {
-      name: "Mobile Safari",
-      use: { ...devices["iPhone 12"] },
-    },
 
-    /* Test against branded browsers. */
     {
-      name: "Microsoft Edge",
-      use: { ...devices["Desktop Edge"], channel: "msedge" },
-    },
-    {
-      name: "Google Chrome",
-      use: { ...devices["Desktop Chrome"], channel: "chrome" },
+      name: "mobile_safari",
+      use: { ...devices["iPhone 12"] },
     },
   ],
   webServer: {

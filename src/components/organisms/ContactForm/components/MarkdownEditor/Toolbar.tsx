@@ -23,7 +23,7 @@ import { type MarkdownEditorProps } from ".";
 import { Tooltip } from "@/components/atoms/Tooltip";
 
 export const Toolbar = ({ editor, ...formMethods }: MarkdownEditorProps) => (
-  <nav className="flex w-full items-center gap-4 p-2">
+  <nav className="flex w-full flex-wrap items-center gap-x-4 gap-y-2 p-2">
     <section className="flex items-center gap-2">
       <ToolButton
         handleClick={() => editor.chain().focus().undo().run()}

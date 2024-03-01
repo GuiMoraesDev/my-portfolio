@@ -69,7 +69,7 @@ export const ContactForm = () => {
 
   return (
     <div className="flex w-full items-center justify-center gap-8">
-      <div className="flex w-auto flex-1 flex-col items-center justify-center gap-8">
+      <div className="flex w-auto max-w-full flex-1 flex-col items-center justify-center gap-8">
         <strong className="w-full text-lg">{t("form.title")}</strong>
 
         <form
@@ -169,7 +169,7 @@ export const ContactForm = () => {
         </section>
       </div>
 
-      <div className="flex h-full w-fit min-w-72 flex-1 flex-col items-start gap-8 transition">
+      <div className="hidden h-full w-fit min-w-72 flex-1 flex-col items-start gap-8 transition md:flex">
         <strong className="text-lg">{t("preview.title")}</strong>
 
         <EmailRenderPreview {...formMethods} />

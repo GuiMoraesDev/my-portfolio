@@ -18,23 +18,18 @@ export default defineConfig({
     },
 
     {
-      name: "edge",
-      use: { ...devices["Desktop Edge"], channel: "msedge" },
-    },
-
-    {
       name: "webkit",
       use: { ...devices["Desktop Safari"] },
     },
 
     {
       name: "mobile_chrome",
-      use: { ...devices["Pixel 5"] },
+      use: { ...devices["Galaxy S8"] },
     },
 
     {
       name: "mobile_safari",
-      use: { ...devices["iPhone 12"] },
+      use: { ...devices["iPhone SE"] },
     },
   ],
   webServer: {

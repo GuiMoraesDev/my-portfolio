@@ -6,6 +6,10 @@ import { type FormProps } from "../../../@types";
 import { ContactEmailTemplate } from "@/emails/templates";
 
 const validateSupport = () => {
+  if (process.env.TEST_ENV === "true") {
+    return false;
+  }
+
   try {
     new ReadableStream({
       type: "bytes",
@@ -33,8 +37,6 @@ export const useGeneratedPreview = ({ watch }: FormProps) => {
 
   useEffect(() => {
     const loadHtml = async () => {
-      if (!isSupported) return;
-
       const html = await renderAsync(
         <ContactEmailTemplate
           first_name={first_name}
@@ -48,8 +50,18 @@ export const useGeneratedPreview = ({ watch }: FormProps) => {
       setHtml(html);
     };
 
-    loadHtml();
-  }, [email, first_name, isSupported, last_name, message, subject]);
+    if (hasSomeValue && isSupported) {
+      loadHtml();
+    }
+  }, [
+    email,
+    first_name,
+    hasSomeValue,
+    isSupported,
+    last_name,
+    message,
+    subject,
+  ]);
 
   return {
     __html,

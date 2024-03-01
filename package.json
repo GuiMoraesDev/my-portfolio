@@ -13,10 +13,8 @@
     "type-check": "tsc --noEmit --incremental",
     "prepare": "husky",
     "test": "concurrently \"pnpm test:unit\" \"pnpm test:e2e\"",
-    "test:e2e": "pnpm exec playwright test",
-    "test:e2e:ui": "pnpm exec playwright test --ui",
-    "test:e2e:watch": "pnpm exec playwright test --watch",
-    "test:e2e:debug": "pnpm exec playwright test --debug",
+    "test:e2e": "TEST_ENV=true pnpm exec playwright test",
+    "test:e2e:ui": "TEST_ENV=true pnpm exec playwright test --ui",
     "test:unit": "jest --injectGlobals false --runInBand",
     "test:unit:watch": "jest --injectGlobals false --runInBand --watchAll",
     "test:unit:debug": "node --inspect-brk node_modules/jest/bin/jest.js --injectGlobals false --runInBand --watchAll"

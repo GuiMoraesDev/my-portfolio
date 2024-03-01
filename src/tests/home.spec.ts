@@ -3,71 +3,73 @@ import { test, expect, type Page } from "@playwright/test";
 import enTranslations from "../i18n/locales/en.json";
 import ptTranslations from "../i18n/locales/pt.json";
 
-test.describe("US locale user", () => {
-  test.use({
-    locale: "en-US",
+test.describe("Locales", () => {
+  test.describe("US locale user", () => {
+    test.use({
+      locale: "en-US",
+    });
+
+    test("if the HTML lang attribute is in english", async ({ page }) => {
+      await page.goto("./");
+
+      await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    });
+
+    test("if the page text is in english for US located users", async ({
+      page,
+    }) => {
+      await page.goto("./");
+
+      await expect(page.locator("#my-title")).toHaveText(
+        enTranslations.presentation.title,
+      );
+    });
   });
 
-  test("if the HTML lang attribute is in english", async ({ page }) => {
-    await page.goto("./");
+  test.describe("Brazil locale", () => {
+    test.use({
+      locale: "pt-BR",
+    });
 
-    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    test("if the HTML lang attribute is in brazilian portuguese", async ({
+      page,
+    }) => {
+      await page.goto("./");
+
+      await expect(page.locator("html")).toHaveAttribute("lang", "pt");
+    });
+
+    test("if the page text is in brazilian portuguese for Brazil located users", async ({
+      page,
+    }) => {
+      await page.goto("./");
+
+      await expect(page.locator("#my-title")).toHaveText(
+        ptTranslations.presentation.title,
+      );
+    });
   });
 
-  test("if the page text is in english for US located users", async ({
-    page,
-  }) => {
-    await page.goto("./");
+  test.describe("Default locale", () => {
+    test.use({
+      locale: "zh-CN",
+    });
 
-    await expect(page.locator("#my-title")).toHaveText(
-      enTranslations.presentation.title,
-    );
-  });
-});
+    test("if the HTML lang attribute is in english", async ({ page }) => {
+      await page.goto("./");
 
-test.describe("Brazil locale", () => {
-  test.use({
-    locale: "pt-BR",
-  });
+      await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    });
 
-  test("if the HTML lang attribute is in brazilian portuguese", async ({
-    page,
-  }) => {
-    await page.goto("./");
+    test("if the page text is in english for non Brazil nor US located users", async ({
+      page,
+    }) => {
+      await page.goto("./");
 
-    await expect(page.locator("html")).toHaveAttribute("lang", "pt");
-  });
-
-  test("if the page text is in brazilian portuguese for Brazil located users", async ({
-    page,
-  }) => {
-    await page.goto("./");
-
-    await expect(page.locator("#my-title")).toHaveText(
-      ptTranslations.presentation.title,
-    );
-  });
-});
-
-test.describe("Default locale", () => {
-  test.use({
-    locale: "zh-CN",
-  });
-
-  test("if the HTML lang attribute is in english", async ({ page }) => {
-    await page.goto("./");
-
-    await expect(page.locator("html")).toHaveAttribute("lang", "en");
-  });
-
-  test("if the page text is in english for non Brazil nor US located users", async ({
-    page,
-  }) => {
-    await page.goto("./");
-
-    await expect(page.locator("#my-title")).toHaveText(
-      enTranslations.presentation.title,
-    );
+      await expect(page.locator("#my-title")).toHaveText(
+        enTranslations.presentation.title,
+      );
+    });
   });
 });
 
@@ -116,25 +118,48 @@ const fillField = async (page: Page, selector: string, value: string) => {
 };
 
 test.describe("Email form", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.route(/.*\/api\/.*/, async (route, request) => {
+      if (request.url().includes("https://dev.to/api/")) {
+        // eslint-disable-next-line no-console
+        console.log("Fulfilling URL:", request.url());
+
+        return route.fulfill({
+          status: 200,
+          body: JSON.stringify([
+            {
+              id: 1,
+              title: "Test article",
+              url: "https://test.com",
+              reading_time_minutes: 5,
+              positive_reactions_count: 10,
+              comments_count: 5,
+            },
+          ]),
+        });
+      }
+
+      // eslint-disable-next-line no-console
+      console.log("Aborted URL:", request.url());
+      await route.abort();
+    });
+  });
+
   test("if the email form is in the viewport", async ({ page }) => {
     await page.goto("./");
 
     const contactElement = page.locator("#contact");
+    await contactElement.waitFor();
     await contactElement.scrollIntoViewIfNeeded();
 
     await expect(contactElement).toBeInViewport();
   });
 
   test("if the email form fields can be filled", async ({ page }) => {
-    await page.route(/.*\/api\/.*/, async (route, request) => {
-      // eslint-disable-next-line no-console
-      console.log("Aborted URL:", request.url());
-      await route.abort();
-    });
-
     await page.goto("./");
 
     const form = page.locator("data-testid=contact-form");
+    await form.waitFor();
     await form.scrollIntoViewIfNeeded();
 
     const testDate = new Date().toLocaleString();

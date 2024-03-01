@@ -34,7 +34,7 @@ jobs:
       - name: Lint
         run: pnpm run lint
 
-  Test:
+  Unit-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -54,14 +54,31 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Unit test
-        run: pnpm run test:unit
+      - name: Test
+        run: pnpm test:unit
 
-      - name: Execute playwright
-        run: pnpm exec playwright install --with-deps
+  E2E-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3.0.0
+        with:
+          version: latest
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile & pnpm exec playwright install --with-deps
 
       - name: E2E test
-        run: pnpm run test:e2e
+        run: pnpm test:e2e
 
       - uses: actions/upload-artifact@v4
         if: always()

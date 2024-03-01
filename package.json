@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "clean": "rm -rf .next && rm -rf .swc && rm -rf .playwright-report && rm -fr node_modules && rm -fr tsconfig.tsbuildinfo && pnpm install",
+    "clean": "rm -rf .next .swc playwright-report node_modules tsconfig.tsbuildinfo playwright-report test-results",
     "dev": "concurrently \"pnpm dev:app\" \"pnpm dev:email\"",
     "dev:app": "next dev",
     "dev:email": "email dev --dir './src/emails/templates' --port 3001",

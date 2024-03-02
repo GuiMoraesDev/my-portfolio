@@ -10,7 +10,8 @@
   "presentation": {
     "name": "E aí, meu nome é",
     "title": "Desenvolvedor Frontend",
-    "subtitle": "Eu crio experiências de usuário perfeitas com React, TypeScript e Testing Library"
+    "subtitle": "Eu crio experiências de usuário perfeitas com React, TypeScript e Testing Library",
+    "profile-image-alt": "Um avatar meu gerado por IA"
   },
   "overview": {
     "title": "Visão Geral",
@@ -33,15 +34,18 @@
     "testimonials": {
       "vitor-leonardo": {
         "role": "Designer Gráfico",
-        "text": "Além de ser um excelente colega de equipe, ele é uma pessoa muito sensível e responsável. Seu trabalho é sempre muito eficiente e também muito assertivo. Ele tem uma grande sincronia com a equipe e é muito dedicado aos seus projetos."
+        "text": "Além de ser um excelente colega de equipe, ele é uma pessoa muito sensível e responsável. Seu trabalho é sempre muito eficiente e também muito assertivo. Ele tem uma grande sincronia com a equipe e é muito dedicado aos seus projetos.",
+        "image-alt": "desenho de um avatar masculino"
       },
       "saulo-bulhoes": {
         "role": "Designer de UX",
-        "text": "Guilherme é um profissional extremamente competente, apaixonado pelo que faz, entregando qualidade e excelentes resultados. Em cada projeto que ele assume, apresenta boas soluções, observando e sugerindo pontos que podem ser melhorados no processo e no produto. Inteligente, proativo, criativo e perspicaz, sempre trata a equipe com muito carinho, respeito e profissionalismo. Ele está sempre em busca de superar qualquer desafio."
+        "text": "Guilherme é um profissional extremamente competente, apaixonado pelo que faz, entregando qualidade e excelentes resultados. Em cada projeto que ele assume, apresenta boas soluções, observando e sugerindo pontos que podem ser melhorados no processo e no produto. Inteligente, proativo, criativo e perspicaz, sempre trata a equipe com muito carinho, respeito e profissionalismo. Ele está sempre em busca de superar qualquer desafio.",
+        "image-alt": "desenho de um avatar masculino"
       },
       "osmane-fonseca": {
         "role": "Web Designer",
-        "text": "Guilherme tem amplo conhecimento técnico como front-end, mas o que me surpreendeu é como ele o adicionou à arquitetura do site, sempre pensando na experiência do usuário focada nos objetivos do projeto. Guilherme não apenas atua como um desenvolvedor muito técnico, mas também torna a navegação fácil de entender e as ações simples de realizar."
+        "text": "Guilherme tem amplo conhecimento técnico como front-end, mas o que me surpreendeu é como ele o adicionou à arquitetura do site, sempre pensando na experiência do usuário focada nos objetivos do projeto. Guilherme não apenas atua como um desenvolvedor muito técnico, mas também torna a navegação fácil de entender e as ações simples de realizar.",
+        "image-alt": "desenho de um avatar masculino"
       }
     }
   },
@@ -66,13 +70,68 @@
         "subject": "Eu tenho uma ótima oportunidade pra você",
         "message": "Digite sua mensagem aqui..."
       },
+      "errors": {
+        "first_name_required": "Nome é obrigatório",
+        "last_name_required": "Sobrenome é obrigatório",
+        "email_invalid": "Por favor, insira um e-mail válido",
+        "subject_required": "Por favor, insira o assunto",
+        "message_required": "Por favor, insira a mensagem"
+      },
+      "toolbar": {
+        "undo": "Desfazer",
+        "redo": "Refazer",
+        "bold": "Negrito",
+        "italic": "Itálico",
+        "underline": "Sublinhado",
+        "strikethrough": "Riscado",
+        "code": "Código",
+        "divider": "Divisor",
+        "generate": "Gerar mensagem com IA"
+      },
+      "toasts": {
+        "send-email": {
+          "mutation": {
+            "title": "Enviando sua mensagem",
+            "message": "Por favor, aguarde um momento..."
+          },
+          "error": {
+            "title": "Ocorreu um erro",
+            "message": "Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde."
+          },
+          "success": {
+            "title": "Mensagem enviada",
+            "message": "Sua mensagem foi enviada com sucesso!"
+          }
+        },
+        "generate-email": {
+          "mutation": {
+            "title": "Gerando mensagem",
+            "message": "Por favor, aguarde um momento..."
+          },
+          "error": {
+            "title": "Ocorreu um erro",
+            "message": "Ocorreu um erro ao gerar sua mensagem. Por favor, tente novamente mais tarde."
+          },
+          "success": {
+            "title": "Nova mensagem gerada",
+            "message": "Sua mensagem foi gerada com sucesso!"
+          }
+        }
+      },
       "buttons": {
         "close": "Fechar",
         "send": "Enviar"
       }
     },
     "preview": {
-      "title": "Preview"
+      "title": "Preview",
+      "awaiting": "Um preview do seu e-mail vai aparecer aqui",
+      "unsupported": "Seu navegador não suporta este recurso"
     }
+  },
+  "footer": {
+    "title": "Que bom ter você aqui!",
+    "contact-me-by": "Entre em contato comigo por",
+    "made-with-love": "Feito com amor"
   }
 }

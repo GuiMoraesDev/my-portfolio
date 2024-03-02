@@ -10,7 +10,8 @@
   "presentation": {
     "name": "Hey, my name is",
     "title": "Frontend developer",
-    "subtitle": "I craft seamless User Experiences with React, TypeScript, and Testing Library"
+    "subtitle": "I craft seamless User Experiences with React, TypeScript, and Testing Library",
+    "profile-image-alt": "An IA generated avatar from myself"
   },
   "overview": {
     "title": "Overview",
@@ -33,15 +34,18 @@
     "testimonials": {
       "vitor-leonardo": {
         "role": "Graphic Designer",
-        "text": "In addition to being an excellent teammate, he is a very sensible and responsible person. His work is always very efficient and also very assertive. He has great synchronization with the team and is very dedicated to his projects."
+        "text": "In addition to being an excellent teammate, he is a very sensible and responsible person. His work is always very efficient and also very assertive. He has great synchronization with the team and is very dedicated to his projects.",
+        "image-alt": "a male avatar cartoon"
       },
       "saulo-bulhoes": {
         "role": "UX Designer",
-        "text": "Guilherme is an extremely competent professional, passionate about what he does, delivering quality and excellent results. In every project he undertakes, he presents good solutions, observing and suggesting points that can be improved in the process and product. Intelligent, proactive, creative and insightful, he always treats the team with great affection, respect and professionalism. He is always looking to overcome any challenge."
+        "text": "Guilherme is an extremely competent professional, passionate about what he does, delivering quality and excellent results. In every project he undertakes, he presents good solutions, observing and suggesting points that can be improved in the process and product. Intelligent, proactive, creative and insightful, he always treats the team with great affection, respect and professionalism. He is always looking to overcome any challenge.",
+        "image-alt": "a male avatar cartoon"
       },
       "osmane-fonseca": {
         "role": "Web Designer",
-        "text": "Guilherme has extensive technical knowledge as a front-end, but what surprised me is how he added it to the website architecture, always thinking about the user experience focused on the project objectives. Guilherme not only acts as a very technical developer but also makes the navigation easy to understand and actions simple to perform."
+        "text": "Guilherme has extensive technical knowledge as a front-end, but what surprised me is how he added it to the website architecture, always thinking about the user experience focused on the project objectives. Guilherme not only acts as a very technical developer but also makes the navigation easy to understand and actions simple to perform.",
+        "image-alt": "a male avatar cartoon"
       }
     }
   },
@@ -66,13 +70,68 @@
         "subject": "I have a great opportunity for you",
         "message": "Type your message here..."
       },
+      "errors": {
+        "first_name_required": "First name is required",
+        "last_name_required": "Last name is required",
+        "email_invalid": "Please enter a valid email",
+        "subject_required": "Please enter a subject",
+        "message_required": "Please enter a message"
+      },
+      "toolbar": {
+        "undo": "Undo",
+        "redo": "Redo",
+        "bold": "Bold",
+        "italic": "Italic",
+        "underline": "Underline",
+        "strikethrough": "Strikethrough",
+        "code": "Code",
+        "divider": "Divider",
+        "generate": "Generate message with AI"
+      },
+      "toasts": {
+        "send-email": {
+          "mutation": {
+            "title": "Sending your message",
+            "message": "Please wait a moment..."
+          },
+          "error": {
+            "title": "An error occurred",
+            "message": "An error occurred while sending your message. Please try again later."
+          },
+          "success": {
+            "title": "Message sent",
+            "message": "Your message was sent successfully!"
+          }
+        },
+        "generate-email": {
+          "mutation": {
+            "title": "Generating message",
+            "message": "Please wait a moment..."
+          },
+          "error": {
+            "title": "An error occurred",
+            "message": "An error occurred while generating your message. Please try again later."
+          },
+          "success": {
+            "title": "New message generated",
+            "message": "Your message was generated successfully!"
+          }
+        }
+      },
       "buttons": {
         "close": "Close",
         "send": "Send"
       }
     },
     "preview": {
-      "title": "Preview"
+      "title": "Preview",
+      "awaiting": "Your email preview will be shown here",
+      "unsupported": "Your browser does not support this feature"
     }
+  },
+  "footer": {
+    "title": "Nice to have you here!",
+    "contact-me-by": "Contact me by",
+    "made-with-love": "Made with love"
   }
 }

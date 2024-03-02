@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { twMerge } from "tailwind-merge";
 
 import { type FormProps } from "../../@types";
@@ -5,14 +6,13 @@ import { type FormProps } from "../../@types";
 import { useGeneratedPreview } from "./hooks/useGeneratedPreview";
 
 export const EmailRenderPreview = (props: FormProps) => {
+  const t = useTranslations("contact");
   const { __html, state } = useGeneratedPreview(props);
 
   if (!state.support) {
     return (
       <div className="flex h-full w-full items-center justify-center">
-        <p className="text-center text-gray-500">
-          Your browser does not support the email preview
-        </p>
+        <p className="text-center text-gray-500">{t("preview.unsupported")}</p>
       </div>
     );
   }
@@ -26,9 +26,7 @@ export const EmailRenderPreview = (props: FormProps) => {
     >
       {state.awaiting ? (
         <div className="flex h-full w-full items-center justify-center">
-          <p className="text-center text-gray-500">
-            Your email preview will be shown here
-          </p>
+          <p className="text-center text-gray-500">{t("preview.awaiting")}</p>
         </div>
       ) : (
         <div dangerouslySetInnerHTML={{ __html }} />

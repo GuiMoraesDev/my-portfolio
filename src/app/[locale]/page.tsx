@@ -30,6 +30,7 @@ export default function Home() {
   const buzzAboutMeT = useTranslations("buzz-about-me");
   const codeT = useTranslations("code");
   const contactT = useTranslations("contact");
+  const footerT = useTranslations("footer");
 
   return (
     <main className="container relative flex flex-col items-center bg-plum-900 font-lato text-white">
@@ -75,7 +76,7 @@ export default function Home() {
             height={400}
             className="aspect-square h-72 select-none object-contain md:h-auto"
             priority
-            alt="An IA generated avatar from myself"
+            alt={presentationT("profile-image-alt")}
           />
 
           <SocialMedia className="flex md:hidden" />
@@ -172,18 +173,18 @@ export default function Home() {
                 "inline-block animate-gradient-x bg-gradient-to-r from-plum-200 via-plum-400 to-plum-50 bg-clip-text text-transparent",
               )}
             >
-              Nice to have you here!
+              {footerT("title")}
             </strong>
             <p className="inline-flex gap-1 leading-normal tracking-wide">
-              Contact me directly:
+              {footerT("contact-me-by")}
               <a href="mailto:guimoraes.dev@gmail.com" className="underline">
                 guimoraes.dev@gmail.com
               </a>
             </p>
 
             <span className="inline-flex gap-1 leading-relaxed tracking-wider">
-              <span className="uppercase">Made with love</span> © 2024
-              Guilherme Moraes
+              <span className="uppercase">{footerT("made-with-love")}</span> ©
+              2024 Guilherme Moraes
             </span>
           </div>
 

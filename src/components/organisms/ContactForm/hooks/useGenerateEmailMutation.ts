@@ -1,9 +1,12 @@
 import { useMutation } from "@tanstack/react-query";
+import { useTranslations } from "next-intl";
 
 import { useToast } from "@/components/atoms/Toaster/hooks/useToast";
 import { type GenerateMessageProps } from "@/schemas/generateMessage/schema";
 
 export const useGenerateEmailMutation = () => {
+  const t = useTranslations("contact");
+
   const { toast } = useToast();
 
   return useMutation({
@@ -16,17 +19,18 @@ export const useGenerateEmailMutation = () => {
         },
         body: JSON.stringify(props),
       }),
+
     onMutate: () => {
       toast({
-        title: "Generating message",
-        description: "Please wait",
+        title: t("form.toasts.generate-email.mutation.title"),
+        description: t("form.toasts.generate-email.mutation.message"),
         variant: "info",
       });
     },
     onError: (error) => {
       toast({
-        title: "Something is wrong",
-        description: "Please try again later",
+        title: t("form.toasts.generate-email.error.title"),
+        description: t("form.toasts.generate-email.error.message"),
         variant: "error",
       });
 
@@ -35,8 +39,8 @@ export const useGenerateEmailMutation = () => {
     },
     onSuccess: () => {
       toast({
-        title: "Email sent",
-        description: "I will get back to you as soon as possible",
+        title: t("form.toasts.generate-email.success.title"),
+        description: t("form.toasts.generate-email.success.message"),
         variant: "success",
       });
     },

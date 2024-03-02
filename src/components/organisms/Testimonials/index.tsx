@@ -9,7 +9,7 @@ export const Testimonials = () => {
         name="Saulo Bulhões"
         img={{
           src: "/testimonial/avatar-1.png",
-          alt: "a male avatar cartoon",
+          alt: t("testimonials.saulo-bulhoes.image-alt"),
         }}
         role={t("testimonials.saulo-bulhoes.role")}
         content={t("testimonials.saulo-bulhoes.text")}
@@ -18,7 +18,7 @@ export const Testimonials = () => {
         name="Osmane Fonseca"
         img={{
           src: "/testimonial/avatar-2.png",
-          alt: "a male avatar cartoon",
+          alt: t("testimonials.osmane-fonseca.image-alt"),
         }}
         role={t("testimonials.osmane-fonseca.role")}
         content={t("testimonials.osmane-fonseca.text")}
@@ -27,7 +27,7 @@ export const Testimonials = () => {
         name="Vitor Leonardo"
         img={{
           src: "/testimonial/avatar-3.png",
-          alt: "a male avatar cartoon",
+          alt: t("testimonials.vitor-leonardo.image-alt"),
         }}
         role={t("testimonials.vitor-leonardo.role")}
         content={t("testimonials.vitor-leonardo.text")}

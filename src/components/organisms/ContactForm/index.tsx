@@ -36,7 +36,7 @@ export const ContactForm = () => {
       StarterKit,
       UnderlineMark,
       Placeholder.configure({
-        placeholder: "Type your message here...",
+        placeholder: t("form.placeholders.message"),
       }),
     ],
     onUpdate({ editor }) {
@@ -89,7 +89,7 @@ export const ContactForm = () => {
               {...register("first_name")}
             />
             <ErrorMessage hasError={!!errors.first_name}>
-              {errors.first_name?.message}
+              {t(`form.errors.${errors.first_name?.message}`)}
             </ErrorMessage>
           </Label>
 
@@ -104,7 +104,7 @@ export const ContactForm = () => {
               {...register("last_name")}
             />
             <ErrorMessage hasError={!!errors.last_name}>
-              {errors.last_name?.message}
+              {t(`form.errors.${errors.last_name?.message}`)}
             </ErrorMessage>
           </Label>
 
@@ -119,7 +119,7 @@ export const ContactForm = () => {
               {...register("email")}
             />
             <ErrorMessage hasError={!!errors.email}>
-              {errors.email?.message}
+              {t(`form.errors.${errors.email?.message}`)}
             </ErrorMessage>
           </Label>
 
@@ -133,7 +133,7 @@ export const ContactForm = () => {
               {...register("subject")}
             />
             <ErrorMessage hasError={!!errors.subject}>
-              {errors.subject?.message}
+              {t(`form.errors.${errors.subject?.message}`)}
             </ErrorMessage>
           </Label>
 
@@ -151,7 +151,7 @@ export const ContactForm = () => {
             )}
 
             <ErrorMessage hasError={!!errors.message}>
-              {errors.message?.message}
+              {t(`form.errors.${errors.message?.message}`)}
             </ErrorMessage>
           </Label>
         </form>

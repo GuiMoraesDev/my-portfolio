@@ -16,7 +16,7 @@ export const MarkdownEditor = ({
   const { register } = formMethods;
 
   return (
-    <div className="flex h-60 w-full flex-col gap-1 divide-y rounded-md border border-gray-300 px-3 pt-2 md:h-32">
+    <div className="flex h-auto w-full flex-col gap-1 divide-y rounded-md border border-gray-300 px-3 pt-2">
       <EditorContent
         editor={editor}
         id="editor"

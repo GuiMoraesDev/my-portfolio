@@ -11,7 +11,7 @@ import {
   UnderlineIcon,
 } from "@radix-ui/react-icons";
 import { startSpan } from "@sentry/nextjs";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -22,87 +22,93 @@ import { type MarkdownEditorProps } from ".";
 
 import { Tooltip } from "@/components/atoms/Tooltip";
 
-export const Toolbar = ({ editor, ...formMethods }: MarkdownEditorProps) => (
-  <nav className="flex w-full flex-wrap items-center gap-x-4 gap-y-2 p-2">
-    <section className="flex items-center gap-2">
-      <ToolButton
-        handleClick={() => editor.chain().focus().undo().run()}
-        disabled={!editor.can().chain().focus().undo().run()}
-        description="Undo"
-      >
-        <ResetIcon />
-      </ToolButton>
+export const Toolbar = ({ editor, ...formMethods }: MarkdownEditorProps) => {
+  const t = useTranslations("contact");
 
-      <ToolButton
-        handleClick={() => editor.chain().focus().redo().run()}
-        disabled={!editor.can().chain().focus().redo().run()}
-        description="Redo"
-      >
-        <ResetIcon className="-scale-x-100" />
-      </ToolButton>
-    </section>
+  return (
+    <nav className="flex w-full flex-wrap items-center gap-x-4 gap-y-2 p-2">
+      <section className="flex items-center gap-2">
+        <ToolButton
+          handleClick={() => editor.chain().focus().undo().run()}
+          disabled={!editor.can().chain().focus().undo().run()}
+          description={t("form.toolbar.undo")}
+        >
+          <ResetIcon />
+        </ToolButton>
 
-    <section className="flex items-center gap-2">
-      <ToolButton
-        handleClick={() => editor.chain().focus().toggleBold().run()}
-        disabled={!editor.can().chain().focus().toggleBold().run()}
-        isActive={editor.isActive("bold")}
-        description="Bold"
-      >
-        <FontBoldIcon />
-      </ToolButton>
+        <ToolButton
+          handleClick={() => editor.chain().focus().redo().run()}
+          disabled={!editor.can().chain().focus().redo().run()}
+          description={t("form.toolbar.redo")}
+        >
+          <ResetIcon className="-scale-x-100" />
+        </ToolButton>
+      </section>
 
-      <ToolButton
-        handleClick={() => editor.chain().focus().toggleItalic().run()}
-        disabled={!editor.can().chain().focus().toggleItalic().run()}
-        isActive={editor.isActive("italic")}
-        description="Italic"
-      >
-        <FontItalicIcon />
-      </ToolButton>
+      <section className="flex items-center gap-2">
+        <ToolButton
+          handleClick={() => editor.chain().focus().toggleBold().run()}
+          disabled={!editor.can().chain().focus().toggleBold().run()}
+          isActive={editor.isActive("bold")}
+          description={t("form.toolbar.bold")}
+        >
+          <FontBoldIcon />
+        </ToolButton>
 
-      <ToolButton
-        handleClick={() => editor.chain().focus().toggleUnderline().run()}
-        disabled={!editor.can().chain().focus().toggleUnderline().run()}
-        isActive={editor.isActive("underline")}
-        description="Underline"
-      >
-        <UnderlineIcon />
-      </ToolButton>
+        <ToolButton
+          handleClick={() => editor.chain().focus().toggleItalic().run()}
+          disabled={!editor.can().chain().focus().toggleItalic().run()}
+          isActive={editor.isActive("italic")}
+          description={t("form.toolbar.italic")}
+        >
+          <FontItalicIcon />
+        </ToolButton>
 
-      <ToolButton
-        handleClick={() => editor.chain().focus().toggleStrike().run()}
-        disabled={!editor.can().chain().focus().toggleStrike().run()}
-        isActive={editor.isActive("strike")}
-        description="Strikethrough"
-      >
-        <StrikethroughIcon />
-      </ToolButton>
-    </section>
+        <ToolButton
+          handleClick={() => editor.chain().focus().toggleUnderline().run()}
+          disabled={!editor.can().chain().focus().toggleUnderline().run()}
+          isActive={editor.isActive("underline")}
+          description={t("form.toolbar.underline")}
+        >
+          <UnderlineIcon />
+        </ToolButton>
 
-    <section className="flex items-center gap-2">
-      <ToolButton
-        handleClick={() => editor.chain().focus().toggleCode().run()}
-        disabled={!editor.can().chain().focus().toggleCode().run()}
-        isActive={editor.isActive("code")}
-        description="Code"
-      >
-        <CodeIcon />
-      </ToolButton>
+        <ToolButton
+          handleClick={() => editor.chain().focus().toggleStrike().run()}
+          disabled={!editor.can().chain().focus().toggleStrike().run()}
+          isActive={editor.isActive("strike")}
+          description={t("form.toolbar.strikethrough")}
+        >
+          <StrikethroughIcon />
+        </ToolButton>
+      </section>
 
-      <ToolButton
-        handleClick={() => editor.chain().focus().setHorizontalRule().run()}
-        description="Divider"
-      >
-        <DividerHorizontalIcon />
-      </ToolButton>
+      <section className="flex items-center gap-2">
+        <ToolButton
+          handleClick={() => editor.chain().focus().toggleCode().run()}
+          disabled={!editor.can().chain().focus().toggleCode().run()}
+          isActive={editor.isActive("code")}
+          description={t("form.toolbar.code")}
+        >
+          <CodeIcon />
+        </ToolButton>
 
-      <GenerateButton {...formMethods} />
-    </section>
-  </nav>
-);
+        <ToolButton
+          handleClick={() => editor.chain().focus().setHorizontalRule().run()}
+          description={t("form.toolbar.divider")}
+        >
+          <DividerHorizontalIcon />
+        </ToolButton>
+
+        <GenerateButton {...formMethods} />
+      </section>
+    </nav>
+  );
+};
 
 const GenerateButton = ({ getValues, setValue, trigger, watch }: FormProps) => {
+  const t = useTranslations("contact");
+
   const locale = useLocale();
   const { isPending, mutateAsync } = useGenerateEmailMutation();
   const [firstNameValue, lastNameValue, subjectValue] = watch([
@@ -146,7 +152,7 @@ const GenerateButton = ({ getValues, setValue, trigger, watch }: FormProps) => {
     <ToolButton
       handleClick={handleSubmit}
       disabled={isPending || !isFormFilled}
-      description="Fill the form to generate a message with AI"
+      description={t("form.toolbar.generate")}
     >
       <MagicWandIcon />
     </ToolButton>

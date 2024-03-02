@@ -75,7 +75,10 @@ jobs:
           cache: "pnpm"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile & pnpm exec playwright install --with-deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Install playwright deps
+        run: pnpm exec playwright install --with-deps
 
       - name: E2E test
         run: pnpm test:e2e

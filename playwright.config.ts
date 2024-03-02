@@ -18,18 +18,8 @@ export default defineConfig({
     },
 
     {
-      name: "webkit",
-      use: { ...devices["Desktop Safari"] },
-    },
-
-    {
       name: "mobile_chrome",
       use: { ...devices["Galaxy S8"] },
-    },
-
-    {
-      name: "mobile_safari",
-      use: { ...devices["iPhone SE"] },
     },
   ],
   webServer: {

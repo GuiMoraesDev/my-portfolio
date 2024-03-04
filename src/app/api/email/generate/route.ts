@@ -23,7 +23,7 @@ export async function POST(request: Request) {
       messages: [
         {
           role: "user",
-          content: `I'm ${first_name} ${last_name}. Create a pleasant message about ${subject} to Guilherme Moraes in no more than 50 tokens. Base your answer in it ${message}, and write it in ${locale} language`,
+          content: `I'm ${first_name} ${last_name}. Create a pleasant message about ${subject} to Guilherme Moraes in no more than 150 tokens. Base your answer in this ${message}, and write it in ${locale} language`,
         },
       ],
     });

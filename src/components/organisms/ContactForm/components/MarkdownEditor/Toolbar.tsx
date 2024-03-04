@@ -15,7 +15,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { type FormProps } from "../../@types";
 import { useGenerateEmailMutation } from "../../hooks";
 
 import { type MarkdownEditorProps } from ".";
@@ -100,13 +99,14 @@ export const Toolbar = ({ editor, ...formMethods }: MarkdownEditorProps) => {
           <DividerHorizontalIcon />
         </ToolButton>
 
-        <GenerateButton {...formMethods} />
+        <GenerateButton {...formMethods} editor={editor} />
       </section>
     </nav>
   );
 };
 
-const GenerateButton = ({ getValues, setValue, trigger, watch }: FormProps) => {
+const GenerateButton = ({ editor, ...formMethods }: MarkdownEditorProps) => {
+  const { getValues, setValue, trigger, watch } = formMethods;
   const t = useTranslations("contact");
 
   const locale = useLocale();
@@ -144,6 +144,7 @@ const GenerateButton = ({ getValues, setValue, trigger, watch }: FormProps) => {
 
         const data = await response.json();
         setValue("message", data);
+        editor.commands.setContent(data);
       },
     );
   };

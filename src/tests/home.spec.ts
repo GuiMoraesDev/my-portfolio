@@ -83,11 +83,11 @@ test.describe("Page elements", () => {
   test("if the page has every content section visible", async ({ page }) => {
     await page.goto("./");
 
-    await expect(page.locator("#home")).toBeVisible();
-    await expect(page.locator("#overview")).toBeVisible();
-    await expect(page.locator("#know-how")).toBeVisible();
+    await expect(page.locator("#presentation")).toBeVisible();
     await expect(page.locator("#about-me")).toBeVisible();
-    await expect(page.locator("#code")).toBeVisible();
+    await expect(page.locator("#articles")).toBeVisible();
+    await expect(page.locator("#references")).toBeVisible();
+    await expect(page.locator("#projects")).toBeVisible();
     await expect(page.locator("#contact")).toBeVisible();
   });
 
@@ -103,10 +103,12 @@ test.describe("Page elements", () => {
     await expect(page.locator("#footer")).toBeVisible();
   });
 
-  test("if the page has the home section i the viewport", async ({ page }) => {
+  test("if the page has the presentation section i the viewport", async ({
+    page,
+  }) => {
     await page.goto("./");
 
-    await expect(page.locator("#home")).toBeInViewport();
+    await expect(page.locator("#presentation")).toBeInViewport();
   });
 });
 

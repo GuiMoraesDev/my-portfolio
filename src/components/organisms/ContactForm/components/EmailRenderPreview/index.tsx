@@ -20,7 +20,7 @@ export const EmailRenderPreview = (props: FormProps) => {
   return (
     <div
       className={twMerge(
-        "h-full w-full rounded-md border border-gray-50 bg-gray-50 p-4 ring-2 ring-gray-800 transition-colors duration-300",
+        "h-full w-full rounded-md p-4 transition-colors duration-300",
         state.awaiting ? "bg-plum-800/80" : "bg-gray-50",
       )}
     >

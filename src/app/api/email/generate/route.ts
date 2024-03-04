@@ -3,7 +3,7 @@ import OpenAI from "openai";
 import {
   generateMessageSchema,
   type GenerateMessageProps,
-} from "@/schemas/generateMessageSchema";
+} from "@/schemas/generateMessage/schema";
 
 const openai = new OpenAI({
   apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
       messages: [
         {
           role: "user",
-          content: `I'm ${first_name} ${last_name}. Create a pleasant message about ${subject} to Guilherme Moraes in no more than 50 tokens. Base your answer in it ${message}, and write it in ${locale} language`,
+          content: `I'm ${first_name} ${last_name}. Create a pleasant message about ${subject} to Guilherme Moraes in no more than 150 tokens. Base your answer in this ${message}, and write it in ${locale} language`,
         },
       ],
     });

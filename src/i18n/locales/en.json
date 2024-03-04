@@ -1,21 +1,22 @@
 {
   "links": {
-    "home": "Home",
-    "overview": "Overview",
-    "know-how": "Know-how",
+    "presentation": "Presentation",
     "about-me": "About me",
-    "code": "Code",
+    "articles": "Articles",
+    "references": "References",
+    "projects": "Projects",
     "contact": "Get in touch"
   },
   "presentation": {
     "name": "Hey, my name is",
-    "title": "I am Frontend developer",
-    "subtitle": "I craft seamless User Experiences with React, TypeScript, and Testing Library"
+    "title": "Frontend developer",
+    "subtitle": "I'm specialist in creating user experiences with NextJs, TypeScript, Testing Library, and more!",
+    "profile-image-alt": "An IA generated avatar from myself"
   },
-  "overview": {
-    "title": "Overview",
+  "about-me": {
+    "title": "About me",
     "quote": "'Crafting code and stories, a snapshot of my digital odyssey' - ChatGPT",
-    "description": "I'm a passionate front-end developer who loves tackling challenges to build awesome, user-friendly web interfaces. I'm all about making things look good and work seamlessly! With my skills I'm able to create engaging experiences that people love. When it comes to projects, you can count on me to bring fresh ideas and innovative solutions to the table. Ensuring that web applications are not only functional but scalable is my jam. Let's create something awesome together!",
+    "description": "I'm a frontend developer passionate about taking on challenges to build amazing, user-friendly web interfaces. When it comes to projects, I always aim to bring new ideas and innovative solutions to the table. Ensuring that web applications are not only functional but also scalable is my specialty. Let's create something amazing together!",
     "cards": {
       "years-experience": "{time} of experience",
       "attention-details": "Attention to details for a good UX",
@@ -23,53 +24,114 @@
       "remote-work": "Working remote-first worldwide"
     }
   },
-  "know-how": {
+  "articles": {
     "title": "Exploring my know-how",
     "quote": "'Lorem ipsum dolor sit amet' - lipsum.com"
   },
-  "buzz-about-me": {
+  "references": {
     "title": "What's the buzz about me?",
     "quote": "'He is the most handsome boy in the world' - Mom",
     "testimonials": {
       "vitor-leonardo": {
         "role": "Graphic Designer",
-        "text": "In addition to being an excellent teammate, he is a very sensible and responsible person. His work is always very efficient and also very assertive. He has great synchronization with the team and is very dedicated to his projects."
+        "text": "In addition to being an excellent teammate, he is a very sensible and responsible person. His work is always very efficient and also very assertive. He has great synchronization with the team and is very dedicated to his projects.",
+        "image-alt": "a male avatar cartoon"
       },
       "saulo-bulhoes": {
         "role": "UX Designer",
-        "text": "Guilherme is an extremely competent professional, passionate about what he does, delivering quality and excellent results. In every project he undertakes, he presents good solutions, observing and suggesting points that can be improved in the process and product. Intelligent, proactive, creative and insightful, he always treats the team with great affection, respect and professionalism. He is always looking to overcome any challenge."
+        "text": "Guilherme is an extremely competent professional, passionate about what he does, delivering quality and excellent results. In every project he undertakes, he presents good solutions, observing and suggesting points that can be improved in the process and product. Intelligent, proactive, creative and insightful, he always treats the team with great affection, respect and professionalism. He is always looking to overcome any challenge.",
+        "image-alt": "a male avatar cartoon"
       },
       "osmane-fonseca": {
         "role": "Web Designer",
-        "text": "Guilherme has extensive technical knowledge as a front-end, but what surprised me is how he added it to the website architecture, always thinking about the user experience focused on the project objectives. Guilherme not only acts as a very technical developer but also makes the navigation easy to understand and actions simple to perform."
+        "text": "Guilherme has extensive technical knowledge as a front-end, but what surprised me is how he added it to the website architecture, always thinking about the user experience focused on the project objectives. Guilherme not only acts as a very technical developer but also makes the navigation easy to understand and actions simple to perform.",
+        "image-alt": "a male avatar cartoon"
       }
     }
   },
-  "code": {
+  "projects": {
     "title": "Talk is cheap. Show me the code.",
     "quote": "'The code is the documentation' - Unknown"
   },
   "contact": {
-    "title": "Let's talk!",
+    "title": "Entrar em contato",
     "subtitle": "Hey there! Got something on your mind? Shoot me a message",
     "form": {
-      "title": "Contact",
+      "title": "Let's talk!",
       "labels": {
         "first_name": "Your first name",
         "last_name": "Your last name",
         "email": "Your best email",
         "subject": "Subject",
-        "message": "Message"
+        "message": "Message <small>(markdown supported)</small>"
       },
       "placeholders": {
         "email": "johnDoe@example.com",
-        "subject": "I have a great opportunity for you",
+        "subject": "I have an opportunity for you",
         "message": "Type your message here..."
+      },
+      "errors": {
+        "first_name_required": "First name is required",
+        "last_name_required": "Last name is required",
+        "email_invalid": "Please enter a valid email",
+        "subject_required": "Email subject is required",
+        "message_required": "Email message is required"
+      },
+      "toolbar": {
+        "undo": "Undo",
+        "redo": "Redo",
+        "bold": "Bold",
+        "italic": "Italic",
+        "underline": "Underline",
+        "strikethrough": "Strikethrough",
+        "code": "Code",
+        "divider": "Divider",
+        "generate": "Generate message with AI"
+      },
+      "toasts": {
+        "send-email": {
+          "mutation": {
+            "title": "Sending your message...",
+            "message": "Please wait a moment"
+          },
+          "error": {
+            "title": "An error occurred",
+            "message": "An error occurred while sending your message. Please try again later."
+          },
+          "success": {
+            "title": "Message sent",
+            "message": "Your message was sent successfully!"
+          }
+        },
+        "generate-email": {
+          "mutation": {
+            "title": "Generating message...",
+            "message": "Please wait a moment"
+          },
+          "error": {
+            "title": "An error occurred",
+            "message": "An error occurred while generating your message. Please try again later."
+          },
+          "success": {
+            "title": "New message generated",
+            "message": "Your message was generated successfully!"
+          }
+        }
       },
       "buttons": {
         "close": "Close",
         "send": "Send"
       }
+    },
+    "preview": {
+      "title": "Preview",
+      "awaiting": "Your email preview will be shown here",
+      "unsupported": "Your browser does not support this feature"
     }
+  },
+  "footer": {
+    "title": "Nice to have you here!",
+    "contact-me-by": "Contact me by",
+    "made-with-love": "Made with love"
   }
 }

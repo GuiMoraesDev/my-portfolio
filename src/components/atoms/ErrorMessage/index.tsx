@@ -4,7 +4,11 @@ import { twMerge } from "tailwind-merge";
 type ErrorMessageProps = ComponentProps<"p"> & {
   hasError: boolean;
 };
-export const ErrorMessage = ({ hasError, ...props }: ErrorMessageProps) => {
+export const ErrorMessage = ({
+  hasError,
+  className,
+  ...props
+}: ErrorMessageProps) => {
   if (!hasError) return null;
 
   return (
@@ -12,7 +16,7 @@ export const ErrorMessage = ({ hasError, ...props }: ErrorMessageProps) => {
       className={twMerge(
         "text-xs text-red-600",
         "flex items-center gap-1",
-        props.className,
+        className,
       )}
       {...props}
     />

@@ -10,8 +10,11 @@ import { useHandleClickOutside } from "./hooks/useDetectClickOutside";
 
 import { Icon } from "@/components/atoms/Icon";
 import { Select } from "@/components/atoms/Select";
+import { printInConsole } from "@/services/console";
 
 export const Header = ({ className, ...props }: ComponentProps<"header">) => {
+  printInConsole();
+
   const wrapperRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -23,13 +26,17 @@ export const Header = ({ className, ...props }: ComponentProps<"header">) => {
   });
 
   const links = [
-    { href: "#home", label: t("home") },
-    { href: "#overview", label: t("overview") },
-    { href: "#know-how", label: t("know-how") },
+    { href: "#presentation", label: t("presentation") },
     { href: "#about-me", label: t("about-me") },
-    { href: "#code", label: t("code") },
+    { href: "#articles", label: t("articles") },
+    { href: "#references", label: t("references") },
+    { href: "#projects", label: t("projects") },
     { href: "#contact", label: t("contact") },
   ];
+
+  const handleToggleMenu = () => {
+    setIsOpen((state) => !state);
+  };
 
   return (
     <header
@@ -42,56 +49,51 @@ export const Header = ({ className, ...props }: ComponentProps<"header">) => {
     >
       <nav
         className={twMerge(
-          "relative flex h-full w-full items-center justify-end",
+          "relative flex h-full w-full items-center justify-between",
         )}
       >
         <div
-          className={twMerge(
-            "absolute left-0 top-0 flex flex-col items-start justify-start p-5",
-            isOpen
-              ? "min-h-96 min-w-52 rounded-lg bg-white/[.98] shadow-[0_1px_6px_rgba(255,255,255,0.66)] transition-all duration-200 lg:min-h-80"
-              : "h-full w-auto",
-          )}
+          className={twMerge("relative flex items-center justify-between")}
           ref={wrapperRef}
         >
-          <button
-            onClick={() => setIsOpen((state) => !state)}
-            className="rounded-full"
-          >
+          <button onClick={handleToggleMenu} className="z-10">
             <Hamburger isOpen={isOpen} />
           </button>
 
-          <ul
+          <section
             className={twMerge(
-              "flex w-full min-w-24 flex-col items-start gap-4 self-end overflow-hidden font-medium text-plum-800 transition",
+              "absolute left-0 top-0 flex min-w-52 flex-col gap-6 pt-16",
+              "before:absolute before:left-0 before:top-0 before:h-[calc(100%+2.5rem)] before:w-[calc(100%+2.5rem)] before:origin-top-left before:rounded-xl before:bg-white/[.98] before:p-5 before:transition before:content-[''] lg:before:h-[calc(100%+1.5rem)]",
               isOpen
-                ? "mt-8 h-full translate-x-0 scale-x-100 delay-200"
-                : "h-0 -translate-x-full scale-x-0",
+                ? "before:-translate-x-5 before:-translate-y-5 before:scale-100 before:rounded-md"
+                : "before:translate-x-1 before:translate-y-1 before:scale-0",
             )}
           >
-            {links.map(({ href, label }) => (
-              <li
-                key={label}
-                className="h-full origin-left uppercase transition hover:scale-105 hover:font-semibold"
-              >
-                <a
-                  href={href}
-                  className="inline-flex h-full leading-snug tracking-wide"
+            <ul
+              className={twMerge(
+                "relative z-10 flex flex-col gap-4 font-medium text-plum-800",
+                isOpen ? "visible delay-200" : "invisible",
+              )}
+            >
+              {links.map(({ href, label }) => (
+                <li
+                  key={label}
+                  className="origin-left uppercase transition hover:scale-105 hover:font-semibold"
                 >
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
+                  <a
+                    href={href}
+                    className="inline-flex h-full leading-snug tracking-wide"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
 
-          <LanguageSelector
-            className={twMerge(
-              "px-2 lg:hidden",
-              isOpen
-                ? "translate-x-0 scale-x-100 delay-200"
-                : "-translate-x-full scale-x-0",
-            )}
-          />
+              <li className="origin-left uppercase transition hover:scale-105 hover:font-semibold">
+                <LanguageSelector className={twMerge("flex  lg:hidden")} />
+              </li>
+            </ul>
+          </section>
         </div>
 
         <LanguageSelector className="hidden lg:flex" />
@@ -110,7 +112,10 @@ const LanguageSelector = ({ className }: ComponentProps<"div">) => {
 
   return (
     <div
-      className={twMerge("relative z-10 inline-flex items-center", className)}
+      className={twMerge(
+        "relative z-10 inline-flex w-fit items-center",
+        className,
+      )}
     >
       <Select.Root onValueChange={handleLanguageChange} defaultValue={locale}>
         <Select.Trigger className="bg-plum-900 text-white/[.98]">

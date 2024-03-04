@@ -49,10 +49,6 @@ export const PinnedRepos = () => {
               height={168}
               className="aspect-video h-auto w-full overflow-hidden rounded-lg border border-plum-100 object-cover"
             />
-
-            <p className="absolute bottom-0.5 right-0.5 w-1/2 rounded-md bg-plum-500 py-2 text-center text-xs capitalize text-white min-[340px]:text-sm">
-              {title}
-            </p>
           </li>
         ))
       )}

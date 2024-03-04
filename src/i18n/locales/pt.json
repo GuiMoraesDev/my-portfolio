@@ -1,21 +1,22 @@
 {
   "links": {
-    "home": "Home",
-    "overview": "Visão Geral",
-    "know-how": "Meu Conhecimento",
-    "about-me": "Sobre Mim",
-    "code": "Código",
+    "presentation": "Apresentação",
+    "about-me": "Sobre mim",
+    "articles": "Artigos",
+    "references": "Referencias",
+    "projects": "Projetos",
     "contact": "Entrar em contato"
   },
   "presentation": {
     "name": "E aí, meu nome é",
-    "title": "Sou desenvolvedor Frontend",
-    "subtitle": "Eu crio experiências de usuário perfeitas com React, TypeScript e Testing Library"
+    "title": "Desenvolvedor Frontend",
+    "subtitle": "Sou especialista em criar experiências de usuário com NextJs, TypeScript, Testing Library, e mais!",
+    "profile-image-alt": "Um avatar meu gerado por IA"
   },
-  "overview": {
-    "title": "Visão Geral",
+  "about-me": {
+    "title": "Sobre mim",
     "quote": "'Codificando códigos e histórias, uma fotografia da minha odisseia digital' - ChatGPT",
-    "description": "Sou um desenvolvedor frontend apaixonado que adora enfrentar desafios para construir interfaces web incríveis e amigáveis ao usuário. Estou sempre em busca de fazer as coisas parecerem e funcionarem perfeitamente! Com minhas habilidades, consigo criar experiências envolventes que as pessoas adoram. Quando se trata de projetos, pode contar comigo para trazer ideias novas e soluções inovadoras para a mesa. Garantir que as aplicações web não sejam apenas funcionais, mas também escaláveis, é minha especialidade. Vamos criar algo incrível juntos!",
+    "description": "Sou um desenvolvedor frontend apaixonado por enfrentar desafios para construir interfaces web incríveis e amigáveis ao usuário. Quando se trata de projetos, sempre busco trazer novas ideias e soluções inovadoras para a mesa. Garantir que as aplicações web não sejam apenas funcionais, mas também escaláveis, é minha especialidade. Vamos criar algo incrível juntos!",
     "cards": {
       "years-experience": "{time} de experiência",
       "attention-details": "Atenção aos detalhes para uma boa UX",
@@ -23,53 +24,114 @@
       "remote-work": "Trabalho remoto para todo o mundo"
     }
   },
-  "know-how": {
+  "articles": {
     "title": "Explorando meu conhecimento",
     "quote": "'Lorem ipsum dolor sit amet' - lipsum.com"
   },
-  "buzz-about-me": {
+  "references": {
     "title": "O que estão dizendo sobre mim?",
     "quote": "'Ele é o menino mais bonito do mundo' - Mãe",
     "testimonials": {
       "vitor-leonardo": {
         "role": "Designer Gráfico",
-        "text": "Além de ser um excelente colega de equipe, ele é uma pessoa muito sensível e responsável. Seu trabalho é sempre muito eficiente e também muito assertivo. Ele tem uma grande sincronia com a equipe e é muito dedicado aos seus projetos."
+        "text": "Além de ser um excelente colega de equipe, ele é uma pessoa muito sensível e responsável. Seu trabalho é sempre muito eficiente e também muito assertivo. Ele tem uma grande sincronia com a equipe e é muito dedicado aos seus projetos.",
+        "image-alt": "desenho de um avatar masculino"
       },
       "saulo-bulhoes": {
         "role": "Designer de UX",
-        "text": "Guilherme é um profissional extremamente competente, apaixonado pelo que faz, entregando qualidade e excelentes resultados. Em cada projeto que ele assume, apresenta boas soluções, observando e sugerindo pontos que podem ser melhorados no processo e no produto. Inteligente, proativo, criativo e perspicaz, sempre trata a equipe com muito carinho, respeito e profissionalismo. Ele está sempre em busca de superar qualquer desafio."
+        "text": "Guilherme é um profissional extremamente competente, apaixonado pelo que faz, entregando qualidade e excelentes resultados. Em cada projeto que ele assume, apresenta boas soluções, observando e sugerindo pontos que podem ser melhorados no processo e no produto. Inteligente, proativo, criativo e perspicaz, sempre trata a equipe com muito carinho, respeito e profissionalismo. Ele está sempre em busca de superar qualquer desafio.",
+        "image-alt": "desenho de um avatar masculino"
       },
       "osmane-fonseca": {
         "role": "Web Designer",
-        "text": "Guilherme tem amplo conhecimento técnico como front-end, mas o que me surpreendeu é como ele o adicionou à arquitetura do site, sempre pensando na experiência do usuário focada nos objetivos do projeto. Guilherme não apenas atua como um desenvolvedor muito técnico, mas também torna a navegação fácil de entender e as ações simples de realizar."
+        "text": "Guilherme tem amplo conhecimento técnico como front-end, mas o que me surpreendeu é como ele o adicionou à arquitetura do site, sempre pensando na experiência do usuário focada nos objetivos do projeto. Guilherme não apenas atua como um desenvolvedor muito técnico, mas também torna a navegação fácil de entender e as ações simples de realizar.",
+        "image-alt": "desenho de um avatar masculino"
       }
     }
   },
-  "code": {
+  "projects": {
     "title": "Falar é fácil. Mostre-me o código.",
     "quote": "'O código é a documentação' - Desconhecido"
   },
   "contact": {
-    "title": "Vamos conversar!",
+    "title": "Get in touch!",
     "subtitle": "E aí! Tem algo em mente? Manda uma mensagem pra mim.",
     "form": {
-      "title": "Contato",
+      "title": "Vamos conversar",
       "labels": {
         "first_name": "Seu nome",
         "last_name": "Seu sobrenome",
         "email": "Seu melhor e-mail",
         "subject": "Assunto",
-        "message": "Mensagem"
+        "message": "Mensagem <small>(Markdown suportado)</small>"
       },
       "placeholders": {
         "email": "johnDoe@exemplo.com.br",
-        "subject": "Eu tenho uma ótima oportunidade pra você",
+        "subject": "Eu tenho uma oportunidade pra você",
         "message": "Digite sua mensagem aqui..."
+      },
+      "errors": {
+        "first_name_required": "Nome é obrigatório",
+        "last_name_required": "Sobrenome é obrigatório",
+        "email_invalid": "Por favor, insira um e-mail válido",
+        "subject_required": "O assunto do e-mail é obrigatório",
+        "message_required": "A mensagem do e-mail é obrigatória"
+      },
+      "toolbar": {
+        "undo": "Desfazer",
+        "redo": "Refazer",
+        "bold": "Negrito",
+        "italic": "Itálico",
+        "underline": "Sublinhado",
+        "strikethrough": "Riscado",
+        "code": "Código",
+        "divider": "Divisor",
+        "generate": "Gerar mensagem com IA"
+      },
+      "toasts": {
+        "send-email": {
+          "mutation": {
+            "title": "Enviando sua mensagem...",
+            "message": "Por favor, aguarde um momento"
+          },
+          "error": {
+            "title": "Ocorreu um erro",
+            "message": "Ocorreu um erro enquanto enviava sua mensagem. Por favor, tente novamente mais tarde."
+          },
+          "success": {
+            "title": "Mensagem enviada",
+            "message": "Sua mensagem foi enviada com sucesso!"
+          }
+        },
+        "generate-email": {
+          "mutation": {
+            "title": "Gerando mensagem...",
+            "message": "Por favor, aguarde um momento"
+          },
+          "error": {
+            "title": "Ocorreu um erro",
+            "message": "Ocorreu um erro enquanto gerava sua mensagem. Por favor, tente novamente mais tarde."
+          },
+          "success": {
+            "title": "Nova mensagem gerada",
+            "message": "Sua mensagem foi gerada com sucesso!"
+          }
+        }
       },
       "buttons": {
         "close": "Fechar",
         "send": "Enviar"
       }
+    },
+    "preview": {
+      "title": "Preview",
+      "awaiting": "Um preview do seu e-mail vai aparecer aqui",
+      "unsupported": "Seu navegador não suporta este recurso"
     }
+  },
+  "footer": {
+    "title": "Que bom ter você aqui!",
+    "contact-me-by": "Entre em contato comigo por",
+    "made-with-love": "Feito com amor"
   }
 }

@@ -25,10 +25,10 @@ export default function Home() {
   const messages = useMessages();
 
   const presentationT = useTranslations("presentation");
-  const overviewT = useTranslations("overview");
-  const knowHowT = useTranslations("know-how");
-  const buzzAboutMeT = useTranslations("buzz-about-me");
-  const codeT = useTranslations("code");
+  const aboutMeT = useTranslations("about-me");
+  const articlesT = useTranslations("articles");
+  const referencesT = useTranslations("references");
+  const projectsT = useTranslations("projects");
   const contactT = useTranslations("contact");
   const footerT = useTranslations("footer");
 
@@ -41,7 +41,7 @@ export default function Home() {
         <Header className="max-w-7xl max-[2000px]:px-[10vw]" id="header" />
       </NextIntlClientProvider>
 
-      <SessionWrapper className="mt-14 md:flex-row" id="home">
+      <SessionWrapper className="mt-14 md:flex-row" id="presentation">
         <section className="flex flex-col gap-4 text-white">
           <div className="flex max-w-2xl flex-col gap-6 md:gap-8">
             <h1 className="inline-flex flex-col text-2xl lg:text-2xl">
@@ -83,21 +83,18 @@ export default function Home() {
         </section>
       </SessionWrapper>
 
-      <SessionWrapper className="lg:flex-row" id="overview">
+      <SessionWrapper className="lg:flex-row" id="about-me">
         <section className="flex flex-col gap-10 lg:w-1/2">
-          <SessionHeader
-            title={overviewT("title")}
-            quote={overviewT("quote")}
-          />
+          <SessionHeader title={aboutMeT("title")} quote={aboutMeT("quote")} />
 
           <p className="text-lg leading-snug tracking-wide">
-            {overviewT("description")}
+            {aboutMeT("description")}
           </p>
         </section>
 
         <section className="grid grid-cols-1 items-center justify-center gap-4 min-[340px]:grid-cols-2">
           <OverviewCard icon="Chip">
-            {overviewT("cards.years-experience", {
+            {aboutMeT("cards.years-experience", {
               time: capitalizeFirstLetter(
                 formatDistanceToNow(new Date(2019, 5, 11), {
                   locale: locale === "pt" ? ptBR : enUS,
@@ -107,31 +104,31 @@ export default function Home() {
           </OverviewCard>
 
           <OverviewCard icon="MagnifyingGlass">
-            {overviewT("cards.attention-details")}
+            {aboutMeT("cards.attention-details")}
           </OverviewCard>
 
           <OverviewCard icon="Code">
-            {overviewT("cards.scalable-code")}
+            {aboutMeT("cards.scalable-code")}
           </OverviewCard>
 
           <OverviewCard icon="Globe">
-            {overviewT("cards.remote-work")}
+            {aboutMeT("cards.remote-work")}
           </OverviewCard>
         </section>
       </SessionWrapper>
 
-      <SessionWrapper className="pt-20 lg:items-start" id="know-how">
-        <SessionHeader title={knowHowT("title")} quote={knowHowT("quote")} />
+      <SessionWrapper className="pt-20 lg:items-start" id="articles">
+        <SessionHeader title={articlesT("title")} quote={articlesT("quote")} />
 
         <section className="flex w-full flex-col items-center justify-center gap-6">
           <Articles />
         </section>
       </SessionWrapper>
 
-      <SessionWrapper className="lg:items-start" id="about-me">
+      <SessionWrapper className="lg:items-start" id="references">
         <SessionHeader
-          title={buzzAboutMeT("title")}
-          quote={buzzAboutMeT("quote")}
+          title={referencesT("title")}
+          quote={referencesT("quote")}
         />
 
         <section className="flex w-full flex-wrap items-start justify-start gap-14 xl:flex-nowrap">
@@ -139,8 +136,8 @@ export default function Home() {
         </section>
       </SessionWrapper>
 
-      <SessionWrapper className="items-start justify-start" id="code">
-        <SessionHeader title={codeT("title")} quote={codeT("quote")} />
+      <SessionWrapper className="items-start justify-start" id="projects">
+        <SessionHeader title={projectsT("title")} quote={projectsT("quote")} />
 
         <section className="flex w-full flex-wrap items-center justify-center gap-14">
           <PinnedRepos />

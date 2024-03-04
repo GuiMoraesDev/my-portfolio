@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 export const Testimonials = () => {
-  const t = useTranslations("buzz-about-me");
+  const t = useTranslations("references");
   return (
     <>
       <TestimonialCard

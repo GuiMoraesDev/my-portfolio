@@ -26,11 +26,11 @@ export const Header = ({ className, ...props }: ComponentProps<"header">) => {
   });
 
   const links = [
-    { href: "#home", label: t("home") },
-    { href: "#overview", label: t("overview") },
-    { href: "#know-how", label: t("know-how") },
+    { href: "#presentation", label: t("presentation") },
     { href: "#about-me", label: t("about-me") },
-    { href: "#code", label: t("code") },
+    { href: "#articles", label: t("articles") },
+    { href: "#references", label: t("references") },
+    { href: "#projects", label: t("projects") },
     { href: "#contact", label: t("contact") },
   ];
 

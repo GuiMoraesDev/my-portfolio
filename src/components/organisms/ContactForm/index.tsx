@@ -89,7 +89,9 @@ export const ContactForm = () => {
               {...register("first_name")}
             />
             <ErrorMessage hasError={!!errors.first_name}>
-              {t(`form.errors.${errors.first_name?.message}`)}
+              {errors.first_name?.message
+                ? t(`form.errors.${errors.first_name?.message}`)
+                : null}
             </ErrorMessage>
           </Label>
 
@@ -104,7 +106,9 @@ export const ContactForm = () => {
               {...register("last_name")}
             />
             <ErrorMessage hasError={!!errors.last_name}>
-              {t(`form.errors.${errors.last_name?.message}`)}
+              {errors.last_name?.message
+                ? t(`form.errors.${errors.last_name?.message}`)
+                : null}
             </ErrorMessage>
           </Label>
 
@@ -119,7 +123,9 @@ export const ContactForm = () => {
               {...register("email")}
             />
             <ErrorMessage hasError={!!errors.email}>
-              {t(`form.errors.${errors.email?.message}`)}
+              {errors.email?.message
+                ? t(`form.errors.${errors.email?.message}`)
+                : null}
             </ErrorMessage>
           </Label>
 
@@ -133,7 +139,9 @@ export const ContactForm = () => {
               {...register("subject")}
             />
             <ErrorMessage hasError={!!errors.subject}>
-              {t(`form.errors.${errors.subject?.message}`)}
+              {errors.subject?.message
+                ? t(`form.errors.${errors.subject?.message}`)
+                : null}
             </ErrorMessage>
           </Label>
 
@@ -151,7 +159,9 @@ export const ContactForm = () => {
             )}
 
             <ErrorMessage hasError={!!errors.message}>
-              {t(`form.errors.${errors.message?.message}`)}
+              {errors.message?.message
+                ? t(`form.errors.${errors.message?.message}`)
+                : null}
             </ErrorMessage>
           </Label>
         </form>

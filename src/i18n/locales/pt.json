@@ -1,22 +1,22 @@
 {
   "links": {
     "home": "Home",
-    "overview": "Visão Geral",
-    "know-how": "Meu Conhecimento",
-    "about-me": "Sobre Mim",
-    "code": "Código",
+    "about-me": "Sobre mim",
+    "articles": "Artigos",
+    "references": "Referencias",
+    "projects": "Projetos",
     "contact": "Entrar em contato"
   },
   "presentation": {
     "name": "E aí, meu nome é",
     "title": "Desenvolvedor Frontend",
-    "subtitle": "Eu crio experiências de usuário perfeitas com React, TypeScript e Testing Library",
+    "subtitle": "Sou especialista em criar experiências de usuário com NextJs, TypeScript, Testing Library, e mais!",
     "profile-image-alt": "Um avatar meu gerado por IA"
   },
-  "overview": {
-    "title": "Visão Geral",
+  "about-me": {
+    "title": "Sobre mim",
     "quote": "'Codificando códigos e histórias, uma fotografia da minha odisseia digital' - ChatGPT",
-    "description": "Sou um desenvolvedor frontend apaixonado que adora enfrentar desafios para construir interfaces web incríveis e amigáveis ao usuário. Estou sempre em busca de fazer as coisas parecerem e funcionarem perfeitamente! Com minhas habilidades, consigo criar experiências envolventes que as pessoas adoram. Quando se trata de projetos, pode contar comigo para trazer ideias novas e soluções inovadoras para a mesa. Garantir que as aplicações web não sejam apenas funcionais, mas também escaláveis, é minha especialidade. Vamos criar algo incrível juntos!",
+    "description": "Sou um desenvolvedor frontend apaixonado por enfrentar desafios para construir interfaces web incríveis e amigáveis ao usuário. Quando se trata de projetos, sempre busco trazer novas ideias e soluções inovadoras para a mesa. Garantir que as aplicações web não sejam apenas funcionais, mas também escaláveis, é minha especialidade. Vamos criar algo incrível juntos!",
     "cards": {
       "years-experience": "{time} de experiência",
       "attention-details": "Atenção aos detalhes para uma boa UX",
@@ -24,11 +24,11 @@
       "remote-work": "Trabalho remoto para todo o mundo"
     }
   },
-  "know-how": {
+  "articles": {
     "title": "Explorando meu conhecimento",
     "quote": "'Lorem ipsum dolor sit amet' - lipsum.com"
   },
-  "buzz-about-me": {
+  "references": {
     "title": "O que estão dizendo sobre mim?",
     "quote": "'Ele é o menino mais bonito do mundo' - Mãe",
     "testimonials": {
@@ -49,15 +49,15 @@
       }
     }
   },
-  "code": {
+  "projects": {
     "title": "Falar é fácil. Mostre-me o código.",
     "quote": "'O código é a documentação' - Desconhecido"
   },
   "contact": {
-    "title": "Vamos conversar!",
+    "title": "Get in touch!",
     "subtitle": "E aí! Tem algo em mente? Manda uma mensagem pra mim.",
     "form": {
-      "title": "Contato",
+      "title": "Vamos conversar",
       "labels": {
         "first_name": "Seu nome",
         "last_name": "Seu sobrenome",
@@ -67,15 +67,15 @@
       },
       "placeholders": {
         "email": "johnDoe@exemplo.com.br",
-        "subject": "Eu tenho uma ótima oportunidade pra você",
+        "subject": "Eu tenho uma oportunidade pra você",
         "message": "Digite sua mensagem aqui..."
       },
       "errors": {
         "first_name_required": "Nome é obrigatório",
         "last_name_required": "Sobrenome é obrigatório",
         "email_invalid": "Por favor, insira um e-mail válido",
-        "subject_required": "Por favor, insira o assunto",
-        "message_required": "Por favor, insira a mensagem"
+        "subject_required": "O assunto do e-mail é obrigatório",
+        "message_required": "A mensagem do e-mail é obrigatória"
       },
       "toolbar": {
         "undo": "Desfazer",
@@ -91,12 +91,12 @@
       "toasts": {
         "send-email": {
           "mutation": {
-            "title": "Enviando sua mensagem",
-            "message": "Por favor, aguarde um momento..."
+            "title": "Enviando sua mensagem...",
+            "message": "Por favor, aguarde um momento"
           },
           "error": {
             "title": "Ocorreu um erro",
-            "message": "Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde."
+            "message": "Ocorreu um erro enquanto enviava sua mensagem. Por favor, tente novamente mais tarde."
           },
           "success": {
             "title": "Mensagem enviada",
@@ -105,12 +105,12 @@
         },
         "generate-email": {
           "mutation": {
-            "title": "Gerando mensagem",
-            "message": "Por favor, aguarde um momento..."
+            "title": "Gerando mensagem...",
+            "message": "Por favor, aguarde um momento"
           },
           "error": {
             "title": "Ocorreu um erro",
-            "message": "Ocorreu um erro ao gerar sua mensagem. Por favor, tente novamente mais tarde."
+            "message": "Ocorreu um erro enquanto gerava sua mensagem. Por favor, tente novamente mais tarde."
           },
           "success": {
             "title": "Nova mensagem gerada",

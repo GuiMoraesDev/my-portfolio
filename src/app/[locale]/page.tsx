@@ -162,7 +162,7 @@ export default function Home() {
         )}
         id="footer"
       >
-        <footer className="z-10 flex h-full w-full items-end justify-between gap-4 text-sm text-white">
+        <footer className="z-10 flex h-full w-full flex-col items-center justify-between gap-4 text-sm text-white md:flex-row lg:items-end">
           <div className="flex flex-col gap-3">
             <strong
               className={twMerge(
@@ -172,16 +172,22 @@ export default function Home() {
             >
               {footerT("title")}
             </strong>
-            <p className="inline-flex gap-1 leading-normal tracking-wide">
+
+            <p className="inline-block leading-normal tracking-wide">
               {footerT("contact-me-by")}
-              <a href="mailto:guimoraes.dev@gmail.com" className="underline">
+              <a
+                href="mailto:guimoraes.dev@gmail.com"
+                className="ml-1 underline"
+              >
                 guimoraes.dev@gmail.com
               </a>
             </p>
 
-            <span className="inline-flex gap-1 leading-relaxed tracking-wider">
-              <span className="uppercase">{footerT("made-with-love")}</span> ©
-              2024 Guilherme Moraes
+            <span className="inline-block leading-relaxed tracking-wider">
+              <span className="mr-1 uppercase">
+                {footerT("made-with-love")}
+              </span>{" "}
+              © 2024 Guilherme Moraes
             </span>
           </div>
 

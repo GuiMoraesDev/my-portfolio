@@ -72,7 +72,6 @@ const allTestimonials: Array<Testimonial> = [
     name: "Saulo Bulhões",
     role: "UX Designer",
     company: "ProEnem",
-    /* className: "md:col-span-2", */
     img: {
       src: "/testimonial/saulo-bulhoes.png",
       alt: "Saulo Bulhões linkedin avatar",

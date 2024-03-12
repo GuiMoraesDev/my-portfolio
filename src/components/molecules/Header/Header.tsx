@@ -130,7 +130,7 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
 
         <section
           className={twMerge(
-            "absolute left-0 top-0 flex min-w-52 flex-col gap-6 pt-16",
+            "absolute left-0 top-0 flex min-w-52 flex-col gap-6 pb-3 pt-16",
             "before:absolute before:left-0 before:top-0 before:h-[calc(100%+2.5rem)] before:w-[calc(100%+2.5rem)] before:origin-top-left before:rounded-xl before:bg-white/[.98] before:p-5 before:transition before:content-[''] lg:before:h-[calc(100%+1.5rem)]",
             isOpen
               ? "z-10 before:-translate-x-5 before:-translate-y-5 before:scale-100 before:rounded-md"

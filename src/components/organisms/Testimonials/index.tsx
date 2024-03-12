@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { forwardRef, useRef, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 type Testimonial = {
   name: string;
@@ -13,8 +14,7 @@ type Testimonial = {
   };
   relationship: string;
   content: string;
-  cols?: number;
-  rows?: number;
+  className?: string;
 };
 const allTestimonials: Array<Testimonial> = [
   {
@@ -25,7 +25,7 @@ const allTestimonials: Array<Testimonial> = [
       src: "/testimonial/antonie-meunier.png",
       alt: "Antoine Meunier linkedin avatar",
     },
-    cols: 3,
+    className: "md:col-span-2 lg:col-span-3",
     relationship:
       "Antoine was senior to Guilherme but didn't manage Guilherme directly",
     content: `I had the pleasure of working with Guilherme on several projects at Blissbook, and it was an amazing experience. Guilherme is a talented front-end developer whose skills and dedication are truly exceptional. His knack for crafting engaging and intuitive user experiences stands out, making every project we worked on together not just a success, but a blast. 
@@ -46,7 +46,7 @@ const allTestimonials: Array<Testimonial> = [
   {
     name: "Emanoel Faria",
     role: "Backend Software Engineer",
-    cols: 2,
+    className: "lg:col-span-2",
     company: "Media Contactless",
     img: {
       src: "/testimonial/emanoel-faria.png",
@@ -72,6 +72,7 @@ const allTestimonials: Array<Testimonial> = [
     name: "Saulo Bulhões",
     role: "UX Designer",
     company: "ProEnem",
+    /* className: "md:col-span-2", */
     img: {
       src: "/testimonial/saulo-bulhoes.png",
       alt: "Saulo Bulhões linkedin avatar",
@@ -96,7 +97,7 @@ const allTestimonials: Array<Testimonial> = [
     name: "Osmane FonsecaOsmane Fonseca",
     role: "Web Designer | Publicitário | Analista de Marketing",
     company: "ProEnem",
-    cols: 3,
+    className: "lg:col-span-3",
     img: {
       src: "/testimonial/osmane-fonseca.png",
       alt: "Osmane Fonseca linkedin avatar",
@@ -129,7 +130,7 @@ export const Testimonials = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <section className="grid flex-1 grid-cols-3 flex-wrap gap-4">
+      <section className="grid flex-1 grid-cols-1 flex-wrap gap-4 md:grid-cols-2 lg:grid-cols-3">
         {testimonials.map((testimonial, index) => (
           <TestimonialCard
             key={testimonial.name}
@@ -174,11 +175,11 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
   ({ testimonial, ...props }, ref) => {
     return (
       <div
-        className="flex w-full flex-1 flex-col items-center justify-between gap-6 rounded-md bg-plum-500/90 p-4 text-white backdrop-blur-sm"
-        style={{
-          gridColumn: `span ${testimonial.cols}`,
-          gridRow: `span ${testimonial.rows}`,
-        }}
+        className={twMerge(
+          "flex w-full flex-1 flex-col items-center justify-start gap-6 rounded-md bg-plum-500/90 p-4 text-white backdrop-blur-sm",
+          "col-span-1 row-span-1 will-change-auto",
+          testimonial.className,
+        )}
         {...props}
         ref={ref}
       >

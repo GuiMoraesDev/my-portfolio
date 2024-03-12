@@ -30,24 +30,7 @@
   },
   "references": {
     "title": "O que estão dizendo sobre mim?",
-    "quote": "'Ele é o menino mais bonito do mundo' - Mãe",
-    "testimonials": {
-      "vitor-leonardo": {
-        "role": "Designer Gráfico",
-        "text": "Além de ser um excelente colega de equipe, ele é uma pessoa muito sensível e responsável. Seu trabalho é sempre muito eficiente e também muito assertivo. Ele tem uma grande sincronia com a equipe e é muito dedicado aos seus projetos.",
-        "image-alt": "desenho de um avatar masculino"
-      },
-      "saulo-bulhoes": {
-        "role": "Designer de UX",
-        "text": "Guilherme é um profissional extremamente competente, apaixonado pelo que faz, entregando qualidade e excelentes resultados. Em cada projeto que ele assume, apresenta boas soluções, observando e sugerindo pontos que podem ser melhorados no processo e no produto. Inteligente, proativo, criativo e perspicaz, sempre trata a equipe com muito carinho, respeito e profissionalismo. Ele está sempre em busca de superar qualquer desafio.",
-        "image-alt": "desenho de um avatar masculino"
-      },
-      "osmane-fonseca": {
-        "role": "Web Designer",
-        "text": "Guilherme tem amplo conhecimento técnico como front-end, mas o que me surpreendeu é como ele o adicionou à arquitetura do site, sempre pensando na experiência do usuário focada nos objetivos do projeto. Guilherme não apenas atua como um desenvolvedor muito técnico, mas também torna a navegação fácil de entender e as ações simples de realizar.",
-        "image-alt": "desenho de um avatar masculino"
-      }
-    }
+    "quote": "'Ele é o menino mais bonito do mundo' - Mãe"
   },
   "projects": {
     "title": "Falar é fácil. Mostre-me o código.",

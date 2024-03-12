@@ -30,7 +30,6 @@ export const MarkdownEditor = ({
         disabled={disabled}
         editor={editor}
         id="editor"
-        placeholder="Type your message here..."
         className={twMerge(
           "flex h-full min-h-16 w-full cursor-auto",
           "disabled:cursor-not-allowed disabled:opacity-50",

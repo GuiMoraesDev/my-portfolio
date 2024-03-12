@@ -1,11 +1,9 @@
 import { formatDistanceToNow } from "date-fns";
 import { ptBR, enUS } from "date-fns/locale";
-import { pick } from "lodash";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
-import { NextIntlClientProvider, useMessages } from "next-intl";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -22,8 +20,6 @@ import { capitalizeFirstLetter } from "@/util/capitalizeFirstLetter";
 export default function Home() {
   const locale = useLocale();
 
-  const messages = useMessages();
-
   const presentationT = useTranslations("presentation");
   const aboutMeT = useTranslations("about-me");
   const articlesT = useTranslations("articles");
@@ -37,9 +33,7 @@ export default function Home() {
       <Spheres />
       <DrawContainer />
 
-      <NextIntlClientProvider messages={pick(messages, "links")}>
-        <Header className="max-w-7xl max-[2000px]:px-[10vw]" id="header" />
-      </NextIntlClientProvider>
+      <Header />
 
       <SessionWrapper className="mt-14 md:flex-row" id="presentation">
         <section className="flex flex-col gap-4 text-white">
@@ -148,9 +142,7 @@ export default function Home() {
         <SessionHeader title={contactT("title")} quote={contactT("subtitle")} />
 
         <section className="flex h-full min-h-32 w-full flex-col items-start justify-between gap-10 rounded-md bg-plum-500/90 p-4 md:p-8">
-          <NextIntlClientProvider messages={pick(messages, "contact")}>
-            <ContactForm />
-          </NextIntlClientProvider>
+          <ContactForm />
         </section>
       </SessionWrapper>
 
@@ -202,7 +194,7 @@ const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={twMerge(
       "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-12 max-[2000px]:px-[10vw]",
-      "pt-8 min-[300px]:pt-16 md:pt-28 xl:pt-44",
+      "pt-8 min-[300px]:pt-16 md:pt-28 xl:pt-56",
       className,
     )}
     {...props}

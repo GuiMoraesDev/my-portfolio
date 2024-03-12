@@ -8,11 +8,12 @@ export const ReactLogo = () => {
   return (
     <div
       id={wrapperId}
-      className="fixed top-0 hidden h-[100dvh] overflow-hidden"
+      className="fixed right-0 top-0 hidden h-[100dvh] overflow-hidden"
     >
       <svg
         width={492}
         height={1080}
+        opacity={0.1}
         className="h-full w-auto"
         viewBox="0 0 492 1080"
         fill="none"

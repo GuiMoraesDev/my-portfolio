@@ -194,7 +194,7 @@ const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={twMerge(
       "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-12 max-[2000px]:px-[10vw]",
-      "pt-8 min-[300px]:pt-16 md:pt-28 xl:pt-56",
+      "pt-16 min-[300px]:pt-28 md:pt-36 xl:pt-56",
       className,
     )}
     {...props}

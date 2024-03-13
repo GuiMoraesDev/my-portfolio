@@ -40,6 +40,7 @@ type LanguageSelectorProps = {
   locale?: string;
   handleLanguageChange?: (lng?: string) => void;
 };
+
 export const LanguageSelectorElement = ({
   locale,
   handleLanguageChange,
@@ -66,7 +67,10 @@ export const LanguageSelectorElement = ({
       disabled={disabled}
       onCheckedChange={() => handleLanguageChange?.()}
     >
-      <Switch.Thumb className="block h-5 w-5 translate-x-0.5 rounded-full bg-plum-100 transition-transform will-change-transform data-[state=checked]:translate-x-[19px]" />
+      <Switch.Thumb
+        title="language-selector"
+        className="block h-5 w-5 translate-x-0.5 rounded-full bg-plum-100 transition-transform will-change-transform data-[state=checked]:translate-x-[19px]"
+      />
     </Switch.Root>
 
     <button
@@ -124,7 +128,7 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
         className={twMerge("relative flex items-center justify-between")}
         ref={wrapperRef}
       >
-        <button onClick={handleToggleMenu} className="z-20">
+        <button onClick={handleToggleMenu} className="z-20" title="menu">
           <Hamburger isOpen={isOpen} />
         </button>
 

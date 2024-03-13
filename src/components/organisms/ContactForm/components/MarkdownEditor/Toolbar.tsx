@@ -191,6 +191,7 @@ const ToolButton = ({
               isActive && "font-bold text-plum-900",
               className,
             )}
+            title={description}
             {...props}
             disabled={disabled}
             type="button"

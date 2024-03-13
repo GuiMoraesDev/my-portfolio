@@ -35,7 +35,10 @@ export default function Home() {
 
       <Header />
 
-      <SessionWrapper className="mt-14 md:flex-row" id="presentation">
+      <SessionWrapper
+        className="mt-14 pt-12 min-[300px]:pt-20 md:flex-row"
+        id="presentation"
+      >
         <section className="flex flex-col gap-4 text-white">
           <div className="flex max-w-2xl flex-col gap-6 md:gap-8">
             <h1 className="inline-flex flex-col text-2xl lg:text-2xl">
@@ -64,7 +67,7 @@ export default function Home() {
         </section>
 
         <section className="flex flex-col items-center justify-center gap-2">
-          <div className="relative h-[280px] w-[280px] md:h-80 md:w-80 lg:h-[420px] lg:w-[420px]">
+          <div className="relative h-[240px] w-[240px] transition-all sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96">
             <Image
               src="/profile.png"
               fill

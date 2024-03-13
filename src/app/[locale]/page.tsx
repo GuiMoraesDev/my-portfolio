@@ -35,7 +35,10 @@ export default function Home() {
 
       <Header />
 
-      <SessionWrapper className="mt-14 md:flex-row" id="presentation">
+      <SessionWrapper
+        className="mt-14 pt-12 min-[300px]:pt-20 md:flex-row"
+        id="presentation"
+      >
         <section className="flex flex-col gap-4 text-white">
           <div className="flex max-w-2xl flex-col gap-6 md:gap-8">
             <h1 className="inline-flex flex-col text-2xl lg:text-2xl">
@@ -64,14 +67,16 @@ export default function Home() {
         </section>
 
         <section className="flex flex-col items-center justify-center gap-2">
-          <Image
-            src="/profile.png"
-            width={400}
-            height={400}
-            className="aspect-square h-72 select-none object-contain md:h-auto"
-            priority
-            alt={presentationT("profile-image-alt")}
-          />
+          <div className="relative h-[240px] w-[240px] transition-all sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96">
+            <Image
+              src="/profile.png"
+              fill
+              sizes="100%"
+              className="aspect-square h-72 select-none object-cover md:h-auto"
+              priority
+              alt={presentationT("profile-image-alt")}
+            />
+          </div>
 
           <SocialMedia className="flex md:hidden" />
         </section>
@@ -194,7 +199,7 @@ const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={twMerge(
       "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-12 max-[2000px]:px-[10vw]",
-      "pt-8 min-[300px]:pt-16 md:pt-28 xl:pt-56",
+      "pt-16 min-[300px]:pt-28 md:pt-36 xl:pt-56",
       className,
     )}
     {...props}

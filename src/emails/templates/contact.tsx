@@ -43,7 +43,7 @@ export const ContactEmailTemplate = ({
               </span>
               .
               <br />
-              You can contact me by <Link>{email}</Link>
+              You can contact me by {email ? <Link>{email}</Link> : null}
             </Text>
           </Section>
 

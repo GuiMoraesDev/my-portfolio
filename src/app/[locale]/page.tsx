@@ -64,14 +64,16 @@ export default function Home() {
         </section>
 
         <section className="flex flex-col items-center justify-center gap-2">
-          <Image
-            src="/profile.png"
-            width={400}
-            height={400}
-            className="aspect-square h-72 select-none object-contain md:h-auto"
-            priority
-            alt={presentationT("profile-image-alt")}
-          />
+          <div className="relative h-[280px] w-[280px] md:h-80 md:w-80 lg:h-[420px] lg:w-[420px]">
+            <Image
+              src="/profile.png"
+              fill
+              sizes="100%"
+              className="aspect-square h-72 select-none object-cover md:h-auto"
+              priority
+              alt={presentationT("profile-image-alt")}
+            />
+          </div>
 
           <SocialMedia className="flex md:hidden" />
         </section>

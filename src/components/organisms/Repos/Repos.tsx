@@ -62,7 +62,6 @@ const repositories: Array<Repository> = [
   {
     title: "Lnk.bio",
     description_key: "lnk-bio",
-    project_link: "https://github.com/GuiMoraesDev/lnk.bio",
     github_link: "https://github.com/GuiMoraesDev/lnk.bio",
     cover: "/projects/lnk.bio.png",
     tech_stack: [

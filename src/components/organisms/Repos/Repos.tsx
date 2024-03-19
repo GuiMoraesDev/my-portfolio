@@ -1,8 +1,9 @@
 "use client";
 
 import { GitHubLogoIcon, Link2Icon } from "@radix-ui/react-icons";
-import Image from "next/image";
+import Image, { type ImageProps } from "next/image";
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 
 type TechStack = {
   name: string;
@@ -19,12 +20,50 @@ type Repository = {
 };
 const repositories: Array<Repository> = [
   {
+    title: "My portfolio",
+    description_key: "my-portfolio",
+    github_link: "https://github.com/GuiMoraesDev/my-portfolio",
+    cover:
+      "https://raw.githubusercontent.com/GuiMoraesDev/my-portfolio/main/public/cover.png",
+    tech_stack: [
+      {
+        name: "Next.js",
+        color: "#000000",
+        link: "https://nextjs.org/",
+      },
+      {
+        name: "Tailwind CSS",
+        color: "#06B6D4",
+        link: "https://tailwindcss.com/",
+      },
+      {
+        name: "Typescript",
+        color: "#3178C6",
+        link: "https://www.typescriptlang.org/",
+      },
+      {
+        name: "Next-intl",
+        color: "#FF0000",
+        link: "https://next-intl-docs.vercel.app/",
+      },
+      {
+        name: "Radix UI",
+        color: "#000000",
+        link: "https://radix-ui.com/",
+      },
+      {
+        name: "OpenAI",
+        color: "#00FF00",
+        link: "https://openai.com/",
+      },
+    ],
+  },
+  {
     title: "Lnk.bio",
     description_key: "lnk-bio",
     project_link: "https://github.com/GuiMoraesDev/lnk.bio",
     github_link: "https://github.com/GuiMoraesDev/lnk.bio",
-    cover:
-      "https://raw.githubusercontent.com/GuiMoraesDev/my-portfolio/main/public/cover.png",
+    cover: "/projects/lnk.bio.png",
     tech_stack: [
       {
         name: "Next.js",
@@ -48,7 +87,7 @@ const repositories: Array<Repository> = [
     description_key: "prep-pal",
     github_link: "https://github.com/GuiMoraesDev/prep-pal",
     cover:
-      "https://raw.githubusercontent.com/GuiMoraesDev/my-portfolio/main/public/cover.png",
+      "https://raw.githubusercontent.com/GuiMoraesDev/prep-pal/main/public/cover.png",
     tech_stack: [
       {
         name: "Next.js",
@@ -69,35 +108,6 @@ const repositories: Array<Repository> = [
         name: "OpenAI",
         color: "#00FF00",
         link: "https://openai.com/",
-      },
-    ],
-  },
-  {
-    title: "RTC Whiteboard",
-    description_key: "rtc-whiteboard",
-    github_link: "https://github.com/GuiMoraesDev/prep-pal",
-    cover:
-      "https://raw.githubusercontent.com/GuiMoraesDev/my-portfolio/main/public/cover.png",
-    tech_stack: [
-      {
-        name: "Next.js",
-        color: "#000000",
-        link: "https://nextjs.org/",
-      },
-      {
-        name: "Tailwind CSS",
-        color: "#06B6D4",
-        link: "https://tailwindcss.com/",
-      },
-      {
-        name: "Typescript",
-        color: "#3178C6",
-        link: "https://www.typescriptlang.org/",
-      },
-      {
-        name: "WebSockets",
-        color: "#000000",
-        link: "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API",
       },
     ],
   },
@@ -130,7 +140,7 @@ export const ReposComponent = () => {
                 order: index % 2 === 0 ? 0 : 1,
               }}
             >
-              <Image
+              <ImageComponent
                 src={cover}
                 fill
                 className="select-none object-cover drop-shadow-[0px_0px_4px_rgba(242,226,236,0.2)]"
@@ -203,4 +213,56 @@ export const ReposComponent = () => {
       )}
     </ul>
   );
+};
+
+const UnderConstruction = () => {
+  return (
+    <div className="flex h-full flex-col items-center justify-center gap-2 bg-gold-500 object-cover">
+      <div
+        className="h-4 w-full"
+        style={{
+          background: `repeating-linear-gradient(
+          110deg,
+          #0D020D,
+          #0D020D 10px,
+          #EFEFEF 10px,
+          #EFEFEF 20px
+        )`,
+        }}
+      />
+
+      <section className="flex flex-col items-center justify-center gap-2">
+        <span className="font-bold uppercase text-plum-900 md:text-2xl lg:text-3xl">
+          Coming soon
+        </span>
+        <span className=" text-sm font-bold text-plum-700 md:text-xl lg:text-2xl">
+          Under Construction
+        </span>
+      </section>
+
+      <div
+        className="h-4 w-full"
+        style={{
+          background: `repeating-linear-gradient(
+          110deg,
+          #0D020D,
+          #0D020D 10px,
+          #EFEFEF 10px,
+          #EFEFEF 20px
+        )`,
+        }}
+      />
+    </div>
+  );
+};
+
+const ImageComponent = (props: ImageProps) => {
+  const [hasError, setHasError] = useState(false);
+
+  if (hasError) {
+    return <UnderConstruction />;
+  }
+
+  // eslint-disable-next-line jsx-a11y/alt-text
+  return <Image {...props} onError={() => setHasError(true)} />;
 };

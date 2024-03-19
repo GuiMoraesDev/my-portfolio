@@ -39,9 +39,9 @@
     "quote": "'O código é a documentação' - Desconhecido",
     "all-projects": "Quer ver todos os projetos? Clique aqui! 💻",
     "cards-description": {
+      "my-portfolio": "Este é um super projeto de portfólio, para mostrar minhas habilidades e experiências. É um aplicativo Next.js com Tailwind CSS e Typescript. integrado com ferramentas de IA para gerar e-mail e um editor de descontos.",
       "lnk-bio": "Este é um encurtador de links que permite criar uma página personalizada com seus links de mídia social. É um aplicativo Next.js com Tailwind CSS e Typescript.",
-      "prep-pal": "Esta é uma ferramenta que ajuda você a se preparar para uma entrevista de emprego. Ele usa GPT-3 da OpenAI para gerar perguntas e respostas com base na descrição do cargo.",
-      "rtc-whiteboard": "Este é um quadro branco colaborativo que usa WebRTC para compartilhar o desenho em tempo real. É um aplicativo Next.js com Tailwind CSS e Typescript."
+      "prep-pal": "Esta é uma ferramenta que ajuda você a se preparar para uma entrevista de emprego. Ele usa GPT-3 da OpenAI para gerar perguntas e respostas com base na descrição do cargo."
     }
   },
   "contact": {

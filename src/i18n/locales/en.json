@@ -39,9 +39,9 @@
     "quote": "'The code is the documentation' - Unknown",
     "all-projects": "Do you wanna see all projects? Click here! 💻",
     "cards-description": {
+      "my-portfolio": "This is super portfolio project, to show my skills and experiences. It's a Next.js app with Tailwind CSS and Typescript. integrated with AI tools to generate Email and a markdown editor.",
       "lnk-bio": "This is a link shortener that allows you to create a custom page with your social media links. It's a Next.js app with Tailwind CSS and Typescript.",
-      "prep-pal": "This is a tool that helps you to prepare for a job interview. It uses OpenAI's GPT-3 to generate questions and answers based on the job description.",
-      "rtc-whiteboard": "This is a collaborative whiteboard that uses WebRTC to share the drawing in real-time. It's a Next.js app with Tailwind CSS and Typescript."
+      "prep-pal": "This is a tool that helps you to prepare for a job interview. It uses OpenAI's GPT-3 to generate questions and answers based on the job description."
     }
   },
   "contact": {

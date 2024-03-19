@@ -79,12 +79,10 @@ export const ContactFormComponent = () => {
           className="flex w-full flex-col gap-4"
           data-testid="contact-form"
           id={formId}
+          name="contact-form"
           onSubmit={handleSubmit(onFormSubmit)}
         >
-          <Label
-            htmlFor="first_name"
-            className="mx-auto flex w-full flex-col items-baseline justify-between gap-2"
-          >
+          <Label className="mx-auto flex w-full flex-col items-baseline justify-between gap-2">
             {t("form.labels.first_name")}
             <Input
               type="text"
@@ -101,10 +99,7 @@ export const ContactFormComponent = () => {
             </ErrorMessage>
           </Label>
 
-          <Label
-            htmlFor="last_name"
-            className="mx-auto flex w-full flex-col items-baseline justify-between gap-2"
-          >
+          <Label className="mx-auto flex w-full flex-col items-baseline justify-between gap-2">
             {t("form.labels.last_name")}
             <Input
               type="text"
@@ -121,10 +116,7 @@ export const ContactFormComponent = () => {
             </ErrorMessage>
           </Label>
 
-          <Label
-            htmlFor="email"
-            className="mx-auto flex w-full flex-col items-baseline justify-between gap-2"
-          >
+          <Label className="mx-auto flex w-full flex-col items-baseline justify-between gap-2">
             {t("form.labels.email")}
             <Input
               type="email"
@@ -141,10 +133,7 @@ export const ContactFormComponent = () => {
             </ErrorMessage>
           </Label>
 
-          <Label
-            htmlFor="subject"
-            className="mx-auto flex w-full flex-col items-baseline justify-between gap-2"
-          >
+          <Label className="mx-auto flex w-full flex-col items-baseline justify-between gap-2">
             {t("form.labels.subject")}
             <Input
               type="text"
@@ -160,10 +149,7 @@ export const ContactFormComponent = () => {
             </ErrorMessage>
           </Label>
 
-          <Label
-            htmlFor="editor"
-            className="mx-auto flex w-full flex-1 flex-col items-baseline justify-between gap-2"
-          >
+          <Label className="mx-auto flex w-full flex-1 flex-col items-baseline justify-between gap-2">
             <p>
               {t.rich("form.labels.message", {
                 small: (chunks) => <small>{chunks}</small>,

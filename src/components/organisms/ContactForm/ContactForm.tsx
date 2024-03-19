@@ -1,5 +1,6 @@
 "use client";
 
+import { PaperPlaneIcon } from "@radix-ui/react-icons";
 import { startSpan } from "@sentry/nextjs";
 import Placeholder from "@tiptap/extension-placeholder";
 import UnderlineMark from "@tiptap/extension-underline";
@@ -14,7 +15,6 @@ import { useEmailForm, useSendEmailMutation } from "./hooks";
 import { CheckIfGeneratePreviewIsSupported } from "./util/CheckIfGeneratePreviewIsSupported";
 
 import { ErrorMessage } from "@/components/atoms/ErrorMessage";
-import { Icon } from "@/components/atoms/Icon";
 import { Input } from "@/components/atoms/Input";
 import { Label } from "@/components/atoms/Label";
 import { type SendEmailProps } from "@/schemas/email/schema";
@@ -196,7 +196,7 @@ export const ContactFormComponent = () => {
             className="flex w-28 items-center justify-center gap-2 rounded-md border border-plum-800 bg-white px-4 py-2 text-plum-900 transition hover:bg-white/80 disabled:cursor-not-allowed disabled:bg-gray-500"
           >
             {t("form.buttons.send")}
-            <Icon size="sm" icon="PaperPlane" className="lg:size-4" />
+            <PaperPlaneIcon className="h-6 w-6" />
           </button>
         </section>
       </div>

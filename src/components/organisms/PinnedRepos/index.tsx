@@ -1,8 +1,8 @@
 "use client";
 
+import { GitHubLogoIcon, Link2Icon } from "@radix-ui/react-icons";
 import Image from "next/image";
 
-import { Icon } from "@/components/atoms/Icon";
 import { useGitHubPinnedRepositories } from "@/graphql/github-profile";
 
 export const PinnedRepos = () => {
@@ -27,7 +27,7 @@ export const PinnedRepos = () => {
                   title={`${title} project link: ${project_link}`}
                   target="_blank"
                 >
-                  <Icon icon="Link" size="sm" />
+                  <Link2Icon className="h-6 w-6 text-white" />
                 </a>
               ) : null}
 
@@ -38,7 +38,8 @@ export const PinnedRepos = () => {
                 title={`${title} github link: ${project_link}`}
                 target="_blank"
               >
-                <Icon icon="Github" size="sm" />
+                {/* <Icon icon="Github" size="sm" /> */}
+                <GitHubLogoIcon className="h-6 w-6 text-white" />
               </a>
             </nav>
 

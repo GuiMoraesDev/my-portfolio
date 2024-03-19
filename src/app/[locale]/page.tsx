@@ -15,18 +15,11 @@ import { Articles } from "@/components/organisms/Articles";
 import { ContactForm } from "@/components/organisms/ContactForm";
 import { PinnedRepos } from "@/components/organisms/PinnedRepos";
 import { Testimonials } from "@/components/organisms/Testimonials";
-import { capitalizeFirstLetter } from "@/util/capitalizeFirstLetter";
 
 export default function Home() {
   const locale = useLocale();
 
-  const presentationT = useTranslations("presentation");
-  const aboutMeT = useTranslations("about-me");
-  const articlesT = useTranslations("articles");
-  const referencesT = useTranslations("references");
-  const projectsT = useTranslations("projects");
-  const contactT = useTranslations("contact");
-  const footerT = useTranslations("footer");
+  const t = useTranslations();
 
   return (
     <main className="container relative flex flex-col items-center bg-plum-900 font-lato text-white">
@@ -36,13 +29,13 @@ export default function Home() {
       <Header />
 
       <SessionWrapper
-        className="mt-14 pt-12 min-[300px]:pt-20 md:flex-row"
+        className="mt-14 pt-12 min-[300px]:pt-20 md:flex-row md:pt-36 xl:pt-56"
         id="presentation"
       >
         <section className="flex flex-col gap-6 text-white md:gap-10">
           <div className="flex max-w-2xl flex-col gap-6 md:gap-10">
             <h1 className="inline-flex flex-col text-2xl lg:text-2xl">
-              {presentationT("name")}
+              {t("presentation.name")}
               <strong className="inline-flex gap-1">
                 Guilherme Moraes
                 <span className="inline-block w-fit origin-bottom-right animate-wave select-none text-base">
@@ -55,11 +48,11 @@ export default function Home() {
               id="my-title"
               className="font-fira-sans text-3xl font-bold tracking-wide text-gold-500 md:my-2 md:text-4xl lg:text-5xl lg:leading-tight"
             >
-              {presentationT("title")}
+              {t("presentation.title")}
             </h2>
 
             <p className="leading-tight tracking-wide lg:text-2xl">
-              {presentationT("subtitle")}
+              {t("presentation.subtitle")}
             </p>
           </div>
 
@@ -74,7 +67,7 @@ export default function Home() {
               sizes="100%"
               className="aspect-square h-72 select-none object-cover drop-shadow-[0px_0px_4px_rgba(242,226,236,0.2)] md:h-auto"
               priority
-              alt={presentationT("profile-image-alt")}
+              alt={t("presentation.profile-image-alt")}
             />
           </div>
 
@@ -82,52 +75,70 @@ export default function Home() {
         </section>
       </SessionWrapper>
 
-      <SessionWrapper className="lg:flex-row" id="about-me">
-        <section className="flex flex-col gap-10 lg:w-1/2">
-          <SessionHeader title={aboutMeT("title")} quote={aboutMeT("quote")} />
-
-          <p className="text-lg leading-snug tracking-wide">
-            {aboutMeT("description")}
-          </p>
-        </section>
-
-        <section className="grid grid-cols-1 items-center justify-center gap-4 min-[340px]:grid-cols-2">
-          <OverviewCard icon="Chip">
-            {aboutMeT("cards.years-experience", {
-              time: capitalizeFirstLetter(
-                formatDistanceToNow(new Date(2019, 5, 11), {
-                  locale: locale === "pt" ? ptBR : enUS,
-                }),
+      <SessionWrapper
+        className="pt-14 min-[300px]:pt-24 md:pt-32 xl:pt-52"
+        id="about-me"
+      >
+        <section className="inline-flex gap-8">
+          <HighlightCard icon="Rocket">
+            {t.rich("about-me.cards.years-experience", {
+              time: formatDistanceToNow(new Date(2019, 5, 11), {
+                locale: locale === "pt" ? ptBR : enUS,
+              }),
+              highlight: (chunks) => (
+                <span className="text-xl text-plum-300">{chunks}</span>
               ),
             })}
-          </OverviewCard>
+          </HighlightCard>
 
-          <OverviewCard icon="MagnifyingGlass">
-            {aboutMeT("cards.attention-details")}
-          </OverviewCard>
+          <HighlightCard icon="MagnifyingGlass">
+            {t.rich("about-me.cards.attention-details", {
+              highlight: (chunks) => (
+                <span className="text-xl text-plum-300">{chunks}</span>
+              ),
+            })}
+          </HighlightCard>
 
-          <OverviewCard icon="Code">
-            {aboutMeT("cards.scalable-code")}
-          </OverviewCard>
-
-          <OverviewCard icon="Globe">
-            {aboutMeT("cards.remote-work")}
-          </OverviewCard>
+          <HighlightCard icon="Globe">
+            {t.rich("about-me.cards.worldwide", {
+              highlight: (chunks) => (
+                <span className="text-xl text-plum-300">{chunks}</span>
+              ),
+            })}
+          </HighlightCard>
         </section>
       </SessionWrapper>
 
-      <SessionWrapper className="pt-20 lg:items-start" id="articles">
-        <SessionHeader title={articlesT("title")} quote={articlesT("quote")} />
+      <SessionWrapper
+        className="pt-14 min-[300px]:pt-24 md:pt-32 lg:items-start xl:pt-52"
+        id="articles"
+      >
+        <SessionHeader
+          title={t("articles.title")}
+          quote={t("articles.quote")}
+        />
 
         <section className="flex w-full flex-col items-center justify-center gap-6">
           <Articles />
         </section>
+
+        <section className="flex w-full flex-col items-end justify-center gap-4">
+          <a
+            href="https://dev.to/guimoraes"
+            className="rounded-sm p-3 text-center text-sm font-medium leading-tight text-plum-200 hover:underline"
+          >
+            {t("articles.all-articles")}
+          </a>
+        </section>
       </SessionWrapper>
 
-      <SessionWrapper className="lg:items-start" id="references">
+      <SessionWrapper
+        className="pt-16 min-[300px]:pt-28 md:pt-36 lg:items-start xl:pt-56"
+        id="references"
+      >
         <SessionHeader
-          title={referencesT("title")}
-          quote={referencesT("quote")}
+          title={t("references.title")}
+          quote={t("references.quote")}
         />
 
         <section className="flex w-full flex-wrap items-start justify-start gap-14 xl:flex-nowrap">
@@ -135,16 +146,28 @@ export default function Home() {
         </section>
       </SessionWrapper>
 
-      <SessionWrapper className="items-start justify-start" id="projects">
-        <SessionHeader title={projectsT("title")} quote={projectsT("quote")} />
+      <SessionWrapper
+        className="items-start justify-start pt-16 min-[300px]:pt-28 md:pt-36 xl:pt-56"
+        id="projects"
+      >
+        <SessionHeader
+          title={t("projects.title")}
+          quote={t("projects.quote")}
+        />
 
         <section className="flex w-full flex-wrap items-center justify-center gap-14">
           <PinnedRepos />
         </section>
       </SessionWrapper>
 
-      <SessionWrapper className="justify-start" id="contact">
-        <SessionHeader title={contactT("title")} quote={contactT("subtitle")} />
+      <SessionWrapper
+        className="justify-start pt-16 min-[300px]:pt-28 md:pt-36 xl:pt-56"
+        id="contact"
+      >
+        <SessionHeader
+          title={t("contact.title")}
+          quote={t("contact.subtitle")}
+        />
 
         <section className="flex h-full min-h-32 w-full flex-col items-start justify-between gap-10 rounded-md bg-plum-500/90 p-4 md:p-8">
           <ContactForm />
@@ -167,11 +190,11 @@ export default function Home() {
                 "inline-block animate-gradient-x bg-gradient-to-r from-plum-200 via-plum-400 to-plum-50 bg-clip-text text-transparent",
               )}
             >
-              {footerT("title")}
+              {t("footer.title")}
             </strong>
 
             <p className="inline-block leading-normal tracking-wide">
-              {footerT("contact-me-by")}
+              {t("footer.contact-me-by")}
               <a
                 href="mailto:guimoraes.dev@gmail.com"
                 className="ml-1 underline"
@@ -182,7 +205,7 @@ export default function Home() {
 
             <span className="inline-block leading-relaxed tracking-wider">
               <span className="mr-1 uppercase">
-                {footerT("made-with-love")}
+                {t("footer.made-with-love")}
               </span>{" "}
               © 2024 Guilherme Moraes
             </span>
@@ -198,8 +221,8 @@ export default function Home() {
 const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={twMerge(
-      "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-12 max-[2000px]:px-[10vw]",
-      "pt-16 min-[300px]:pt-28 md:pt-36 xl:pt-56",
+      "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-12 font-lato max-[2000px]:px-[10vw]",
+
       className,
     )}
     {...props}
@@ -210,7 +233,6 @@ type SessionHeaderProps = ComponentProps<"h2"> & {
   title: string;
   quote: string;
 };
-
 const SessionHeader = ({
   title,
   quote,
@@ -227,15 +249,14 @@ const SessionHeader = ({
   </header>
 );
 
-type OverviewCardProps = ComponentProps<"p"> & {
+type HighlightCardProps = ComponentProps<"p"> & {
   icon: IconProp;
 };
-
-const OverviewCard = ({ icon, ...props }: OverviewCardProps) => (
-  <div className="flex h-28 w-40 flex-col items-center justify-center gap-2 rounded-md bg-plum-500/90 shadow-sm transition hover:shadow-plum-100/80 min-[340px]:w-36 md:h-36 md:w-44 xl:h-40 xl:w-52 xl:gap-4">
-    <Icon icon={icon} />
+const HighlightCard = ({ icon, ...props }: HighlightCardProps) => (
+  <div className="flex flex-col items-center justify-start gap-4 text-plum-50">
+    <Icon icon={icon} size="lg" />
     <p
-      className="w-4/5 text-center font-fira-sans text-xs text-white md:text-base xl:text-lg"
+      className="text-center text-base leading-normal tracking-wider"
       {...props}
     />
   </div>

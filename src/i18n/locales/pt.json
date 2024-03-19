@@ -10,8 +10,9 @@
   "presentation": {
     "name": "E aí, meu nome é",
     "title": "Engenheiro de software",
-    "subtitle": "Sou especialista em criar experiências de usuário com NextJs, TypeScript, Testing Library, e mais!",
-    "profile-image-alt": "Um avatar meu gerado por IA"
+    "subtitle": "Sou especialista em criação de apps utilizando Next.js, TypeScript, Node.js, testes automatizados e muito mais!",
+    "profile-image-alt": "Um avatar meu gerado por IA",
+    "my-resume": "Meu currículo"
   },
   "about-me": {
     "title": "Sobre mim",

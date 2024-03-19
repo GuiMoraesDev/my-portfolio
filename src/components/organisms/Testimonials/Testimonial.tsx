@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, type MotionProps } from "framer-motion";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { forwardRef, useRef, useState } from "react";
@@ -135,8 +136,9 @@ export const TestimonialComponent = () => {
       <section className="grid flex-1 grid-cols-1 flex-wrap gap-4 md:grid-cols-2 lg:grid-cols-3">
         {testimonials.map((testimonial, index) => (
           <TestimonialCard
-            key={testimonial.name}
             testimonial={testimonial}
+            key={testimonial.name}
+            index={index}
             ref={
               index === 0
                 ? firstRef
@@ -169,47 +171,73 @@ export const TestimonialComponent = () => {
   );
 };
 
-type TestimonialCardProps = {
+type TestimonialCardProps = MotionProps & {
   testimonial: Testimonial;
+  index: number;
 };
 
 const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
-  ({ testimonial, ...props }, ref) => {
+  ({ testimonial, index, ...props }, ref) => {
     return (
-      <div
+      <motion.div
         className={twMerge(
-          "flex w-full flex-1 flex-col items-center justify-start gap-6 rounded-md bg-plum-500/90 p-4 text-white backdrop-blur-sm",
-          "col-span-1 row-span-1 will-change-auto",
+          "flex w-full flex-1 flex-col items-center justify-start gap-6",
+          "col-span-1 row-span-1 flex-1",
           testimonial.className,
         )}
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true }}
         {...props}
-        ref={ref}
       >
-        <div className="flex w-full items-start justify-start gap-2">
-          <Image
-            src={testimonial.img.src}
-            width={50}
-            height={50}
-            className="aspect-square h-auto select-none rounded-full object-contain"
-            priority
-            alt={testimonial.img.alt}
-          />
+        <motion.div
+          className={twMerge(
+            "flex w-full flex-1 flex-col items-center justify-start gap-6 rounded-md bg-plum-500/90 p-4 text-white backdrop-blur-sm",
+            testimonial.className,
+          )}
+          variants={{
+            offscreen: {
+              y: 100,
+              opacity: 0,
+            },
+            onscreen: {
+              y: 0,
+              opacity: 1,
+              transition: {
+                type: "spring",
+                bounce: 0.4,
+                duration: 0.8 * (index + 1),
+              },
+            },
+          }}
+          ref={ref}
+        >
+          <div className="flex w-full items-start justify-start gap-2">
+            <Image
+              src={testimonial.img.src}
+              width={50}
+              height={50}
+              className="aspect-square h-auto select-none rounded-full object-contain"
+              priority
+              alt={testimonial.img.alt}
+            />
 
-          <section className="flex w-full flex-col items-start justify-start gap-1">
-            <strong className="text-lg font-bold leading-tight">
-              {testimonial.name}
-            </strong>
+            <section className="flex w-full flex-col items-start justify-start gap-1">
+              <strong className="text-lg font-bold leading-tight">
+                {testimonial.name}
+              </strong>
 
-            <p className="text-xs font-medium leading-tight">
-              <b>{testimonial.role}</b> at {testimonial.company}
-            </p>
-          </section>
-        </div>
+              <p className="text-xs font-medium leading-tight">
+                <b>{testimonial.role}</b> at {testimonial.company}
+              </p>
+            </section>
+          </div>
 
-        <p className="inline-flex h-max w-full items-start justify-start px-2 leading-tight tracking-wide lg:h-full">
-          {testimonial.content}
-        </p>
-      </div>
+          <p className="inline-flex h-max w-full items-start justify-start px-2 leading-tight tracking-wide lg:h-full">
+            {testimonial.content}
+          </p>
+        </motion.div>
+      </motion.div>
     );
   },
 );

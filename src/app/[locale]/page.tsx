@@ -79,7 +79,7 @@ export default function Home() {
         className="pt-14 min-[300px]:pt-24 md:pt-32 xl:pt-52"
         id="about-me"
       >
-        <section className="inline-flex gap-8">
+        <section className="flex flex-col gap-10 md:flex-row">
           <HighlightCard icon="Rocket">
             {t.rich("about-me.cards.years-experience", {
               time: formatDistanceToNow(new Date(2019, 5, 11), {
@@ -122,7 +122,7 @@ export default function Home() {
           <Articles />
         </section>
 
-        <section className="flex w-full flex-col items-end justify-center gap-4">
+        <section className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
           <a
             href="https://dev.to/guimoraes"
             className="rounded-sm p-3 text-center text-sm font-medium leading-tight text-plum-200 hover:underline"

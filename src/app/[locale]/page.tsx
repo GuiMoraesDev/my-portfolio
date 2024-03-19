@@ -1,7 +1,6 @@
 import { formatDistanceToNow } from "date-fns";
 import { ptBR, enUS } from "date-fns/locale";
 import Image from "next/image";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import { type ComponentProps } from "react";
@@ -11,6 +10,7 @@ import { DrawContainer } from "@/components/atoms/Draws";
 import { Icon, type IconProp } from "@/components/atoms/Icon";
 import { Spheres } from "@/components/atoms/Spheres";
 import { Header } from "@/components/molecules/Header";
+import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { Articles } from "@/components/organisms/Articles";
 import { ContactForm } from "@/components/organisms/ContactForm";
 import { PinnedRepos } from "@/components/organisms/PinnedRepos";
@@ -39,8 +39,8 @@ export default function Home() {
         className="mt-14 pt-12 min-[300px]:pt-20 md:flex-row"
         id="presentation"
       >
-        <section className="flex flex-col gap-4 text-white">
-          <div className="flex max-w-2xl flex-col gap-6 md:gap-8">
+        <section className="flex flex-col gap-6 text-white md:gap-10">
+          <div className="flex max-w-2xl flex-col gap-6 md:gap-10">
             <h1 className="inline-flex flex-col text-2xl lg:text-2xl">
               {presentationT("name")}
               <strong className="inline-flex gap-1">
@@ -53,12 +53,12 @@ export default function Home() {
 
             <h2
               id="my-title"
-              className="font-fira-sans text-3xl font-bold text-gold-500 md:my-2 md:text-5xl lg:text-6xl lg:leading-tight xl:text-7xl xl:leading-tight"
+              className="font-fira-sans text-3xl font-bold tracking-wide text-gold-500 md:my-2 md:text-4xl lg:text-5xl lg:leading-tight"
             >
               {presentationT("title")}
             </h2>
 
-            <p className="tracking-wide lg:text-2xl">
+            <p className="leading-tight tracking-wide lg:text-2xl">
               {presentationT("subtitle")}
             </p>
           </div>
@@ -66,13 +66,13 @@ export default function Home() {
           <SocialMedia className="hidden md:flex" />
         </section>
 
-        <section className="flex flex-col items-center justify-center gap-2">
-          <div className="relative h-[240px] w-[240px] transition-all sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96">
+        <section className="flex flex-col items-center justify-center gap-6">
+          <div className="relative h-[240px] w-[240px] transition-all sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80">
             <Image
               src="/profile.png"
               fill
               sizes="100%"
-              className="aspect-square h-72 select-none object-cover md:h-auto"
+              className="aspect-square h-72 select-none object-cover drop-shadow-[0px_0px_4px_rgba(242,226,236,0.2)] md:h-auto"
               priority
               alt={presentationT("profile-image-alt")}
             />
@@ -204,26 +204,6 @@ const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
     )}
     {...props}
   />
-);
-
-const SocialMedia = ({ className, ...props }: ComponentProps<"div">) => (
-  <div className={twMerge("flex items-center gap-10", className)} {...props}>
-    <Link
-      href="https://github.com/GuiMoraesDev"
-      className="flex cursor-pointer flex-col items-center justify-center gap-2 p-4"
-    >
-      <Icon icon="Github" size="md" />
-      <span className="text-sm tracking-wider text-white">GitHub</span>
-    </Link>
-
-    <Link
-      href="https://www.linkedin.com/in/guimoraesdev"
-      className="flex cursor-pointer flex-col items-center justify-center gap-2 p-4"
-    >
-      <Icon icon="LinkedIn" size="md" />
-      <span className="text-sm tracking-wider text-white">LinkedIn</span>
-    </Link>
-  </div>
 );
 
 type SessionHeaderProps = ComponentProps<"h2"> & {

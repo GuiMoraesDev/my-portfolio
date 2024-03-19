@@ -9,9 +9,10 @@
   },
   "presentation": {
     "name": "Hey, my name is",
-    "title": "Frontend developer",
-    "subtitle": "I'm specialist in creating user experiences with NextJs, TypeScript, Testing Library, and more!",
-    "profile-image-alt": "An IA generated avatar from myself"
+    "title": "Software Engineer",
+    "subtitle": "I'm specialist in creating apps using Next.js, TypeScript, Node.js, automated tests, and more!",
+    "profile-image-alt": "An IA generated avatar from myself",
+    "download-resume": "Download resume"
   },
   "about-me": {
     "title": "About me",

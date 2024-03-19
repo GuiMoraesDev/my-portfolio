@@ -144,7 +144,6 @@ export const ReposComponent = () => {
                 src={cover}
                 fill
                 className="select-none object-cover drop-shadow-[0px_0px_4px_rgba(242,226,236,0.2)]"
-                priority
                 alt={title}
               />
             </div>

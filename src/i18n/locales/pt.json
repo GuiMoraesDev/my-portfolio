@@ -36,7 +36,13 @@
   },
   "projects": {
     "title": "Falar é fácil. Mostre-me o código.",
-    "quote": "'O código é a documentação' - Desconhecido"
+    "quote": "'O código é a documentação' - Desconhecido",
+    "all-projects": "Quer ver todos os projetos? Clique aqui! 💻",
+    "cards-description": {
+      "lnk-bio": "Este é um encurtador de links que permite criar uma página personalizada com seus links de mídia social. É um aplicativo Next.js com Tailwind CSS e Typescript.",
+      "prep-pal": "Esta é uma ferramenta que ajuda você a se preparar para uma entrevista de emprego. Ele usa GPT-3 da OpenAI para gerar perguntas e respostas com base na descrição do cargo.",
+      "rtc-whiteboard": "Este é um quadro branco colaborativo que usa WebRTC para compartilhar o desenho em tempo real. É um aplicativo Next.js com Tailwind CSS e Typescript."
+    }
   },
   "contact": {
     "title": "Get in touch!",

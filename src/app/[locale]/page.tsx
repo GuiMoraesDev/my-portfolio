@@ -13,7 +13,7 @@ import { Header } from "@/components/molecules/Header";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { Articles } from "@/components/organisms/Articles";
 import { ContactForm } from "@/components/organisms/ContactForm";
-import { PinnedRepos } from "@/components/organisms/PinnedRepos";
+import { Repos } from "@/components/organisms/Repos";
 import { Testimonials } from "@/components/organisms/Testimonials";
 
 export default function Home() {
@@ -156,7 +156,16 @@ export default function Home() {
         />
 
         <section className="flex w-full flex-wrap items-center justify-center gap-14">
-          <PinnedRepos />
+          <Repos />
+        </section>
+
+        <section className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
+          <a
+            href="https://github.com/GuiMoraesDev?tab=repositories"
+            className="rounded-sm p-3 text-center text-sm font-medium leading-tight text-plum-200 hover:underline"
+          >
+            {t("projects.all-projects")}
+          </a>
         </section>
       </SessionWrapper>
 

@@ -36,7 +36,13 @@
   },
   "projects": {
     "title": "Talk is cheap. Show me the code.",
-    "quote": "'The code is the documentation' - Unknown"
+    "quote": "'The code is the documentation' - Unknown",
+    "all-projects": "Do you wanna see all projects? Click here! 💻",
+    "cards-description": {
+      "lnk-bio": "This is a link shortener that allows you to create a custom page with your social media links. It's a Next.js app with Tailwind CSS and Typescript.",
+      "prep-pal": "This is a tool that helps you to prepare for a job interview. It uses OpenAI's GPT-3 to generate questions and answers based on the job description.",
+      "rtc-whiteboard": "This is a collaborative whiteboard that uses WebRTC to share the drawing in real-time. It's a Next.js app with Tailwind CSS and Typescript."
+    }
   },
   "contact": {
     "title": "Entrar em contato",

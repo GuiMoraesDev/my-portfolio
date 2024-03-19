@@ -1,15 +1,1315 @@
 export const MagnifyingGlass = () => (
   <svg
     className="h-full w-auto"
-    width="40"
-    height="40"
-    viewBox="0 0 40 40"
+    width="13"
+    height="26"
+    viewBox="0 0 13 26"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path
-      d="M39.0612 36.9387L29.675 27.5525C32.4009 24.2833 33.7614 20.089 33.4735 15.8423C33.1857 11.5955 31.2716 7.62317 28.1295 4.75171C24.9874 1.88025 20.8592 0.330727 16.6038 0.425491C12.3483 0.520254 8.29321 2.25201 5.28206 5.26049C2.27092 8.26898 0.535578 12.3226 0.437053 16.5779C0.338528 20.8333 1.8844 24.9629 4.75309 28.1075C7.62177 31.2521 11.5924 33.1697 15.8389 33.4613C20.0854 33.7529 24.2809 32.3961 27.5525 29.6731L36.9387 39.0612C37.0781 39.2006 37.2436 39.3112 37.4257 39.3866C37.6077 39.462 37.8029 39.5008 38 39.5008C38.1971 39.5008 38.3923 39.462 38.5743 39.3866C38.7564 39.3112 38.9219 39.2006 39.0612 39.0612C39.2006 38.9219 39.3112 38.7564 39.3866 38.5743C39.462 38.3923 39.5008 38.1971 39.5008 38C39.5008 37.8029 39.462 37.6077 39.3866 37.4257C39.3112 37.2436 39.2006 37.0781 39.0612 36.9387ZM3.5 17C3.5 14.3299 4.29176 11.7199 5.77516 9.4998C7.25856 7.27973 9.36697 5.54941 11.8338 4.52762C14.3006 3.50584 17.015 3.23849 19.6337 3.75939C22.2525 4.2803 24.6579 5.56605 26.5459 7.45405C28.4339 9.34206 29.7197 11.7475 30.2406 14.3663C30.7615 16.985 30.4942 19.6994 29.4724 22.1662C28.4506 24.633 26.7203 26.7414 24.5002 28.2248C22.2801 29.7082 19.67 30.5 17 30.5C13.4208 30.496 9.98932 29.0724 7.45844 26.5416C4.92756 24.0107 3.50397 20.5792 3.5 17Z"
-      fill="white"
-    />
+    <g id="Magnifying Glass">
+      <g id="Cab">
+        <rect
+          id="Rectangle 221"
+          x="5"
+          y="13"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 237"
+          x="5"
+          y="14"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 238"
+          x="5"
+          y="15"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 239"
+          x="5"
+          y="16"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 240"
+          x="5"
+          y="17"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 241"
+          x="5"
+          y="18"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 242"
+          x="5"
+          y="19"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 243"
+          x="5"
+          y="20"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 244"
+          x="5"
+          y="21"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 245"
+          x="5"
+          y="22"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 246"
+          x="5"
+          y="22"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 247"
+          x="5"
+          y="23"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 248"
+          x="5"
+          y="24"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 223"
+          x="6"
+          y="25"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 225"
+          x="7"
+          y="24"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 226"
+          x="7"
+          y="23"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 227"
+          x="7"
+          y="22"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 228"
+          x="7"
+          y="21"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 229"
+          x="7"
+          y="20"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 230"
+          x="7"
+          y="19"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 231"
+          x="7"
+          y="18"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 232"
+          x="7"
+          y="17"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 233"
+          x="7"
+          y="16"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 234"
+          x="7"
+          y="15"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 235"
+          x="7"
+          y="14"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 236"
+          x="7"
+          y="13"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 249"
+          x="6"
+          y="13"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 250"
+          x="6"
+          y="14"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 251"
+          x="6"
+          y="15"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 252"
+          x="6"
+          y="16"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 253"
+          x="6"
+          y="17"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 254"
+          x="6"
+          y="18"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 255"
+          x="6"
+          y="19"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 256"
+          x="6"
+          y="20"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 257"
+          x="6"
+          y="21"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 258"
+          x="6"
+          y="22"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 259"
+          x="6"
+          y="23"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 260"
+          x="6"
+          y="24"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+      </g>
+      <g id="Lens">
+        <rect id="Rectangle 88" x="4" width="1" height="1" fill="#8799B0" />
+        <rect id="Rectangle 89" x="5" width="1" height="1" fill="#8799B0" />
+        <rect id="Rectangle 90" x="6" width="1" height="1" fill="#8799B0" />
+        <rect id="Rectangle 91" x="7" width="1" height="1" fill="#8799B0" />
+        <rect id="Rectangle 92" x="8" width="1" height="1" fill="#8799B0" />
+        <rect
+          id="Rectangle 93"
+          x="9"
+          y="1"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 94"
+          x="10"
+          y="2"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 95"
+          x="11"
+          y="3"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 96"
+          x="12"
+          y="4"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 97"
+          x="12"
+          y="5"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 98"
+          x="12"
+          y="6"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 99"
+          x="12"
+          y="7"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 100"
+          x="12"
+          y="8"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 101"
+          x="11"
+          y="9"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 102"
+          x="10"
+          y="10"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 103"
+          x="9"
+          y="11"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 104"
+          x="8"
+          y="12"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 105"
+          x="7"
+          y="12"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 106"
+          x="6"
+          y="12"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 107"
+          x="5"
+          y="12"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 108"
+          x="4"
+          y="12"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 109"
+          x="3"
+          y="11"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 110"
+          x="2"
+          y="10"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 111"
+          x="1"
+          y="9"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect id="Rectangle 112" y="8" width="1" height="1" fill="#8799B0" />
+        <rect id="Rectangle 113" y="7" width="1" height="1" fill="#8799B0" />
+        <rect id="Rectangle 114" y="6" width="1" height="1" fill="#8799B0" />
+        <rect id="Rectangle 115" y="5" width="1" height="1" fill="#8799B0" />
+        <rect id="Rectangle 116" y="4" width="1" height="1" fill="#8799B0" />
+        <rect
+          id="Rectangle 117"
+          x="1"
+          y="3"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 118"
+          x="2"
+          y="2"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 119"
+          x="3"
+          y="1"
+          width="1"
+          height="1"
+          fill="#8799B0"
+        />
+        <rect
+          id="Rectangle 120"
+          x="4"
+          y="1"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 121"
+          x="5"
+          y="1"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 122"
+          x="6"
+          y="1"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 123"
+          x="7"
+          y="1"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 124"
+          x="8"
+          y="1"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 125"
+          x="8"
+          y="2"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 126"
+          x="9"
+          y="2"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 127"
+          x="10"
+          y="3"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 128"
+          x="9"
+          y="3"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 129"
+          x="10"
+          y="4"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 130"
+          x="11"
+          y="4"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 131"
+          x="11"
+          y="5"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 132"
+          x="11"
+          y="6"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 133"
+          x="11"
+          y="7"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 134"
+          x="11"
+          y="8"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 135"
+          x="10"
+          y="9"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 136"
+          x="10"
+          y="8"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 137"
+          x="9"
+          y="9"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 138"
+          x="9"
+          y="9"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 139"
+          x="9"
+          y="10"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 140"
+          x="8"
+          y="10"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 141"
+          x="8"
+          y="11"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 142"
+          x="7"
+          y="11"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 143"
+          x="6"
+          y="11"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 144"
+          x="5"
+          y="11"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 145"
+          x="4"
+          y="11"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 146"
+          x="4"
+          y="10"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 147"
+          x="3"
+          y="10"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 148"
+          x="3"
+          y="9"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 149"
+          x="2"
+          y="9"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 150"
+          x="2"
+          y="8"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 151"
+          x="1"
+          y="8"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 152"
+          x="1"
+          y="7"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 153"
+          x="1"
+          y="6"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 154"
+          x="1"
+          y="5"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 155"
+          x="1"
+          y="4"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 156"
+          x="2"
+          y="4"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 157"
+          x="2"
+          y="3"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 169"
+          x="3"
+          y="4"
+          width="1"
+          height="1"
+          fill="#C6D2DF"
+        />
+        <rect
+          id="Rectangle 170"
+          x="4"
+          y="4"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 171"
+          x="5"
+          y="4"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 172"
+          x="6"
+          y="4"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 173"
+          x="7"
+          y="4"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 174"
+          x="8"
+          y="4"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 175"
+          x="8"
+          y="4"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 176"
+          x="9"
+          y="4"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 177"
+          x="9"
+          y="5"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 178"
+          x="10"
+          y="5"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 179"
+          x="10"
+          y="6"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 180"
+          x="9"
+          y="6"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 181"
+          x="9"
+          y="7"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 182"
+          x="10"
+          y="7"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 183"
+          x="9"
+          y="8"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 184"
+          x="8"
+          y="8"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 185"
+          x="8"
+          y="9"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 186"
+          x="7"
+          y="9"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 187"
+          x="7"
+          y="10"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 188"
+          x="6"
+          y="10"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 189"
+          x="5"
+          y="10"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 190"
+          x="6"
+          y="9"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 191"
+          x="5"
+          y="9"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 192"
+          x="4"
+          y="9"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 193"
+          x="5"
+          y="9"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 194"
+          x="5"
+          y="8"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 195"
+          x="4"
+          y="8"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 196"
+          x="3"
+          y="8"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 197"
+          x="4"
+          y="8"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 198"
+          x="4"
+          y="7"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 199"
+          x="3"
+          y="7"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 200"
+          x="2"
+          y="7"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 201"
+          x="3"
+          y="6"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 202"
+          x="2"
+          y="6"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 203"
+          x="2"
+          y="5"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 204"
+          x="3"
+          y="5"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 205"
+          x="4"
+          y="5"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 206"
+          x="5"
+          y="5"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 207"
+          x="6"
+          y="5"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 208"
+          x="7"
+          y="5"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 209"
+          x="8"
+          y="5"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 210"
+          x="8"
+          y="6"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 211"
+          x="8"
+          y="7"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 212"
+          x="7"
+          y="7"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 213"
+          x="7"
+          y="8"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 214"
+          x="6"
+          y="8"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 215"
+          x="6"
+          y="7"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 216"
+          x="5"
+          y="7"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 217"
+          x="5"
+          y="6"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 218"
+          x="4"
+          y="6"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 219"
+          x="6"
+          y="6"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 220"
+          x="7"
+          y="6"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 158"
+          x="3"
+          y="3"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 159"
+          x="3"
+          y="2"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 160"
+          x="4"
+          y="2"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 161"
+          x="5"
+          y="2"
+          width="1"
+          height="1"
+          fill="#C6D2DF"
+        />
+        <rect
+          id="Rectangle 162"
+          x="6"
+          y="2"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 163"
+          x="7"
+          y="2"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 164"
+          x="7"
+          y="3"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 165"
+          x="8"
+          y="3"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 166"
+          x="6"
+          y="3"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 167"
+          x="5"
+          y="3"
+          width="1"
+          height="1"
+          fill="#ABB8C8"
+        />
+        <rect
+          id="Rectangle 168"
+          x="4"
+          y="3"
+          width="1"
+          height="1"
+          fill="#C6D2DF"
+        />
+      </g>
+    </g>
   </svg>
 );

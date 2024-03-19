@@ -1,9 +1,13 @@
 "use client";
 
+import {
+  FileTextIcon,
+  HeartFilledIcon,
+  KeyboardIcon,
+  StopwatchIcon,
+} from "@radix-ui/react-icons";
 import { useQuery } from "@tanstack/react-query";
 import { twMerge } from "tailwind-merge";
-
-import { Icon } from "@/components/atoms/Icon";
 
 type DevToArticle = {
   type_of: string;
@@ -77,11 +81,7 @@ export const Articles = () => {
             className="group flex h-24 w-full flex-col items-start justify-center gap-4 rounded-md bg-plum-500/90 px-5 md:h-14 md:flex-row md:items-center md:justify-between xl:gap-5"
           >
             <header className="flex items-center justify-start gap-2">
-              <Icon
-                icon="Article"
-                size="sm"
-                className="hidden sm:inline-flex"
-              />
+              <FileTextIcon className="hidden h-5 w-5 text-white sm:inline-flex" />
               <p
                 className={twMerge(
                   "relative text-xs text-white min-[340px]:text-sm xl:text-base",
@@ -95,15 +95,27 @@ export const Articles = () => {
 
             <section className="flex items-center justify-start gap-9 md:gap-5">
               <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-white">
-                <Icon icon="Clock" size="sm" />
+                {/* <Icon icon="Clock" size="sm" /> */}
+                <StopwatchIcon
+                  className="hidden h-5 w-5 text-white sm:inline-flex"
+                  aria-description="reading time"
+                />
                 {reading_time_minutes} min
               </span>
               <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-white">
-                <Icon icon="ThumbsUp" size="sm" />
+                {/* <Icon icon="ThumbsUp" size="sm" /> */}
+                <HeartFilledIcon
+                  className="hidden h-5 w-5 text-white sm:inline-flex"
+                  aria-description="likes"
+                />
                 {positive_reactions_count}
               </span>
               <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-white">
-                <Icon icon="Comments" size="sm" />
+                {/* <Icon icon="Comments" size="sm" /> */}
+                <KeyboardIcon
+                  className="hidden h-5 w-5 text-white sm:inline-flex"
+                  aria-description="comments"
+                />
                 {comments_count}
               </span>
             </section>

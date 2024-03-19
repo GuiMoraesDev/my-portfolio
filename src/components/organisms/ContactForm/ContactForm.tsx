@@ -1,5 +1,6 @@
 "use client";
 
+import { PaperPlaneIcon } from "@radix-ui/react-icons";
 import { startSpan } from "@sentry/nextjs";
 import Placeholder from "@tiptap/extension-placeholder";
 import UnderlineMark from "@tiptap/extension-underline";
@@ -14,7 +15,6 @@ import { useEmailForm, useSendEmailMutation } from "./hooks";
 import { CheckIfGeneratePreviewIsSupported } from "./util/CheckIfGeneratePreviewIsSupported";
 
 import { ErrorMessage } from "@/components/atoms/ErrorMessage";
-import { Icon } from "@/components/atoms/Icon";
 import { Input } from "@/components/atoms/Input";
 import { Label } from "@/components/atoms/Label";
 import { type SendEmailProps } from "@/schemas/email/schema";
@@ -79,12 +79,10 @@ export const ContactFormComponent = () => {
           className="flex w-full flex-col gap-4"
           data-testid="contact-form"
           id={formId}
+          name="contact-form"
           onSubmit={handleSubmit(onFormSubmit)}
         >
-          <Label
-            htmlFor="first_name"
-            className="mx-auto flex w-full flex-col items-baseline justify-between gap-2"
-          >
+          <Label className="mx-auto flex w-full flex-col items-baseline justify-between gap-2">
             {t("form.labels.first_name")}
             <Input
               type="text"
@@ -101,10 +99,7 @@ export const ContactFormComponent = () => {
             </ErrorMessage>
           </Label>
 
-          <Label
-            htmlFor="last_name"
-            className="mx-auto flex w-full flex-col items-baseline justify-between gap-2"
-          >
+          <Label className="mx-auto flex w-full flex-col items-baseline justify-between gap-2">
             {t("form.labels.last_name")}
             <Input
               type="text"
@@ -121,10 +116,7 @@ export const ContactFormComponent = () => {
             </ErrorMessage>
           </Label>
 
-          <Label
-            htmlFor="email"
-            className="mx-auto flex w-full flex-col items-baseline justify-between gap-2"
-          >
+          <Label className="mx-auto flex w-full flex-col items-baseline justify-between gap-2">
             {t("form.labels.email")}
             <Input
               type="email"
@@ -141,10 +133,7 @@ export const ContactFormComponent = () => {
             </ErrorMessage>
           </Label>
 
-          <Label
-            htmlFor="subject"
-            className="mx-auto flex w-full flex-col items-baseline justify-between gap-2"
-          >
+          <Label className="mx-auto flex w-full flex-col items-baseline justify-between gap-2">
             {t("form.labels.subject")}
             <Input
               type="text"
@@ -160,10 +149,7 @@ export const ContactFormComponent = () => {
             </ErrorMessage>
           </Label>
 
-          <Label
-            htmlFor="editor"
-            className="mx-auto flex w-full flex-1 flex-col items-baseline justify-between gap-2"
-          >
+          <Label className="mx-auto flex w-full flex-1 flex-col items-baseline justify-between gap-2">
             <p>
               {t.rich("form.labels.message", {
                 small: (chunks) => <small>{chunks}</small>,
@@ -196,7 +182,7 @@ export const ContactFormComponent = () => {
             className="flex w-28 items-center justify-center gap-2 rounded-md border border-plum-800 bg-white px-4 py-2 text-plum-900 transition hover:bg-white/80 disabled:cursor-not-allowed disabled:bg-gray-500"
           >
             {t("form.buttons.send")}
-            <Icon size="sm" icon="PaperPlane" className="lg:size-4" />
+            <PaperPlaneIcon className="h-6 w-6" />
           </button>
         </section>
       </div>

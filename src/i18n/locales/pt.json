@@ -9,32 +9,40 @@
   },
   "presentation": {
     "name": "E aí, meu nome é",
-    "title": "Desenvolvedor Frontend",
-    "subtitle": "Sou especialista em criar experiências de usuário com NextJs, TypeScript, Testing Library, e mais!",
-    "profile-image-alt": "Um avatar meu gerado por IA"
+    "title": "Engenheiro de software",
+    "subtitle": "Sou especialista em criação de apps utilizando Next.js, TypeScript, Node.js, testes automatizados e muito mais!",
+    "profile-image-alt": "Um avatar meu gerado por IA",
+    "my-resume": "Meu currículo"
   },
   "about-me": {
-    "title": "Sobre mim",
     "quote": "'Codificando códigos e histórias, uma fotografia da minha odisseia digital' - ChatGPT",
-    "description": "Sou um desenvolvedor frontend apaixonado por enfrentar desafios para construir interfaces web incríveis e amigáveis ao usuário. Quando se trata de projetos, sempre busco trazer novas ideias e soluções inovadoras para a mesa. Garantir que as aplicações web não sejam apenas funcionais, mas também escaláveis, é minha especialidade. Vamos criar algo incrível juntos!",
     "cards": {
-      "years-experience": "{time} de experiência",
-      "attention-details": "Atenção aos detalhes para uma boa UX",
-      "scalable-code": "Código fácil de escalar e manter",
-      "remote-work": "Trabalho remoto para todo o mundo"
+      "years-experience": "Tenho <highlight>{time} de experiência</highlight> em desenvolvimento de software, sou especialista em criar interfaces web amigáveis com foco em <highlight>escalabilidade</highlight>.",
+      "attention-details": "Minha atenção aos detalhes garante uma experiência de usuário perfeita, enquanto meu código é projetado para <highlight> fácil manutenção, testabilidade e escalabilidade</highlight>.",
+      "worldwide": "Adotando uma <highlight>mentalidade de remote-first</highlight>, tive a oportunidade de <highlight>colaborar em todo o mundo</highlight> criando soluções digitais excepcionais."
     }
   },
   "articles": {
     "title": "Explorando meu conhecimento",
-    "quote": "'Lorem ipsum dolor sit amet' - lipsum.com"
+    "quote": "'Lorem ipsum dolor sit amet' - lipsum.com",
+    "all-articles": "Quer ver todos os artigos? Clique aqui! 📚"
   },
   "references": {
     "title": "O que estão dizendo sobre mim?",
-    "quote": "'Ele é o menino mais bonito do mundo' - Mãe"
+    "quote": "'Ele é o menino mais bonito do mundo' - Mãe",
+    "leave-reference": "Você já trabalhou comigo? Deixe uma recomendação! 📝",
+    "show-more": "Mostrar mais",
+    "show-less": "Mostrar menos"
   },
   "projects": {
     "title": "Falar é fácil. Mostre-me o código.",
-    "quote": "'O código é a documentação' - Desconhecido"
+    "quote": "'O código é a documentação' - Desconhecido",
+    "all-projects": "Quer ver todos os projetos? Clique aqui! 💻",
+    "cards-description": {
+      "my-portfolio": "Este é um super projeto de portfólio, para mostrar minhas habilidades e experiências. É um aplicativo Next.js com Tailwind CSS e Typescript. integrado com ferramentas de IA para gerar e-mail e um editor de descontos.",
+      "lnk-bio": "Este é um encurtador de links que permite criar uma página personalizada com seus links de mídia social. É um aplicativo Next.js com Tailwind CSS e Typescript.",
+      "prep-pal": "Esta é uma ferramenta que ajuda você a se preparar para uma entrevista de emprego. Ele usa GPT-3 da OpenAI para gerar perguntas e respostas com base na descrição do cargo."
+    }
   },
   "contact": {
     "title": "Get in touch!",

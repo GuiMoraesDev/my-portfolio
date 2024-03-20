@@ -1,5 +1,6 @@
 import { formatDistanceToNow } from "date-fns";
 import { ptBR, enUS } from "date-fns/locale";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
 import { type ComponentProps } from "react";
@@ -7,7 +8,6 @@ import { twMerge } from "tailwind-merge";
 
 import { DrawContainer } from "@/components/atoms/Draws";
 import { Icon, type IconProp } from "@/components/atoms/Icon";
-import { ProfileImage } from "@/components/atoms/ProfileImage";
 import { Spheres } from "@/components/atoms/Spheres";
 import { Header } from "@/components/molecules/Header";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
@@ -60,7 +60,16 @@ export default function Home() {
         </section>
 
         <section className="flex flex-col items-center justify-center gap-6">
-          <ProfileImage />
+          <div className="relative h-[240px] w-[240px] transition-all sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80">
+            <Image
+              src="/profile.png"
+              fill
+              sizes="100%"
+              className="aspect-square h-72 select-none object-cover drop-shadow-[0px_0px_4px_rgba(242,226,236,0.2)] md:h-auto"
+              priority
+              alt={t("presentation.profile-image-alt")}
+            />
+          </div>
 
           <SocialMedia className="flex md:hidden" />
         </section>

@@ -139,7 +139,7 @@ export const ReposComponent = () => {
             className="group flex w-full"
           >
             <motion.div
-              className="flex w-full flex-col gap-3 overflow-hidden rounded-lg bg-plum-50 p-4 text-plum-500 shadow-md md:flex-row"
+              className="flex w-full flex-col gap-3 overflow-hidden rounded-lg bg-plum-50 p-4 text-plum-500 shadow-md lg:flex-row"
               variants={{
                 offscreen: {
                   x: index % 2 === 0 ? 100 : -100,
@@ -159,7 +159,7 @@ export const ReposComponent = () => {
               <div
                 className={twMerge(
                   "relative block aspect-video h-full w-auto min-w-[45%] overflow-clip rounded-md transition",
-                  index % 2 === 0 ? "md:order-0" : "md:order-1",
+                  index % 2 === 0 ? "lg:order-0" : "lg:order-1",
                 )}
               >
                 <ImageComponent

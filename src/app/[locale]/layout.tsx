@@ -21,17 +21,15 @@ const firaSans = Fira_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://portfoliov2-pearl-one.vercel.app/"),
+  metadataBase: new URL("https://www.guimoraes.dev/"),
   referrer: "origin-when-cross-origin",
   keywords: ["confer-all", "Confer All", "Next.js", "React", "JavaScript"],
-  authors: { name: "Guilherme Moraes" },
+  authors: { name: "Guilherme Moraes", url: "https://github.com/GuiMoraesDev" },
   creator: "Guilherme Moraes",
   publisher: "Guilherme Moraes",
-  title: {
-    default: "Guilherme Moraes | Frontend engineer",
-    template: "%s | Guilherme Moraes",
-  },
-  description: "I am a passionate front-end engineer",
+  title: "Guilherme Moraes | Software engineer",
+  description:
+    "I'm specialist in creating apps using Next.js, TypeScript, Node.js, automated tests, and more!",
   formatDetection: {
     email: false,
     address: false,
@@ -39,9 +37,10 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Guilherme Moraes",
-    description: "I am a passionate front-end engineer",
+    description:
+      "I'm specialist in creating apps using Next.js, TypeScript, Node.js, automated tests, and more!",
     url: "/",
-    siteName: "Guilherme Moraes | Frontend engineer",
+    siteName: "Guilherme Moraes | Software engineer",
     images: [
       {
         url: "/img/cover/256p.png",
@@ -75,8 +74,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Guilherme Moraes | Frontend engineer",
-    description: "I am a passionate front-end engineer",
+    title: "Guilherme Moraes | Software engineer",
+    description:
+      "I'm specialist in creating apps using Next.js, TypeScript, Node.js, automated tests, and more!",
     creator: "Guilherme Moraes",
     images: ["/img/cover/800p.png"],
   },

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image, { type ImageProps } from "next/image";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 type TechStack = {
   name: string;
@@ -156,10 +157,10 @@ export const ReposComponent = () => {
               }}
             >
               <div
-                className="relative block aspect-video h-full w-auto min-w-[45%] overflow-clip rounded-md transition"
-                style={{
-                  order: index % 2 === 0 ? 0 : 1,
-                }}
+                className={twMerge(
+                  "relative block aspect-video h-full w-auto min-w-[45%] overflow-clip rounded-md transition",
+                  index % 2 === 0 ? "md:order-0" : "md:order-1",
+                )}
               >
                 <ImageComponent
                   src={cover}

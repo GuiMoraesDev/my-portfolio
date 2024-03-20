@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Image, { type ImageProps } from "next/image";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 type TechStack = {
   name: string;
@@ -138,7 +139,7 @@ export const ReposComponent = () => {
             className="group flex w-full"
           >
             <motion.div
-              className="flex w-full flex-col gap-3 overflow-hidden rounded-lg bg-plum-50 p-4 text-plum-500 shadow-md md:flex-row"
+              className="flex w-full flex-col gap-3 overflow-hidden rounded-lg bg-plum-50 p-4 text-plum-500 shadow-md lg:flex-row"
               variants={{
                 offscreen: {
                   x: index % 2 === 0 ? 100 : -100,
@@ -156,10 +157,10 @@ export const ReposComponent = () => {
               }}
             >
               <div
-                className="relative block aspect-video h-full w-auto min-w-[45%] overflow-clip rounded-md transition"
-                style={{
-                  order: index % 2 === 0 ? 0 : 1,
-                }}
+                className={twMerge(
+                  "relative block aspect-video h-full w-auto min-w-[45%] overflow-clip rounded-md transition",
+                  index % 2 === 0 ? "lg:order-0" : "lg:order-1",
+                )}
               >
                 <ImageComponent
                   src={cover}

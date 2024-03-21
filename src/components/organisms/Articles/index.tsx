@@ -64,7 +64,7 @@ export const Articles = () => {
   if (isLoading) return <ArticlesSkeleton />;
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex w-full flex-col gap-4">
       {articles.map(
         (
           {
@@ -81,7 +81,7 @@ export const Articles = () => {
             key={id}
             initial="offscreen"
             whileInView="onscreen"
-            viewport={{ once: true, amount: 0.8 }}
+            viewport={{ once: true }}
           >
             <motion.a
               href={url}
@@ -89,7 +89,7 @@ export const Articles = () => {
               rel="noopener noreferrer"
               variants={{
                 offscreen: {
-                  x: 300,
+                  x: 50,
                   opacity: 0,
                 },
                 onscreen: {
@@ -97,8 +97,9 @@ export const Articles = () => {
                   opacity: 1,
                   transition: {
                     type: "spring",
-                    bounce: 0.4,
-                    duration: 0.8 * (index + 1),
+                    bounce: 0.25,
+                    duration: 0.8,
+                    delay: 0.2 * (index + 1),
                   },
                 },
               }}

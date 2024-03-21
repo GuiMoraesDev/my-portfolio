@@ -82,7 +82,7 @@ export const ContactFormComponent = () => {
         className="flex h-full w-full items-center justify-center gap-8 rounded-md bg-plum-500/90 p-4 md:p-8"
         variants={{
           offscreen: {
-            y: 100,
+            y: 50,
             opacity: 0,
           },
           onscreen: {
@@ -90,8 +90,9 @@ export const ContactFormComponent = () => {
             opacity: 1,
             transition: {
               type: "spring",
-              bounce: 0.4,
+              bounce: 0.25,
               duration: 2,
+              delay: 0.2,
             },
           },
         }}

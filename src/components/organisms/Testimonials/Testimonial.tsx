@@ -197,7 +197,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
           )}
           variants={{
             offscreen: {
-              y: 100,
+              y: 50,
               opacity: 0,
             },
             onscreen: {
@@ -205,8 +205,9 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
               opacity: 1,
               transition: {
                 type: "spring",
-                bounce: 0.4,
-                duration: 0.8 * (index + 1),
+                bounce: 0.25,
+                duration: 0.8,
+                delay: 0.2 * (index + 1),
               },
             },
           }}

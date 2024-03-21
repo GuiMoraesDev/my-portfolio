@@ -142,7 +142,7 @@ export const ReposComponent = () => {
               className="flex w-full flex-col gap-3 overflow-hidden rounded-lg bg-plum-50 p-4 text-plum-500 shadow-md lg:flex-row"
               variants={{
                 offscreen: {
-                  x: index % 2 === 0 ? 100 : -100,
+                  x: index % 2 === 0 ? 50 : -50,
                   opacity: 0,
                 },
                 onscreen: {
@@ -150,8 +150,9 @@ export const ReposComponent = () => {
                   opacity: 1,
                   transition: {
                     type: "spring",
-                    bounce: 0.4,
-                    duration: 0.8 * (index + 1),
+                    bounce: 0.25,
+                    duration: 0.8,
+                    delay: 0.2 * (index + 1),
                   },
                 },
               }}

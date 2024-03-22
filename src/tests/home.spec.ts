@@ -114,7 +114,6 @@ test.describe("Page elements", () => {
 
 const fillField = async (page: Page, selector: string, value: string) => {
   const element = page.locator(selector);
-  await element.scrollIntoViewIfNeeded();
 
   await element.fill(value);
 };

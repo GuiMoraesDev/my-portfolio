@@ -76,6 +76,7 @@ export const ContactFormComponent = () => {
       className="max-h-[700px] w-full"
       initial="offscreen"
       whileInView="onscreen"
+      data-testid="contact-form"
       viewport={{ once: true }}
     >
       <motion.div
@@ -102,7 +103,6 @@ export const ContactFormComponent = () => {
 
           <form
             className="flex w-full flex-col gap-4"
-            data-testid="contact-form"
             id={formId}
             name="contact-form"
             onSubmit={handleSubmit(onFormSubmit)}

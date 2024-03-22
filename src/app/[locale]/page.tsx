@@ -162,6 +162,7 @@ export default function Home() {
         <section className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
           <a
             href="https://github.com/GuiMoraesDev?tab=repositories"
+            target="_blank"
             className="rounded-sm p-3 text-center text-sm font-medium leading-tight text-plum-200 hover:underline"
           >
             {t("projects.all-projects")}

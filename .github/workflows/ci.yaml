@@ -8,9 +8,12 @@ on:
       - main
     types: [opened, synchronize]
 
+concurrency:
+  group: ci-${{ github.ref_name }}
+  cancel-in-progress: true
+
 jobs:
   Type-And-Lint:
-    if: github.event_name == 'pull_request' && github.event.action == 'opened' && github.event.pull_request.base.ref == 'main' || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -38,7 +41,6 @@ jobs:
 
   Unit-test:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.event.action == 'opened' && github.event.pull_request.base.ref == 'main' || github.event_name == 'push'
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -62,7 +64,6 @@ jobs:
 
   E2E-test:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.event.action == 'opened' && github.event.pull_request.base.ref == 'main' || github.event_name == 'push'
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4

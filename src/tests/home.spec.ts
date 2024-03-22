@@ -147,22 +147,16 @@ test.describe("Email form", () => {
     });
   });
 
-  test("if the email form is in the viewport", async ({ page }) => {
+  test("if the email form is visible", async ({ page }) => {
     await page.goto("./");
 
     const contactElement = page.locator("#contact");
-    await contactElement.waitFor();
-    await contactElement.scrollIntoViewIfNeeded();
 
-    await expect(contactElement).toBeInViewport();
+    await expect(contactElement).toBeVisible();
   });
 
   test("if the email form fields can be filled", async ({ page }) => {
     await page.goto("./");
-
-    const form = page.locator("data-testid=contact-form");
-    await form.waitFor();
-    await form.scrollIntoViewIfNeeded();
 
     const testDate = new Date().toLocaleString();
 

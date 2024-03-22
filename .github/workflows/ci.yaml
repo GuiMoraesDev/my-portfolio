@@ -1,12 +1,8 @@
 name: CI
 on:
-  push:
-    branches:
-      - homolog
   pull_request:
     branches:
       - main
-    types: [opened, synchronize]
 
 concurrency:
   group: ci-${{ github.ref_name }}

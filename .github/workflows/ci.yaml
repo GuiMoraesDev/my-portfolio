@@ -2,11 +2,10 @@ name: CI
 on:
   push:
     branches:
-      - main
       - homolog
   pull_request:
     branches:
-      - "*"
+      - main
 jobs:
   Type-And-Lint:
     runs-on: ubuntu-latest

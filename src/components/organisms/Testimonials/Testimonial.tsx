@@ -153,11 +153,10 @@ export const TestimonialComponent = () => {
       <section className="flex flex-col items-center justify-between gap-4">
         <a
           href="https://www.linkedin.com/in/guimoraesdev/details/recommendations/"
-          className="ml-auto"
+          target="_blank"
+          className="ml-auto rounded-sm p-3 text-center text-sm font-medium leading-tight text-plum-200 hover:underline"
         >
-          <button className="rounded-sm p-3 text-center text-sm font-medium leading-tight text-plum-200 hover:underline">
-            {t("leave-reference")}
-          </button>
+          {t("leave-reference")}
         </a>
 
         <button

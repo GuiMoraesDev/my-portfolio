@@ -30,16 +30,11 @@ export const metadata: Metadata = {
   title: "Guilherme Moraes | Software engineer",
   description:
     "I'm specialist in creating apps using Next.js, TypeScript, Node.js, automated tests, and more!",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
   openGraph: {
     title: "Guilherme Moraes",
     description:
       "I'm specialist in creating apps using Next.js, TypeScript, Node.js, automated tests, and more!",
-    url: "/",
+    url: new URL("https://www.guimoraes.dev/"),
     siteName: "Guilherme Moraes | Software engineer",
     images: [
       {
@@ -60,25 +55,6 @@ export const metadata: Metadata = {
     ],
     locale: "en",
     type: "website",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Guilherme Moraes | Software engineer",
-    description:
-      "I'm specialist in creating apps using Next.js, TypeScript, Node.js, automated tests, and more!",
-    creator: "Guilherme Moraes",
-    images: ["/cover/800p.png"],
   },
 };
 

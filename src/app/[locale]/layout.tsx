@@ -43,17 +43,17 @@ export const metadata: Metadata = {
     siteName: "Guilherme Moraes | Software engineer",
     images: [
       {
-        url: "/img/cover/256p.png",
+        url: "/cover/256p.png",
         width: 256,
         height: 256,
       },
       {
-        url: "/img/cover/800p.png",
+        url: "/cover/800p.png",
         width: 800,
         height: 600,
       },
       {
-        url: "/img/cover/1800p.png",
+        url: "/cover/1800p.png",
         width: 1800,
         height: 1600,
       },
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     description:
       "I'm specialist in creating apps using Next.js, TypeScript, Node.js, automated tests, and more!",
     creator: "Guilherme Moraes",
-    images: ["/img/cover/800p.png"],
+    images: ["/cover/800p.png"],
   },
 };
 

@@ -32,7 +32,7 @@ type DevToArticle = {
   crossposted_at: null;
   published_at: string;
   last_comment_at: string;
-  reading_time_minutes: 7;
+  reading_time_minutes: number;
   tag_list: string[];
   tags: string;
   user: {

@@ -2,10 +2,10 @@
 
 import { GitHubLogoIcon, Link2Icon } from "@radix-ui/react-icons";
 import { motion } from "framer-motion";
-import Image, { type ImageProps } from "next/image";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
 import { twMerge } from "tailwind-merge";
+
+import { ImageComponent } from "@/components/atoms/Image";
 
 type TechStack = {
   name: string;
@@ -236,56 +236,4 @@ export const ReposComponent = () => {
       )}
     </ul>
   );
-};
-
-const UnderConstruction = () => {
-  return (
-    <div className="flex h-full flex-col items-center justify-center gap-2 bg-gold-500 object-cover">
-      <div
-        className="h-4 w-full"
-        style={{
-          background: `repeating-linear-gradient(
-          110deg,
-          #0D020D,
-          #0D020D 10px,
-          #EFEFEF 10px,
-          #EFEFEF 20px
-        )`,
-        }}
-      />
-
-      <section className="flex flex-col items-center justify-center gap-2">
-        <span className="font-bold uppercase text-plum-900 md:text-2xl lg:text-3xl">
-          Coming soon
-        </span>
-        <span className=" text-sm font-bold text-plum-700 md:text-xl lg:text-2xl">
-          Under Construction
-        </span>
-      </section>
-
-      <div
-        className="h-4 w-full"
-        style={{
-          background: `repeating-linear-gradient(
-          110deg,
-          #0D020D,
-          #0D020D 10px,
-          #EFEFEF 10px,
-          #EFEFEF 20px
-        )`,
-        }}
-      />
-    </div>
-  );
-};
-
-const ImageComponent = (props: ImageProps) => {
-  const [hasError, setHasError] = useState(false);
-
-  if (hasError) {
-    return <UnderConstruction />;
-  }
-
-  // eslint-disable-next-line jsx-a11y/alt-text
-  return <Image {...props} onError={() => setHasError(true)} />;
 };

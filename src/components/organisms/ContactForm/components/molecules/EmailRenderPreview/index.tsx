@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-import { type FormProps } from "../../@types";
+import { type FormProps } from "../../../@types";
 
 import { useGeneratedPreview } from "./hooks/useGeneratedPreview";
 

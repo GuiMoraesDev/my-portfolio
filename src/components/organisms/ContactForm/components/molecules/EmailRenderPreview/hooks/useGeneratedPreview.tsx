@@ -2,7 +2,7 @@ import { renderAsync } from "@react-email/components";
 import { useEffect, useState } from "react";
 import sanitizeHtml from "sanitize-html";
 
-import { type FormProps } from "../../../@types";
+import { type FormProps } from "../../../../@types";
 
 import { ContactEmailTemplate } from "@/emails/templates";
 

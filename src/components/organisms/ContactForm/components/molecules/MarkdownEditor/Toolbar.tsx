@@ -15,7 +15,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { useGenerateEmailMutation } from "../../hooks";
+import { useGenerateEmailMutation } from "../../../hooks";
 
 import { type MarkdownEditorProps } from ".";
 

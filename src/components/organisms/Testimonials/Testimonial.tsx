@@ -39,8 +39,8 @@ export const TestimonialComponent = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4">
-      <section className="grid flex-1 grid-cols-1 flex-wrap gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div className="flex w-full flex-col gap-4">
+      <section className="grid w-full flex-1 grid-cols-1 flex-wrap gap-4 md:grid-cols-2 lg:grid-cols-3">
         {testimonials.map((testimonial, index) => (
           <div
             className={twMerge(

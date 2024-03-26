@@ -3,7 +3,7 @@
 import { EditorContent } from "@tiptap/react";
 import { twMerge } from "tailwind-merge";
 
-import { type FormProps, type EditorProps } from "../../@types";
+import { type FormProps, type EditorProps } from "../../../@types";
 
 import { Toolbar } from "./Toolbar";
 

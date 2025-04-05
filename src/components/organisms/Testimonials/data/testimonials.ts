@@ -88,7 +88,7 @@ export const allTestimonials: Array<Testimonial> = [
       "Além de um excelente colega de equipe, é uma pessoa muito sensata e responsável. seu trabalho é sempre muito eficiente e também muito assertivo. Possui uma sincronia ótima com a equipe e é muito dedicado em seus projetos.",
   },
   {
-    name: "Osmane FonsecaOsmane Fonseca",
+    name: "Osmane Fonseca",
     role: "Web Designer | Publicitário | Analista de Marketing",
     company: "ProEnem",
     className: "lg:col-span-3",

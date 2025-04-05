@@ -3,7 +3,7 @@
 import * as Switch from "@radix-ui/react-switch";
 import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { type ComponentProps, useRef, useState } from "react";
+import { type ComponentProps, useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Hamburger } from "./icons/hamburger";
@@ -89,7 +89,9 @@ export const LanguageSelectorElement = ({
 );
 
 export const HeaderComponent = (props: ComponentProps<"header">) => {
-  printInConsole();
+  useEffect(() => {
+    printInConsole();
+  }, []);
 
   const locale = useLocale();
   const router = useRouter();
@@ -133,12 +135,12 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
         </button>
 
         <section
+          data-is-open={isOpen}
           className={twMerge(
-            "absolute left-0 top-0 flex min-w-52 flex-col gap-6 pb-3 pt-16",
-            "before:absolute before:left-0 before:top-0 before:h-[calc(100%+2.5rem)] before:w-[calc(100%+2.5rem)] before:origin-top-left before:rounded-xl before:bg-white/[.98] before:p-5 before:transition before:content-[''] lg:before:h-[calc(100%+1.5rem)]",
-            isOpen
-              ? "z-10 before:-translate-x-5 before:-translate-y-5 before:scale-100 before:rounded-md"
-              : "before:translate-x-1 before:translate-y-1 before:scale-0",
+            "absolute bottom-1/2 left-0 flex h-0 min-w-52 flex-col gap-6 transition-[height,pb,pt]",
+            "data-[is-open=true]:bottom-auto data-[is-open=true]:top-0 data-[is-open=true]:z-10 data-[is-open=true]:h-auto data-[is-open=true]:pb-3 data-[is-open=true]:pt-16",
+            "before:absolute before:left-0 before:top-0 before:h-[calc(100%+2.5rem)] before:w-[calc(100%+2.5rem)] before:origin-top-left before:translate-x-1 before:translate-y-1 before:scale-0 before:rounded-xl before:bg-white/[.98] before:p-5 before:transition before:content-[''] lg:before:h-[calc(100%+1.5rem)]",
+            "data-[is-open=true]:before:-translate-x-5 data-[is-open=true]:before:-translate-y-5 data-[is-open=true]:before:scale-100 data-[is-open=true]:before:rounded-md",
           )}
         >
           <ul

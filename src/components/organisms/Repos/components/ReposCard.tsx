@@ -102,8 +102,8 @@ export const ReposCard = ({
             <a
               className="inline-flex gap-2 rounded-md bg-plum-500 p-2 text-white transition-colors hover:bg-plum-700"
               href={github_link}
-              aria-label={`${title} github link: ${project_link}`}
-              title={`${title} github link: ${project_link}`}
+              aria-label={`${title} github link: ${github_link}`}
+              title={`${title} github link: ${github_link}`}
               target="_blank"
             >
               <GitHubLogoIcon className="h-6 w-6 " />

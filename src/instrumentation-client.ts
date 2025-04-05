@@ -23,4 +23,16 @@ Sentry.init({
 
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
+
+  // Drop Suspense Exception events
+  beforeSend(event) {
+    if (
+      event.exception?.values?.some((ex) =>
+        ex.value?.includes("Suspense Exception"),
+      )
+    ) {
+      return null; // Drop the event
+    }
+    return event;
+  },
 });

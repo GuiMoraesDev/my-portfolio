@@ -4,7 +4,7 @@ import createIntlMiddleware from "next-intl/middleware";
 import { type Locale } from "./i18n/locales";
 import { locales, defaultLocale } from "./i18n/settings";
 
-export default async function middleware(request: NextRequest) {
+export default function middleware(request: NextRequest) {
   const headerLocale =
     (request.headers.get("x-your-custom-locale") as Locale) || defaultLocale;
 
@@ -13,6 +13,7 @@ export default async function middleware(request: NextRequest) {
     defaultLocale: headerLocale,
     localePrefix: "never",
   });
+
   const response = handleI18nRouting(request);
 
   response.headers.set("x-your-custom-locale", defaultLocale);

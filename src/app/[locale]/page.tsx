@@ -1,8 +1,7 @@
 import { formatDistanceToNow } from "date-fns";
 import { ptBR, enUS } from "date-fns/locale";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
-import { useLocale } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -11,15 +10,15 @@ import { Icon, type IconProp } from "@/components/atoms/Icon";
 import { Spheres } from "@/components/atoms/Spheres";
 import { Header } from "@/components/molecules/Header";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
-import { Articles } from "@/components/organisms/Articles";
+import { ArticlesView } from "@/components/organisms/Articles";
 import { ContactForm } from "@/components/organisms/ContactForm";
 import { Repos } from "@/components/organisms/Repos";
 import { Testimonials } from "@/components/organisms/Testimonials";
 
-export default function Home() {
-  const locale = useLocale();
+export default async function Home() {
+  const locale = await getLocale();
 
-  const t = useTranslations();
+  const t = await getTranslations();
 
   return (
     <main className="container relative flex flex-col items-center bg-plum-900 font-lato text-white">
@@ -119,7 +118,7 @@ export default function Home() {
         />
 
         <section className="flex w-full flex-col items-center justify-center gap-6">
-          <Articles />
+          <ArticlesView />
         </section>
 
         <section className="flex w-full flex-col items-center justify-center gap-4 md:items-end">

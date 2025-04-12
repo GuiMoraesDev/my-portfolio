@@ -9,7 +9,6 @@ import { repositories } from "./data/repositories";
 const ReposCard = dynamic(
   () => import("./components/ReposCard").then((mod) => mod.ReposCard),
   {
-    ssr: false,
     loading: () => <SkeletonReposCard />,
   },
 );

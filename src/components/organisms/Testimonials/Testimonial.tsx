@@ -11,7 +11,6 @@ const TestimonialCard = dynamic(
   () =>
     import("./components/TestimonialCard").then((mod) => mod.TestimonialCard),
   {
-    ssr: false,
     loading: () => <SkeletonTestimonialCard />,
   },
 );

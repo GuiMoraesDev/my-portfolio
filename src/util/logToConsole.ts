@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 "use client";
 
-export const printInConsole = () => {
+export const logToConsole = () => {
   if (process.env.NODE_ENV === "production") {
     console.clear();
   }

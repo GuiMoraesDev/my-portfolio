@@ -3,14 +3,13 @@
 import * as Switch from "@radix-ui/react-switch";
 import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { type ComponentProps, useEffect, useRef, useState } from "react";
+import { type ComponentProps, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Hamburger } from "./icons/hamburger";
 
 import { Icon } from "@/components/atoms/Icon";
 import { useHandleClickOutside } from "@/hooks/useDetectClickOutside";
-import { printInConsole } from "@/services/console";
 
 export const Wrapper = ({
   className,
@@ -89,10 +88,6 @@ export const LanguageSelectorElement = ({
 );
 
 export const HeaderComponent = (props: ComponentProps<"header">) => {
-  useEffect(() => {
-    printInConsole();
-  }, []);
-
   const locale = useLocale();
   const router = useRouter();
 

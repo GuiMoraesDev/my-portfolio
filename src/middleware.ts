@@ -5,18 +5,20 @@ import { type Locale } from "./i18n/locales";
 import { locales, defaultLocale } from "./i18n/settings";
 
 export default function middleware(request: NextRequest) {
-  const headerLocale =
-    (request.headers.get("x-your-custom-locale") as Locale) || defaultLocale;
+  const headers = new Headers(request.headers);
 
-  const handleI18nRouting = createIntlMiddleware({
+  const headerLocale =
+    (headers.get("x-custom-locale") as Locale) || defaultLocale;
+
+  const response = createIntlMiddleware({
     locales,
     defaultLocale: headerLocale,
     localePrefix: "never",
-  });
+  })(request);
 
-  const response = handleI18nRouting(request);
+  response.headers.set("x-custom-locale", defaultLocale);
 
-  response.headers.set("x-your-custom-locale", defaultLocale);
+  response.headers.set("x-current-origin", request.nextUrl.origin);
 
   return response;
 }

@@ -1,14 +1,18 @@
+import { headers } from "next/headers";
+
 import { type DevDotToArticle } from "@/app/api/articles/list/route";
 
 const list = async (): Promise<{
   data: DevDotToArticle[];
 }> => {
-  const response = await fetch(
-    process.env.NEXT_PUBLIC_API_URL + "/api/articles/list",
-    {
-      method: "GET",
-    },
-  );
+  const headersList = await headers();
+  const domain = headersList.get("x-current-origin");
+
+  const { href } = new URL(`${domain}/api/articles/list`);
+
+  const response = await fetch(href, {
+    method: "GET",
+  });
   return response.json();
 };
 

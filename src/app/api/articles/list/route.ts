@@ -43,8 +43,6 @@ export async function GET() {
 
     const data: DevDotToArticle[] = await response.json();
 
-    await new Promise((resolve) => setTimeout(resolve, 5 * 1000));
-
     return Response.json({
       data,
     });

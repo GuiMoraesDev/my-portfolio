@@ -12,8 +12,8 @@ import { Header } from "@/components/molecules/Header";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { ArticlesView } from "@/components/organisms/Articles";
 import { ContactForm } from "@/components/organisms/ContactForm";
-import { Repos } from "@/components/organisms/Repos";
-import { Testimonials } from "@/components/organisms/Testimonials";
+import { ReposView } from "@/components/organisms/Repos";
+import { TestimonialsView } from "@/components/organisms/Testimonials";
 
 export default async function Home() {
   const locale = await getLocale();
@@ -141,7 +141,7 @@ export default async function Home() {
         />
 
         <section className="flex w-full flex-wrap items-start justify-start gap-14 xl:flex-nowrap">
-          <Testimonials />
+          <TestimonialsView />
         </section>
       </SessionWrapper>
 
@@ -155,7 +155,7 @@ export default async function Home() {
         />
 
         <section className="flex w-full flex-wrap items-center justify-center gap-14">
-          <Repos />
+          <ReposView />
         </section>
 
         <section className="flex w-full flex-col items-center justify-center gap-4 md:items-end">

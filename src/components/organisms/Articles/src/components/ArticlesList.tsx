@@ -9,7 +9,7 @@ import {
 import { motion } from "framer-motion";
 import { twMerge } from "tailwind-merge";
 
-import { type DevDotToArticle } from "@/app/api/articles/list/route";
+import { type DevDotToArticle } from "@/app/api/articles/list/src/@types";
 
 type ArticlesListProps = {
   articles: DevDotToArticle[];

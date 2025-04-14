@@ -44,6 +44,7 @@ export const ContactFormComponent = () => {
     onUpdate({ editor }) {
       setValue("message", editor.getHTML());
     },
+    immediatelyRender: false,
   });
 
   const { mutateAsync, isPending } = useSendEmailMutation();

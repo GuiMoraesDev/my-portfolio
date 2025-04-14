@@ -10,7 +10,6 @@ const FormComponent = dynamic(
       (mod) => mod.ContactFormComponent,
     ),
   {
-    ssr: false,
     loading: () => <SkeletonContactForm />,
   },
 );

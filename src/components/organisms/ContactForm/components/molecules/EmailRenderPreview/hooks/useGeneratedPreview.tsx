@@ -1,4 +1,4 @@
-import { renderAsync } from "@react-email/components";
+import { render } from "@react-email/components";
 import { useEffect, useState } from "react";
 import sanitizeHtml from "sanitize-html";
 
@@ -19,7 +19,7 @@ export const useGeneratedPreview = ({ watch }: FormProps) => {
 
   useEffect(() => {
     const loadHtml = async () => {
-      const html = await renderAsync(
+      const html = await render(
         <ContactEmailTemplate
           first_name={first_name}
           last_name={last_name}

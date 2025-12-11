@@ -1,7 +1,7 @@
 "use client";
 
 import { GitHubLogoIcon, Link2Icon } from "@radix-ui/react-icons";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 
 import { type Repository } from "@/app/api/repos/list/src/@types";

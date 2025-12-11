@@ -6,7 +6,7 @@ import Placeholder from "@tiptap/extension-placeholder";
 import UnderlineMark from "@tiptap/extension-underline";
 import { useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { useId } from "react";
 

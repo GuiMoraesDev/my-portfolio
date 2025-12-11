@@ -91,7 +91,7 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
   const locale = useLocale();
   const router = useRouter();
 
-  const wrapperRef = useRef(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
   const t = useTranslations("links");

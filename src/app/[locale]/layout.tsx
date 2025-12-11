@@ -60,14 +60,18 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
+
   return (
-    <html className="scroll-smooth">
+    <html className="scroll-smooth" lang={locale}>
       <body
         className={twMerge(
-          "bg-plum-900 flex h-[100dvh] w-full flex-col items-center gap-3 overflow-x-hidden",
+          "flex h-dvh w-full flex-col items-center gap-3 overflow-x-hidden bg-plum-900",
           lato.className,
           firaSans.className,
         )}

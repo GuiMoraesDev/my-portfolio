@@ -1,2 +1,2 @@
-pnpm check-type
+pnpm check-types
 pnpm lint

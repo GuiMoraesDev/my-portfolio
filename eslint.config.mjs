@@ -22,7 +22,7 @@ const eslintConfig = defineConfig([
       "unused-imports": unusedImportsPlugin,
     },
     rules: {
-      "no-console": ["error", { allow: ["error", "info"] }],
+      "no-console": "error",
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": "off",
       "unused-imports/no-unused-imports": "error",

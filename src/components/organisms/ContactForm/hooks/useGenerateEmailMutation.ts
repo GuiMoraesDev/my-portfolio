@@ -27,14 +27,12 @@ export const useGenerateEmailMutation = () => {
         variant: "info",
       });
     },
-    onError: (error) => {
+    onError: () => {
       toast({
         title: t("form.toasts.generate-email.error.title"),
         description: t("form.toasts.generate-email.error.message"),
         variant: "error",
       });
-
-      console.error(error);
     },
     onSuccess: () => {
       toast({

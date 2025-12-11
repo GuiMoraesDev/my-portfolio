@@ -90,7 +90,6 @@ export const LanguageSelectorElement = ({
 export const HeaderComponent = (props: ComponentProps<"header">) => {
   const locale = useLocale();
 
-  console.log("Current locale:", locale);
   const router = useRouter();
 
   const wrapperRef = useRef<HTMLDivElement>(null);

@@ -21,7 +21,7 @@ const firaSans = Fira_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.guimoraes.dev/"),
+  metadataBase: "https://www.guimoraes.dev/",
   referrer: "origin-when-cross-origin",
   keywords: ["confer-all", "Confer All", "Next.js", "React", "JavaScript"],
   authors: { name: "Guilherme Moraes", url: "https://github.com/GuiMoraesDev" },
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "Guilherme Moraes",
     description:
       "I'm specialist in creating apps using Next.js, TypeScript, Node.js, automated tests, and more!",
-    url: new URL("https://www.guimoraes.dev/"),
+    url: "https://www.guimoraes.dev/",
     siteName: "Guilherme Moraes | Software engineer",
     images: [
       {
@@ -58,15 +58,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-  params: { locale },
-}: Readonly<{
+}: {
   children: React.ReactNode;
-  params: { locale: string };
-}>) {
+}) {
   return (
-    <html lang={locale} className="scroll-smooth">
+    <html className="scroll-smooth">
       <body
         className={twMerge(
           "bg-plum-900 flex h-[100dvh] w-full flex-col items-center gap-3 overflow-x-hidden",

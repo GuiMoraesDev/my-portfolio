@@ -19,7 +19,7 @@ export const Wrapper = ({
   <header
     className={twMerge(
       "fixed z-20 flex h-20 w-full max-w-7xl items-center justify-center max-[2000px]:px-[10vw]",
-      "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-[100vw] before:-translate-x-1/2 before:bg-plum-900 before:opacity-95 before:content-['']",
+      "before:bg-plum-900 before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-[100vw] before:-translate-x-1/2 before:opacity-95 before:content-['']",
       className,
     )}
     {...props}
@@ -60,7 +60,7 @@ export const LanguageSelectorElement = ({
     </button>
 
     <Switch.Root
-      className="relative h-6 w-11 cursor-pointer rounded-full border border-plum-600 outline-none focus:shadow-[0_0_0_2px] focus:shadow-black disabled:cursor-not-allowed data-[state=checked]:bg-plum-900"
+      className="border-plum-600 data-[state=checked]:bg-plum-900 relative h-6 w-11 cursor-pointer rounded-full border outline-none focus:shadow-[0_0_0_2px] focus:shadow-black disabled:cursor-not-allowed"
       id="Language-selector"
       checked={locale === "en"}
       disabled={disabled}
@@ -68,7 +68,7 @@ export const LanguageSelectorElement = ({
     >
       <Switch.Thumb
         title="language-selector"
-        className="block h-5 w-5 translate-x-0.5 rounded-full bg-plum-100 transition-transform will-change-transform data-[state=checked]:translate-x-[19px]"
+        className="bg-plum-100 block h-5 w-5 translate-x-0.5 rounded-full transition-transform will-change-transform data-[state=checked]:translate-x-[19px]"
       />
     </Switch.Root>
 
@@ -133,14 +133,14 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
           data-is-open={isOpen}
           className={twMerge(
             "absolute bottom-1/2 left-0 flex h-0 min-w-52 flex-col gap-6 transition-[height,pb,pt]",
-            "data-[is-open=true]:bottom-auto data-[is-open=true]:top-0 data-[is-open=true]:z-10 data-[is-open=true]:h-auto data-[is-open=true]:pb-3 data-[is-open=true]:pt-16",
-            "before:absolute before:left-0 before:top-0 before:h-[calc(100%+2.5rem)] before:w-[calc(100%+2.5rem)] before:origin-top-left before:translate-x-1 before:translate-y-1 before:scale-0 before:rounded-xl before:bg-white/[.98] before:p-5 before:transition before:content-[''] lg:before:h-[calc(100%+1.5rem)]",
+            "data-[is-open=true]:top-0 data-[is-open=true]:bottom-auto data-[is-open=true]:z-10 data-[is-open=true]:h-auto data-[is-open=true]:pt-16 data-[is-open=true]:pb-3",
+            "before:absolute before:top-0 before:left-0 before:h-[calc(100%+2.5rem)] before:w-[calc(100%+2.5rem)] before:origin-top-left before:translate-x-1 before:translate-y-1 before:scale-0 before:rounded-xl before:bg-white/[.98] before:p-5 before:transition before:content-[''] lg:before:h-[calc(100%+1.5rem)]",
             "data-[is-open=true]:before:-translate-x-5 data-[is-open=true]:before:-translate-y-5 data-[is-open=true]:before:scale-100 data-[is-open=true]:before:rounded-md",
           )}
         >
           <ul
             className={twMerge(
-              "relative z-20 flex flex-col gap-4 font-medium text-plum-800",
+              "text-plum-800 relative z-20 flex flex-col gap-4 font-medium",
               isOpen ? "visible delay-200" : "invisible",
             )}
           >

@@ -34,7 +34,6 @@ export const useGenerateEmailMutation = () => {
         variant: "error",
       });
 
-      // eslint-disable-next-line no-console
       console.error(error);
     },
     onSuccess: () => {

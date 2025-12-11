@@ -188,7 +188,7 @@ const ToolButton = ({
             className={twMerge(
               "inline-flex h-full w-full cursor-pointer p-px text-sm",
               "disabled:cursor-not-allowed disabled:text-gray-400",
-              isActive && "font-bold text-plum-900",
+              isActive && "text-plum-900 font-bold",
               className,
             )}
             title={description}

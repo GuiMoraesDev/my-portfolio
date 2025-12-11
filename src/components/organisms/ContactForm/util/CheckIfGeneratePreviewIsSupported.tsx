@@ -9,7 +9,7 @@ export const CheckIfGeneratePreviewIsSupported = () => {
     });
 
     return true;
-  } catch (err) {
+  } catch {
     return false;
   }
 };

@@ -81,7 +81,7 @@ export const ContactFormComponent = () => {
       viewport={{ once: true }}
     >
       <motion.div
-        className="flex h-full w-full items-center justify-center gap-8 rounded-md bg-plum-500/90 p-4 md:p-8"
+        className="bg-plum-500/90 flex h-full w-full items-center justify-center gap-8 rounded-md p-4 md:p-8"
         variants={{
           offscreen: {
             y: 50,
@@ -205,7 +205,7 @@ export const ContactFormComponent = () => {
               type="submit"
               form={formId}
               disabled={isPending}
-              className="flex w-28 items-center justify-center gap-2 rounded-md border border-plum-800 bg-white px-4 py-2 text-plum-900 transition hover:bg-white/80 disabled:cursor-not-allowed disabled:bg-gray-500"
+              className="border-plum-800 text-plum-900 flex w-28 items-center justify-center gap-2 rounded-md border bg-white px-4 py-2 transition hover:bg-white/80 disabled:cursor-not-allowed disabled:bg-gray-500"
             >
               {t("form.buttons.send")}
               <PaperPlaneIcon className="h-6 w-6" />
@@ -228,41 +228,41 @@ export const ContactFormComponent = () => {
 export const SkeletonContactForm = () => {
   return (
     <div className="max-h-[700px] w-full" data-testid="contact-form">
-      <div className="flex h-full w-full items-center justify-center gap-8 rounded-md bg-plum-500/90 p-4 md:p-8">
+      <div className="bg-plum-500/90 flex h-full w-full items-center justify-center gap-8 rounded-md p-4 md:p-8">
         <div className="flex w-auto max-w-full flex-1 flex-col items-center justify-center gap-8">
           <span className="mr-auto h-8 w-[11ch] animate-pulse rounded-md bg-white/80" />
 
           <form className="flex w-full flex-col gap-4" name="contact-form">
             <div className="flex w-full flex-col gap-2">
               <span className="h-4 w-24 animate-pulse rounded-md bg-white/80" />
-              <span className="h-9 w-full animate-pulse rounded-md bg-plum-800/80" />
+              <span className="bg-plum-800/80 h-9 w-full animate-pulse rounded-md" />
             </div>
 
             <div className="flex w-full flex-col gap-2">
               <span className="h-4 w-24 animate-pulse rounded-md bg-white/80" />
-              <span className="h-9 w-full animate-pulse rounded-md bg-plum-800/80" />
+              <span className="bg-plum-800/80 h-9 w-full animate-pulse rounded-md" />
             </div>
 
             <div className="flex w-full flex-col gap-2">
               <span className="h-4 w-24 animate-pulse rounded-md bg-white/80" />
-              <span className="h-9 w-full animate-pulse rounded-md bg-plum-800/80" />
+              <span className="bg-plum-800/80 h-9 w-full animate-pulse rounded-md" />
             </div>
 
             <div className="flex w-full flex-col gap-2">
               <span className="h-4 w-24 animate-pulse rounded-md bg-white/80" />
-              <span className="h-9 w-full animate-pulse rounded-md bg-plum-800/80" />
+              <span className="bg-plum-800/80 h-9 w-full animate-pulse rounded-md" />
             </div>
 
             <div className="flex w-full flex-col gap-2">
               <span className="h-4 w-24 animate-pulse rounded-md bg-white/80" />
-              <span className="h-28 w-full animate-pulse rounded-md bg-plum-800/80" />
+              <span className="bg-plum-800/80 h-28 w-full animate-pulse rounded-md" />
             </div>
           </form>
 
           <section className="flex w-full items-center justify-center lg:justify-end">
             <button
               disabled
-              className="flex w-28 animate-pulse items-center justify-center gap-2 rounded-md border border-plum-800 bg-white/80 px-4 py-2 text-plum-900"
+              className="border-plum-800 text-plum-900 flex w-28 animate-pulse items-center justify-center gap-2 rounded-md border bg-white/80 px-4 py-2"
             >
               Send
               <PaperPlaneIcon className="h-6 w-6" />
@@ -273,7 +273,7 @@ export const SkeletonContactForm = () => {
         <div className="hidden h-full w-fit min-w-72 flex-1 flex-col items-start gap-8 transition md:flex">
           <span className="h-8 w-[11ch] animate-pulse rounded-md bg-white/80" />
 
-          <div className="h-full w-full  animate-pulse rounded-md bg-white/80" />
+          <div className="h-full w-full animate-pulse rounded-md bg-white/80" />
         </div>
       </div>
     </div>

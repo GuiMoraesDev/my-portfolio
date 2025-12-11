@@ -1,18 +1,19 @@
 import { type NextRequest } from "next/server";
 import createIntlMiddleware from "next-intl/middleware";
 
-import { type Locale } from "./i18n/locales";
 import { locales, defaultLocale } from "./i18n/settings";
 
 export default function middleware(request: NextRequest) {
   const headers = new Headers(request.headers);
 
-  const headerLocale =
-    (headers.get("x-custom-locale") as Locale) || defaultLocale;
+  const localeFromHeader = headers.get("x-custom-locale");
+  const isHeaderLocaleValid = localeFromHeader && locales.includes(localeFromHeader);
+
+  const selectedLocale = isHeaderLocaleValid ? localeFromHeader : defaultLocale;
 
   const response = createIntlMiddleware({
     locales,
-    defaultLocale: headerLocale,
+    defaultLocale: selectedLocale,
     localePrefix: "never",
   })(request);
 

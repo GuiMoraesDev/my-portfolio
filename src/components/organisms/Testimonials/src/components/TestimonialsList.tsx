@@ -35,7 +35,7 @@ export const TestimonialsList = ({ testimonials }: TestimonialsListProps) => {
           >
             <motion.div
               className={twMerge(
-                "flex w-full flex-1 flex-col items-center justify-start gap-6 rounded-md bg-plum-500/90 p-4 text-white backdrop-blur-sm",
+                "bg-plum-500/90 flex w-full flex-1 flex-col items-center justify-start gap-6 rounded-md p-4 text-white backdrop-blur-sm",
               )}
               variants={{
                 offscreen: {
@@ -66,16 +66,16 @@ export const TestimonialsList = ({ testimonials }: TestimonialsListProps) => {
                   src={img.src}
                   width={50}
                   height={50}
-                  className="aspect-square h-auto select-none rounded-full object-contain"
+                  className="aspect-square h-auto rounded-full object-contain select-none"
                   alt={img.alt}
                 />
 
                 <section className="flex w-full flex-col items-start justify-start gap-1">
-                  <strong className="text-lg font-bold leading-tight">
+                  <strong className="text-lg leading-tight font-bold">
                     {name}
                   </strong>
 
-                  <p className="text-xs font-medium leading-tight">
+                  <p className="text-xs leading-tight font-medium">
                     <b>{role}</b> at {company}
                   </p>
                 </section>

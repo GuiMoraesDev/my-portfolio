@@ -69,7 +69,7 @@ export default function RootLayout({
     <html lang={locale} className="scroll-smooth">
       <body
         className={twMerge(
-          "flex h-[100dvh] w-full flex-col items-center gap-3 overflow-x-hidden bg-plum-900",
+          "bg-plum-900 flex h-[100dvh] w-full flex-col items-center gap-3 overflow-x-hidden",
           lato.className,
           firaSans.className,
         )}

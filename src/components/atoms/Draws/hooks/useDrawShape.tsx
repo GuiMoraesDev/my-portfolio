@@ -15,19 +15,13 @@ export const useDrawShape = () => {
     if (!window || !document) return;
 
     const drawWrapper = document.getElementById(wrapperId);
-
     const drawPath = document.getElementById(
       pathId,
     ) as unknown as SVGGeometryElement;
 
-    const pathLength = drawPath?.getTotalLength() || 0;
-
-    setStroke((state) => ({
-      ...state,
-      dashArray: pathLength,
-    }));
-
     const paintShape = () => {
+      const pathLength = drawPath?.getTotalLength() || 0;
+
       const scrollpercent = Math.min(
         (document.body.scrollTop + document.documentElement.scrollTop) /
           (document.documentElement.scrollHeight -

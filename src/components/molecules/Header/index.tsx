@@ -7,11 +7,11 @@ import { Hamburger } from "./icons/hamburger";
 
 const Skeleton = () => (
   <Wrapper id="header">
-    <span className="flex animate-pulse cursor-not-allowed items-center rounded-sm bg-plum-900/5 opacity-10">
+    <span className="bg-plum-900/5 flex animate-pulse cursor-not-allowed items-center rounded-sm opacity-10">
       <Hamburger />
     </span>
 
-    <span className="flex animate-pulse cursor-not-allowed items-center rounded-sm bg-plum-900/5 opacity-10">
+    <span className="bg-plum-900/5 flex animate-pulse cursor-not-allowed items-center rounded-sm opacity-10">
       <LanguageSelectorElement disabled />
     </span>
   </Wrapper>

@@ -33,7 +33,6 @@ export const useSendEmailMutation = () => {
         variant: "error",
       });
 
-      // eslint-disable-next-line no-console
       console.error(error);
     },
     onSuccess: () => {

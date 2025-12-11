@@ -1,39 +1,23 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-
-import { FlatCompat } from "@eslint/eslintrc";
-import tsPlugin from "@typescript-eslint/eslint-plugin";
-import prettierPlugin from "eslint-plugin-prettier";
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+import prettierConfig from "eslint-config-prettier/flat";
 import unusedImportsPlugin from "eslint-plugin-unused-imports";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  plugins: {
-    "@typescript-eslint": tsPlugin,
-    prettier: prettierPlugin,
-    "unused-imports": unusedImportsPlugin,
-  },
-});
-
-const eslintConfig = [
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  globalIgnores([
+    "node_modules/**",
+    "playwright-report/**",
+    "test-results/**",
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
   {
-    ignores: [
-      "node_modules/**",
-      "playwright-report/**",
-      "test-results/**",
-      ".next/**",
-      "out/**",
-      "build/**",
-      "next-env.d.ts",
-    ],
-  },
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-  ...compat.extends("plugin:@typescript-eslint/recommended"),
-  ...compat.extends("plugin:prettier/recommended"),
-  {
+    files: ["**/*.{js,jsx,ts,tsx}"],
     plugins: {
       "unused-imports": unusedImportsPlugin,
     },
@@ -53,7 +37,10 @@ const eslintConfig = [
       ],
       "@typescript-eslint/consistent-type-imports": [
         "error",
-        { fixStyle: "inline-type-imports", disallowTypeAnnotations: false },
+        {
+          fixStyle: "inline-type-imports",
+          disallowTypeAnnotations: false,
+        },
       ],
       "import/order": [
         "error",
@@ -64,6 +51,7 @@ const eslintConfig = [
       ],
     },
   },
-];
+  prettierConfig,
+]);
 
 export default eslintConfig;

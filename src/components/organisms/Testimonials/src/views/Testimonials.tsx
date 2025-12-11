@@ -38,7 +38,7 @@ export const TestimonialsView = async () => {
                 <a
                   href="https://www.linkedin.com/in/guimoraesdev/details/recommendations/"
                   target="_blank"
-                  className="ml-auto rounded-sm p-3 text-center text-sm font-medium leading-tight text-plum-200 hover:underline"
+                  className="text-plum-200 ml-auto rounded-sm p-3 text-center text-sm leading-tight font-medium hover:underline"
                 >
                   {t("leave-reference")}
                 </a>

@@ -1,4 +1,4 @@
-// Use type safe message keys with `next-intl`
 type Locales = typeof import("./locales/en.json");
-export type Locale = Locales[number];
+
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 declare interface IntlLocales extends Locales {}

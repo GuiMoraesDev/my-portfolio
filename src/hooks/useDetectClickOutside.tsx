@@ -1,7 +1,7 @@
 import { type RefObject, useEffect } from "react";
 
 type UseHandleClickOutsideProps = {
-  ref: RefObject<HTMLElement>;
+  ref: RefObject<HTMLElement | null>;
   callback: () => void;
 };
 

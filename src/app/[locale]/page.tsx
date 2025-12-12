@@ -21,7 +21,7 @@ export default async function Home() {
   const t = await getTranslations();
 
   return (
-    <main className="container relative flex flex-col items-center bg-plum-900 font-lato text-white">
+    <main className="bg-plum-900 font-lato relative container flex flex-col items-center text-white">
       <Spheres />
       <DrawContainer />
 
@@ -37,7 +37,7 @@ export default async function Home() {
               {t("presentation.name")}
               <strong className="inline-flex gap-1">
                 Guilherme Moraes
-                <span className="inline-block w-fit origin-bottom-right animate-wave select-none text-base">
+                <span className="animate-wave inline-block w-fit origin-bottom-right text-base select-none">
                   👋
                 </span>
               </strong>
@@ -45,7 +45,7 @@ export default async function Home() {
 
             <h2
               id="my-title"
-              className="font-fira-sans text-3xl font-bold tracking-wide text-gold-500 md:my-2 md:text-4xl lg:text-5xl lg:leading-tight"
+              className="font-fira-sans text-gold-500 text-3xl font-bold tracking-wide md:my-2 md:text-4xl lg:text-5xl lg:leading-tight"
             >
               {t("presentation.title")}
             </h2>
@@ -64,7 +64,7 @@ export default async function Home() {
               src="/profile.png"
               fill
               sizes="100%"
-              className="aspect-square h-72 select-none object-cover drop-shadow-[0px_0px_4px_rgba(242,226,236,0.2)] md:h-auto"
+              className="aspect-square h-72 object-cover drop-shadow-[0px_0px_4px_rgba(242,226,236,0.2)] select-none md:h-auto"
               priority
               alt={t("presentation.profile-image-alt")}
             />
@@ -85,7 +85,7 @@ export default async function Home() {
                 locale: locale === "pt" ? ptBR : enUS,
               }),
               highlight: (chunks) => (
-                <span className="text-xl text-plum-300">{chunks}</span>
+                <span className="text-plum-300 text-xl">{chunks}</span>
               ),
             })}
           </HighlightCard>
@@ -93,7 +93,7 @@ export default async function Home() {
           <HighlightCard icon="MagnifyingGlass">
             {t.rich("about-me.cards.attention-details", {
               highlight: (chunks) => (
-                <span className="text-xl text-plum-300">{chunks}</span>
+                <span className="text-plum-300 text-xl">{chunks}</span>
               ),
             })}
           </HighlightCard>
@@ -101,7 +101,7 @@ export default async function Home() {
           <HighlightCard icon="Globe">
             {t.rich("about-me.cards.worldwide", {
               highlight: (chunks) => (
-                <span className="text-xl text-plum-300">{chunks}</span>
+                <span className="text-plum-300 text-xl">{chunks}</span>
               ),
             })}
           </HighlightCard>
@@ -124,7 +124,7 @@ export default async function Home() {
         <section className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
           <a
             href="https://dev.to/guimoraes"
-            className="rounded-sm p-3 text-center text-sm font-medium leading-tight text-plum-200 hover:underline"
+            className="text-plum-200 rounded-sm p-3 text-center text-sm leading-tight font-medium hover:underline"
           >
             {t("articles.all-articles")}
           </a>
@@ -162,7 +162,7 @@ export default async function Home() {
           <a
             href="https://github.com/GuiMoraesDev?tab=repositories"
             target="_blank"
-            className="rounded-sm p-3 text-center text-sm font-medium leading-tight text-plum-200 hover:underline"
+            className="text-plum-200 rounded-sm p-3 text-center text-sm leading-tight font-medium hover:underline"
           >
             {t("projects.all-projects")}
           </a>
@@ -196,7 +196,7 @@ export default async function Home() {
             <strong
               className={twMerge(
                 "mb-2 text-2xl leading-normal tracking-wide",
-                "inline-block animate-gradient-x bg-gradient-to-r from-plum-200 via-plum-400 to-plum-50 bg-clip-text text-transparent",
+                "animate-gradient-x from-plum-200 via-plum-400 to-plum-50 inline-block bg-gradient-to-r bg-clip-text text-transparent",
               )}
             >
               {t("footer.title")}
@@ -230,7 +230,7 @@ export default async function Home() {
 const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={twMerge(
-      "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-12 font-lato max-[2000px]:px-[10vw]",
+      "font-lato relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-12 max-[2000px]:px-[10vw]",
       className,
     )}
     {...props}
@@ -261,7 +261,7 @@ type HighlightCardProps = ComponentProps<"p"> & {
   icon: IconProp;
 };
 const HighlightCard = ({ icon, ...props }: HighlightCardProps) => (
-  <div className="flex flex-col items-center justify-start gap-4 text-plum-50">
+  <div className="text-plum-50 flex flex-col items-center justify-start gap-4">
     <Icon icon={icon} size="lg" />
     <p
       className="text-center text-base leading-normal tracking-wider"

@@ -1,61 +1,71 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 
-export const useDrawShape = () => {
-  const pathId = useId();
-  const wrapperId = useId();
+type Stroke = { dashArray: number; dashOffset: number };
 
-  const [stroke, setStroke] = useState({
-    dashArray: 0,
-    dashOffset: 0,
-  });
+export function useDrawShape() {
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const pathRef = useRef<SVGGeometryElement | null>(null);
 
-  useEffect(() => {
-    if (!window || !document) return;
+  const pathLengthRef = useRef(0);
+  const rafRef = useRef<number | null>(null);
 
-    const drawWrapper = document.getElementById(wrapperId);
+  const [stroke, setStroke] = useState<Stroke>({ dashArray: 0, dashOffset: 0 });
 
-    const drawPath = document.getElementById(
-      pathId,
-    ) as unknown as SVGGeometryElement;
+  const compute = useCallback(() => {
+    const wrapper = wrapperRef.current;
+    const path = pathRef.current;
+    if (!path) return;
 
-    const pathLength = drawPath?.getTotalLength() || 0;
+    const length = path.getTotalLength();
+    pathLengthRef.current = length;
 
-    setStroke((state) => ({
-      ...state,
-      dashArray: pathLength,
-    }));
+    // Show wrapper if needed
+    const maxScroll =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
 
-    const paintShape = () => {
-      const scrollpercent = Math.min(
-        (document.body.scrollTop + document.documentElement.scrollTop) /
-          (document.documentElement.scrollHeight -
-            document.documentElement.clientHeight),
-        1,
-      );
+    const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+    const scrollPercent =
+      maxScroll > 0 ? Math.min(scrollTop / maxScroll, 1) : 0;
 
-      if (scrollpercent > 0.01) {
-        drawWrapper?.classList.remove("hidden");
-      }
+    if (wrapper && scrollPercent > 0.01) wrapper.classList.remove("hidden");
 
-      const drawLength = pathLength * scrollpercent;
-
-      setStroke((state) => ({
-        ...state,
-        dashOffset: pathLength - drawLength,
-      }));
+    const next: Stroke = {
+      dashArray: length,
+      dashOffset: length - length * scrollPercent,
     };
 
-    window.addEventListener("scroll", paintShape);
-    paintShape();
+    setStroke((prev) =>
+      prev.dashArray === next.dashArray && prev.dashOffset === next.dashOffset
+        ? prev
+        : next,
+    );
+  }, []);
 
-    return () => window.removeEventListener("scroll", paintShape);
-  }, [pathId, wrapperId]);
+  useLayoutEffect(() => {
+    // Initial measure + paint
+    compute();
 
-  return {
-    pathId,
-    wrapperId,
-    stroke,
-  };
-};
+    const onScroll = () => {
+      if (rafRef.current != null) return;
+
+      rafRef.current = window.requestAnimationFrame(() => {
+        rafRef.current = null;
+        compute();
+      });
+    };
+
+    window.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", compute);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", compute);
+      if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
+    };
+  }, [compute]);
+
+  return { wrapperRef, pathRef, stroke };
+}

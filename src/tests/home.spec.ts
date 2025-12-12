@@ -10,7 +10,7 @@ test.describe("Locales", () => {
     });
 
     test("if the HTML lang attribute is in english", async ({ page }) => {
-      await page.goto("./");
+      await page.goto("/");
 
       await expect(page.locator("html")).toHaveAttribute("lang", "en");
     });
@@ -18,7 +18,7 @@ test.describe("Locales", () => {
     test("if the page text is in english for US located users", async ({
       page,
     }) => {
-      await page.goto("./");
+      await page.goto("/");
 
       await expect(page.locator("#my-title")).toHaveText(
         enTranslations.presentation.title,
@@ -34,7 +34,7 @@ test.describe("Locales", () => {
     test("if the HTML lang attribute is in brazilian portuguese", async ({
       page,
     }) => {
-      await page.goto("./");
+      await page.goto("/");
 
       await expect(page.locator("html")).toHaveAttribute("lang", "pt");
     });
@@ -42,7 +42,7 @@ test.describe("Locales", () => {
     test("if the page text is in brazilian portuguese for Brazil located users", async ({
       page,
     }) => {
-      await page.goto("./");
+      await page.goto("/");
 
       await expect(page.locator("#my-title")).toHaveText(
         ptTranslations.presentation.title,
@@ -56,7 +56,7 @@ test.describe("Locales", () => {
     });
 
     test("if the HTML lang attribute is in english", async ({ page }) => {
-      await page.goto("./");
+      await page.goto("/");
 
       await expect(page.locator("html")).toHaveAttribute("lang", "en");
     });
@@ -64,7 +64,7 @@ test.describe("Locales", () => {
     test("if the page text is in english for non Brazil nor US located users", async ({
       page,
     }) => {
-      await page.goto("./");
+      await page.goto("/");
 
       await expect(page.locator("#my-title")).toHaveText(
         enTranslations.presentation.title,
@@ -75,13 +75,13 @@ test.describe("Locales", () => {
 
 test.describe("Page elements", () => {
   test("if the page has title", async ({ page }) => {
-    await page.goto("./");
+    await page.goto("/");
 
     await expect(page).toHaveTitle(/Guilherme Moraes | Frontend engineer/);
   });
 
   test("if the page has every content section visible", async ({ page }) => {
-    await page.goto("./");
+    await page.goto("/");
 
     await expect(page.locator("#presentation")).toBeVisible();
     await expect(page.locator("#about-me")).toBeVisible();
@@ -92,13 +92,13 @@ test.describe("Page elements", () => {
   });
 
   test("if the page has a header", async ({ page }) => {
-    await page.goto("./");
+    await page.goto("/");
 
     await expect(page.locator("#header")).toBeVisible();
   });
 
   test("if the page has a footer", async ({ page }) => {
-    await page.goto("./");
+    await page.goto("/");
 
     await expect(page.locator("#footer")).toBeVisible();
   });
@@ -106,7 +106,7 @@ test.describe("Page elements", () => {
   test("if the page has the presentation section i the viewport", async ({
     page,
   }) => {
-    await page.goto("./");
+    await page.goto("/");
 
     await expect(page.locator("#presentation")).toBeInViewport();
   });
@@ -122,9 +122,6 @@ test.describe("Email form", () => {
   test.beforeEach(async ({ page }) => {
     await page.route(/.*\/api\/.*/, async (route, request) => {
       if (request.url().includes("https://dev.to/api/")) {
-        // eslint-disable-next-line no-console
-        console.log("Fulfilling URL:", request.url());
-
         return route.fulfill({
           status: 200,
           body: JSON.stringify([
@@ -140,14 +137,12 @@ test.describe("Email form", () => {
         });
       }
 
-      // eslint-disable-next-line no-console
-      console.log("Aborted URL:", request.url());
       await route.abort();
     });
   });
 
   test("if the email form is visible", async ({ page }) => {
-    await page.goto("./");
+    await page.goto("/");
 
     const contactElement = page.locator("#contact");
 
@@ -155,7 +150,7 @@ test.describe("Email form", () => {
   });
 
   test("if the email form fields can be filled", async ({ page }) => {
-    await page.goto("./");
+    await page.goto("/");
 
     const testDate = new Date().toLocaleString();
 
@@ -167,7 +162,7 @@ test.describe("Email form", () => {
 
     const submitButton = page.locator("button[type=submit]");
 
-    const requestPromise = page.waitForRequest(/.*\/api\/email\/send\.*/);
+    const requestPromise = page.waitForRequest("/api/email/send");
     await submitButton.click();
 
     const request = await requestPromise;

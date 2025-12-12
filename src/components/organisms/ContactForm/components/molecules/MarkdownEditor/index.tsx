@@ -22,7 +22,7 @@ export const MarkdownEditor = ({
   return (
     <div
       className={twMerge(
-        "flex h-auto w-full flex-col gap-1 divide-y rounded-md bg-plum-800/80 px-3 pt-2",
+        "bg-plum-800/80 flex h-auto w-full flex-col gap-1 divide-y rounded-md px-3 pt-2",
         disabled && "cursor-not-allowed opacity-50",
       )}
     >

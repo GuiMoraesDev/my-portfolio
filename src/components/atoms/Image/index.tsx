@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const Placeholder = () => {
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-2 bg-gold-500 object-cover">
+    <div className="bg-gold-500 flex h-full flex-col items-center justify-center gap-2 object-cover">
       <div
         className="h-4 w-full"
         style={{
@@ -20,10 +20,10 @@ const Placeholder = () => {
       />
 
       <section className="flex flex-col items-center justify-center gap-2">
-        <span className="font-bold uppercase text-plum-900 md:text-2xl lg:text-3xl">
+        <span className="text-plum-900 font-bold uppercase md:text-2xl lg:text-3xl">
           Coming soon
         </span>
-        <span className=" text-sm font-bold text-plum-700 md:text-xl lg:text-2xl">
+        <span className="text-plum-700 text-sm font-bold md:text-xl lg:text-2xl">
           Under Construction
         </span>
       </section>

@@ -6,7 +6,7 @@ import {
   KeyboardIcon,
   StopwatchIcon,
 } from "@radix-ui/react-icons";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { twMerge } from "tailwind-merge";
 
 import { type DevDotToArticle } from "@/app/api/articles/list/src/@types";

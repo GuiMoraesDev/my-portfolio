@@ -1,3 +1,44 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-lato: "Lato", "sans-serif";
+  --font-fira-sans: "Fira Sans", "sans-serif";
+
+  --color-plum-50: #f2e2ec;
+  --color-plum-100: #e6c5d9;
+  --color-plum-200: #daa8c6;
+  --color-plum-300: #ce8bb3;
+  --color-plum-400: #c26e9f;
+  --color-plum-500: #49213b;
+  --color-plum-600: #3f1c31;
+  --color-plum-700: #351726;
+  --color-plum-800: #2b121c;
+  --color-plum-900: #0d020d;
+
+  --color-gold-500: #ebb220;
+
+  --animate-wave: wave 1s infinite;
+  --animate-gradient-x: gradient-x 3s ease infinite;
+
+  @keyframes wave {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(14deg);
+    }
+  }
+
+  @keyframes gradient-x {
+    0%,
+    100% {
+      background-size: 200% 200%;
+      background-position: left center;
+    }
+    50% {
+      background-size: 200% 200%;
+      background-position: right center;
+    }
+  }
+}

@@ -14,7 +14,7 @@ export const TestimonialsSkeleton = () => {
         )}
       >
         <div className="flex w-full items-start justify-start gap-2">
-          <span className="aspect-square h-[50px] w-[50px] animate-pulse select-none rounded-full bg-white/80 object-contain" />
+          <span className="aspect-square h-[50px] w-[50px] animate-pulse rounded-full bg-white/80 object-contain select-none" />
 
           <section className="flex w-full flex-col items-start justify-start gap-1">
             <span className="h-6 w-36 animate-pulse rounded-md bg-white/80" />

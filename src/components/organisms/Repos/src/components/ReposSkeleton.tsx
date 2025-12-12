@@ -26,14 +26,14 @@ export const SkeletonReposCard = () => (
           <span className="h-8 w-8 animate-pulse rounded-md bg-plum-500/80" />
         </ul>
 
-        <nav className="flex w-fit items-center gap-2 ">
+        <nav className="flex w-fit items-center gap-2">
           <a className="inline-flex animate-pulse gap-2 rounded-md bg-plum-500/80 p-2 text-white transition-colors hover:bg-plum-700">
-            <Link2Icon className="h-6 w-6 " />
+            <Link2Icon className="h-6 w-6" />
             Project
           </a>
 
           <a className="inline-flex animate-pulse gap-2 rounded-md bg-plum-500/80 p-2 text-white opacity-25 transition-colors hover:bg-plum-700">
-            <GitHubLogoIcon className="h-6 w-6 " />
+            <GitHubLogoIcon className="h-6 w-6" />
             Github
           </a>
         </nav>

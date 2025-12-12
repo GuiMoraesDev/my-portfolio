@@ -30,7 +30,7 @@ export const ContactEmailTemplate = ({
       <Preview>Hey, you have a new message 📫</Preview>
 
       <Body className="bg-white font-sans">
-        <Container className="mx-auto my-0 px-5 pb-12 pt-6  text-black">
+        <Container className="mx-auto my-0 px-5 pt-6 pb-12 text-black">
           <Heading className="mt-12 text-3xl font-bold">
             Hey, you have a new message 📫
           </Heading>

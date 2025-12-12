@@ -6,12 +6,14 @@ import Placeholder from "@tiptap/extension-placeholder";
 import UnderlineMark from "@tiptap/extension-underline";
 import { useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
-import { useId } from "react";
 
-import { useEmailForm, useSendEmailMutation } from "../../hooks";
-import { CheckIfGeneratePreviewIsSupported } from "../../util/CheckIfGeneratePreviewIsSupported";
+import {
+  useEmailForm,
+  useSendEmailMutation,
+  useIsGeneratePreviewSupported,
+} from "../../hooks";
 import { EmailRenderPreview } from "../molecules/EmailRenderPreview";
 import { MarkdownEditor } from "../molecules/MarkdownEditor";
 
@@ -21,8 +23,6 @@ import { Label } from "@/components/atoms/Label";
 import { type SendEmailProps } from "@/schemas/email/schema";
 
 export const ContactFormComponent = () => {
-  const formId = useId();
-
   const t = useTranslations("contact");
   const formMethods = useEmailForm();
   const {
@@ -70,11 +70,11 @@ export const ContactFormComponent = () => {
     );
   };
 
-  const isSupported = CheckIfGeneratePreviewIsSupported();
+  const isSupported = useIsGeneratePreviewSupported();
 
   return (
     <motion.div
-      className="max-h-[700px] w-full"
+      className="max-h-175 w-full"
       initial="offscreen"
       whileInView="onscreen"
       data-testid="contact-form"
@@ -104,7 +104,7 @@ export const ContactFormComponent = () => {
 
           <form
             className="flex w-full flex-col gap-4"
-            id={formId}
+            id="form-submit-email"
             name="contact-form"
             onSubmit={handleSubmit(onFormSubmit)}
           >
@@ -203,7 +203,7 @@ export const ContactFormComponent = () => {
           <section className="flex w-full items-center justify-center lg:justify-end">
             <button
               type="submit"
-              form={formId}
+              form="form-submit-email"
               disabled={isPending}
               className="flex w-28 items-center justify-center gap-2 rounded-md border border-plum-800 bg-white px-4 py-2 text-plum-900 transition hover:bg-white/80 disabled:cursor-not-allowed disabled:bg-gray-500"
             >
@@ -227,7 +227,7 @@ export const ContactFormComponent = () => {
 
 export const SkeletonContactForm = () => {
   return (
-    <div className="max-h-[700px] w-full" data-testid="contact-form">
+    <div className="max-h-175 w-full" data-testid="contact-form">
       <div className="flex h-full w-full items-center justify-center gap-8 rounded-md bg-plum-500/90 p-4 md:p-8">
         <div className="flex w-auto max-w-full flex-1 flex-col items-center justify-center gap-8">
           <span className="mr-auto h-8 w-[11ch] animate-pulse rounded-md bg-white/80" />
@@ -273,7 +273,7 @@ export const SkeletonContactForm = () => {
         <div className="hidden h-full w-fit min-w-72 flex-1 flex-col items-start gap-8 transition md:flex">
           <span className="h-8 w-[11ch] animate-pulse rounded-md bg-white/80" />
 
-          <div className="h-full w-full  animate-pulse rounded-md bg-white/80" />
+          <div className="h-full w-full animate-pulse rounded-md bg-white/80" />
         </div>
       </div>
     </div>

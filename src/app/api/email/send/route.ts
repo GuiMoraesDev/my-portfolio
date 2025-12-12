@@ -16,12 +16,7 @@ export async function POST(request: NextRequest) {
       headers: { "content-type": "application/json" },
       statusText: "Email sent",
     });
-  } catch (error) {
-    if (process.env.NODE_ENV !== "production") {
-      // eslint-disable-next-line no-console
-      console.error(error);
-    }
-
+  } catch {
     return NextResponse.error();
   }
 }

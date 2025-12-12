@@ -44,7 +44,7 @@ export const SocialMediaComponent = ({
 
       <button
         onClick={handleDownloadCv}
-        className="group order-1 flex w-full min-w-40 cursor-pointer items-center justify-center gap-2 rounded-md bg-plum-500/90 p-4 shadow-sm transition hover:shadow-plum-100/80 md:w-auto"
+        className="group bg-plum-500/90 hover:shadow-plum-100/80 order-1 flex w-full min-w-40 cursor-pointer items-center justify-center gap-2 rounded-md p-4 shadow-sm transition md:w-auto"
       >
         <DownloadIcon className="h-6 w-6 group-hover:animate-bounce" />
         <span className="text-sm tracking-wider text-white">

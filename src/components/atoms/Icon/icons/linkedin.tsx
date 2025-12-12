@@ -1,10 +1,17 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const LinkedIn = () => {
+  const [iconLength, setIconLength] = useState(240);
   const biggestPathRef = useRef<SVGPathElement | null>(null);
-  const iconLength = biggestPathRef.current?.getTotalLength() || 240;
+
+  useEffect(() => {
+    if (biggestPathRef.current) {
+      const length = biggestPathRef.current.getTotalLength();
+      setIconLength(length);
+    }
+  }, []);
 
   return (
     <svg

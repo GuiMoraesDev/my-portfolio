@@ -13,7 +13,7 @@ export const ShowMoreButton = () => {
   return (
     <button
       onClick={handleToggleShowMore}
-      className="rounded-sm bg-white p-3 text-center text-sm font-medium leading-tight text-plum-500"
+      className="rounded-sm bg-white p-3 text-center text-sm leading-tight font-medium text-plum-500"
     >
       {showMore ? t("show-less") : t("show-more")}
     </button>

@@ -26,15 +26,12 @@ export const useSendEmailMutation = () => {
         variant: "info",
       });
     },
-    onError: (error) => {
+    onError: () => {
       toast({
         title: t("form.toasts.send-email.error.title"),
         description: t("form.toasts.send-email.error.message"),
         variant: "error",
       });
-
-      // eslint-disable-next-line no-console
-      console.error(error);
     },
     onSuccess: () => {
       toast({

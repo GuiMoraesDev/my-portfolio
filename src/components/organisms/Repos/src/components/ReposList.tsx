@@ -1,7 +1,7 @@
 "use client";
 
 import { GitHubLogoIcon, Link2Icon } from "@radix-ui/react-icons";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 
 import { type Repository } from "@/app/api/repos/list/src/@types";
@@ -58,7 +58,7 @@ export const ReposList = ({ repositories }: ReposListProps) => {
                 <ImageComponent
                   src={cover}
                   fill
-                  className="select-none object-cover drop-shadow-[0px_0px_4px_rgba(242,226,236,0.2)]"
+                  className="object-cover drop-shadow-[0px_0px_4px_rgba(242,226,236,0.2)] select-none"
                   alt={title}
                 />
               </div>
@@ -91,7 +91,7 @@ export const ReposList = ({ repositories }: ReposListProps) => {
                   ))}
                 </ul>
 
-                <nav className="flex w-fit items-center gap-2 ">
+                <nav className="flex w-fit items-center gap-2">
                   {project_link && (
                     <a
                       className="inline-flex gap-2 rounded-md bg-plum-500 p-2 text-white transition-colors hover:bg-plum-700"
@@ -100,7 +100,7 @@ export const ReposList = ({ repositories }: ReposListProps) => {
                       title={`${title} project link: ${project_link}`}
                       target="_blank"
                     >
-                      <Link2Icon className="h-6 w-6 " />
+                      <Link2Icon className="h-6 w-6" />
                       Project
                     </a>
                   )}
@@ -112,7 +112,7 @@ export const ReposList = ({ repositories }: ReposListProps) => {
                     title={`${title} github link: ${github_link}`}
                     target="_blank"
                   >
-                    <GitHubLogoIcon className="h-6 w-6 " />
+                    <GitHubLogoIcon className="h-6 w-6" />
                     Github
                   </a>
                 </nav>

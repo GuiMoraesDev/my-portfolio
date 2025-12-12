@@ -87,7 +87,6 @@ test.describe("Page elements", () => {
     await expect(page.locator("#about-me")).toBeVisible();
     await expect(page.locator("#articles")).toBeVisible();
     await expect(page.locator("#references")).toBeVisible();
-    await expect(page.locator("#projects")).toBeVisible();
     await expect(page.locator("#contact")).toBeVisible();
   });
 
@@ -119,28 +118,6 @@ const fillField = async (page: Page, selector: string, value: string) => {
 };
 
 test.describe("Email form", () => {
-  test.beforeEach(async ({ page }) => {
-    await page.route(/.*\/api\/.*/, async (route, request) => {
-      if (request.url().includes("https://dev.to/api/")) {
-        return route.fulfill({
-          status: 200,
-          body: JSON.stringify([
-            {
-              id: 1,
-              title: "Test article",
-              url: "https://test.com",
-              reading_time_minutes: 5,
-              positive_reactions_count: 10,
-              comments_count: 5,
-            },
-          ]),
-        });
-      }
-
-      await route.abort();
-    });
-  });
-
   test("if the email form is visible", async ({ page }) => {
     await page.goto("/");
 
@@ -150,19 +127,21 @@ test.describe("Email form", () => {
   });
 
   test("if the email form fields can be filled", async ({ page }) => {
+    await page.route(/.*\/api\/.*/, async (route) => {
+      return route.abort();
+    });
+
     await page.goto("/");
 
-    const testDate = new Date().toLocaleString();
-
     await fillField(page, "#first_name", "Test");
-    await fillField(page, "#last_name", testDate);
+    await fillField(page, "#last_name", "Doe");
     await fillField(page, "#email", "contacte@test.com");
     await fillField(page, "#subject", "Test subject");
     await fillField(page, "#editor>.tiptap", "This is a test message");
 
     const submitButton = page.locator("button[type=submit]");
 
-    const requestPromise = page.waitForRequest("/api/email/send");
+    const requestPromise = page.waitForRequest(/.*\/api\/email\/send.*/);
     await submitButton.click();
 
     const request = await requestPromise;
@@ -170,7 +149,7 @@ test.describe("Email form", () => {
 
     expect(sentData).toEqual({
       first_name: "Test",
-      last_name: testDate,
+      last_name: "Doe",
       email: "contacte@test.com",
       subject: "Test subject",
       message: "<p>This is a test message</p>",

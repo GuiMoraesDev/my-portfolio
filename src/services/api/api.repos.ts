@@ -6,7 +6,7 @@ const list = async (): Promise<{
   data: Repository[];
 }> => {
   const cookiesList = await cookies();
-  const domain = cookiesList.get("x-current-origin");
+  const domain = cookiesList.get("domain-origin");
 
   const { href } = new URL(`${domain?.value}/api/repos/list`);
 

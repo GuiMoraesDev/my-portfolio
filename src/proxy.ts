@@ -6,7 +6,7 @@ import { routing } from "./i18n/routing";
 export default function proxy(request: NextRequest) {
   const response = createIntlMiddleware(routing)(request);
 
-  response.cookies.set("x-current-origin", request.nextUrl.origin);
+  response.cookies.set("domain-origin", request.nextUrl.origin);
 
   return response;
 }

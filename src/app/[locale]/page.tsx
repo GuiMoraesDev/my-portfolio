@@ -12,7 +12,6 @@ import { Header } from "@/components/molecules/Header";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { ArticlesView } from "@/components/organisms/Articles";
 import { ContactForm } from "@/components/organisms/ContactForm";
-import { ReposView } from "@/components/organisms/Repos";
 import { TestimonialsView } from "@/components/organisms/Testimonials";
 
 export default async function Home() {
@@ -21,7 +20,7 @@ export default async function Home() {
   const t = await getTranslations();
 
   return (
-    <main className="bg-plum-900 font-lato relative container flex flex-col items-center text-white">
+    <main className="relative container flex flex-col items-center bg-plum-900 font-lato text-white">
       <Spheres />
       <DrawContainer />
 
@@ -37,7 +36,7 @@ export default async function Home() {
               {t("presentation.name")}
               <strong className="inline-flex gap-1">
                 Guilherme Moraes
-                <span className="animate-wave inline-block w-fit origin-bottom-right text-base select-none">
+                <span className="inline-block w-fit origin-bottom-right animate-wave text-base select-none">
                   👋
                 </span>
               </strong>
@@ -45,7 +44,7 @@ export default async function Home() {
 
             <h2
               id="my-title"
-              className="font-fira-sans text-gold-500 text-3xl font-bold tracking-wide md:my-2 md:text-4xl lg:text-5xl lg:leading-tight"
+              className="font-fira-sans text-3xl font-bold tracking-wide text-gold-500 md:my-2 md:text-4xl lg:text-5xl lg:leading-tight"
             >
               {t("presentation.title")}
             </h2>
@@ -85,7 +84,7 @@ export default async function Home() {
                 locale: locale === "pt" ? ptBR : enUS,
               }),
               highlight: (chunks) => (
-                <span className="text-plum-300 text-xl">{chunks}</span>
+                <span className="text-xl text-plum-300">{chunks}</span>
               ),
             })}
           </HighlightCard>
@@ -93,7 +92,7 @@ export default async function Home() {
           <HighlightCard icon="MagnifyingGlass">
             {t.rich("about-me.cards.attention-details", {
               highlight: (chunks) => (
-                <span className="text-plum-300 text-xl">{chunks}</span>
+                <span className="text-xl text-plum-300">{chunks}</span>
               ),
             })}
           </HighlightCard>
@@ -101,7 +100,7 @@ export default async function Home() {
           <HighlightCard icon="Globe">
             {t.rich("about-me.cards.worldwide", {
               highlight: (chunks) => (
-                <span className="text-plum-300 text-xl">{chunks}</span>
+                <span className="text-xl text-plum-300">{chunks}</span>
               ),
             })}
           </HighlightCard>
@@ -124,7 +123,7 @@ export default async function Home() {
         <section className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
           <a
             href="https://dev.to/guimoraes"
-            className="text-plum-200 rounded-sm p-3 text-center text-sm leading-tight font-medium hover:underline"
+            className="rounded-sm p-3 text-center text-sm leading-tight font-medium text-plum-200 hover:underline"
           >
             {t("articles.all-articles")}
           </a>
@@ -142,30 +141,6 @@ export default async function Home() {
 
         <section className="flex w-full flex-wrap items-start justify-start gap-14 xl:flex-nowrap">
           <TestimonialsView />
-        </section>
-      </SessionWrapper>
-
-      <SessionWrapper
-        className="items-start justify-start pt-16 min-[300px]:pt-28 md:pt-36 xl:pt-56"
-        id="projects"
-      >
-        <SessionHeader
-          title={t("projects.title")}
-          quote={t("projects.quote")}
-        />
-
-        <section className="flex w-full flex-wrap items-center justify-center gap-14">
-          <ReposView />
-        </section>
-
-        <section className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
-          <a
-            href="https://github.com/GuiMoraesDev?tab=repositories"
-            target="_blank"
-            className="text-plum-200 rounded-sm p-3 text-center text-sm leading-tight font-medium hover:underline"
-          >
-            {t("projects.all-projects")}
-          </a>
         </section>
       </SessionWrapper>
 
@@ -196,7 +171,7 @@ export default async function Home() {
             <strong
               className={twMerge(
                 "mb-2 text-2xl leading-normal tracking-wide",
-                "animate-gradient-x from-plum-200 via-plum-400 to-plum-50 inline-block bg-gradient-to-r bg-clip-text text-transparent",
+                "inline-block animate-gradient-x bg-gradient-to-r from-plum-200 via-plum-400 to-plum-50 bg-clip-text text-transparent",
               )}
             >
               {t("footer.title")}
@@ -230,7 +205,7 @@ export default async function Home() {
 const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={twMerge(
-      "font-lato relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-12 max-[2000px]:px-[10vw]",
+      "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-12 font-lato max-[2000px]:px-[10vw]",
       className,
     )}
     {...props}
@@ -261,7 +236,7 @@ type HighlightCardProps = ComponentProps<"p"> & {
   icon: IconProp;
 };
 const HighlightCard = ({ icon, ...props }: HighlightCardProps) => (
-  <div className="text-plum-50 flex flex-col items-center justify-start gap-4">
+  <div className="flex flex-col items-center justify-start gap-4 text-plum-50">
     <Icon icon={icon} size="lg" />
     <p
       className="text-center text-base leading-normal tracking-wider"

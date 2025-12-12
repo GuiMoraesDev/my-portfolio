@@ -9,8 +9,11 @@ import StarterKit from "@tiptap/starter-kit";
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 
-import { useEmailForm, useSendEmailMutation } from "../../hooks";
-import { checkIfGeneratePreviewIsSupported } from "../../util/checkIfGeneratePreviewIsSupported";
+import {
+  useEmailForm,
+  useSendEmailMutation,
+  useIsGeneratePreviewSupported,
+} from "../../hooks";
 import { EmailRenderPreview } from "../molecules/EmailRenderPreview";
 import { MarkdownEditor } from "../molecules/MarkdownEditor";
 
@@ -67,7 +70,7 @@ export const ContactFormComponent = () => {
     );
   };
 
-  const isSupported = checkIfGeneratePreviewIsSupported();
+  const isSupported = useIsGeneratePreviewSupported();
 
   return (
     <motion.div

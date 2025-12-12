@@ -3,12 +3,12 @@
 import { useDrawShape } from "../hooks/useDrawShape";
 
 export const ReactLogo = () => {
-  const { wrapperId, pathId, stroke } = useDrawShape();
+  const { wrapperRef, pathRef, stroke } = useDrawShape();
 
   return (
     <div
-      id={wrapperId}
-      className="fixed top-0 right-0 hidden h-[100dvh] overflow-hidden"
+      ref={wrapperRef}
+      className="fixed top-0 right-0 hidden h-dvh overflow-hidden"
     >
       <svg
         width={492}
@@ -36,7 +36,7 @@ export const ReactLogo = () => {
             strokeLinecap="round"
             strokeDasharray={stroke?.dashArray}
             strokeDashoffset={stroke?.dashOffset}
-            id={pathId}
+            ref={pathRef}
           />
         </g>
         <defs>

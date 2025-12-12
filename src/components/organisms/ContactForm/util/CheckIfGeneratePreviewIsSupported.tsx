@@ -1,4 +1,4 @@
-export const CheckIfGeneratePreviewIsSupported = () => {
+export const checkIfGeneratePreviewIsSupported = () => {
   if (process.env.TEST_ENV === "true") {
     return false;
   }

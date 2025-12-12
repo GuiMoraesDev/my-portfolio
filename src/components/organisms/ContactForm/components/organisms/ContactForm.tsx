@@ -8,10 +8,9 @@ import { useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
-import { useId } from "react";
 
 import { useEmailForm, useSendEmailMutation } from "../../hooks";
-import { CheckIfGeneratePreviewIsSupported } from "../../util/CheckIfGeneratePreviewIsSupported";
+import { checkIfGeneratePreviewIsSupported } from "../../util/checkIfGeneratePreviewIsSupported";
 import { EmailRenderPreview } from "../molecules/EmailRenderPreview";
 import { MarkdownEditor } from "../molecules/MarkdownEditor";
 
@@ -21,8 +20,6 @@ import { Label } from "@/components/atoms/Label";
 import { type SendEmailProps } from "@/schemas/email/schema";
 
 export const ContactFormComponent = () => {
-  const formId = useId();
-
   const t = useTranslations("contact");
   const formMethods = useEmailForm();
   const {
@@ -70,18 +67,18 @@ export const ContactFormComponent = () => {
     );
   };
 
-  const isSupported = CheckIfGeneratePreviewIsSupported();
+  const isSupported = checkIfGeneratePreviewIsSupported();
 
   return (
     <motion.div
-      className="max-h-[700px] w-full"
+      className="max-h-175 w-full"
       initial="offscreen"
       whileInView="onscreen"
       data-testid="contact-form"
       viewport={{ once: true }}
     >
       <motion.div
-        className="bg-plum-500/90 flex h-full w-full items-center justify-center gap-8 rounded-md p-4 md:p-8"
+        className="flex h-full w-full items-center justify-center gap-8 rounded-md bg-plum-500/90 p-4 md:p-8"
         variants={{
           offscreen: {
             y: 50,
@@ -104,7 +101,7 @@ export const ContactFormComponent = () => {
 
           <form
             className="flex w-full flex-col gap-4"
-            id={formId}
+            id="form-submit-email"
             name="contact-form"
             onSubmit={handleSubmit(onFormSubmit)}
           >
@@ -203,9 +200,9 @@ export const ContactFormComponent = () => {
           <section className="flex w-full items-center justify-center lg:justify-end">
             <button
               type="submit"
-              form={formId}
+              form="form-submit-email"
               disabled={isPending}
-              className="border-plum-800 text-plum-900 flex w-28 items-center justify-center gap-2 rounded-md border bg-white px-4 py-2 transition hover:bg-white/80 disabled:cursor-not-allowed disabled:bg-gray-500"
+              className="flex w-28 items-center justify-center gap-2 rounded-md border border-plum-800 bg-white px-4 py-2 text-plum-900 transition hover:bg-white/80 disabled:cursor-not-allowed disabled:bg-gray-500"
             >
               {t("form.buttons.send")}
               <PaperPlaneIcon className="h-6 w-6" />
@@ -227,42 +224,42 @@ export const ContactFormComponent = () => {
 
 export const SkeletonContactForm = () => {
   return (
-    <div className="max-h-[700px] w-full" data-testid="contact-form">
-      <div className="bg-plum-500/90 flex h-full w-full items-center justify-center gap-8 rounded-md p-4 md:p-8">
+    <div className="max-h-175 w-full" data-testid="contact-form">
+      <div className="flex h-full w-full items-center justify-center gap-8 rounded-md bg-plum-500/90 p-4 md:p-8">
         <div className="flex w-auto max-w-full flex-1 flex-col items-center justify-center gap-8">
           <span className="mr-auto h-8 w-[11ch] animate-pulse rounded-md bg-white/80" />
 
           <form className="flex w-full flex-col gap-4" name="contact-form">
             <div className="flex w-full flex-col gap-2">
               <span className="h-4 w-24 animate-pulse rounded-md bg-white/80" />
-              <span className="bg-plum-800/80 h-9 w-full animate-pulse rounded-md" />
+              <span className="h-9 w-full animate-pulse rounded-md bg-plum-800/80" />
             </div>
 
             <div className="flex w-full flex-col gap-2">
               <span className="h-4 w-24 animate-pulse rounded-md bg-white/80" />
-              <span className="bg-plum-800/80 h-9 w-full animate-pulse rounded-md" />
+              <span className="h-9 w-full animate-pulse rounded-md bg-plum-800/80" />
             </div>
 
             <div className="flex w-full flex-col gap-2">
               <span className="h-4 w-24 animate-pulse rounded-md bg-white/80" />
-              <span className="bg-plum-800/80 h-9 w-full animate-pulse rounded-md" />
+              <span className="h-9 w-full animate-pulse rounded-md bg-plum-800/80" />
             </div>
 
             <div className="flex w-full flex-col gap-2">
               <span className="h-4 w-24 animate-pulse rounded-md bg-white/80" />
-              <span className="bg-plum-800/80 h-9 w-full animate-pulse rounded-md" />
+              <span className="h-9 w-full animate-pulse rounded-md bg-plum-800/80" />
             </div>
 
             <div className="flex w-full flex-col gap-2">
               <span className="h-4 w-24 animate-pulse rounded-md bg-white/80" />
-              <span className="bg-plum-800/80 h-28 w-full animate-pulse rounded-md" />
+              <span className="h-28 w-full animate-pulse rounded-md bg-plum-800/80" />
             </div>
           </form>
 
           <section className="flex w-full items-center justify-center lg:justify-end">
             <button
               disabled
-              className="border-plum-800 text-plum-900 flex w-28 animate-pulse items-center justify-center gap-2 rounded-md border bg-white/80 px-4 py-2"
+              className="flex w-28 animate-pulse items-center justify-center gap-2 rounded-md border border-plum-800 bg-white/80 px-4 py-2 text-plum-900"
             >
               Send
               <PaperPlaneIcon className="h-6 w-6" />

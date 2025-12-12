@@ -162,7 +162,7 @@ test.describe("Email form", () => {
 
     const submitButton = page.locator("button[type=submit]");
 
-    const requestPromise = page.waitForRequest(/.*\/api\/email\/send\.*/);
+    const requestPromise = page.waitForRequest("/api/email/send");
     await submitButton.click();
 
     const request = await requestPromise;

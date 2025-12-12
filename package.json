@@ -2,6 +2,7 @@
   "name": "my-portfolio",
   "version": "0.2.0",
   "private": true,
+  "packageManager": "pnpm@10.18.2",
   "scripts": {
     "dev": "concurrently \"pnpm dev:app\" \"pnpm dev:email\"",
     "dev:app": "next dev --turbopack",

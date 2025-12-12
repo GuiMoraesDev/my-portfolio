@@ -36,7 +36,7 @@ export const ReposList = ({ repositories }: ReposListProps) => {
             className="group flex w-full"
           >
             <motion.div
-              className="bg-plum-50 text-plum-500 flex w-full flex-col gap-3 overflow-hidden rounded-lg p-4 shadow-md lg:flex-row"
+              className="flex w-full flex-col gap-3 overflow-hidden rounded-lg bg-plum-50 p-4 text-plum-500 shadow-md lg:flex-row"
               variants={{
                 offscreen: {
                   x: index % 2 === 0 ? 50 : -50,
@@ -64,7 +64,7 @@ export const ReposList = ({ repositories }: ReposListProps) => {
               </div>
 
               <section className="flex w-full flex-col gap-4">
-                <h3 className="text-plum-700 text-2xl font-bold">{title}</h3>
+                <h3 className="text-2xl font-bold text-plum-700">{title}</h3>
 
                 <p className="h-full overflow-hidden text-ellipsis">
                   {t("cards-description." + description_key)}
@@ -94,7 +94,7 @@ export const ReposList = ({ repositories }: ReposListProps) => {
                 <nav className="flex w-fit items-center gap-2">
                   {project_link && (
                     <a
-                      className="bg-plum-500 hover:bg-plum-700 inline-flex gap-2 rounded-md p-2 text-white transition-colors"
+                      className="inline-flex gap-2 rounded-md bg-plum-500 p-2 text-white transition-colors hover:bg-plum-700"
                       href={project_link}
                       aria-label={`${title} project link: ${project_link}`}
                       title={`${title} project link: ${project_link}`}
@@ -106,7 +106,7 @@ export const ReposList = ({ repositories }: ReposListProps) => {
                   )}
 
                   <a
-                    className="bg-plum-500 hover:bg-plum-700 inline-flex gap-2 rounded-md p-2 text-white transition-colors"
+                    className="inline-flex gap-2 rounded-md bg-plum-500 p-2 text-white transition-colors hover:bg-plum-700"
                     href={github_link}
                     aria-label={`${title} github link: ${github_link}`}
                     title={`${title} github link: ${github_link}`}

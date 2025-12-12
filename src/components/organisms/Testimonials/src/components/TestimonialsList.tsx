@@ -35,7 +35,7 @@ export const TestimonialsList = ({ testimonials }: TestimonialsListProps) => {
           >
             <motion.div
               className={twMerge(
-                "bg-plum-500/90 flex w-full flex-1 flex-col items-center justify-start gap-6 rounded-md p-4 text-white backdrop-blur-sm",
+                "flex w-full flex-1 flex-col items-center justify-start gap-6 rounded-md bg-plum-500/90 p-4 text-white backdrop-blur-sm",
               )}
               variants={{
                 offscreen: {

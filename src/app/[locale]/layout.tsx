@@ -1,12 +1,9 @@
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Lato, Fira_Sans } from "next/font/google";
 import "@/styles/globals.css";
 import { twMerge } from "tailwind-merge";
 
-import { Toaster } from "@/components/atoms/Toaster";
-import { QueryProvider } from "@/provider/QueryProvider";
+import { AppProvider } from "@/provider/AppProvider";
 
 const lato = Lato({
   weight: ["100", "300", "400", "700", "900"],
@@ -76,12 +73,7 @@ export default async function RootLayout({
           firaSans.className,
         )}
       >
-        <QueryProvider>
-          {children}
-          <Toaster />
-          <Analytics />
-          <SpeedInsights />
-        </QueryProvider>
+        <AppProvider>{children}</AppProvider>
       </body>
     </html>
   );

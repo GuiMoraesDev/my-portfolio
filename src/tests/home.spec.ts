@@ -20,7 +20,7 @@ test.describe("Locales", () => {
       await page.goto("/");
 
       await expect(page.locator("#my-title")).toHaveText(
-        enTranslations.home.title,
+        enTranslations.home.hello,
       );
     });
   });
@@ -42,7 +42,7 @@ test.describe("Locales", () => {
       await page.goto("/");
 
       await expect(page.locator("#my-title")).toHaveText(
-        enTranslations.home.title,
+        enTranslations.home.hello,
       );
     });
   });
@@ -60,8 +60,8 @@ test.describe("Page elements", () => {
 
     await expect(page.locator("#home")).toBeVisible();
     await expect(page.locator("#about-me")).toBeVisible();
-    await expect(page.locator("#articles")).toBeVisible();
-    await expect(page.locator("#references")).toBeVisible();
+    await expect(page.locator("#notes")).toBeVisible();
+    await expect(page.locator("#working-with-me")).toBeVisible();
     await expect(page.locator("#contact")).toBeVisible();
   });
 

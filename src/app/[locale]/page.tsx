@@ -1,17 +1,12 @@
-import { formatDistanceToNow } from "date-fns";
-import { enUS } from "date-fns/locale";
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { DrawContainer } from "@/components/atoms/Draws";
-import { Icon, type IconProp } from "@/components/atoms/Icon";
 import { Spheres } from "@/components/atoms/Spheres";
+import { NoteCard } from "@/components/molecules/NoteCard/NoteCard";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
-import { ArticlesView } from "@/components/organisms/Articles";
 import { Header } from "@/components/organisms/Header";
-import { TestimonialsView } from "@/components/organisms/Testimonials";
+import { notes } from "@/data/notes";
 
 export default async function Home() {
   const t = await getTranslations();
@@ -19,168 +14,184 @@ export default async function Home() {
   return (
     <main className="font-lato relative container flex flex-col items-center">
       <Spheres />
-      <DrawContainer />
 
       <Header />
 
-      <SessionWrapper
-        className="mt-14 pt-12 min-[300px]:pt-20 md:flex-row md:pt-36 xl:pt-56"
-        id="presentation"
-      >
-        <section className="flex flex-col gap-6 md:gap-10">
-          <div className="flex max-w-2xl flex-col gap-6 md:gap-10">
-            <h1 className="inline-flex flex-col text-2xl lg:text-2xl">
-              {t("home.name")}
-              <strong className="inline-flex gap-1">
-                Guilherme Moraes
-                <span className="inline-block w-fit origin-bottom-right animate-wave text-base select-none">
-                  👋
-                </span>
-              </strong>
-            </h1>
+      <SessionWrapper id="home">
+        <header className="flex w-full items-center justify-between">
+          <h1 className="inline-flex flex-col font-title text-2xl font-bold text-plum-light lg:text-5xl dark:text-gold-light">
+            {t("home.hello")}
+          </h1>
 
-            <h2
-              id="my-title"
-              className="font-fira-sans text-3xl font-bold tracking-wide text-gold md:my-2 md:text-4xl lg:text-5xl lg:leading-tight"
-            >
-              {t("home.title")}
-            </h2>
+          <SocialMedia />
+        </header>
 
-            <p className="leading-tight tracking-wide lg:text-2xl">
-              {t("home.subtitle")}
-            </p>
-          </div>
-
-          <SocialMedia className="hidden md:flex" />
-        </section>
-
-        <section className="flex flex-col items-center justify-center gap-6">
-          <div className="relative h-60 w-60 transition-all sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80">
-            <Image
-              src="/profile.png"
-              fill
-              sizes="100%"
-              className="aspect-square h-72 object-cover drop-shadow-[0px_0px_4px_rgba(242,226,236,0.2)] select-none md:h-auto"
-              priority
-              alt={t("home.profile-image-alt")}
-            />
-          </div>
-
-          <SocialMedia className="flex md:hidden" />
-        </section>
+        <p className="font-body text-lg leading-relaxed tracking-wide lg:text-xl">
+          {t.rich("home.about-me", {
+            break: () => <br />,
+            highlight: (chunks) => (
+              <span className="font-semibold text-gold dark:text-gold-light">
+                {chunks}
+              </span>
+            ),
+          })}
+        </p>
       </SessionWrapper>
 
-      <SessionWrapper
-        className="pt-14 min-[300px]:pt-24 md:pt-32 xl:pt-52"
-        id="about-me"
-      >
-        <section className="flex flex-col gap-10 md:flex-row">
-          <HighlightCard icon="Rocket">
-            {t.rich("about-me.cards.years-experience", {
-              time: formatDistanceToNow(new Date(2019, 5, 11), {
-                locale: enUS,
-              }),
-              highlight: (chunks) => (
-                <span className="text-plum-300 text-xl">{chunks}</span>
-              ),
-            })}
-          </HighlightCard>
+      <SessionWrapper id="notes">
+        <header className="flex flex-col">
+          <h1 className="inline-flex flex-col font-title text-2xl font-bold text-plum-light lg:text-4xl dark:text-gold-light">
+            {t("notes.title")}
+          </h1>
+        </header>
 
-          <HighlightCard icon="MagnifyingGlass">
-            {t.rich("about-me.cards.attention-details", {
-              highlight: (chunks) => (
-                <span className="text-plum-300 text-xl">{chunks}</span>
-              ),
-            })}
-          </HighlightCard>
+        <ul className="flex w-full items-center gap-6">
+          {notes.map((props, index) => (
+            <li key={props.id}>
+              <NoteCard {...props} index={index} />
+            </li>
+          ))}
+        </ul>
 
-          <HighlightCard icon="Globe">
-            {t.rich("about-me.cards.worldwide", {
-              highlight: (chunks) => (
-                <span className="text-plum-300 text-xl">{chunks}</span>
-              ),
-            })}
-          </HighlightCard>
-        </section>
-      </SessionWrapper>
-
-      <SessionWrapper
-        className="pt-14 min-[300px]:pt-24 md:pt-32 lg:items-start xl:pt-52"
-        id="articles"
-      >
-        <SessionHeader
-          title={t("articles.title")}
-          quote={t("articles.quote")}
-        />
-
-        <section className="flex w-full flex-col items-center justify-center gap-6">
-          <ArticlesView />
-        </section>
-
-        <section className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
+        <footer className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
           <a
             href="https://dev.to/guimoraes"
             className="text-plum-200 rounded-sm p-3 text-center text-sm leading-tight font-medium hover:underline"
           >
-            {t("articles.all-articles")}
+            {t("notes.view-all")}
           </a>
-        </section>
-      </SessionWrapper>
-
-      <SessionWrapper
-        className="pt-16 min-[300px]:pt-28 md:pt-36 lg:items-start xl:pt-56"
-        id="references"
-      >
-        <SessionHeader
-          title={t("references.title")}
-          quote={t("references.quote")}
-        />
-
-        <section className="flex w-full flex-wrap items-start justify-start gap-14 xl:flex-nowrap">
-          <TestimonialsView />
-        </section>
-      </SessionWrapper>
-
-      <SessionWrapper
-        className={twMerge(
-          "mt-8 min-[300px]:mt-16 md:mt-28 xl:mt-44",
-          "py-4 min-[300px]:py-8 md:py-14 xl:py-24",
-          "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:bg-black/90 before:opacity-95 before:content-['']",
-        )}
-        id="footer"
-      >
-        <footer className="z-10 flex h-full w-full flex-col items-center justify-between gap-4 text-sm md:flex-row lg:items-end">
-          <div className="flex flex-col gap-3">
-            <strong
-              className={twMerge(
-                "mb-2 text-2xl leading-normal tracking-wide",
-                "from-plum-200 via-plum-400 to-plum-50 inline-block animate-gradient-x bg-linear-to-r bg-clip-text text-transparent",
-              )}
-            >
-              {t("footer.title")}
-            </strong>
-
-            <p className="inline-block leading-normal tracking-wide">
-              {t("footer.contact-me-by")}
-              <a
-                href="mailto:guimoraes.dev@gmail.com"
-                className="ml-1 underline"
-              >
-                guimoraes.dev@gmail.com
-              </a>
-            </p>
-
-            <span className="inline-block leading-relaxed tracking-wider">
-              <span className="mr-1 uppercase">
-                {t("footer.made-with-love")}
-              </span>{" "}
-              © 2024 Guilherme Moraes
-            </span>
-          </div>
-
-          <SocialMedia />
         </footer>
       </SessionWrapper>
+
+      <SessionWrapper id="working-with-me">
+        <header className="flex flex-col gap-6">
+          <h1 className="inline-flex flex-col font-title text-2xl font-bold text-plum-light lg:text-4xl dark:text-gold-light">
+            {t("working-with-me.title")}
+          </h1>
+          <p className="font-body text-lg leading-relaxed tracking-wide">
+            {t.rich("working-with-me.quote", {
+              break: () => <br />,
+            })}
+          </p>
+        </header>
+
+        <ul className="flex flex-col gap-8">
+          <li className="flex flex-col gap-2">
+            <header>
+              <strong className="text-lg">Emanoel Faria</strong> -{" "}
+              <u>Senior Backend Engineer</u> at GlobalPassport
+            </header>
+
+            <p className="line-clamp-5 text-base">
+              I worked for more than 2 years on the same team as Guilherme. I
+              had an incredible work experience with him; he was very helpful
+              and available, engaged in solving the proposed problems and always
+              questioning, trying to find the real impact of the activities he
+              carried out, always very concerned with quality and deadlines. I
+              would be very happy working with him again on the team because I
+              know he will deliver great work.
+            </p>
+          </li>
+
+          <li className="flex flex-col gap-2">
+            <header>
+              <strong className="text-lg">Antoine Meunier</strong> -{" "}
+              <u>Head of Product & Design</u> at Blissbook
+            </header>
+
+            <p className="line-clamp-5 text-base">
+              I had the pleasure of working with Guilherme on several projects
+              at Blissbook, and it was an amazing experience. Guilherme is a
+              talented front-end developer whose skills and dedication are truly
+              exceptional. His knack for crafting engaging and intuitive user
+              experiences stands out, making every project we worked on together
+              not just a success, but a blast. Guilherme&apos;s approach to
+              front-end challenges is innovative and effective, ensuring that
+              all user interactions are smooth and enjoyable. I am confident
+              that he&apos;ll go far in his career, bringing his unique blend of
+              talent and passion to every endeavour. It was a blast to work
+              alongside him, and I look forward to seeing where his talents will
+              take him next! ✨🚀
+            </p>
+          </li>
+
+          <li className="flex flex-col gap-2">
+            <header>
+              <strong className="text-lg">Pierre-Alexandre St-Jean</strong> -{" "}
+              <u>Principal software engineer</u> at Blissbook
+            </header>
+
+            <p className="line-clamp-5 text-base">
+              Guilherme is awesome teammate and great employee, always making
+              sure he understands where we are going with the projects and
+              really open to feedback as to grow, he has great sens of shipping
+              quality stuff and I really enjoy working with him.
+            </p>
+          </li>
+        </ul>
+
+        <footer className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
+          <a
+            href="https://www.linkedin.com/in/guimoraesdev/details/recommendations/"
+            className="rounded-sm p-3 text-center text-sm leading-tight font-medium hover:underline"
+          >
+            {t("working-with-me.view-all")}
+          </a>
+        </footer>
+      </SessionWrapper>
+
+      <SessionWrapper id="contact">
+        <header className="flex flex-col gap-6">
+          <h1 className="inline-flex flex-col font-title text-2xl font-bold text-plum-light lg:text-4xl dark:text-gold-light">
+            {t("contact.title")}
+          </h1>
+          <p className="font-body text-lg leading-relaxed tracking-wide">
+            {t.rich("contact.quote", {
+              break: () => <br />,
+            })}
+          </p>
+        </header>
+
+        <section className="flex flex-col gap-6">
+          <p className="font-body text-lg leading-relaxed tracking-wide">
+            {t.rich("contact.reach-me-out", {
+              break: () => <br />,
+            })}
+          </p>
+
+          <ul>
+            <li>
+              Email:{" "}
+              <a href="mailto:guimoraes.dev@gmail.com">
+                guimoraes.dev@gmail.com
+              </a>
+            </li>
+
+            <li>
+              LinkedIn:{" "}
+              <a href="https://www.linkedin.com/in/guimoraesdev/">
+                linkedin.com/in/guimoraesdev
+              </a>
+            </li>
+
+            <li>
+              GitHub:{" "}
+              <a href="https://github.com/guimoraesdev">
+                github.com/guimoraesdev
+              </a>
+            </li>
+          </ul>
+        </section>
+      </SessionWrapper>
+
+      <footer className="flex flex-col gap-4 p-16 text-center text-sm dark:text-gold-light">
+        <span>
+          &copy; {new Date().getFullYear()} Guilherme Moraes.{" "}
+          {t("footer.rights")}
+        </span>
+
+        <a href="#home">Back to top</a>
+      </footer>
     </main>
   );
 }
@@ -188,14 +199,14 @@ export default async function Home() {
 const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={twMerge(
-      "font-lato relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-12 max-[2000px]:px-[10vw]",
+      "relative z-10 flex h-full w-full max-w-6xl flex-col justify-between gap-14 py-16",
       className,
     )}
     {...props}
   />
 );
 
-type SessionHeaderProps = ComponentProps<"h2"> & {
+/* type SessionHeaderProps = ComponentProps<"h2"> & {
   title: string;
   quote: string;
 };
@@ -209,13 +220,11 @@ const SessionHeader = ({
     className={twMerge("flex w-full flex-col gap-2", className)}
     {...props}
   >
-    <h2 className="font-fira-sans text-xl font-bold lg:text-2xl">{title}</h2>
-
     <p className="leading-snug tracking-wide">{quote}</p>
   </header>
-);
+); */
 
-type HighlightCardProps = ComponentProps<"p"> & {
+/* type HighlightCardProps = ComponentProps<"p"> & {
   icon: IconProp;
 };
 const HighlightCard = ({ icon, ...props }: HighlightCardProps) => (
@@ -226,4 +235,4 @@ const HighlightCard = ({ icon, ...props }: HighlightCardProps) => (
       {...props}
     />
   </div>
-);
+); */

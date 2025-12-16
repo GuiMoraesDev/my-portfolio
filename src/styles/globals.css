@@ -14,11 +14,13 @@
   --color-gold: #ae8724;
 
   --color-background: #ffffff;
+  --color-background-accent: #0d020d;
   --color-text: #000000;
 }
 
 .dark {
   --color-background: #0d020d;
+  --color-background-accent: #f0f0f0;
   --color-text: #ffffff;
 }
 
@@ -36,6 +38,7 @@
   --color-gold: var(--color-gold);
 
   --color-background: var(--color-background);
+  --color-background-accent: var(--color-background-accent);
   --color-text: var(--color-text);
 
   --animate-wave: wave 1s infinite;

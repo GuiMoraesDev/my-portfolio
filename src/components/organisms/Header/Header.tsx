@@ -11,15 +11,14 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
 
   const links = [
     { href: "#home", label: t("home") },
-    { href: "#about-me", label: t("about-me") },
-    { href: "#articles", label: t("articles") },
-    { href: "#references", label: t("references") },
+    { href: "#notes", label: t("notes") },
+    { href: "#working-with-me", label: t("working-with-me") },
     { href: "#contact", label: t("contact") },
   ];
 
   return (
     <header
-      className="fixed z-20 flex min-h-16 w-full max-w-6xl items-center justify-center gap-10"
+      className="sticky top-0 z-20 mb-16 flex min-h-16 w-full max-w-6xl items-center justify-center gap-10 border-b border-background-accent/3 bg-background transition-colors"
       {...props}
     >
       <nav

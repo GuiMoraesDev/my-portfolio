@@ -12,7 +12,7 @@ export const SocialMediaComponent = ({
   className,
   ...props
 }: ComponentProps<"div">) => {
-  const t = useTranslations("presentation");
+  const t = useTranslations("home");
 
   const handleDownloadCv = () => {
     window.open("/GM-Resume.pdf");
@@ -44,7 +44,7 @@ export const SocialMediaComponent = ({
 
       <button
         onClick={handleDownloadCv}
-        className="group bg-plum-500/90 hover:shadow-plum-100/80 order-1 flex w-full min-w-40 cursor-pointer items-center justify-center gap-2 rounded-md p-4 shadow-sm transition md:w-auto"
+        className="group order-1 flex w-full min-w-32 cursor-pointer items-center justify-center gap-2 rounded-md bg-background-accent p-4 text-background shadow-xs transition hover:shadow-background-accent/60 md:w-auto"
       >
         <DownloadIcon className="h-6 w-6 group-hover:animate-bounce" />
         <span className="text-sm tracking-wider">{t("my-resume")}</span>

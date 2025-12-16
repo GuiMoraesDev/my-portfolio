@@ -11,7 +11,6 @@ import { Spheres } from "@/components/atoms/Spheres";
 import { Header } from "@/components/molecules/Header";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { ArticlesView } from "@/components/organisms/Articles";
-import { ContactForm } from "@/components/organisms/ContactForm";
 import { TestimonialsView } from "@/components/organisms/Testimonials";
 
 export default async function Home() {
@@ -141,20 +140,6 @@ export default async function Home() {
 
         <section className="flex w-full flex-wrap items-start justify-start gap-14 xl:flex-nowrap">
           <TestimonialsView />
-        </section>
-      </SessionWrapper>
-
-      <SessionWrapper
-        className="justify-start pt-16 min-[300px]:pt-28 md:pt-36 xl:pt-56"
-        id="contact"
-      >
-        <SessionHeader
-          title={t("contact.title")}
-          quote={t("contact.subtitle")}
-        />
-
-        <section className="flex h-full min-h-32 w-full flex-col items-start justify-between gap-10">
-          <ContactForm />
         </section>
       </SessionWrapper>
 

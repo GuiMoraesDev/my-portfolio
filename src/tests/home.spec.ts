@@ -1,4 +1,4 @@
-import { test, expect, type Page } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 
 import enTranslations from "../i18n/locales/en.json";
 import ptTranslations from "../i18n/locales/pt.json";
@@ -108,51 +108,5 @@ test.describe("Page elements", () => {
     await page.goto("/");
 
     await expect(page.locator("#presentation")).toBeInViewport();
-  });
-});
-
-const fillField = async (page: Page, selector: string, value: string) => {
-  const element = page.locator(selector);
-
-  await element.fill(value);
-};
-
-test.describe("Email form", () => {
-  test("if the email form is visible", async ({ page }) => {
-    await page.goto("/");
-
-    const contactElement = page.locator("#contact");
-
-    await expect(contactElement).toBeVisible();
-  });
-
-  test("if the email form fields can be filled", async ({ page }) => {
-    await page.route(/.*\/api\/.*/, async (route) => {
-      return route.abort();
-    });
-
-    await page.goto("/");
-
-    await fillField(page, "#first_name", "Test");
-    await fillField(page, "#last_name", "Doe");
-    await fillField(page, "#email", "contacte@test.com");
-    await fillField(page, "#subject", "Test subject");
-    await fillField(page, "#editor>.tiptap", "This is a test message");
-
-    const submitButton = page.locator("button[type=submit]");
-
-    const requestPromise = page.waitForRequest(/.*\/api\/email\/send.*/);
-    await submitButton.click();
-
-    const request = await requestPromise;
-    const sentData = request.postDataJSON();
-
-    expect(sentData).toEqual({
-      first_name: "Test",
-      last_name: "Doe",
-      email: "contacte@test.com",
-      subject: "Test subject",
-      message: "<p>This is a test message</p>",
-    });
   });
 });

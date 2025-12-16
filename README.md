@@ -46,13 +46,6 @@ You can run the project with the following script.
 pnpm dev
 ```
 
-There are two dev scripts in the project, one for the next.js dev server, and another to the react-email dev server.
-
-```sh
-pnpm dev:app # Next.JS dev server
-pnpm dev:email # React Email dev server
-```
-
 ## Project Maintenance 👨‍🔧
 
 - Project is using Angular Commits Guide Line, for more information, click on this [link](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format).

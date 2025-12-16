@@ -10,16 +10,16 @@ export const TestimonialsSkeleton = () => {
     >
       <div
         className={twMerge(
-          "flex w-full flex-1 flex-col items-center justify-start gap-6 rounded-md bg-plum-500/90 p-4 text-white backdrop-blur-sm",
+          "bg-plum-500/90 flex w-full flex-1 flex-col items-center justify-start gap-6 rounded-md p-4 backdrop-blur-sm",
         )}
       >
         <div className="flex w-full items-start justify-start gap-2">
-          <span className="aspect-square h-[50px] w-[50px] animate-pulse rounded-full bg-white/80 object-contain select-none" />
+          <span className="aspect-square h-12.5 w-12.5 animate-pulse rounded-full bg-white/80 object-contain select-none" />
 
           <section className="flex w-full flex-col items-start justify-start gap-1">
             <span className="h-6 w-36 animate-pulse rounded-md bg-white/80" />
 
-            <span className="h-4 w-full max-w-[max(40%,_220px)] animate-pulse rounded-md bg-white/80" />
+            <span className="h-4 w-full max-w-[max(40%,220px)] animate-pulse rounded-md bg-white/80" />
           </section>
         </div>
 

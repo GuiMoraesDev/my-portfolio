@@ -19,7 +19,7 @@ export default async function Home() {
   const t = await getTranslations();
 
   return (
-    <main className="relative container flex flex-col items-center bg-plum-900 font-lato text-white">
+    <main className="font-lato relative container flex flex-col items-center">
       <Spheres />
       <DrawContainer />
 
@@ -29,7 +29,7 @@ export default async function Home() {
         className="mt-14 pt-12 min-[300px]:pt-20 md:flex-row md:pt-36 xl:pt-56"
         id="presentation"
       >
-        <section className="flex flex-col gap-6 text-white md:gap-10">
+        <section className="flex flex-col gap-6 md:gap-10">
           <div className="flex max-w-2xl flex-col gap-6 md:gap-10">
             <h1 className="inline-flex flex-col text-2xl lg:text-2xl">
               {t("presentation.name")}
@@ -43,7 +43,7 @@ export default async function Home() {
 
             <h2
               id="my-title"
-              className="font-fira-sans text-3xl font-bold tracking-wide text-gold-500 md:my-2 md:text-4xl lg:text-5xl lg:leading-tight"
+              className="font-fira-sans text-3xl font-bold tracking-wide text-gold md:my-2 md:text-4xl lg:text-5xl lg:leading-tight"
             >
               {t("presentation.title")}
             </h2>
@@ -57,7 +57,7 @@ export default async function Home() {
         </section>
 
         <section className="flex flex-col items-center justify-center gap-6">
-          <div className="relative h-[240px] w-[240px] transition-all sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80">
+          <div className="relative h-60 w-60 transition-all sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80">
             <Image
               src="/profile.png"
               fill
@@ -83,7 +83,7 @@ export default async function Home() {
                 locale: locale === "pt" ? ptBR : enUS,
               }),
               highlight: (chunks) => (
-                <span className="text-xl text-plum-300">{chunks}</span>
+                <span className="text-plum-300 text-xl">{chunks}</span>
               ),
             })}
           </HighlightCard>
@@ -91,7 +91,7 @@ export default async function Home() {
           <HighlightCard icon="MagnifyingGlass">
             {t.rich("about-me.cards.attention-details", {
               highlight: (chunks) => (
-                <span className="text-xl text-plum-300">{chunks}</span>
+                <span className="text-plum-300 text-xl">{chunks}</span>
               ),
             })}
           </HighlightCard>
@@ -99,7 +99,7 @@ export default async function Home() {
           <HighlightCard icon="Globe">
             {t.rich("about-me.cards.worldwide", {
               highlight: (chunks) => (
-                <span className="text-xl text-plum-300">{chunks}</span>
+                <span className="text-plum-300 text-xl">{chunks}</span>
               ),
             })}
           </HighlightCard>
@@ -122,7 +122,7 @@ export default async function Home() {
         <section className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
           <a
             href="https://dev.to/guimoraes"
-            className="rounded-sm p-3 text-center text-sm leading-tight font-medium text-plum-200 hover:underline"
+            className="text-plum-200 rounded-sm p-3 text-center text-sm leading-tight font-medium hover:underline"
           >
             {t("articles.all-articles")}
           </a>
@@ -147,16 +147,16 @@ export default async function Home() {
         className={twMerge(
           "mt-8 min-[300px]:mt-16 md:mt-28 xl:mt-44",
           "py-4 min-[300px]:py-8 md:py-14 xl:py-24",
-          "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-[100vw] before:-translate-x-1/2 before:bg-black/90 before:opacity-95 before:content-['']",
+          "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:bg-black/90 before:opacity-95 before:content-['']",
         )}
         id="footer"
       >
-        <footer className="z-10 flex h-full w-full flex-col items-center justify-between gap-4 text-sm text-white md:flex-row lg:items-end">
+        <footer className="z-10 flex h-full w-full flex-col items-center justify-between gap-4 text-sm md:flex-row lg:items-end">
           <div className="flex flex-col gap-3">
             <strong
               className={twMerge(
                 "mb-2 text-2xl leading-normal tracking-wide",
-                "inline-block animate-gradient-x bg-gradient-to-r from-plum-200 via-plum-400 to-plum-50 bg-clip-text text-transparent",
+                "from-plum-200 via-plum-400 to-plum-50 inline-block animate-gradient-x bg-linear-to-r bg-clip-text text-transparent",
               )}
             >
               {t("footer.title")}
@@ -190,7 +190,7 @@ export default async function Home() {
 const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={twMerge(
-      "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-12 font-lato max-[2000px]:px-[10vw]",
+      "font-lato relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-12 max-[2000px]:px-[10vw]",
       className,
     )}
     {...props}
@@ -221,7 +221,7 @@ type HighlightCardProps = ComponentProps<"p"> & {
   icon: IconProp;
 };
 const HighlightCard = ({ icon, ...props }: HighlightCardProps) => (
-  <div className="flex flex-col items-center justify-start gap-4 text-plum-50">
+  <div className="text-plum-50 flex flex-col items-center justify-start gap-4">
     <Icon icon={icon} size="lg" />
     <p
       className="text-center text-base leading-normal tracking-wider"

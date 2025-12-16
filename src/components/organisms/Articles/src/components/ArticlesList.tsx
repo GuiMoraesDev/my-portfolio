@@ -55,13 +55,13 @@ export const ArticlesList = ({ articles }: ArticlesListProps) => (
                 },
               },
             }}
-            className="group flex h-24 w-full flex-col items-start justify-center gap-4 rounded-md bg-plum-500/90 px-5 md:h-14 md:flex-row md:items-center md:justify-between xl:gap-5"
+            className="group bg-plum-500/90 flex h-24 w-full flex-col items-start justify-center gap-4 rounded-md px-5 md:h-14 md:flex-row md:items-center md:justify-between xl:gap-5"
           >
             <header className="flex items-center justify-start gap-2">
-              <FileTextIcon className="hidden h-5 w-5 text-white sm:inline-flex" />
+              <FileTextIcon className="hidden h-5 w-5 sm:inline-flex" />
               <p
                 className={twMerge(
-                  "relative text-xs text-white min-[340px]:text-sm xl:text-base",
+                  "relative text-xs min-[340px]:text-sm xl:text-base",
                   "before:absolute before:bottom-0 before:left-0 before:h-px before:w-0 before:rounded-md before:bg-white before:transition-all before:content-['']",
                   "group-hover:before:w-full",
                 )}
@@ -71,23 +71,23 @@ export const ArticlesList = ({ articles }: ArticlesListProps) => (
             </header>
 
             <section className="flex items-center justify-start gap-9 md:gap-5">
-              <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-white">
+              <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs">
                 <StopwatchIcon
-                  className="hidden h-5 w-5 text-white sm:inline-flex"
+                  className="hidden h-5 w-5 sm:inline-flex"
                   aria-description="reading time"
                 />
                 {reading_time_minutes} min
               </span>
-              <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-white">
+              <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs">
                 <HeartFilledIcon
-                  className="hidden h-5 w-5 text-white sm:inline-flex"
+                  className="hidden h-5 w-5 sm:inline-flex"
                   aria-description="likes"
                 />
                 {positive_reactions_count}
               </span>
-              <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-white">
+              <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs">
                 <KeyboardIcon
-                  className="hidden h-5 w-5 text-white sm:inline-flex"
+                  className="hidden h-5 w-5 sm:inline-flex"
                   aria-description="comments"
                 />
                 {comments_count}

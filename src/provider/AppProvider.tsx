@@ -20,18 +20,70 @@ const logToConsole = () => {
   if (process.env.NODE_ENV === "production") {
     console.clear();
   }
-
-  console.log(`%c   __________________  `, "color: #F2E2EC; font-size: 1.15em");
-  console.log(`%c  |                 |  `, "color: #F2E2EC; font-size: 1.15em");
-  console.log(`%c  | Ah ah ah        |  `, "color: #F2E2EC; font-size: 1.15em");
-  console.log(`%c  | you didn't say  |  `, "color: #F2E2EC; font-size: 1.15em");
-  console.log(`%c  | the magic word! |  `, "color: #F2E2EC; font-size: 1.15em");
-  console.log(`%c  |_________________|  `, "color: #F2E2EC; font-size: 1.15em");
-  console.log(`%c          |            `, "color: #F2E2EC; font-size: 1.15em");
-  console.log(`%c       O  |            `, "color: #F2E2EC; font-size: 1.15em");
-  console.log(`%c      /|\\/            `, "color: #F2E2EC; font-size: 1.15em");
-  console.log(`%c       |               `, "color: #F2E2EC; font-size: 1.15em");
-  console.log(`%c      / \\          🦖 `, "color: #F2E2EC; font-size: 1.15em");
+  console.log(
+    `%c   ____________________________     `,
+    "color: #F2E2EC; font-size: 1.15em",
+  );
+  console.log(
+    `%c  |                            |    `,
+    "color: #F2E2EC; font-size: 1.15em",
+  );
+  console.log(
+    `%c  |  > SYSTEM STATUS: OFFLINE  |    `,
+    "color: #F2E2EC; font-size: 1.15em",
+  );
+  console.log(
+    `%c  |  > SECURITY: DISABLED      |    `,
+    "color: #F2E2EC; font-size: 1.15em",
+  );
+  console.log(
+    `%c  |  > FENCES: DOWN            |    `,
+    "color: #F2E2EC; font-size: 1.15em",
+  );
+  console.log(
+    `%c  |                            |    `,
+    "color: #F2E2EC; font-size: 1.15em",
+  );
+  console.log(
+    `%c  |  "Ah ah ah...              |    `,
+    "color: #F2E2EC; font-size: 1.15em",
+  );
+  console.log(
+    `%c  |   you didn't say           |    `,
+    "color: #F2E2EC; font-size: 1.15em",
+  );
+  console.log(
+    `%c  |   the magic word!"         |    `,
+    "color: #F2E2EC; font-size: 1.15em",
+  );
+  console.log(
+    `%c  |____________________________|    `,
+    "color: #F2E2EC; font-size: 1.15em",
+  );
+  console.log(
+    `%c              ||                    `,
+    "color: #F2E2EC; font-size: 1.15em",
+  );
+  console.log(
+    `%c              ||               __   `,
+    "color: #F2E2EC; font-size: 1.15em",
+  );
+  console.log(
+    `%c          O   ||              / _)  `,
+    "color: #F2E2EC; font-size: 1.15em",
+  );
+  console.log(
+    `%c         /|\\  ||       .-^^^-/ /    `,
+    "color: #F2E2EC; font-size: 1.15em",
+  );
+  console.log(
+    `%c          |   ||    __/       /     `,
+    "color: #F2E2EC; font-size: 1.15em",
+  );
+  console.log(
+    `%c         / \\  ||   <__.|_|-|_|      `,
+    "color: #F2E2EC; font-size: 1.15em",
+  );
 };
 
 export const AppProvider = ({ children }: PropsWithChildren) => {

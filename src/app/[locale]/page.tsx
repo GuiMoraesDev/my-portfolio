@@ -85,7 +85,7 @@ export default async function Home() {
                 <u>Senior Backend Engineer</u> at GlobalPassport
               </header>
 
-              <p className="line-clamp-6">
+              <p>
                 I worked for more than 2 years on the same team as Guilherme. I
                 had an incredible work experience with him; he was very helpful
                 and available, engaged in solving the proposed problems and
@@ -102,7 +102,7 @@ export default async function Home() {
                 <u>Head of Product & Design</u> at Blissbook
               </header>
 
-              <p className="line-clamp-6">
+              <p>
                 I had the pleasure of working with Guilherme on several projects
                 at Blissbook, and it was an amazing experience. Guilherme is a
                 talented front-end developer whose skills and dedication are
@@ -124,7 +124,7 @@ export default async function Home() {
                 <u>Principal software engineer</u> at Blissbook
               </header>
 
-              <p className="line-clamp-6">
+              <p>
                 Guilherme is awesome teammate and great employee, always making
                 sure he understands where we are going with the projects and
                 really open to feedback as to grow, he has great sens of

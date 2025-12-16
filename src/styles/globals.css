@@ -9,13 +9,15 @@
   --color-red: #d80027;
   --color-cyan: #a2d6d8;
   --color-blue: #0052b4;
+  --color-gold-lighter: #ffd875;
+  --color-gold-light: #ffc530;
   --color-gold: #ae8724;
 
   --color-background: #ffffff;
   --color-text: #000000;
 }
 
-[data-theme="dark"] {
+.dark {
   --color-background: #0d020d;
   --color-text: #ffffff;
 }
@@ -29,6 +31,8 @@
   --color-red: var(--color-red);
   --color-cyan: var(--color-cyan);
   --color-blue: var(--color-blue);
+  --color-gold-lighter: var(--color-gold-lighter);
+  --color-gold-light: var(--color-gold-light);
   --color-gold: var(--color-gold);
 
   --color-background: var(--color-background);
@@ -60,4 +64,4 @@
   }
 }
 
-/* @custom-variant dark (&:where(.dark, .dark *)); */
+@custom-variant dark (&:where(.dark, .dark *));

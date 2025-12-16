@@ -68,10 +68,10 @@ export default async function RootLayout({
   const { locale } = await params;
 
   return (
-    <html className="scroll-smooth" lang={locale} data-theme="light">
+    <html className="scroll-smooth" lang={locale}>
       <body
         className={twMerge(
-          "flex h-dvh w-full flex-col items-center gap-3 overflow-x-hidden bg-background text-text",
+          "flex h-dvh w-full flex-col items-center gap-3 overflow-x-hidden bg-background text-text antialiased transition-colors",
           lato.className,
           firaSans.className,
         )}

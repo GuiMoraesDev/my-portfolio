@@ -6,6 +6,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { type ComponentProps, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
+import { ThemeSwitcher } from "../ThemeSwitcher";
+
 import { Hamburger } from "./icons/hamburger";
 
 import { Icon } from "@/components/atoms/Icon";
@@ -19,7 +21,7 @@ export const Wrapper = ({
   <header
     className={twMerge(
       "fixed z-20 flex h-20 w-full max-w-7xl items-center justify-center max-[2000px]:px-[10vw]",
-      "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:bg-plum-900 before:opacity-95 before:content-['']",
+      "before:bg-plum-900 before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:opacity-95 before:content-['']",
       className,
     )}
     {...props}
@@ -30,6 +32,8 @@ export const Wrapper = ({
       )}
     >
       {children}
+
+      <ThemeSwitcher />
     </nav>
   </header>
 );
@@ -60,7 +64,7 @@ export const LanguageSelectorElement = ({
     </button>
 
     <Switch.Root
-      className="relative h-6 w-11 cursor-pointer rounded-full border border-plum-600 outline-none focus:shadow-[0_0_0_2px] focus:shadow-black disabled:cursor-not-allowed data-[state=checked]:bg-plum-900"
+      className="border-plum-600 data-[state=checked]:bg-plum-900 relative h-6 w-11 cursor-pointer rounded-full border outline-none focus:shadow-[0_0_0_2px] focus:shadow-black disabled:cursor-not-allowed"
       id="Language-selector"
       checked={locale === "en"}
       disabled={disabled}
@@ -68,7 +72,7 @@ export const LanguageSelectorElement = ({
     >
       <Switch.Thumb
         title="language-selector"
-        className="block h-5 w-5 translate-x-0.5 rounded-full bg-plum-100 transition-transform will-change-transform data-[state=checked]:translate-x-4.75"
+        className="bg-plum-100 block h-5 w-5 translate-x-0.5 rounded-full transition-transform will-change-transform data-[state=checked]:translate-x-4.75"
       />
     </Switch.Root>
 
@@ -141,7 +145,7 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
         >
           <ul
             className={twMerge(
-              "relative z-20 flex flex-col gap-4 font-medium text-plum-800",
+              "text-plum-800 relative z-20 flex flex-col gap-4 font-medium",
               isOpen ? "visible delay-200" : "invisible",
             )}
           >

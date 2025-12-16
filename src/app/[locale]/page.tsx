@@ -1,7 +1,7 @@
 import { formatDistanceToNow } from "date-fns";
-import { ptBR, enUS } from "date-fns/locale";
+import { enUS } from "date-fns/locale";
 import Image from "next/image";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -14,8 +14,6 @@ import { Header } from "@/components/organisms/Header";
 import { TestimonialsView } from "@/components/organisms/Testimonials";
 
 export default async function Home() {
-  const locale = await getLocale();
-
   const t = await getTranslations();
 
   return (
@@ -32,7 +30,7 @@ export default async function Home() {
         <section className="flex flex-col gap-6 md:gap-10">
           <div className="flex max-w-2xl flex-col gap-6 md:gap-10">
             <h1 className="inline-flex flex-col text-2xl lg:text-2xl">
-              {t("presentation.name")}
+              {t("home.name")}
               <strong className="inline-flex gap-1">
                 Guilherme Moraes
                 <span className="inline-block w-fit origin-bottom-right animate-wave text-base select-none">
@@ -45,11 +43,11 @@ export default async function Home() {
               id="my-title"
               className="font-fira-sans text-3xl font-bold tracking-wide text-gold md:my-2 md:text-4xl lg:text-5xl lg:leading-tight"
             >
-              {t("presentation.title")}
+              {t("home.title")}
             </h2>
 
             <p className="leading-tight tracking-wide lg:text-2xl">
-              {t("presentation.subtitle")}
+              {t("home.subtitle")}
             </p>
           </div>
 
@@ -64,7 +62,7 @@ export default async function Home() {
               sizes="100%"
               className="aspect-square h-72 object-cover drop-shadow-[0px_0px_4px_rgba(242,226,236,0.2)] select-none md:h-auto"
               priority
-              alt={t("presentation.profile-image-alt")}
+              alt={t("home.profile-image-alt")}
             />
           </div>
 
@@ -80,7 +78,7 @@ export default async function Home() {
           <HighlightCard icon="Rocket">
             {t.rich("about-me.cards.years-experience", {
               time: formatDistanceToNow(new Date(2019, 5, 11), {
-                locale: locale === "pt" ? ptBR : enUS,
+                locale: enUS,
               }),
               highlight: (chunks) => (
                 <span className="text-plum-300 text-xl">{chunks}</span>

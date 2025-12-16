@@ -12,7 +12,7 @@ const lato = Lato({
 });
 
 const firaSans = Fira_Sans({
-  weight: ["100", "300", "400", "700", "900"],
+  weight: ["100", "300", "400", "500", "600", "700", "900"],
   subsets: ["latin"],
   variable: "--font-fira",
 });

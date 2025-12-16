@@ -37,7 +37,7 @@ export const NoteCard = ({
             },
           },
         }}
-        className="flex w-96 flex-col items-center justify-center gap-5 rounded-md bg-cyan p-6 text-black"
+        className="flex w-80 flex-col items-center justify-center gap-5 rounded-md bg-cyan p-6 text-black md:w-96"
       >
         {cover && (
           <Image
@@ -49,7 +49,7 @@ export const NoteCard = ({
           />
         )}
 
-        <p className="font-body text-lg font-medium">{title}</p>
+        <p className="font-title font-medium">{title}</p>
       </motion.a>
     </motion.div>
   );

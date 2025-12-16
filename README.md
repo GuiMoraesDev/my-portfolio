@@ -4,10 +4,8 @@
 [![typescript](https://img.shields.io/badge/typescript-%5E5.0.2-blue?logo=Typescript)](https://www.typescriptlang.org/)
 [![@tanstack/react-query](https://img.shields.io/badge/@tanstack/react--query-%5E5.18.1-FF4154?logo=ReactQuery)](https://tanstack.com/query/v5)
 [![openai](https://img.shields.io/badge/openai-%5E4.28.0-412991?logo=openai)](https://platform.openai.com/docs/overview)
-[![react-email](https://img.shields.io/badge/react--email-%5E2.0.0-214c69)](https://react.email/)
 [![zod](https://img.shields.io/badge/zod-%5E3.22.4-3E67B1?logo=zod)](https://zod.dev/)
 [![tailwindcss](https://img.shields.io/badge/talwind-%5E3.4.1-06B6D4?logo=tailwindcss)](https://tailwindcss.com/docs/installation)
-[![react-hook-form](https://img.shields.io/badge/react--hook--form-%5E7.50.1-EC5990?logo=reacthookform)](https://react-hook-form.com/)
 </br>
 <small>Every badge are links to their doc</small>
 

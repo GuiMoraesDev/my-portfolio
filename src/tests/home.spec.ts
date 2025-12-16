@@ -77,7 +77,7 @@ test.describe("Page elements", () => {
     await expect(page.locator("#footer")).toBeVisible();
   });
 
-  test("if the page has the home section i the viewport", async ({ page }) => {
+  test("if the page has the home section in the viewport", async ({ page }) => {
     await page.goto("/");
 
     await expect(page.locator("#home")).toBeInViewport();

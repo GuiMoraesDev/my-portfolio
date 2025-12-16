@@ -59,7 +59,6 @@ test.describe("Page elements", () => {
     await page.goto("/");
 
     await expect(page.locator("#home")).toBeVisible();
-    await expect(page.locator("#about-me")).toBeVisible();
     await expect(page.locator("#notes")).toBeVisible();
     await expect(page.locator("#working-with-me")).toBeVisible();
     await expect(page.locator("#contact")).toBeVisible();

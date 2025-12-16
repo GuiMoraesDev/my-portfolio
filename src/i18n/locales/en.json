@@ -1,13 +1,13 @@
 {
   "links": {
-    "presentation": "Presentation",
+    "home": "Home",
     "about-me": "About me",
     "articles": "Articles",
     "references": "References",
     "projects": "Projects",
     "contact": "Get in touch"
   },
-  "presentation": {
+  "home": {
     "name": "Hey, my name is",
     "title": "Software Engineer",
     "subtitle": "I'm specialist in creating apps using Next.js, TypeScript, Node.js, automated tests, and more!",

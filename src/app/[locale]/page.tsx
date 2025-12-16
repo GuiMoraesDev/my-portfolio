@@ -8,9 +8,9 @@ import { twMerge } from "tailwind-merge";
 import { DrawContainer } from "@/components/atoms/Draws";
 import { Icon, type IconProp } from "@/components/atoms/Icon";
 import { Spheres } from "@/components/atoms/Spheres";
-import { Header } from "@/components/molecules/Header";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { ArticlesView } from "@/components/organisms/Articles";
+import { Header } from "@/components/organisms/Header";
 import { TestimonialsView } from "@/components/organisms/Testimonials";
 
 export default async function Home() {

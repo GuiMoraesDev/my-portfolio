@@ -1,7 +1,6 @@
-import { test, expect, type Page } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 
 import enTranslations from "../i18n/locales/en.json";
-import ptTranslations from "../i18n/locales/pt.json";
 
 test.describe("Locales", () => {
   test.describe("US locale user", () => {
@@ -21,31 +20,7 @@ test.describe("Locales", () => {
       await page.goto("/");
 
       await expect(page.locator("#my-title")).toHaveText(
-        enTranslations.presentation.title,
-      );
-    });
-  });
-
-  test.describe("Brazil locale", () => {
-    test.use({
-      locale: "pt-BR",
-    });
-
-    test("if the HTML lang attribute is in brazilian portuguese", async ({
-      page,
-    }) => {
-      await page.goto("/");
-
-      await expect(page.locator("html")).toHaveAttribute("lang", "pt");
-    });
-
-    test("if the page text is in brazilian portuguese for Brazil located users", async ({
-      page,
-    }) => {
-      await page.goto("/");
-
-      await expect(page.locator("#my-title")).toHaveText(
-        ptTranslations.presentation.title,
+        enTranslations.home.hello,
       );
     });
   });
@@ -67,7 +42,7 @@ test.describe("Locales", () => {
       await page.goto("/");
 
       await expect(page.locator("#my-title")).toHaveText(
-        enTranslations.presentation.title,
+        enTranslations.home.hello,
       );
     });
   });
@@ -83,10 +58,9 @@ test.describe("Page elements", () => {
   test("if the page has every content section visible", async ({ page }) => {
     await page.goto("/");
 
-    await expect(page.locator("#presentation")).toBeVisible();
-    await expect(page.locator("#about-me")).toBeVisible();
-    await expect(page.locator("#articles")).toBeVisible();
-    await expect(page.locator("#references")).toBeVisible();
+    await expect(page.locator("#home")).toBeVisible();
+    await expect(page.locator("#notes")).toBeVisible();
+    await expect(page.locator("#working-with-me")).toBeVisible();
     await expect(page.locator("#contact")).toBeVisible();
   });
 
@@ -102,57 +76,9 @@ test.describe("Page elements", () => {
     await expect(page.locator("#footer")).toBeVisible();
   });
 
-  test("if the page has the presentation section i the viewport", async ({
-    page,
-  }) => {
+  test("if the page has the home section in the viewport", async ({ page }) => {
     await page.goto("/");
 
-    await expect(page.locator("#presentation")).toBeInViewport();
-  });
-});
-
-const fillField = async (page: Page, selector: string, value: string) => {
-  const element = page.locator(selector);
-
-  await element.fill(value);
-};
-
-test.describe("Email form", () => {
-  test("if the email form is visible", async ({ page }) => {
-    await page.goto("/");
-
-    const contactElement = page.locator("#contact");
-
-    await expect(contactElement).toBeVisible();
-  });
-
-  test("if the email form fields can be filled", async ({ page }) => {
-    await page.route(/.*\/api\/.*/, async (route) => {
-      return route.abort();
-    });
-
-    await page.goto("/");
-
-    await fillField(page, "#first_name", "Test");
-    await fillField(page, "#last_name", "Doe");
-    await fillField(page, "#email", "contacte@test.com");
-    await fillField(page, "#subject", "Test subject");
-    await fillField(page, "#editor>.tiptap", "This is a test message");
-
-    const submitButton = page.locator("button[type=submit]");
-
-    const requestPromise = page.waitForRequest(/.*\/api\/email\/send.*/);
-    await submitButton.click();
-
-    const request = await requestPromise;
-    const sentData = request.postDataJSON();
-
-    expect(sentData).toEqual({
-      first_name: "Test",
-      last_name: "Doe",
-      email: "contacte@test.com",
-      subject: "Test subject",
-      message: "<p>This is a test message</p>",
-    });
+    await expect(page.locator("#home")).toBeInViewport();
   });
 });

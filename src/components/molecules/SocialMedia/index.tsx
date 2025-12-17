@@ -8,7 +8,7 @@ export const SocialMedia = (props: ComponentProps<"div">) => {
   const messages = useMessages();
 
   return (
-    <NextIntlClientProvider messages={pick(messages, "presentation")}>
+    <NextIntlClientProvider messages={pick(messages, "home")}>
       <SocialMediaComponent {...props} />
     </NextIntlClientProvider>
   );

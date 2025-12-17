@@ -12,7 +12,7 @@ export const SocialMediaComponent = ({
   className,
   ...props
 }: ComponentProps<"div">) => {
-  const t = useTranslations("presentation");
+  const t = useTranslations("home");
 
   const handleDownloadCv = () => {
     window.open("/GM-Resume.pdf");
@@ -21,35 +21,33 @@ export const SocialMediaComponent = ({
   return (
     <div
       className={twMerge(
-        "flex flex-wrap items-center justify-evenly gap-8 md:flex-nowrap md:justify-start",
+        "flex flex-wrap items-center justify-center gap-4 md:flex-nowrap md:justify-start md:gap-8",
         className,
       )}
       {...props}
     >
       <Link
         href="https://github.com/GuiMoraesDev"
-        className="order-2 flex cursor-pointer flex-col items-center justify-center gap-2 md:order-1"
+        className="flex cursor-pointer flex-col items-center justify-center gap-2 md:order-1"
       >
         <Icon icon="Github" size="md" />
-        <span className="text-sm tracking-wider text-white">GitHub</span>
+        <span className="text-sm tracking-wider">GitHub</span>
       </Link>
 
       <Link
         href="https://www.linkedin.com/in/guimoraesdev"
-        className="order-2 flex cursor-pointer flex-col items-center justify-center gap-2 md:order-1"
+        className="flex cursor-pointer flex-col items-center justify-center gap-2 md:order-1"
       >
         <Icon icon="LinkedIn" size="md" />
-        <span className="text-sm tracking-wider text-white">LinkedIn</span>
+        <span className="text-sm tracking-wider">LinkedIn</span>
       </Link>
 
       <button
         onClick={handleDownloadCv}
-        className="group bg-plum-500/90 hover:shadow-plum-100/80 order-1 flex w-full min-w-40 cursor-pointer items-center justify-center gap-2 rounded-md p-4 shadow-sm transition md:w-auto"
+        className="group flex cursor-pointer items-center justify-center gap-2 rounded-md bg-background-accent p-4 text-background shadow-xs transition hover:shadow-background-accent/60 md:w-auto md:w-full md:min-w-32"
       >
         <DownloadIcon className="h-6 w-6 group-hover:animate-bounce" />
-        <span className="text-sm tracking-wider text-white">
-          {t("my-resume")}
-        </span>
+        <span className="text-sm tracking-wider">{t("my-resume")}</span>
       </button>
     </div>
   );

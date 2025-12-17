@@ -1,18 +1,14 @@
 {
   "links": {
-    "presentation": "Presentation",
-    "about-me": "About me",
-    "articles": "Articles",
-    "references": "References",
-    "projects": "Projects",
+    "home": "Home",
+    "notes": "Notes",
+    "working-with-me": "Working with me",
     "contact": "Get in touch"
   },
-  "presentation": {
-    "name": "Hey, my name is",
-    "title": "Software Engineer",
-    "subtitle": "I'm specialist in creating apps using Next.js, TypeScript, Node.js, automated tests, and more!",
-    "profile-image-alt": "An IA generated avatar from myself",
-    "my-resume": "My resume"
+  "home": {
+    "hello": "Hey, I'm Guilherme Moraes",
+    "about-me": "I'm a <highlight>Senior Frontend Engineer</highlight> with over 6 years of experience building and maintaining production-grade web applications.<break></break> I focus on turning complex requirements into clear, scalable interfaces, with strong attention to performance, maintainability, and long-term code health. I care not only about how systems look on day one, but how easily they can be understood, modified, and extended over time.<break></break> I've worked in remote-first teams, collaborating closely with product managers, designers, and engineers. I value clear communication, documented decisions, and pragmatic trade-offs over both over-engineering and under-engineering. Beyond implementation, I contribute to architecture discussions, help define meaningful testing strategies, and support teams through refactors and incremental improvements.<break></break> I believe good frontend work is invisible when done right and I aim to build systems that teams can trust and evolve with confidence.",
+    "my-resume": "My resumé"
   },
   "about-me": {
     "quote": "'Crafting code and stories, a snapshot of my digital odyssey' - ChatGPT",
@@ -22,107 +18,21 @@
       "worldwide": "Embracing a <highlight>remote-first mindset</highlight>, I had the opportunity to <highlight>collaborate worldwide</highlight> creating exceptional digital solutions."
     }
   },
-  "articles": {
-    "title": "Exploring my know-how",
-    "quote": "'Lorem ipsum dolor sit amet' - lipsum.com",
-    "all-articles": "Do you wanna see all articles? Click here! 📚"
+  "notes": {
+    "title": "Notes",
+    "view-all": "Click here to take a look at all my notes"
   },
-  "references": {
-    "title": "What's the buzz about me?",
-    "quote": "'He is the most handsome boy in the world' - Mom",
-    "leave-reference": "Have you work with me? Leave a recommendation! 📝",
-    "show-more": "Show more",
-    "show-less": "Show less"
-  },
-  "projects": {
-    "title": "Talk is cheap. Show me the code.",
-    "quote": "'The code is the documentation' - Unknown",
-    "all-projects": "Do you wanna see all projects? Click here! 💻",
-    "cards-description": {
-      "my-portfolio": "This is super portfolio project, to show my skills and experiences. It's a Next.js app with Tailwind CSS and Typescript. integrated with AI tools to generate Email and a markdown editor.",
-      "lnk-bio": "This is a link shortener that allows you to create a custom page with your social media links. It's a Next.js app with Tailwind CSS and Typescript.",
-      "prep-pal": "This is a tool that helps you to prepare for a job interview. It uses OpenAI's GPT-3 to generate questions and answers based on the job description."
-    }
+  "working-with-me": {
+    "title": "Working with me",
+    "quote": "I care deeply about how I show up in a team, not just through the code I write, but through communication, collaboration, and responsibility.<break></break>The feedback below reflects how I've worked with product managers, designers, and engineers in real, day-to-day situations.",
+    "view-all": "Check out my linkedIn profile for more recommendations"
   },
   "contact": {
-    "title": "Get in touch!",
-    "subtitle": "Hey there! Got something on your mind? Shoot me a message",
-    "form": {
-      "title": "Let's talk!",
-      "labels": {
-        "first_name": "Your first name",
-        "last_name": "Your last name",
-        "email": "Your best email",
-        "subject": "Subject",
-        "message": "Message <small>(markdown supported)</small>"
-      },
-      "placeholders": {
-        "email": "johnDoe@example.com",
-        "subject": "I have an opportunity for you",
-        "message": "Type your message here..."
-      },
-      "errors": {
-        "first_name_required": "First name is required",
-        "last_name_required": "Last name is required",
-        "email_invalid": "Please enter a valid email",
-        "subject_required": "Email subject is required",
-        "message_required": "Email message is required"
-      },
-      "toolbar": {
-        "undo": "Undo",
-        "redo": "Redo",
-        "bold": "Bold",
-        "italic": "Italic",
-        "underline": "Underline",
-        "strikethrough": "Strikethrough",
-        "code": "Code",
-        "divider": "Divider",
-        "generate": "Generate message with AI"
-      },
-      "toasts": {
-        "send-email": {
-          "mutation": {
-            "title": "Sending your message...",
-            "message": "Please wait a moment"
-          },
-          "error": {
-            "title": "An error occurred",
-            "message": "An error occurred while sending your message. Please try again later."
-          },
-          "success": {
-            "title": "Message sent",
-            "message": "Your message was sent successfully!"
-          }
-        },
-        "generate-email": {
-          "mutation": {
-            "title": "Generating message...",
-            "message": "Please wait a moment"
-          },
-          "error": {
-            "title": "An error occurred",
-            "message": "An error occurred while generating your message. Please try again later."
-          },
-          "success": {
-            "title": "New message generated",
-            "message": "Your message was generated successfully!"
-          }
-        }
-      },
-      "buttons": {
-        "close": "Close",
-        "send": "Send"
-      }
-    },
-    "preview": {
-      "title": "Preview",
-      "awaiting": "Your email preview will be shown here",
-      "unsupported": "Your browser does not support this feature"
-    }
+    "title": "Get in touch",
+    "quote": "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.<break></break>Feel free to reach out through any of the platforms below, and let's start a conversation!",
+    "reach-me-out": "Reach me out on"
   },
   "footer": {
-    "title": "Nice to have you here!",
-    "contact-me-by": "Contact me by",
-    "made-with-love": "Made with love"
+    "rights": "All rights reserved."
   }
 }

@@ -1,44 +1,80 @@
 @import "tailwindcss";
 
-@theme {
-  --font-lato: "Lato", "sans-serif";
-  --font-fira-sans: "Fira Sans", "sans-serif";
+:root {
+  --font-lato: "Lato", sans-serif;
+  --font-fira-sans: "Fira Sans", sans-serif;
 
-  --color-plum-50: #f2e2ec;
-  --color-plum-100: #e6c5d9;
-  --color-plum-200: #daa8c6;
-  --color-plum-300: #ce8bb3;
-  --color-plum-400: #c26e9f;
-  --color-plum-500: #49213b;
-  --color-plum-600: #3f1c31;
-  --color-plum-700: #351726;
-  --color-plum-800: #2b121c;
-  --color-plum-900: #0d020d;
+  --color-plum-light: #49213b;
+  --color-plum-dark: #0d020d;
+  --color-red: #d80027;
+  --color-cyan: #a2d6d8;
+  --color-blue: #0052b4;
+  --color-gold-lighter: #ffd875;
+  --color-gold-light: #ffc530;
+  --color-gold: #ae8724;
 
-  --color-gold-500: #ebb220;
+  --color-background: #ffffff;
+  --color-background-accent: #0d020d;
+  --color-text: #000000;
+}
+
+.dark {
+  --color-background: #0d020d;
+  --color-background-accent: #f0f0f0;
+  --color-text: #ffffff;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-size: 200% 200%;
+    background-position: left center;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.35;
+  }
+}
+
+@theme inline {
+  --font-title: var(--font-fira-sans);
+  --font-body: var(--font-lato);
+
+  --color-plum-light: var(--color-plum-light);
+  --color-plum-dark: var(--color-plum-dark);
+  --color-red: var(--color-red);
+  --color-cyan: var(--color-cyan);
+  --color-blue: var(--color-blue);
+  --color-gold-lighter: var(--color-gold-lighter);
+  --color-gold-light: var(--color-gold-light);
+  --color-gold: var(--color-gold);
+
+  --color-background: var(--color-background);
+  --color-background-accent: var(--color-background-accent);
+  --color-text: var(--color-text);
 
   --animate-wave: wave 1s infinite;
   --animate-gradient-x: gradient-x 3s ease infinite;
-
-  @keyframes wave {
-    0%,
-    100% {
-      transform: rotate(0deg);
-    }
-    50% {
-      transform: rotate(14deg);
-    }
-  }
-
-  @keyframes gradient-x {
-    0%,
-    100% {
-      background-size: 200% 200%;
-      background-position: left center;
-    }
-    50% {
-      background-size: 200% 200%;
-      background-position: right center;
-    }
-  }
+  --animate-fade: fade 0.3s ease-out;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));

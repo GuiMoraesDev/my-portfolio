@@ -10,6 +10,9 @@ const nextConfig = {
       {
         hostname: "raw.githubusercontent.com",
       },
+      {
+        hostname: "media2.dev.to",
+      },
     ],
   },
 };

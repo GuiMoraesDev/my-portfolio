@@ -2,7 +2,6 @@ import { getTranslations } from "next-intl/server";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Spheres } from "@/components/atoms/Spheres";
 import { NoteCard } from "@/components/molecules/NoteCard/NoteCard";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { Header } from "@/components/organisms/Header";
@@ -14,7 +13,6 @@ export default async function Home() {
   return (
     <main className="relative container flex w-full flex-col items-center">
       <Header />
-      <Spheres />
 
       <SessionWrapper id="home">
         <header className="flex w-full flex-col items-center justify-between gap-6 md:flex-row">

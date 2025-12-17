@@ -69,10 +69,24 @@ const Sphere = ({
       }}
       className={twMerge(
         "fixed overflow-hidden rounded-full will-change-transform",
-        "border border-solid border-[rgba(255,255,255,0.3)] backdrop-blur-md",
-        "shadow-[0_8px_32px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.4),inset_0_-1px_0_rgba(255,255,255,0.1),inset_0_0_32px_15px_rgba(255,255,255,0.4)]",
-        "before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.5),transparent)] before:content-['']",
-        "after:absolute after:top-0 after:left-0 after:h-full after:w-px after:bg-[linear-gradient(180deg,rgba(255,255,255,0.5),transparent,rgba(255,255,255,0.3))] after:content-['']",
+
+        // base glass
+        "border border-solid backdrop-blur-md",
+        "before:absolute before:inset-x-0 before:top-0 before:h-px before:content-['']",
+        "after:absolute after:top-0 after:left-0 after:h-full after:w-px after:content-['']",
+
+        // LIGHT (default) — cyan
+        "border-cyan/25",
+        "shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(34,211,238,0.4),inset_0_-1px_0_rgba(34,211,238,0.2),inset_0_0_32px_15px_rgba(34,211,238,0.45)]",
+        "before:bg-[linear-gradient(90deg,transparent,rgba(34,211,238,0.6),transparent)]",
+        "after:bg-[linear-gradient(180deg,rgba(34,211,238,0.5),transparent,rgba(34,211,238,0.3))]",
+
+        // DARK — plum
+        "dark:border-plum/35",
+        "dark:shadow-[0_8px_32px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(73,33,59,0.35),inset_0_-1px_0_rgba(73,33,59,0.1),inset_0_0_32px_15px_rgba(73,33,59,0.32)]",
+        "dark:before:bg-[linear-gradient(90deg,transparent,rgba(73,33,59,0.55),transparent)]",
+        "dark:after:bg-[linear-gradient(180deg,rgba(73,33,59,0.45),transparent,rgba(73,33,59,0.35))]",
+
         cfg.className,
       )}
     />
@@ -96,37 +110,66 @@ export const Spheres = () => {
     {
       top: "0%",
       left: "0%",
-      size: "16vw",
+      size: "8vw",
       depth: 1.0,
       className: "animate-[fade_1.5s_0.75s_ease-in-out_infinite_alternate]",
     },
     {
       top: "9.8%",
       left: "39.4%",
-      size: "18.9vw",
+      size: "12vw",
       depth: 0.75,
       className: "animate-[fade_3s_0.5s_ease-in-out_infinite_alternate]",
     },
     {
       top: "0%",
       left: "82.2%",
-      size: "35.2vw",
+      size: "22vw",
       depth: 0.35,
       className: "animate-[fade_2s_1s_ease-in-out_infinite_alternate]",
     },
     {
       top: "53.2%",
       left: "13.6%",
-      size: "35.2vw",
+      size: "17vw",
       depth: 0.45,
       className: "animate-[fade_1s_0.75s_ease-in-out_infinite_alternate]",
     },
     {
       top: "30%",
       left: "55%",
-      size: "28.8vw",
+      size: "7vw",
       depth: 0.2,
       className: "animate-[fade_3s_1.5s_ease-in-out_infinite_alternate]",
+    },
+    {
+      top: "75%",
+      left: "75%",
+      size: "10vw",
+      depth: 0.6,
+      className: "animate-[fade_2.5s_0.25s_ease-in-out_infinite_alternate]",
+    },
+    {
+      top: "85%",
+      left: "25%",
+      size: "14vw",
+      depth: 0.8,
+      className: "animate-[fade_1.5s_1s_ease-in-out_infinite_alternate]",
+    },
+    {
+      top: "45%",
+      left: "85%",
+      size: "20vw",
+      depth: 0.3,
+      className: "animate-[fade_2s_0.5s_ease-in-out_infinite_alternate]",
+    },
+
+    {
+      top: "15%",
+      left: "15%",
+      size: "6vw",
+      depth: 0.9,
+      className: "animate-[fade_1s_0.25s_ease-in-out_infinite_alternate]",
     },
   ];
 

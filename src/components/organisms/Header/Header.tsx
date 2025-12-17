@@ -10,7 +10,7 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
   const t = useTranslations("links");
 
   const links = [
-    { href: "#home", label: t("home") },
+    { href: "/home", label: t("home") },
     { href: "#notes", label: t("notes") },
     { href: "#working-with-me", label: t("working-with-me") },
     { href: "#contact", label: t("contact") },

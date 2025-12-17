@@ -25,6 +25,7 @@ import { Chest } from "./src/components/Chest";
 import { Eyes } from "./src/components/Eyes";
 import { Feet } from "./src/components/Feet";
 import { HeadPanel } from "./src/components/HeadPanel";
+import { SIZE } from "./src/config/constants";
 import { rootVariants } from "./src/config/variants";
 import { useMessageWithTtl } from "./src/hooks/useMessageWithTtl";
 import { useRobotState } from "./src/hooks/useRobotState";
@@ -56,8 +57,6 @@ export type RobotAssistantHandle = {
 type ControlMode = "controlled" | "uncontrolled";
 
 export type RobotAssistantProps = {
-  size?: number;
-
   /** Controlled mode = you provide mood/message; Uncontrolled = machine owns it. */
   mode?: ControlMode;
 
@@ -84,7 +83,6 @@ export const RobotAssistant = forwardRef<
   RobotAssistantProps
 >(function Robot(
   {
-    size = 220,
     mode = "uncontrolled",
     mood: controlledMood,
     message: controlledMessage,
@@ -269,10 +267,10 @@ export const RobotAssistant = forwardRef<
 
   return (
     <div
-      className="relative"
-      style={{ width: size, userSelect: "none", touchAction: "none" }}
+      className="fixed right-10 bottom-10 z-50"
+      style={{ width: SIZE, userSelect: "none", touchAction: "none" }}
     >
-      <BubbleMessage message={viewMessage} size={size} />
+      <BubbleMessage message={viewMessage} />
 
       <motion.button
         type="button"

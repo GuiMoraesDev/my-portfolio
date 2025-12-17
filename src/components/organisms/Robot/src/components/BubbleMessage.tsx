@@ -1,12 +1,12 @@
 import { AnimatePresence, motion } from "motion/react";
 
-import { type RobotAssistantProps } from "../../RobotAssistant";
+import { SIZE } from "../config/constants";
 
-type BubbleMessageProps = Pick<RobotAssistantProps, "size"> & {
+type BubbleMessageProps = {
   message: string | null;
 };
 
-export const BubbleMessage = ({ message, size = 220 }: BubbleMessageProps) => (
+export const BubbleMessage = ({ message }: BubbleMessageProps) => (
   <AnimatePresence>
     {message && (
       <motion.div
@@ -14,10 +14,10 @@ export const BubbleMessage = ({ message, size = 220 }: BubbleMessageProps) => (
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 8, scale: 0.96 }}
         transition={{ duration: 0.18, ease: "easeOut" }}
-        className="absolute -top-2 left-1/2 -translate-x-1/2"
-        style={{ width: Math.min(320, size * 1.3) }}
+        className="absolute top-0 left-1/2 z-10 aspect-video h-auto -translate-x-1/2 -translate-y-full"
+        style={{ width: Math.min(SIZE, SIZE * 1.3) }}
       >
-        <div className="relative rounded-2xl border border-black/10 bg-white/95 px-3 py-2 shadow-sm">
+        <div className="relative rounded-2xl border border-black/10 bg-white/95 px-1 py-0.5 shadow-sm">
           <div className="text-[12px] leading-snug text-black/80">
             {message}
           </div>

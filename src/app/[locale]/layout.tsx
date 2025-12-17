@@ -3,7 +3,7 @@ import { Lato, Fira_Sans } from "next/font/google";
 import "@/styles/globals.css";
 import { twMerge } from "tailwind-merge";
 
-import { Robot } from "@/components/organisms/Robot";
+import { MascotBuddy } from "@/components/organisms/MascotBuddy";
 import { AppProvider } from "@/provider/AppProvider";
 
 const lato = Lato({
@@ -77,7 +77,7 @@ export default async function RootLayout({
         <AppProvider>
           {children}
 
-          <Robot />
+          <MascotBuddy shape="caret" />
         </AppProvider>
       </body>
     </html>

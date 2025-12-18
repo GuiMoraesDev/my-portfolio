@@ -77,7 +77,7 @@ export default async function RootLayout({
         <AppProvider>
           {children}
 
-          <MascotBuddy shape="caret" />
+          <MascotBuddy />
         </AppProvider>
       </body>
     </html>

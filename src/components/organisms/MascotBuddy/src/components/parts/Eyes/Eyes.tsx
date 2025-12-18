@@ -79,7 +79,7 @@ const Eye = ({ elementY, eyeX, follow }: EyeProps) => {
       initial="open"
       animate={isFollowing ? "open" : "blink"}
     >
-      <circle cx={eyeX} cy={eyeY} r={7.2} fill="rgba(255,255,255,0.95)" />
+      <circle cx={eyeX} cy={eyeY} r={7.2} className="fill-white stroke-black" />
       <motion.circle
         style={eyeStyle}
         cx={eyeX}

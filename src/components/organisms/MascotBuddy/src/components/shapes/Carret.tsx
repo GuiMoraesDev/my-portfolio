@@ -8,6 +8,7 @@ import {
 } from "../../config/constants";
 import { CARET_VARIANTS } from "../../config/variants";
 import { Eyes } from "../parts/Eyes";
+import { Mouth } from "../parts/Mouth/Mouth";
 
 const CARET_WIDTH = DEFAULT_SIZE / 5;
 const CARET_HEIGHT = DEFAULT_SIZE * 0.8;
@@ -24,6 +25,7 @@ export const CarretShape = () => {
       animate="caret"
       variants={CARET_VARIANTS}
       ref={wrapperRef}
+      className="relative"
     >
       <Eyes elementY={CARET_Y} wrapperRef={wrapperRef} />
 
@@ -33,6 +35,7 @@ export const CarretShape = () => {
         caretWidth={CARET_WIDTH}
         caretHeight={CARET_HEIGHT}
       />
+      <Mouth elementY={CARET_Y} />
     </motion.g>
   );
 };
@@ -56,6 +59,6 @@ const CaretBody = ({
     width={caretWidth}
     height={caretHeight}
     rx={3.5}
-    fill="currentColor"
+    className="fill-white stroke-black dark:fill-white"
   />
 );

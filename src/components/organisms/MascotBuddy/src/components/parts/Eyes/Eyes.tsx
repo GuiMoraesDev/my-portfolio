@@ -1,7 +1,7 @@
 import { motion, type Variants } from "motion/react";
 import { type RefObject } from "react";
 
-import { ENERGY, VIEWBOX_WIDTH } from "../../config/constants";
+import { ENERGY, VIEWBOX_WIDTH } from "../../../config/constants";
 
 import { usePupilFollow } from "./src/hooks/usePupilFollow";
 

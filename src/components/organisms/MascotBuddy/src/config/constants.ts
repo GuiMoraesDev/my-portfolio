@@ -7,3 +7,6 @@ export const ENERGY = 0.45;
 
 export const TEXT_ANIMATION_DURATION = 0.3;
 export const TEXT_ANIMATION_DELAY = 0.08;
+
+export const IDLE_ACTION_AWAIT_MS = 0.3 * 1000;
+export const DEFAULT_ACTION_AWAIT_MS = 1.5 * 1000;

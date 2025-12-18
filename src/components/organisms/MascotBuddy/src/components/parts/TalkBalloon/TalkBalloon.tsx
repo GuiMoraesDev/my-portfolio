@@ -1,5 +1,4 @@
 import { motion, AnimatePresence } from "motion/react";
-import { useMemo } from "react";
 
 import {
   TEXT_ANIMATION_DELAY,
@@ -8,15 +7,17 @@ import {
 import { useMascotState } from "../../../provider/MascotStateProvider";
 
 export const TalkBalloon = () => {
-  const { text } = useMascotState();
+  const { activeAction } = useMascotState();
 
-  const letters = useMemo(() => text.split(""), [text]);
+  if (activeAction?.type !== "talk") return null;
+
+  const letters = activeAction.payload.text.split("");
 
   return (
     <AnimatePresence>
-      {text ? (
+      {activeAction.payload.text ? (
         <motion.span
-          key={text}
+          key={activeAction.payload.text}
           initial={{ opacity: 0, y: 6, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 6, scale: 0.98 }}

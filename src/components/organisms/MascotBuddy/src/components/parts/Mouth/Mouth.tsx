@@ -11,7 +11,9 @@ type MouthProps = {
 const MOUTH_X = VIEWBOX_WIDTH / 2;
 
 export function Mouth({ elementY }: MouthProps) {
-  const { currentMood: mood } = useMascotState();
+  const { activeAction } = useMascotState();
+  const mood = activeAction?.mood || "idle";
+
   const mouthY = useMemo(() => elementY + 26, [elementY]);
 
   const mouthVariants: Variants = useMemo(

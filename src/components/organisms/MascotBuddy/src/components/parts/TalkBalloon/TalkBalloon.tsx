@@ -25,7 +25,7 @@ export const TalkBalloon = () => {
             stiffness: 520,
             damping: 36,
           }}
-          className="pointer-events-none absolute top-0 left-1/2 z-50 max-w-xs -translate-x-1/2 -translate-y-full rounded-lg border border-white/30 bg-black/60 px-3 py-2 text-center text-sm text-white shadow-lg backdrop-blur-md"
+          className="pointer-events-none absolute top-0 right-4 z-50 min-w-3xs -translate-y-full rounded-lg border border-white/30 bg-black/95 p-4 text-center text-sm text-white dark:bg-black/70 dark:backdrop-blur-md"
         >
           {letters.map((char, i) => (
             <motion.span

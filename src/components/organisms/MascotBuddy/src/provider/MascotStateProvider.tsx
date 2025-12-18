@@ -1,7 +1,9 @@
 import {
   createContext,
   type PropsWithChildren,
+  useCallback,
   useContext,
+  useEffect,
   useState,
 } from "react";
 
@@ -29,7 +31,7 @@ export const MascotStateProvider = ({
   const [currentMood, setCurrentMood] = useState<MascotMood>(mood);
   const [text, setText] = useState("");
 
-  const handleSetMascotText = (textToTalk: string) => {
+  const handleSetMascotText = useCallback((textToTalk: string) => {
     setCurrentMood("talking");
     setText(textToTalk);
 
@@ -45,7 +47,15 @@ export const MascotStateProvider = ({
       },
       timeToTalk * 1.5 * 1000,
     );
-  };
+  }, []);
+
+  useEffect(() => {
+    const showPresentationText = () => {
+      handleSetMascotText("Hello, my name is Ticky, and I'm here to help!");
+    };
+
+    showPresentationText();
+  }, [handleSetMascotText]);
 
   return (
     <MascotStateContext.Provider

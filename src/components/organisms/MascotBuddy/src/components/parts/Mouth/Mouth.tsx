@@ -19,17 +19,17 @@ export function Mouth({ elementY }: MouthProps) {
   const mouthVariants: Variants = useMemo(
     () => ({
       idle: {
-        d: rectPath(MOUTH_X, mouthY, 8, 2, 2),
+        d: rectPath(MOUTH_X, mouthY, 8, 1.5, 2),
         scaleY: 1,
         transform: "rotate(0deg)",
       },
       happy: {
-        d: rectPath(MOUTH_X, mouthY * 0.95, 12, 3, 8),
+        d: rectPath(MOUTH_X, mouthY * 0.95, 12, 2, 8),
         scaleY: 1.02,
         transform: "rotate(0deg)",
       },
       sad: {
-        d: rectPath(MOUTH_X, mouthY, 8, 3, -3),
+        d: rectPath(MOUTH_X, mouthY, 8, 2, -3),
         scaleY: 1,
         transform: "rotate(0deg)",
       },
@@ -45,8 +45,8 @@ export function Mouth({ elementY }: MouthProps) {
       },
       talking: {
         d: [
-          circlePath(MOUTH_X, mouthY, 10, 4, 4),
-          circlePath(MOUTH_X, mouthY, 10, 2, 1),
+          circlePath(MOUTH_X, mouthY, 8, 3, 4),
+          circlePath(MOUTH_X, mouthY, 8, 2, 1),
         ],
         transition: {
           duration: ENERGY * 0.6,

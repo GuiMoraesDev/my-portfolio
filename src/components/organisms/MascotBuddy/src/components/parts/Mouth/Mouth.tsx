@@ -2,7 +2,8 @@ import { motion, type Variants } from "motion/react";
 import { useMemo } from "react";
 
 import { ENERGY, VIEWBOX_WIDTH } from "../../../config/constants";
-import { useMascotState } from "../../../provider/MascotStateProvider";
+
+import { useMascotState } from "@/provider/MascotStateProvider";
 
 type MouthProps = {
   elementY: number;

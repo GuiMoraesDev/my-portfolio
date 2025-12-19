@@ -6,6 +6,8 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { useEffect, type PropsWithChildren } from "react";
 
+import { MascotStateProvider } from "./MascotStateProvider";
+
 import { Toaster } from "@/components/atoms/Toaster";
 
 declare global {
@@ -230,14 +232,16 @@ What keeps the heart from taking hold?`,
 
 export const AppProvider = ({ children }: PropsWithChildren) => {
   return (
-    <QueryProvider>
-      {children}
+    <MascotStateProvider>
+      <QueryProvider>
+        {children}
 
-      <Toaster />
-      <Analytics />
-      <SpeedInsights />
+        <Toaster />
+        <Analytics />
+        <SpeedInsights />
 
-      <EasterEggProvider />
-    </QueryProvider>
+        <EasterEggProvider />
+      </QueryProvider>
+    </MascotStateProvider>
   );
 };

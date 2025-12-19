@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useEffect } from "react";
 
 import { TalkBalloon } from "./src/components/parts/TalkBalloon";
 import { CarretShape } from "./src/components/shapes/Carret";
@@ -11,23 +10,11 @@ import {
   VIEWBOX_WIDTH,
 } from "./src/config/constants";
 import { ROOT_VARIANTS } from "./src/config/variants";
-import {
-  MascotStateProvider,
-  useMascotState,
-} from "./src/provider/MascotStateProvider";
 
 export function MascotBuddy() {
-  return (
-    <MascotStateProvider>
-      <MascotWrapper />
-    </MascotStateProvider>
-  );
-}
+  /* const { handleAddActionsToQueue } = useMascotState(); */
 
-const MascotWrapper = () => {
-  const { handleAddActionsToQueue } = useMascotState();
-
-  useEffect(() => {
+  /* useEffect(() => {
     const showPresentationText = () => {
       handleAddActionsToQueue([
         {
@@ -63,7 +50,7 @@ const MascotWrapper = () => {
 
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, []); */
 
   return (
     <div className="fixed right-10 bottom-10 z-50">
@@ -84,4 +71,4 @@ const MascotWrapper = () => {
       <TalkBalloon />
     </div>
   );
-};
+}

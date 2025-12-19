@@ -5,6 +5,8 @@ import { ENERGY, VIEWBOX_WIDTH } from "../../../config/constants";
 
 import { usePupilFollow } from "./src/hooks/usePupilFollow";
 
+import { useMascotState } from "@/provider/MascotStateProvider";
+
 type EyesProps = Pick<EyeProps, "elementY"> & {
   wrapperRef: RefObject<HTMLElement | null>;
 };
@@ -56,6 +58,24 @@ const PUPIL_LOOK_VARIANTS: Variants = {
   },
 };
 
+const curveEyesPath = (canvasX: number, canvasY: number) => {
+  const WIDTH = -5;
+  const height = 2;
+
+  const x1 = canvasX - WIDTH;
+  const x2 = canvasX + WIDTH;
+  const y1 = canvasY - height;
+  const y2 = canvasY + height;
+
+  return `
+    M ${x1} ${y1}
+    Q ${canvasX} ${y1 + WIDTH} ${x2} ${y1}
+    L ${x2} ${y2}
+    Q ${canvasX} ${y2 + WIDTH} ${x1} ${y2}
+    Z
+  `;
+};
+
 type EyeProps = {
   elementY: number;
   eyeX: number;
@@ -63,6 +83,7 @@ type EyeProps = {
 };
 
 const Eye = ({ elementY, eyeX, follow }: EyeProps) => {
+  const { activeAction } = useMascotState();
   const isFollowing = follow.x !== 0 || follow.y !== 0;
 
   const eyeY = elementY + 10;
@@ -72,33 +93,60 @@ const Eye = ({ elementY, eyeX, follow }: EyeProps) => {
     transformOrigin: "center" as const,
   };
 
+  const isMoodHappy = activeAction?.mood === "happy";
+
   return (
     <motion.g
       style={eyeStyle}
       variants={EYE_BLINK_VARIANTS}
       initial="open"
-      animate={isFollowing ? "open" : "blink"}
+      animate={isFollowing || isMoodHappy ? "open" : "blink"}
     >
-      <circle cx={eyeX} cy={eyeY} r={7.2} className="fill-white stroke-black" />
-      <motion.circle
-        style={eyeStyle}
-        cx={eyeX}
-        cy={eyeY}
-        r={3.2}
-        fill="rgba(0,0,0,0.65)"
-        variants={PUPIL_LOOK_VARIANTS}
-        initial="still"
-        animate={{
-          cx: eyeX + follow.x,
-          cy: eyeY + follow.y,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 420,
-          damping: 30,
-          mass: 0.25,
-        }}
-      />
+      {isMoodHappy ? (
+        <motion.path
+          d={curveEyesPath(eyeX, eyeY)}
+          fill="none"
+          className="stroke-white"
+          strokeWidth={2.2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ y: 0, scale: 1 }}
+          animate={{ y: [0, -0.6, 0], scale: [1, 1.02, 1] }}
+          transition={{
+            duration: 1.4 - 0.3 * ENERGY,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      ) : (
+        <>
+          <circle
+            cx={eyeX}
+            cy={eyeY}
+            r={7.2}
+            className="fill-white stroke-black"
+          />
+          <motion.circle
+            style={eyeStyle}
+            cx={eyeX}
+            cy={eyeY}
+            r={3.2}
+            fill="rgba(0,0,0,0.65)"
+            variants={PUPIL_LOOK_VARIANTS}
+            initial="still"
+            animate={{
+              cx: eyeX + follow.x,
+              cy: eyeY + follow.y,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 420,
+              damping: 30,
+              mass: 0.25,
+            }}
+          />{" "}
+        </>
+      )}
     </motion.g>
   );
 };

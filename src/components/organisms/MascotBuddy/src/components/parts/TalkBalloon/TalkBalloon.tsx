@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from "motion/react";
 import {
   TEXT_ANIMATION_DELAY,
   TEXT_ANIMATION_DURATION,
-} from "../../../config/constants";
-import { useMascotState } from "../../../provider/MascotStateProvider";
+} from "@/config/constants";
+import { useMascotState } from "@/provider/MascotStateProvider";
 
 export const TalkBalloon = () => {
   const { activeAction } = useMascotState();

@@ -6,12 +6,44 @@ import {
   useState,
 } from "react";
 
-import { type MascotAction } from "../@types";
-import {
-  DEFAULT_ACTION_AWAIT_MS,
-  IDLE_ACTION_AWAIT_MS,
-  TEXT_ANIMATION_DELAY,
-} from "../config/constants";
+import { TEXT_ANIMATION_DELAY } from "@/config/constants";
+
+const DEFAULT_ACTION_AWAIT_MS = 1.5 * 1000;
+const IDLE_ACTION_AWAIT_MS = 0.3 * 1000;
+
+type MascotActionAwaiting = {
+  type: "await";
+  mood: "idle";
+  isBlocking: false;
+};
+
+type MascotActionPerforming = {
+  type: "await";
+  mood: "happy" | "sad" | "surprised" | "thinking";
+  isBlocking: false;
+};
+
+type MascotActionPending = {
+  type: "await";
+  mood: "thinking";
+  isBlocking: true;
+  status: "pending" | "complete";
+};
+
+type MascotActionTalking = {
+  type: "talk";
+  mood: "talking";
+  isBlocking: boolean;
+  payload: {
+    text: string;
+  };
+};
+
+export type MascotAction =
+  | MascotActionAwaiting
+  | MascotActionPerforming
+  | MascotActionPending
+  | MascotActionTalking;
 
 interface MascotStateContextType {
   activeAction: MascotAction | null;
@@ -109,6 +141,22 @@ export const MascotStateProvider = ({ children }: MascotStateProviderProps) => {
       }}
     >
       {children}
+
+      <button
+        type="button"
+        className="fixed bottom-0 left-0"
+        onClick={() =>
+          handleAddActionsToQueue([
+            {
+              mood: "happy",
+              type: "await",
+              isBlocking: false,
+            },
+          ])
+        }
+      >
+        happy
+      </button>
     </MascotStateContext.Provider>
   );
 };

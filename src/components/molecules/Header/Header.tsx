@@ -3,7 +3,7 @@
 import * as Switch from "@radix-ui/react-switch";
 import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { type ComponentProps, useRef, useState } from "react";
+import { type ComponentProps, useRef, useState, useTransition } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Hamburger } from "./icons/hamburger";
@@ -36,6 +36,7 @@ export const Wrapper = ({
 
 type LanguageSelectorProps = {
   disabled?: boolean;
+  isLoading?: boolean;
   locale?: string;
   handleLanguageChange?: (lng?: string) => void;
 };
@@ -44,47 +45,58 @@ export const LanguageSelectorElement = ({
   locale,
   handleLanguageChange,
   disabled,
+  isLoading,
 }: LanguageSelectorProps) => (
-  <div className="relative inline-flex h-8 w-fit items-center gap-2">
-    <button
-      disabled={disabled}
-      type="button"
-      className="disabled:cursor-not-allowed"
-      onClick={() => handleLanguageChange?.("pt")}
-    >
-      <Icon
-        icon="FlagBr"
-        className="block h-6 w-6 rounded-full"
-        title="Brazilian portuguese"
-      />
-    </button>
+  <>
+    {isLoading && (
+      <div className="fixed top-0 left-0 z-100 flex h-full w-full items-center justify-center bg-gray-600/40 text-2xl">
+        {locale === "pt"
+          ? "Loading english version..."
+          : "Carregando versão português..."}
+      </div>
+    )}
 
-    <Switch.Root
-      className="relative h-6 w-11 cursor-pointer rounded-full border border-plum-600 outline-none focus:shadow-[0_0_0_2px] focus:shadow-black disabled:cursor-not-allowed data-[state=checked]:bg-plum-900"
-      id="Language-selector"
-      checked={locale === "en"}
-      disabled={disabled}
-      onCheckedChange={() => handleLanguageChange?.()}
-    >
-      <Switch.Thumb
-        title="language-selector"
-        className="block h-5 w-5 translate-x-0.5 rounded-full bg-plum-100 transition-transform will-change-transform data-[state=checked]:translate-x-4.75"
-      />
-    </Switch.Root>
+    <div className="relative inline-flex h-8 w-fit items-center gap-2">
+      <button
+        disabled={disabled}
+        type="button"
+        className="disabled:cursor-not-allowed"
+        onClick={() => handleLanguageChange?.("pt")}
+      >
+        <Icon
+          icon="FlagBr"
+          className="block h-6 w-6 rounded-full"
+          title="Brazilian portuguese"
+        />
+      </button>
 
-    <button
-      disabled={disabled}
-      type="button"
-      className="disabled:cursor-not-allowed"
-      onClick={() => handleLanguageChange?.("en")}
-    >
-      <Icon
-        icon="FlagUs"
-        className="block h-6 w-6 rounded-full"
-        title="American english"
-      />
-    </button>
-  </div>
+      <Switch.Root
+        className="relative h-6 w-11 cursor-pointer rounded-full border border-plum-600 outline-none focus:shadow-[0_0_0_2px] focus:shadow-black disabled:cursor-not-allowed data-[state=checked]:bg-plum-900"
+        id="Language-selector"
+        checked={locale === "en"}
+        disabled={disabled || isLoading}
+        onCheckedChange={() => handleLanguageChange?.()}
+      >
+        <Switch.Thumb
+          title="language-selector"
+          className="block h-5 w-5 translate-x-0.5 rounded-full bg-plum-100 transition-transform will-change-transform data-[state=checked]:translate-x-4.75"
+        />
+      </Switch.Root>
+
+      <button
+        disabled={disabled}
+        type="button"
+        className="disabled:cursor-not-allowed"
+        onClick={() => handleLanguageChange?.("en")}
+      >
+        <Icon
+          icon="FlagUs"
+          className="block h-6 w-6 rounded-full"
+          title="American english"
+        />
+      </button>
+    </div>
+  </>
 );
 
 export const HeaderComponent = (props: ComponentProps<"header">) => {
@@ -94,6 +106,7 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   const t = useTranslations("links");
 
@@ -116,7 +129,9 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
 
   const handleLanguageChange = (lng?: string) => {
     const finalLocale = locale === "en" ? "pt" : "en";
-    router.replace(`/${lng ?? finalLocale}${window?.location.hash || ""}`);
+    startTransition(() => {
+      router.replace(`/${lng ?? finalLocale}${window?.location.hash || ""}`);
+    });
   };
 
   return (
@@ -164,6 +179,8 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
       <LanguageSelectorElement
         locale={locale}
         handleLanguageChange={handleLanguageChange}
+        disabled={isPending}
+        isLoading={isPending}
       />
     </Wrapper>
   );

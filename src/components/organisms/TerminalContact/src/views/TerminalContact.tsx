@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type TerminalContactLabels = {
   trigger: string;
@@ -20,12 +20,36 @@ type TerminalContactProps = {
 export const TerminalContact = ({ email, labels }: TerminalContactProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
+  const dialogRef = useRef<HTMLElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     if (!isOpen) return;
 
+    textareaRef.current?.focus();
+
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setIsOpen(false);
+      if (event.key !== "Tab" || !dialogRef.current) return;
+
+      const focusableElements = dialogRef.current.querySelectorAll<
+        HTMLButtonElement | HTMLAnchorElement | HTMLTextAreaElement
+      >("button, a[href], textarea");
+      const first = focusableElements[0];
+      const last = focusableElements[focusableElements.length - 1];
+
+      if (!first || !last) return;
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+        return;
+      }
+
+      if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
 
     window.addEventListener("keydown", onKeyDown);
@@ -60,6 +84,7 @@ export const TerminalContact = ({ email, labels }: TerminalContactProps) => {
             role="dialog"
             aria-modal="true"
             aria-label={labels.trigger}
+            ref={dialogRef}
             className="w-full max-w-3xl overflow-hidden rounded border border-[color:var(--color-border-strong)] bg-[color:var(--color-bg-elevated)] shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
             onClick={(event) => event.stopPropagation()}
           >
@@ -107,6 +132,7 @@ export const TerminalContact = ({ email, labels }: TerminalContactProps) => {
                 <div className="relative rounded border border-[color:var(--color-border-subtle)] bg-black/20 p-3 focus-within:border-[color:var(--color-accent-400)]">
                   <textarea
                     id="terminal-message"
+                    ref={textareaRef}
                     value={message}
                     onChange={(event) => setMessage(event.target.value)}
                     placeholder={labels.messagePlaceholder}

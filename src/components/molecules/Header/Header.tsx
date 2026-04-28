@@ -60,7 +60,8 @@ export const LanguageSelectorElement = ({
       <button
         disabled={disabled}
         type="button"
-        className="disabled:cursor-not-allowed"
+        className="rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent-400)] disabled:cursor-not-allowed"
+        aria-label="Switch language to Portuguese"
         onClick={() => handleLanguageChange?.("pt")}
       >
         <Icon
@@ -71,8 +72,9 @@ export const LanguageSelectorElement = ({
       </button>
 
       <Switch.Root
-        className="relative h-6 w-11 cursor-pointer rounded-full border border-plum-600 outline-none focus:shadow-[0_0_0_2px] focus:shadow-black disabled:cursor-not-allowed data-[state=checked]:bg-plum-900"
+        className="relative h-6 w-11 cursor-pointer rounded-full border border-plum-600 outline-none focus-visible:shadow-[0_0_0_2px] focus-visible:shadow-[color:var(--color-accent-400)] disabled:cursor-not-allowed data-[state=checked]:bg-plum-900"
         id="Language-selector"
+        aria-label="Toggle language"
         checked={locale === "en"}
         disabled={disabled || isLoading}
         onCheckedChange={() => handleLanguageChange?.()}
@@ -86,7 +88,8 @@ export const LanguageSelectorElement = ({
       <button
         disabled={disabled}
         type="button"
-        className="disabled:cursor-not-allowed"
+        className="rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent-400)] disabled:cursor-not-allowed"
+        aria-label="Switch language to English"
         onClick={() => handleLanguageChange?.("en")}
       >
         <Icon
@@ -140,7 +143,15 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
         className={twMerge("relative flex items-center justify-between")}
         ref={wrapperRef}
       >
-        <button onClick={handleToggleMenu} className="z-20" title="menu">
+        <button
+          onClick={handleToggleMenu}
+          type="button"
+          className="z-20 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent-400)]"
+          title="menu"
+          aria-label="Toggle navigation menu"
+          aria-expanded={isOpen}
+          aria-controls="mobile-nav-links"
+        >
           <Hamburger isOpen={isOpen} />
         </button>
 
@@ -154,6 +165,7 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
           )}
         >
           <ul
+            id="mobile-nav-links"
             className={twMerge(
               "relative z-20 flex flex-col gap-4 font-medium text-plum-800",
               isOpen ? "visible delay-200" : "invisible",
@@ -166,7 +178,7 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
               >
                 <a
                   href={href}
-                  className="inline-flex h-full leading-snug tracking-wide"
+                  className="inline-flex h-full rounded-sm leading-snug tracking-wide focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent-400)]"
                 >
                   {label}
                 </a>

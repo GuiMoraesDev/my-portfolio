@@ -114,6 +114,11 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .animate-wave,
+    .animate-terminal-caret {
+      animation: none;
+    }
+
     .motion-enter,
     .motion-enter-delay-1,
     .motion-enter-delay-2 {

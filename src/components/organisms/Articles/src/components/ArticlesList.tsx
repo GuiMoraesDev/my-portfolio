@@ -54,24 +54,15 @@ export const ArticlesList = ({ articles }: ArticlesListProps) => (
 
             <section className="flex items-center justify-start gap-6 md:gap-5">
               <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-plum-100">
-                <StopwatchIcon
-                  className="h-4 w-4 text-plum-200"
-                  aria-description="reading time"
-                />
+                <StopwatchIcon className="h-4 w-4 text-plum-200" aria-hidden />
                 {reading_time_minutes} min
               </span>
               <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-plum-100">
-                <HeartFilledIcon
-                  className="h-4 w-4 text-plum-200"
-                  aria-description="likes"
-                />
+                <HeartFilledIcon className="h-4 w-4 text-plum-200" aria-hidden />
                 {positive_reactions_count}
               </span>
               <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-plum-100">
-                <KeyboardIcon
-                  className="h-4 w-4 text-plum-200"
-                  aria-description="comments"
-                />
+                <KeyboardIcon className="h-4 w-4 text-plum-200" aria-hidden />
                 {comments_count}
               </span>
             </section>

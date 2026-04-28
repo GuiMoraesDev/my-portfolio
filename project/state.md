@@ -6,7 +6,7 @@
 - [x] Phase 3 — Design System
 - [x] Phase 4 — Terminal Contact Experience
 - [x] Phase 5 — Animations & Micro-interactions
-- [ ] Phase 6 — Testimonials Refactor
+- [x] Phase 6 — Testimonials Refactor
 - [ ] Phase 7 — Accessibility & Final Polish
 
 ## Notes
@@ -16,6 +16,7 @@
 - Phase 3 introduced semantic color tokens, typography scale, and spacing tokens, and refactored homepage/layout styles to consume the design system.
 - Phase 4 replaced direct contact links with a terminal-style interaction modal, including command prompts, message input, blinking caret, and keyboard-friendly focus/close behavior.
 - Phase 5 added reusable motion utilities, subtle stagger/reveal interactions, and reduced-motion support while keeping durations under 300ms.
+- Phase 6 refactored testimonials into one featured proof block with supporting quotes below, added role/relationship context, and reduced visual weight.
 
 ## Next Step
-Phase 6 — Testimonials Refactor
+Phase 7 — Accessibility & Final Polish

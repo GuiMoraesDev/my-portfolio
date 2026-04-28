@@ -31,15 +31,15 @@ export const TestimonialsView = async () => {
           ))}
         >
           <NextIntlClientProvider messages={pick(messages, "references")}>
-            <section className="grid w-full flex-1 grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <section className="w-full">
               <TestimonialsFetch />
             </section>
 
-            <section className="flex w-full flex-col items-center justify-between gap-4 border-t border-plum-700/60 pt-5 md:flex-row">
+            <section className="flex w-full flex-col items-center justify-between gap-4 border-t border-[color:var(--color-border-subtle)] pt-5 md:flex-row">
               <a
                 href="https://www.linkedin.com/in/guimoraesdev/details/recommendations/"
                 target="_blank"
-                className="rounded-sm py-1 text-center text-sm leading-tight font-medium text-plum-200 hover:underline"
+                className="rounded-sm py-1 text-center text-[var(--text-caption)] leading-tight font-medium text-[color:var(--color-text-secondary)] hover:text-[color:var(--color-text-primary)] hover:underline"
               >
                 {t("leave-reference")}
               </a>

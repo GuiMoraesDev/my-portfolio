@@ -1,15 +1,13 @@
 # My portfolio
 
-[![next](https://img.shields.io/badge/nextjs-%5E14.1.0-white?logo=Next.js)](https://nextjs.org/)
-[![typescript](https://img.shields.io/badge/typescript-%5E5.0.2-blue?logo=Typescript)](https://www.typescriptlang.org/)
-[![@tanstack/react-query](https://img.shields.io/badge/@tanstack/react--query-%5E5.18.1-FF4154?logo=ReactQuery)](https://tanstack.com/query/v5)
-[![openai](https://img.shields.io/badge/openai-%5E4.28.0-412991?logo=openai)](https://platform.openai.com/docs/overview)
-[![react-email](https://img.shields.io/badge/react--email-%5E2.0.0-214c69)](https://react.email/)
-[![zod](https://img.shields.io/badge/zod-%5E3.22.4-3E67B1?logo=zod)](https://zod.dev/)
-[![tailwindcss](https://img.shields.io/badge/talwind-%5E3.4.1-06B6D4?logo=tailwindcss)](https://tailwindcss.com/docs/installation)
-[![react-hook-form](https://img.shields.io/badge/react--hook--form-%5E7.50.1-EC5990?logo=reacthookform)](https://react-hook-form.com/)
+[![next](https://img.shields.io/badge/nextjs-16.2.4-white?logo=Next.js)](https://nextjs.org/)
+[![typescript](https://img.shields.io/badge/typescript-%5E5.9.3-blue?logo=Typescript)](https://www.typescriptlang.org/)
+[![@tanstack/react-query](https://img.shields.io/badge/@tanstack/react--query-%5E5.100.6-FF4154?logo=ReactQuery)](https://tanstack.com/query/v5)
+[![tailwindcss](https://img.shields.io/badge/tailwind-%5E4.2.4-06B6D4?logo=tailwindcss)](https://tailwindcss.com/docs/installation)
+[![next-intl](https://img.shields.io/badge/next--intl-%5E4.11.0-blue)](https://next-intl-docs.vercel.app/)
+[![motion](https://img.shields.io/badge/motion-%5E12.38.0-purple)](https://motion.dev/)
 </br>
-<small>Every badge are links to their doc</small>
+<small>Every badge is a link to its docs</small>
 
 <a href="https://www.linkedin.com/in/guimoraesdev/">
   <img src="./public/cover/800p.png" alt="" height="300px"/>
@@ -19,16 +17,16 @@
 
 ## Description of that project 📖
 
-A SSR website to be my personal portfolio;
+A SSR website to be my personal portfolio.
 
 ## Project Links
 
 - 📝[Figma Project](https://www.figma.com/file/JCTgadu9Hf6FMQ26lBiUFN/Personal-Website?type=design&node-id=717%3A2&mode=design&t=4KCXdVFsUCtmVLOm-1)
-- 📱[Production Link](www.guimoraes.dev/)
+- 📱[Production Link](https://www.guimoraes.dev/)
 
 ## Requirements 🛑
 
-For development, you will need some software installed in your environment.
+For development, you will need Node LTS installed.
 
 - [Node LTS](https://nodejs.org/en/download/)
 
@@ -36,27 +34,34 @@ For development, you will need some software installed in your environment.
 
 Create a copy of the `.env.example` file, rename it to `.env.local` and add your own keys.
 
-Use npm to install all dependencies into the project.
+Install all dependencies:
 
 ```sh
-npm run install
+npm install
 ```
 
-You can run the project with the following script.
+Run the development server:
 
 ```sh
 npm run dev
 ```
 
-There are two dev scripts in the project, one for the next.js dev server, and another to the react-email dev server.
+## Available Scripts
 
-```sh
-npm run dev:app # Next.JS dev server
-npm run dev:email # React Email dev server
-```
+| Script | Description |
+|---|---|
+| `npm run dev` | Next.js dev server with Turbopack |
+| `npm run build` | Production build |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
+| `npm run lint:fix` | Run ESLint with auto-fix |
+| `npm run check-types` | TypeScript type check |
+| `npm run test:unit` | Run unit tests with Jest |
+| `npm run test:e2e` | Run end-to-end tests with Playwright |
+| `npm run test:e2e:ui` | Run Playwright tests with UI |
 
 ## Project Maintenance 👨‍🔧
 
-- Project is using Angular Commits Guide Line, for more information, click on this [link](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format).
-- Use [Atomic design](https://bradfrost.com/blog/post/atomic-web-design/) to organize and maintain this project.
-- [Husky](https://typicode.github.io/husky/) will run commit hooks before every commit message to test the types and run the linting, do not bypass it.
+- Project follows [Angular Commit Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format).
+- Uses [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) to organize components.
+- [Husky](https://typicode.github.io/husky/) runs commit hooks before every commit to check types and linting — do not bypass it.

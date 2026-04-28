@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useRef } from "react";
 import { twMerge } from "tailwind-merge";
@@ -8,6 +8,7 @@ import { twMerge } from "tailwind-merge";
 import { useTestimonials } from "../provider/TestimonialsProvider";
 
 import { type Testimonial } from "@/app/api/testimonials/list/src/@types";
+import { createRevealVariants } from "@/components/atoms/Motion/utils";
 
 type TestimonialsListProps = {
   testimonials: Testimonial[];
@@ -18,6 +19,7 @@ export const TestimonialsList = ({ testimonials }: TestimonialsListProps) => {
   const lastRef = useRef<HTMLDivElement>(null);
 
   const { showMore } = useTestimonials();
+  const reducedMotion = useReducedMotion();
 
   const testimonialsList = showMore ? testimonials : testimonials.slice(0, 3);
 
@@ -35,22 +37,11 @@ export const TestimonialsList = ({ testimonials }: TestimonialsListProps) => {
               className={twMerge(
                 "flex w-full flex-1 flex-col items-center justify-start gap-5 border-l border-plum-600/70 px-4 py-2 text-white",
               )}
-              variants={{
-                offscreen: {
-                  y: 50,
-                  opacity: 0,
-                },
-                onscreen: {
-                  y: 0,
-                  opacity: 1,
-                  transition: {
-                    type: "spring",
-                    bounce: 0.25,
-                    duration: 0.8,
-                    delay: 0.2 * (index + 1),
-                  },
-                },
-              }}
+              variants={createRevealVariants({
+                index,
+                direction: "y",
+                reducedMotion: Boolean(reducedMotion),
+              })}
               ref={
                 index === 0
                   ? firstRef

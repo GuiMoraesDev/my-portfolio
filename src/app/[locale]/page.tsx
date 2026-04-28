@@ -39,7 +39,7 @@ export default async function Home() {
       >
         <section className="flex flex-col gap-[var(--space-block)] text-[color:var(--color-text-primary)] md:gap-[var(--space-block-lg)]">
           <div className="flex max-w-2xl flex-col gap-6 md:gap-10">
-            <h1 className="inline-flex flex-col text-[var(--text-headline)]">
+            <h1 className="motion-enter inline-flex flex-col text-[var(--text-headline)]">
               {t("presentation.name")}
               <strong className="inline-flex gap-1">
                 Guilherme Moraes
@@ -51,12 +51,12 @@ export default async function Home() {
 
             <h2
               id="my-title"
-              className="font-title text-[var(--text-display)] font-bold tracking-tight text-[color:var(--color-accent-400)] lg:leading-tight"
+              className="motion-enter motion-enter-delay-1 font-title text-[var(--text-display)] font-bold tracking-tight text-[color:var(--color-accent-400)] lg:leading-tight"
             >
               {t("presentation.title")}
             </h2>
 
-            <p className="text-[var(--text-body-lg)] leading-tight tracking-wide text-[color:var(--color-text-secondary)]">
+            <p className="motion-enter motion-enter-delay-2 text-[var(--text-body-lg)] leading-tight tracking-wide text-[color:var(--color-text-secondary)]">
               {t("presentation.subtitle")}
             </p>
           </div>

@@ -5,7 +5,7 @@
 - [x] Phase 2 — Layout Refactor
 - [x] Phase 3 — Design System
 - [x] Phase 4 — Terminal Contact Experience
-- [ ] Phase 5 — Animations & Micro-interactions
+- [x] Phase 5 — Animations & Micro-interactions
 - [ ] Phase 6 — Testimonials Refactor
 - [ ] Phase 7 — Accessibility & Final Polish
 
@@ -15,6 +15,7 @@
 - Section hierarchy, spacing rhythm, and scanability were improved in About, Articles, and References areas.
 - Phase 3 introduced semantic color tokens, typography scale, and spacing tokens, and refactored homepage/layout styles to consume the design system.
 - Phase 4 replaced direct contact links with a terminal-style interaction modal, including command prompts, message input, blinking caret, and keyboard-friendly focus/close behavior.
+- Phase 5 added reusable motion utilities, subtle stagger/reveal interactions, and reduced-motion support while keeping durations under 300ms.
 
 ## Next Step
-Phase 5 — Animations & Micro-interactions
+Phase 6 — Testimonials Refactor

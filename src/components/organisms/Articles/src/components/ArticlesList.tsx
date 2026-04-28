@@ -6,10 +6,12 @@ import {
   KeyboardIcon,
   StopwatchIcon,
 } from "@radix-ui/react-icons";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
+import { type ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { type DevDotToArticle } from "@/app/api/articles/list/src/@types";
+import { createRevealVariants } from "@/components/atoms/Motion/utils";
 
 type ArticlesListProps = {
   articles: DevDotToArticle[];
@@ -29,33 +31,13 @@ export const ArticlesList = ({ articles }: ArticlesListProps) => (
         },
         index,
       ) => (
-        <motion.div
-          key={id}
-          initial="offscreen"
-          whileInView="onscreen"
-          viewport={{ once: true }}
-        >
+        <AnimatedArticle key={id} index={index}>
+          {({ linkClassName }) => (
           <motion.a
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            variants={{
-              offscreen: {
-                x: 50,
-                opacity: 0,
-              },
-              onscreen: {
-                x: 0,
-                opacity: 1,
-                transition: {
-                  type: "spring",
-                  bounce: 0.25,
-                  duration: 0.8,
-                  delay: 0.2 * (index + 1),
-                },
-              },
-            }}
-            className="group flex w-full flex-col gap-4 border-b border-plum-700/60 py-5 md:flex-row md:items-center md:justify-between md:gap-8"
+            className={linkClassName}
           >
             <header className="flex items-center justify-start gap-3">
               <FileTextIcon className="h-5 w-5 text-plum-200" />
@@ -94,8 +76,35 @@ export const ArticlesList = ({ articles }: ArticlesListProps) => (
               </span>
             </section>
           </motion.a>
-        </motion.div>
+          )}
+        </AnimatedArticle>
       ),
     )}
   </div>
 );
+
+type AnimatedArticleProps = {
+  index: number;
+  children: (props: { linkClassName: string }) => ReactNode;
+};
+
+const AnimatedArticle = ({ index, children }: AnimatedArticleProps) => {
+  const reducedMotion = useReducedMotion();
+
+  return (
+    <motion.div initial="offscreen" whileInView="onscreen" viewport={{ once: true }}>
+      <motion.div
+        variants={createRevealVariants({
+          index,
+          direction: "x",
+          reducedMotion: Boolean(reducedMotion),
+        })}
+      >
+        {children({
+          linkClassName:
+            "group flex w-full flex-col gap-4 border-b border-plum-700/60 py-5 transition-colors duration-200 hover:border-[color:var(--color-border-strong)] md:flex-row md:items-center md:justify-between md:gap-8",
+        })}
+      </motion.div>
+    </motion.div>
+  );
+};

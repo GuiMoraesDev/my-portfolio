@@ -9,6 +9,7 @@ import { Spheres } from "@/components/atoms/Spheres";
 import { Header } from "@/components/molecules/Header";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { ArticlesView } from "@/components/organisms/Articles";
+import { TerminalContact } from "@/components/organisms/TerminalContact";
 import { TestimonialsView } from "@/components/organisms/Testimonials";
 
 const yearsOfExperience = Math.floor(
@@ -172,13 +173,20 @@ export default async function Home() {
 
             <p className="inline-block leading-normal tracking-wide">
               {t("footer.contact-me-by")}
-              <a
-                href="mailto:guimoraes.dev@gmail.com"
-                className="ml-1 text-[color:var(--color-text-primary)] underline"
-              >
-                guimoraes.dev@gmail.com
-              </a>
             </p>
+
+            <TerminalContact
+              email="guimoraes.dev@gmail.com"
+              labels={{
+                trigger: t("contact.terminal.trigger"),
+                close: t("contact.terminal.close"),
+                messageLabel: t("contact.terminal.message-label"),
+                messagePlaceholder: t("contact.terminal.message-placeholder"),
+                sendCta: t("contact.terminal.send"),
+                whoamiOutput: t("contact.terminal.whoami-output"),
+                contactMethodsOutput: t("contact.terminal.contact-methods-output"),
+              }}
+            />
 
             <span className="inline-block leading-relaxed tracking-wider">
               <span className="mr-1 uppercase">

@@ -47,6 +47,15 @@
   "contact": {
     "title": "Entrar em contato",
     "subtitle": "Tem um projeto, oportunidade ou ideia que vale conversar? Leio todas as mensagens.",
+    "terminal": {
+      "trigger": "Abrir terminal de contato",
+      "close": "Fechar",
+      "message-label": "Digite sua mensagem",
+      "message-placeholder": "Escreva sua mensagem aqui...",
+      "send": "Enviar por e-mail",
+      "whoami-output": "Guilherme Moraes — Engenheiro de Software Sênior",
+      "contact-methods-output": "email: guimoraes.dev@gmail.com | linkedin: /in/guimoraesdev"
+    },
     "form": {
       "title": "Vamos conversar",
       "labels": {

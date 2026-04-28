@@ -31,29 +31,28 @@ A SSR website to be my personal portfolio;
 For development, you will need some software installed in your environment.
 
 - [Node LTS](https://nodejs.org/en/download/)
-- [PNPM](https://pnpm.io/installation)
 
 ## Running the project 🧰
 
 Create a copy of the `.env.example` file, rename it to `.env.local` and add your own keys.
 
-Use PNPM to install all dependencies into the project.
+Use npm to install all dependencies into the project.
 
 ```sh
-pnpm install
+npm run install
 ```
 
 You can run the project with the following script.
 
 ```sh
-pnpm dev
+npm run dev
 ```
 
 There are two dev scripts in the project, one for the next.js dev server, and another to the react-email dev server.
 
 ```sh
-pnpm dev:app # Next.JS dev server
-pnpm dev:email # React Email dev server
+npm run dev:app # Next.JS dev server
+npm run dev:email # React Email dev server
 ```
 
 ## Project Maintenance 👨‍🔧

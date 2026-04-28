@@ -18,8 +18,9 @@ export default withSentryConfig(withNextIntl(nextConfig), {
   // For all available options, see:
   // https://www.npmjs.com/package/@sentry/webpack-plugin#options
 
-  org: process.env.NEXT_PUBLIC_SENTRY_ORG,
-  project: process.env.NEXT_PUBLIC_SENTRY_PROJECT,
+  org: "guilherme-moraes",
+
+  project: "my-portifolio",
 
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,
@@ -36,8 +37,17 @@ export default withSentryConfig(withNextIntl(nextConfig), {
   // side errors will fail.
   tunnelRoute: "/monitoring",
 
-  // Automatically tree-shake Sentry logger statements to reduce bundle size
   webpack: {
-    treeshake: { removeDebugLogging: true },
+    // Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
+    // See the following for more information:
+    // https://docs.sentry.io/product/crons/
+    // https://vercel.com/docs/cron-jobs
+    automaticVercelMonitors: true,
+
+    // Tree-shaking options for reducing bundle size
+    treeshake: {
+      // Automatically tree-shake Sentry logger statements to reduce bundle size
+      removeDebugLogging: true,
+    },
   },
 });

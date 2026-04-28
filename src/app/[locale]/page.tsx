@@ -9,10 +9,12 @@ import { Spheres } from "@/components/atoms/Spheres";
 import { Header } from "@/components/molecules/Header";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { ArticlesView } from "@/components/organisms/Articles";
+import { TerminalContact } from "@/components/organisms/TerminalContact";
 import { TestimonialsView } from "@/components/organisms/Testimonials";
 
 const yearsOfExperience = Math.floor(
-  (Date.now() - new Date(2019, 5, 11).getTime()) / (1000 * 60 * 60 * 24 * 365.25),
+  (Date.now() - new Date(2019, 5, 11).getTime()) /
+    (1000 * 60 * 60 * 24 * 365.25),
 );
 
 export default async function Home() {
@@ -25,7 +27,7 @@ export default async function Home() {
   }).format(yearsOfExperience);
 
   return (
-    <main className="relative container flex flex-col items-center bg-plum-900 font-lato text-white">
+    <main className="relative container flex flex-col items-center bg-[color:var(--color-bg-canvas)] font-body text-[color:var(--color-text-primary)]">
       <Spheres />
       <DrawContainer />
 
@@ -35,9 +37,9 @@ export default async function Home() {
         className="mt-14 pt-12 min-[300px]:pt-20 md:flex-row md:pt-36 xl:pt-56"
         id="presentation"
       >
-        <section className="flex flex-col gap-6 text-white md:gap-10">
+        <section className="flex flex-col gap-[var(--space-block)] text-[color:var(--color-text-primary)] md:gap-[var(--space-block-lg)]">
           <div className="flex max-w-2xl flex-col gap-6 md:gap-10">
-            <h1 className="inline-flex flex-col text-2xl lg:text-2xl">
+            <h1 className="motion-enter inline-flex flex-col text-[var(--text-headline)]">
               {t("presentation.name")}
               <strong className="inline-flex gap-1">
                 Guilherme Moraes
@@ -49,12 +51,12 @@ export default async function Home() {
 
             <h2
               id="my-title"
-              className="font-fira-sans text-3xl font-bold tracking-wide text-gold-500 md:my-2 md:text-4xl lg:text-5xl lg:leading-tight"
+              className="motion-enter motion-enter-delay-1 font-title text-[var(--text-display)] font-bold tracking-tight text-[color:var(--color-accent-400)] lg:leading-tight"
             >
               {t("presentation.title")}
             </h2>
 
-            <p className="leading-tight tracking-wide lg:text-2xl">
+            <p className="motion-enter motion-enter-delay-2 text-[var(--text-body-lg)] leading-tight tracking-wide text-[color:var(--color-text-secondary)]">
               {t("presentation.subtitle")}
             </p>
           </div>
@@ -82,41 +84,48 @@ export default async function Home() {
         className="pt-14 min-[300px]:pt-24 md:pt-32 xl:pt-52"
         id="about-me"
       >
-        <section className="flex flex-col gap-10 md:flex-row">
-          <HighlightCard icon="Rocket">
+        <section className="grid w-full grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-6">
+          <NarrativeBlock icon="Rocket">
             {t.rich("about-me.cards.years-experience", {
               time: formattedYears,
               highlight: (chunks) => (
-                <span className="text-xl text-plum-300">{chunks}</span>
+                <span className="text-[color:var(--color-accent-400)]">
+                  {chunks}
+                </span>
               ),
             })}
-          </HighlightCard>
+          </NarrativeBlock>
 
-          <HighlightCard icon="MagnifyingGlass">
+          <NarrativeBlock icon="MagnifyingGlass">
             {t.rich("about-me.cards.attention-details", {
               highlight: (chunks) => (
-                <span className="text-xl text-plum-300">{chunks}</span>
+                <span className="text-[color:var(--color-accent-400)]">
+                  {chunks}
+                </span>
               ),
             })}
-          </HighlightCard>
+          </NarrativeBlock>
 
-          <HighlightCard icon="Globe">
+          <NarrativeBlock icon="Globe">
             {t.rich("about-me.cards.worldwide", {
               highlight: (chunks) => (
-                <span className="text-xl text-plum-300">{chunks}</span>
+                <span className="text-[color:var(--color-accent-400)]">
+                  {chunks}
+                </span>
               ),
             })}
-          </HighlightCard>
+          </NarrativeBlock>
         </section>
       </SessionWrapper>
 
       <SessionWrapper
-        className="pt-14 min-[300px]:pt-24 md:pt-32 lg:items-start xl:pt-52"
+        className="pt-16 min-[300px]:pt-28 md:pt-36 lg:items-start xl:pt-56"
         id="articles"
       >
         <SessionHeader
           title={t("articles.title")}
           quote={t("articles.quote")}
+          className="max-w-3xl"
         />
 
         <section className="flex w-full flex-col items-center justify-center gap-6">
@@ -126,7 +135,7 @@ export default async function Home() {
         <section className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
           <a
             href="https://dev.to/guimoraes"
-            className="rounded-sm p-3 text-center text-sm leading-tight font-medium text-plum-200 hover:underline"
+            className="rounded-sm p-3 text-center text-[var(--text-caption)] leading-tight font-medium text-[color:var(--color-text-secondary)] hover:text-[color:var(--color-text-primary)] hover:underline"
           >
             {t("articles.all-articles")}
           </a>
@@ -134,12 +143,13 @@ export default async function Home() {
       </SessionWrapper>
 
       <SessionWrapper
-        className="pt-16 min-[300px]:pt-28 md:pt-36 lg:items-start xl:pt-56"
+        className="pt-20 min-[300px]:pt-32 md:pt-40 lg:items-start xl:pt-60"
         id="references"
       >
         <SessionHeader
           title={t("references.title")}
           quote={t("references.quote")}
+          className="max-w-3xl"
         />
 
         <section className="flex w-full flex-wrap items-start justify-start gap-14 xl:flex-nowrap">
@@ -155,26 +165,28 @@ export default async function Home() {
         )}
         id="footer"
       >
-        <footer className="z-10 flex h-full w-full flex-col items-center justify-between gap-4 text-sm text-white md:flex-row lg:items-end">
+        <footer className="z-10 flex h-full w-full flex-col items-center justify-between gap-4 text-[var(--text-caption)] text-[color:var(--color-text-secondary)] md:flex-row lg:items-end">
           <div className="flex flex-col gap-3">
-            <strong
-              className={twMerge(
-                "mb-2 text-2xl leading-normal tracking-wide",
-                "inline-block animate-gradient-x bg-gradient-to-r from-plum-200 via-plum-400 to-plum-50 bg-clip-text text-transparent",
-              )}
-            >
+            <strong className="mb-2 inline-block text-[var(--text-headline)] leading-normal tracking-tight text-[color:var(--color-text-primary)]">
               {t("footer.title")}
             </strong>
 
             <p className="inline-block leading-normal tracking-wide">
               {t("footer.contact-me-by")}
-              <a
-                href="mailto:guimoraes.dev@gmail.com"
-                className="ml-1 underline"
-              >
-                guimoraes.dev@gmail.com
-              </a>
             </p>
+
+            <TerminalContact
+              email="guimoraes.dev@gmail.com"
+              labels={{
+                trigger: t("contact.terminal.trigger"),
+                close: t("contact.terminal.close"),
+                messageLabel: t("contact.terminal.message-label"),
+                messagePlaceholder: t("contact.terminal.message-placeholder"),
+                sendCta: t("contact.terminal.send"),
+                whoamiOutput: t("contact.terminal.whoami-output"),
+                contactMethodsOutput: t("contact.terminal.contact-methods-output"),
+              }}
+            />
 
             <span className="inline-block leading-relaxed tracking-wider">
               <span className="mr-1 uppercase">
@@ -194,7 +206,7 @@ export default async function Home() {
 const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={twMerge(
-      "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-12 font-lato max-[2000px]:px-[10vw]",
+      "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-16 font-body max-[2000px]:px-[10vw]",
       className,
     )}
     {...props}
@@ -215,21 +227,24 @@ const SessionHeader = ({
     className={twMerge("flex w-full flex-col gap-2", className)}
     {...props}
   >
-    <h2 className="font-fira-sans text-xl font-bold lg:text-2xl">{title}</h2>
+    <h2 className="font-title text-[var(--text-headline)] font-bold tracking-tight">
+      {title}
+    </h2>
 
-    <p className="leading-snug tracking-wide">{quote}</p>
+    {quote ? (
+      <p className="text-[var(--text-body)] leading-snug tracking-wide text-[color:var(--color-text-muted)]">
+        {quote}
+      </p>
+    ) : null}
   </header>
 );
 
-type HighlightCardProps = ComponentProps<"p"> & {
+type NarrativeBlockProps = ComponentProps<"p"> & {
   icon: IconProp;
 };
-const HighlightCard = ({ icon, ...props }: HighlightCardProps) => (
-  <div className="flex flex-col items-center justify-start gap-4 text-plum-50">
-    <Icon icon={icon} size="lg" />
-    <p
-      className="text-center text-base leading-normal tracking-wider"
-      {...props}
-    />
+const NarrativeBlock = ({ icon, ...props }: NarrativeBlockProps) => (
+  <div className="flex flex-col gap-4 border-l border-[color:var(--color-border-strong)] pl-5 text-[color:var(--color-text-secondary)]">
+    <Icon icon={icon} size="md" />
+    <p className="text-[var(--text-body)] leading-relaxed tracking-wide" {...props} />
   </div>
 );

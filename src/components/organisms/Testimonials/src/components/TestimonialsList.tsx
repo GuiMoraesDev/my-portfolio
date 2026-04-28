@@ -1,93 +1,62 @@
 "use client";
 
-import { motion } from "motion/react";
-import Image from "next/image";
-import { useRef } from "react";
-import { twMerge } from "tailwind-merge";
+import { motion, useReducedMotion } from "motion/react";
+import { useMemo } from "react";
 
 import { useTestimonials } from "../provider/TestimonialsProvider";
 
 import { type Testimonial } from "@/app/api/testimonials/list/src/@types";
+import { createRevealVariants } from "@/components/atoms/Motion/utils";
 
 type TestimonialsListProps = {
   testimonials: Testimonial[];
 };
 
 export const TestimonialsList = ({ testimonials }: TestimonialsListProps) => {
-  const firstRef = useRef<HTMLDivElement>(null);
-  const lastRef = useRef<HTMLDivElement>(null);
-
   const { showMore } = useTestimonials();
+  const reducedMotion = useReducedMotion();
 
-  const testimonialsList = showMore ? testimonials : testimonials.slice(0, 3);
+  const supporting = useMemo(
+    () => (showMore ? testimonials : testimonials.slice(0, 3)),
+    [testimonials, showMore],
+  );
 
   return (
-    <>
-      {testimonialsList.map(({ name, img, role, company, content }, index) => (
-        <div className="col-span-1 row-span-1 flex-1" key={name}>
-          <motion.div
-            className={twMerge(
-              "flex h-full w-full flex-col items-center justify-start gap-6",
-            )}
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true }}
-          >
-            <motion.div
-              className={twMerge(
-                "flex w-full flex-1 flex-col items-center justify-start gap-6 rounded-md bg-plum-500/90 p-4 text-white backdrop-blur-sm",
-              )}
-              variants={{
-                offscreen: {
-                  y: 50,
-                  opacity: 0,
-                },
-                onscreen: {
-                  y: 0,
-                  opacity: 1,
-                  transition: {
-                    type: "spring",
-                    bounce: 0.25,
-                    duration: 0.8,
-                    delay: 0.2 * (index + 1),
-                  },
-                },
-              }}
-              ref={
-                index === 0
-                  ? firstRef
-                  : index === testimonials.length - 1
-                    ? lastRef
-                    : null
-              }
+    <div className="flex w-full flex-col gap-8">
+      <div className="flex w-full flex-wrap gap-4">
+        {supporting.map(
+          ({ name, role, company, relationship, content }, index) => (
+            <motion.article
+              key={name}
+              initial="offscreen"
+              whileInView="onscreen"
+              viewport={{ once: true }}
+              variants={createRevealVariants({
+                index,
+                direction: "y",
+                reducedMotion: Boolean(reducedMotion),
+              })}
+              className="border-l border-[color:var(--color-border-strong)] pl-4"
             >
-              <div className="flex w-full items-start justify-start gap-2">
-                <Image
-                  src={img.src}
-                  width={50}
-                  height={50}
-                  className="aspect-square h-auto rounded-full object-contain select-none"
-                  alt={img.alt}
-                />
+              <header className="mb-2">
+                <strong className="text-sm font-semibold text-[color:var(--color-text-primary)]">
+                  {name}
+                </strong>
+                <p className="text-[color:var(--color-text-muted)] text-[var(--text-caption)]">
+                  {role} at {company}
+                </p>
+                <p className="text-[color:var(--color-text-muted)] text-[var(--text-caption)]">
+                  {relationship}
+                </p>
+              </header>
 
-                <section className="flex w-full flex-col items-start justify-start gap-1">
-                  <strong className="text-lg leading-tight font-bold">
-                    {name}
-                  </strong>
-
-                  <p className="text-xs leading-tight font-medium">
-                    <b>{role}</b> at {company}
-                  </p>
-                </section>
-              </div>
-
-              <p className="inline-flex h-max w-full items-start justify-start px-2 leading-tight tracking-wide lg:h-full">
+              <p className="text-sm leading-relaxed text-[color:var(--color-text-secondary)]">
                 {content}
               </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      ))}
-    </>
+            </motion.article>
+          ),
+        )}
+      </div>
+    </div>
   );
 };

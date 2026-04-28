@@ -24,30 +24,30 @@ export const TestimonialsView = async () => {
 
   return (
     <TestimonialsProvider>
-      <div className="flex w-full flex-col gap-4">
-        <section className="grid w-full flex-1 grid-cols-1 flex-wrap gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <Suspense
-            fallback={skeletonArray.map((_, index) => (
-              <TestimonialsSkeleton key={index} />
-            ))}
-          >
-            <NextIntlClientProvider messages={pick(messages, "references")}>
+      <div className="flex w-full flex-col gap-8">
+        <Suspense
+          fallback={skeletonArray.map((_, index) => (
+            <TestimonialsSkeleton key={index} />
+          ))}
+        >
+          <NextIntlClientProvider messages={pick(messages, "references")}>
+            <section className="w-full">
               <TestimonialsFetch />
+            </section>
 
-              <section className="flex flex-col items-center justify-between gap-4">
-                <a
-                  href="https://www.linkedin.com/in/guimoraesdev/details/recommendations/"
-                  target="_blank"
-                  className="ml-auto rounded-sm p-3 text-center text-sm leading-tight font-medium text-plum-200 hover:underline"
-                >
-                  {t("leave-reference")}
-                </a>
+            <section className="flex w-full flex-col items-center justify-between gap-4 border-t border-[color:var(--color-border-subtle)] pt-5 md:flex-row">
+              <a
+                href="https://www.linkedin.com/in/guimoraesdev/details/recommendations/"
+                target="_blank"
+                className="rounded-sm py-1 text-center text-[var(--text-caption)] leading-tight font-medium text-[color:var(--color-text-secondary)] hover:text-[color:var(--color-text-primary)] hover:underline"
+              >
+                {t("leave-reference")}
+              </a>
 
-                <ShowMoreButton />
-              </section>
-            </NextIntlClientProvider>
-          </Suspense>
-        </section>
+              <ShowMoreButton />
+            </section>
+          </NextIntlClientProvider>
+        </Suspense>
       </div>
     </TestimonialsProvider>
   );

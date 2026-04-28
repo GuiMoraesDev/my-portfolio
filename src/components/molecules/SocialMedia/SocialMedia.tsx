@@ -28,7 +28,7 @@ export const SocialMediaComponent = ({
     >
       <Link
         href="https://github.com/GuiMoraesDev"
-        className="order-2 flex cursor-pointer flex-col items-center justify-center gap-2 md:order-1"
+        className="motion-hover-lift order-2 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent-400)] md:order-1"
       >
         <Icon icon="Github" size="md" />
         <span className="text-sm tracking-wider text-white">GitHub</span>
@@ -36,7 +36,7 @@ export const SocialMediaComponent = ({
 
       <Link
         href="https://www.linkedin.com/in/guimoraesdev"
-        className="order-2 flex cursor-pointer flex-col items-center justify-center gap-2 md:order-1"
+        className="motion-hover-lift order-2 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent-400)] md:order-1"
       >
         <Icon icon="LinkedIn" size="md" />
         <span className="text-sm tracking-wider text-white">LinkedIn</span>
@@ -44,9 +44,9 @@ export const SocialMediaComponent = ({
 
       <button
         onClick={handleDownloadCv}
-        className="group bg-plum-500/90 hover:shadow-plum-100/80 order-1 flex w-full min-w-40 cursor-pointer items-center justify-center gap-2 rounded-md p-4 shadow-sm transition md:w-auto"
+        className="motion-hover-lift group order-1 flex w-full min-w-40 cursor-pointer items-center justify-center gap-2 rounded-md bg-plum-500/90 p-4 shadow-sm transition-colors duration-200 hover:bg-plum-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent-400)] md:w-auto"
       >
-        <DownloadIcon className="h-6 w-6 group-hover:animate-bounce" />
+        <DownloadIcon className="h-6 w-6" />
         <span className="text-sm tracking-wider text-white">
           {t("my-resume")}
         </span>

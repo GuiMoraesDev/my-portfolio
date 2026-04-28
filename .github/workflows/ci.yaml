@@ -23,7 +23,7 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        run: npm i
 
       - name: Check TS types
         run: npm run check-types
@@ -44,7 +44,7 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        run: npm i
 
       - name: Test
         run: npm run test:unit
@@ -62,7 +62,7 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        run: npm i
 
       - name: Install playwright deps
         run: npx playwright install --with-deps

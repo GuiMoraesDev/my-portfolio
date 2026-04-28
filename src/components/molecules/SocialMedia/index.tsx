@@ -1,4 +1,4 @@
-import { pick } from "lodash";
+import pick from "lodash/pick";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { type ComponentProps } from "react";
 

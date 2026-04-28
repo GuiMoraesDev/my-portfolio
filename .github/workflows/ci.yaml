@@ -14,78 +14,63 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3.0.0
-        with:
-          version: latest
+        uses: actions/checkout@v6
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "20.x"
-          cache: "pnpm"
+          node-version: "22.x"
+          cache: "npm"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm i
 
       - name: Check TS types
-        run: pnpm run check-types
+        run: npm run check-types
 
       - name: Lint
-        run: pnpm run lint
+        run: npm run lint
 
   Unit-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3.0.0
-        with:
-          version: latest
+        uses: actions/checkout@v6
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "20.x"
-          cache: "pnpm"
+          node-version: "22.x"
+          cache: "npm"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm i
 
       - name: Test
-        run: pnpm test:unit
+        run: npm run test:unit
 
   E2E-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3.0.0
-        with:
-          version: latest
+        uses: actions/checkout@v6
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "20.x"
-          cache: "pnpm"
+          node-version: "22.x"
+          cache: "npm"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm i
 
       - name: Install playwright deps
-        run: pnpm exec playwright install --with-deps
+        run: npx playwright install --with-deps
 
       - name: E2E test
-        run: pnpm test:e2e
+        run: npm run test:e2e
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         if: always()
         with:
           name: playwright-report

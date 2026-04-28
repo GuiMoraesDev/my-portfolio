@@ -15,11 +15,19 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    ".claude/**",
   ]),
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
     plugins: {
       "unused-imports": unusedImportsPlugin,
+    },
+    settings: {
+      "import/resolver": {
+        node: {
+          extensions: [".js", ".jsx", ".ts", ".tsx"],
+        },
+      },
     },
     rules: {
       "no-console": "error",

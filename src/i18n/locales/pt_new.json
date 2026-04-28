@@ -1,0 +1,128 @@
+{
+  "links": {
+    "presentation": "Apresentação",
+    "about-me": "Sobre mim",
+    "articles": "Artigos",
+    "references": "Referencias",
+    "projects": "Projetos",
+    "contact": "Entrar em contato"
+  },
+  "presentation": {
+    "name": "Olá, sou",
+    "title": "Engenheiro de Software Sênior",
+    "subtitle": "Construo sistemas frontend que se sustentam ao longo do tempo. Foco em Next.js, TypeScript e nas decisões arquiteturais que evitam que times percam velocidade.",
+    "profile-image-alt": "Foto de Guilherme Moraes",
+    "my-resume": "Meu currículo"
+  },
+  "about-me": {
+    "quote": "",
+    "cards": {
+      "years-experience": "Mais de <highlight>{time} entregando software em produção</highlight>, de startups em estágio inicial a times distribuídos. Aprendi quais tradeoffs importam e quais são distração.",
+      "attention-details": "Escrevo código que o próximo engenheiro consegue entender. <highlight>Testabilidade e manutenibilidade</highlight> são coisas que considero desde o início, não que corrijo depois.",
+      "worldwide": "Trabalhei com pessoas em <highlight>fusos horários e culturas diferentes</highlight>. Essa experiência deixou claro que comunicação e hábitos assíncronos importam tanto quanto o código."
+    }
+  },
+  "articles": {
+    "title": "Artigos",
+    "quote": "Escrevo quando processo algo que vale compartilhar. Textos práticos sobre arquitetura, tradeoffs e problemas que encontrei em projetos reais.",
+    "all-articles": "Ver todos os artigos no dev.to"
+  },
+  "references": {
+    "title": "O que as pessoas dizem",
+    "quote": "Feedback de engenheiros e gestores com quem trabalhei, em diferentes empresas, fusos horários e fases de produto.",
+    "leave-reference": "Trabalhou comigo? Deixe uma recomendação no LinkedIn.",
+    "show-more": "Mostrar mais",
+    "show-less": "Mostrar menos"
+  },
+  "projects": {
+    "title": "Falar é fácil. Mostre-me o código.",
+    "quote": "'O código é a documentação' - Desconhecido",
+    "all-projects": "Quer ver todos os projetos? Clique aqui! 💻",
+    "cards-description": {
+      "my-portfolio": "Este é um super projeto de portfólio, para mostrar minhas habilidades e experiências. É um aplicativo Next.js com Tailwind CSS e Typescript. integrado com ferramentas de IA para gerar e-mail e um editor de descontos.",
+      "lnk-bio": "Este é um encurtador de links que permite criar uma página personalizada com seus links de mídia social. É um aplicativo Next.js com Tailwind CSS e Typescript.",
+      "prep-pal": "Esta é uma ferramenta que ajuda você a se preparar para uma entrevista de emprego. Ele usa GPT-3 da OpenAI para gerar perguntas e respostas com base na descrição do cargo."
+    }
+  },
+  "contact": {
+    "title": "Entrar em contato",
+    "subtitle": "Tem um projeto, oportunidade ou ideia que vale conversar? Leio todas as mensagens.",
+    "form": {
+      "title": "Vamos conversar",
+      "labels": {
+        "first_name": "Seu nome",
+        "last_name": "Seu sobrenome",
+        "email": "Seu melhor e-mail",
+        "subject": "Assunto",
+        "message": "Mensagem <small>(Markdown suportado)</small>"
+      },
+      "placeholders": {
+        "email": "johnDoe@exemplo.com.br",
+        "subject": "Eu tenho uma oportunidade pra você",
+        "message": "Digite sua mensagem aqui..."
+      },
+      "errors": {
+        "first_name_required": "Nome é obrigatório",
+        "last_name_required": "Sobrenome é obrigatório",
+        "email_invalid": "Por favor, insira um e-mail válido",
+        "subject_required": "O assunto do e-mail é obrigatório",
+        "message_required": "A mensagem do e-mail é obrigatória"
+      },
+      "toolbar": {
+        "undo": "Desfazer",
+        "redo": "Refazer",
+        "bold": "Negrito",
+        "italic": "Itálico",
+        "underline": "Sublinhado",
+        "strikethrough": "Riscado",
+        "code": "Código",
+        "divider": "Divisor",
+        "generate": "Gerar mensagem com IA"
+      },
+      "toasts": {
+        "send-email": {
+          "mutation": {
+            "title": "Enviando sua mensagem...",
+            "message": "Por favor, aguarde um momento"
+          },
+          "error": {
+            "title": "Ocorreu um erro",
+            "message": "Ocorreu um erro enquanto enviava sua mensagem. Por favor, tente novamente mais tarde."
+          },
+          "success": {
+            "title": "Mensagem enviada",
+            "message": "Sua mensagem foi enviada com sucesso!"
+          }
+        },
+        "generate-email": {
+          "mutation": {
+            "title": "Gerando mensagem...",
+            "message": "Por favor, aguarde um momento"
+          },
+          "error": {
+            "title": "Ocorreu um erro",
+            "message": "Ocorreu um erro enquanto gerava sua mensagem. Por favor, tente novamente mais tarde."
+          },
+          "success": {
+            "title": "Nova mensagem gerada",
+            "message": "Sua mensagem foi gerada com sucesso!"
+          }
+        }
+      },
+      "buttons": {
+        "close": "Fechar",
+        "send": "Enviar"
+      }
+    },
+    "preview": {
+      "title": "Preview",
+      "awaiting": "Um preview do seu e-mail vai aparecer aqui",
+      "unsupported": "Seu navegador não suporta este recurso"
+    }
+  },
+  "footer": {
+    "title": "Vamos trabalhar juntos.",
+    "contact-me-by": "Fale comigo diretamente em",
+    "made-with-love": "Feito por Guilherme Moraes"
+  }
+}

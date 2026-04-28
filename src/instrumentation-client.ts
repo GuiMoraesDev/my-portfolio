@@ -2,13 +2,14 @@
 // The added config here will be used whenever a user loads a page in their browser.
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
+import { replayIntegration } from "@sentry/browser";
 import * as Sentry from "@sentry/nextjs";
 
 Sentry.init({
   dsn: "https://72a10c22d8b66638f1beb39b8deee486@o4506790144245760.ingest.us.sentry.io/4506791074922496",
 
   // Add optional integrations for additional features
-  integrations: [Sentry.replayIntegration()],
+  integrations: [replayIntegration()],
 
   // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
   tracesSampleRate: 1,
@@ -31,7 +32,7 @@ Sentry.init({
         ex.value?.includes("Suspense Exception"),
       )
     ) {
-      return null; // Drop the event
+      return null;
     }
     return event;
   },

@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "check-types": "tsc --noEmit --incremental",
     "prepare": "husky",
     "test": "concurrently \"npm run test:unit\" \"npm run test:e2e\"",

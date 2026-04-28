@@ -1,5 +1,3 @@
-import { formatDistanceToNow } from "date-fns";
-import { ptBR, enUS } from "date-fns/locale";
 import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { type ComponentProps } from "react";
@@ -13,10 +11,18 @@ import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { ArticlesView } from "@/components/organisms/Articles";
 import { TestimonialsView } from "@/components/organisms/Testimonials";
 
+const yearsOfExperience = Math.floor(
+  (Date.now() - new Date(2019, 5, 11).getTime()) / (1000 * 60 * 60 * 24 * 365.25),
+);
+
 export default async function Home() {
   const locale = await getLocale();
-
   const t = await getTranslations();
+  const formattedYears = new Intl.NumberFormat(locale, {
+    style: "unit",
+    unit: "year",
+    unitDisplay: "long",
+  }).format(yearsOfExperience);
 
   return (
     <main className="relative container flex flex-col items-center bg-plum-900 font-lato text-white">
@@ -79,9 +85,7 @@ export default async function Home() {
         <section className="flex flex-col gap-10 md:flex-row">
           <HighlightCard icon="Rocket">
             {t.rich("about-me.cards.years-experience", {
-              time: formatDistanceToNow(new Date(2019, 5, 11), {
-                locale: locale === "pt" ? ptBR : enUS,
-              }),
+              time: formattedYears,
               highlight: (chunks) => (
                 <span className="text-xl text-plum-300">{chunks}</span>
               ),

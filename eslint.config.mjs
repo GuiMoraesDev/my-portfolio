@@ -22,6 +22,13 @@ const eslintConfig = defineConfig([
     plugins: {
       "unused-imports": unusedImportsPlugin,
     },
+    settings: {
+      "import/resolver": {
+        node: {
+          extensions: [".js", ".jsx", ".ts", ".tsx"],
+        },
+      },
+    },
     rules: {
       "no-console": "error",
       "no-unused-vars": "off",

@@ -8,29 +8,29 @@
     "contact": "Entrar em contato"
   },
   "presentation": {
-    "name": "E aí, meu nome é",
-    "title": "Engenheiro de software",
-    "subtitle": "Sou especialista em criação de apps utilizando Next.js, TypeScript, Node.js, testes automatizados e muito mais!",
-    "profile-image-alt": "Um avatar meu gerado por IA",
+    "name": "Olá, sou",
+    "title": "Engenheiro de Software Sênior",
+    "subtitle": "Construo sistemas frontend que se sustentam ao longo do tempo. Foco em Next.js, TypeScript e nas decisões arquiteturais que evitam que times percam velocidade.",
+    "profile-image-alt": "Foto de Guilherme Moraes",
     "my-resume": "Meu currículo"
   },
   "about-me": {
-    "quote": "'Codificando códigos e histórias, uma fotografia da minha odisseia digital' - ChatGPT",
+    "quote": "",
     "cards": {
-      "years-experience": "Tenho <highlight>{time} de experiência</highlight> em desenvolvimento de software, sou especialista em criar interfaces web amigáveis com foco em <highlight>escalabilidade</highlight>.",
-      "attention-details": "Minha atenção aos detalhes garante uma experiência de usuário perfeita, enquanto meu código é projetado para <highlight> fácil manutenção, testabilidade e escalabilidade</highlight>.",
-      "worldwide": "Adotando uma <highlight>mentalidade de remote-first</highlight>, tive a oportunidade de <highlight>colaborar em todo o mundo</highlight> criando soluções digitais excepcionais."
+      "years-experience": "Mais de <highlight>{time} entregando software em produção</highlight>, de startups em estágio inicial a times distribuídos. Aprendi quais tradeoffs importam e quais são distração.",
+      "attention-details": "Escrevo código que o próximo engenheiro consegue entender. <highlight>Testabilidade e manutenibilidade</highlight> são coisas que considero desde o início, não que corrijo depois.",
+      "worldwide": "Trabalhei com pessoas em <highlight>fusos horários e culturas diferentes</highlight>. Essa experiência deixou claro que comunicação e hábitos assíncronos importam tanto quanto o código."
     }
   },
   "articles": {
-    "title": "Explorando meu conhecimento",
-    "quote": "'Lorem ipsum dolor sit amet' - lipsum.com",
-    "all-articles": "Quer ver todos os artigos? Clique aqui! 📚"
+    "title": "Artigos",
+    "quote": "Escrevo quando processo algo que vale compartilhar. Textos práticos sobre arquitetura, tradeoffs e problemas que encontrei em projetos reais.",
+    "all-articles": "Ver todos os artigos no dev.to"
   },
   "references": {
-    "title": "O que estão dizendo sobre mim?",
-    "quote": "'Ele é o menino mais bonito do mundo' - Mãe",
-    "leave-reference": "Você já trabalhou comigo? Deixe uma recomendação! 📝",
+    "title": "O que as pessoas dizem",
+    "quote": "Feedback de engenheiros e gestores com quem trabalhei, em diferentes empresas, fusos horários e fases de produto.",
+    "leave-reference": "Trabalhou comigo? Deixe uma recomendação no LinkedIn.",
     "show-more": "Mostrar mais",
     "show-less": "Mostrar menos"
   },
@@ -46,7 +46,7 @@
   },
   "contact": {
     "title": "Entrar em contato",
-    "subtitle": "E aí! Tem algo em mente? Manda uma mensagem pra mim.",
+    "subtitle": "Tem um projeto, oportunidade ou ideia que vale conversar? Leio todas as mensagens.",
     "form": {
       "title": "Vamos conversar",
       "labels": {
@@ -121,8 +121,8 @@
     }
   },
   "footer": {
-    "title": "Que bom ter você aqui!",
-    "contact-me-by": "Entre em contato comigo por",
-    "made-with-love": "Feito com amor"
+    "title": "Vamos trabalhar juntos.",
+    "contact-me-by": "Fale comigo diretamente em",
+    "made-with-love": "Feito por Guilherme Moraes"
   }
 }

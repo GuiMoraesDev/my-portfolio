@@ -108,7 +108,6 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
     { href: "#articles", label: t("articles") },
     { href: "#references", label: t("references") },
     { href: "#projects", label: t("projects") },
-    { href: "#contact", label: t("contact") },
   ];
 
   const handleToggleMenu = () => {

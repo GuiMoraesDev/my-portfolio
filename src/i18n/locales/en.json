@@ -8,29 +8,29 @@
     "contact": "Get in touch"
   },
   "presentation": {
-    "name": "Hey, my name is",
-    "title": "Software Engineer",
-    "subtitle": "I'm specialist in creating apps using Next.js, TypeScript, Node.js, automated tests, and more!",
-    "profile-image-alt": "An IA generated avatar from myself",
+    "name": "Hi, I'm",
+    "title": "Senior Software Engineer",
+    "subtitle": "I build frontend systems that hold up over time. My focus is Next.js, TypeScript, and making the architectural calls that keep teams from slowing down.",
+    "profile-image-alt": "Photo of Guilherme Moraes",
     "my-resume": "My resume"
   },
   "about-me": {
-    "quote": "'Crafting code and stories, a snapshot of my digital odyssey' - ChatGPT",
+    "quote": "",
     "cards": {
-      "years-experience": "With <highlight>{time} of experience</highlight> in software development, I specialize in creating user-friendly web interfaces with a focus on <highlight>scalability</highlight>.",
-      "attention-details": "My attention to detail ensures a seamless user experience, while my code is designed for <highlight> easy maintenance, testability, and scalability</highlight>.",
-      "worldwide": "Embracing a <highlight>remote-first mindset</highlight>, I had the opportunity to <highlight>collaborate worldwide</highlight> creating exceptional digital solutions."
+      "years-experience": "Over <highlight>{time} shipping production software</highlight>, from early-stage startups to distributed teams. I know which tradeoffs matter and which ones are a distraction.",
+      "attention-details": "I write code the next engineer can follow. <highlight>Testability and maintainability</highlight> are things I design for upfront, not fix later.",
+      "worldwide": "I've worked with people across <highlight>different timezones and cultures</highlight>. That experience made clear that communication and async habits matter as much as the code itself."
     }
   },
   "articles": {
-    "title": "Exploring my know-how",
-    "quote": "'Lorem ipsum dolor sit amet' - lipsum.com",
-    "all-articles": "Do you wanna see all articles? Click here! 📚"
+    "title": "Writing",
+    "quote": "I write when I've worked through something worth sharing. Practical pieces on architecture, tradeoffs, and problems I've run into in real codebases.",
+    "all-articles": "See all articles on dev.to"
   },
   "references": {
-    "title": "What's the buzz about me?",
-    "quote": "'He is the most handsome boy in the world' - Mom",
-    "leave-reference": "Have you work with me? Leave a recommendation! 📝",
+    "title": "What people say",
+    "quote": "Feedback from engineers and managers I've worked with, across different companies, timezones, and stages of product.",
+    "leave-reference": "Worked with me? Leave a recommendation on LinkedIn.",
     "show-more": "Show more",
     "show-less": "Show less"
   },
@@ -45,8 +45,8 @@
     }
   },
   "contact": {
-    "title": "Get in touch!",
-    "subtitle": "Hey there! Got something on your mind? Shoot me a message",
+    "title": "Get in touch",
+    "subtitle": "Have a project, role, or idea worth discussing? I read every message.",
     "form": {
       "title": "Let's talk!",
       "labels": {
@@ -121,8 +121,8 @@
     }
   },
   "footer": {
-    "title": "Nice to have you here!",
-    "contact-me-by": "Contact me by",
-    "made-with-love": "Made with love"
+    "title": "Let's work together.",
+    "contact-me-by": "Reach me directly at",
+    "made-with-love": "Built by Guilherme Moraes"
   }
 }

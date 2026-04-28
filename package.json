@@ -2,22 +2,17 @@
   "name": "my-portfolio",
   "version": "0.2.0",
   "private": true,
-  "packageManager": "pnpm@10.18.2",
   "scripts": {
-    "dev": "concurrently \"pnpm dev:app\" \"pnpm dev:email\"",
-    "dev:app": "next dev --turbopack",
-    "dev:email": "email dev --dir './src/emails/templates' --port 3001",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "check-types": "tsc --noEmit --incremental",
     "prepare": "husky",
-    "test": "concurrently \"pnpm test:unit\" \"pnpm test:e2e\"",
-    "test:e2e": "TEST_ENV=true pnpm exec playwright test",
-    "test:e2e:ui": "TEST_ENV=true pnpm exec playwright test --ui",
-    "test:unit": "jest --injectGlobals false --runInBand",
-    "test:unit:watch": "jest --injectGlobals false --runInBand --watchAll",
-    "test:unit:debug": "node --inspect-brk node_modules/jest/bin/jest.js --injectGlobals false --runInBand --watchAll"
+    "test": "concurrently \"npm run test:unit\" \"npm run test:e2e\"",
+    "test:e2e": "TEST_ENV=true npx playwright test",
+    "test:e2e:ui": "TEST_ENV=true npx playwright test --ui",
+    "test:unit": "jest --injectGlobals false --runInBand"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

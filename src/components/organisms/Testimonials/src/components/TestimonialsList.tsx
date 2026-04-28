@@ -26,16 +26,14 @@ export const TestimonialsList = ({ testimonials }: TestimonialsListProps) => {
       {testimonialsList.map(({ name, img, role, company, content }, index) => (
         <div className="col-span-1 row-span-1 flex-1" key={name}>
           <motion.div
-            className={twMerge(
-              "flex h-full w-full flex-col items-center justify-start gap-6",
-            )}
+            className={twMerge("flex h-full w-full flex-col items-center justify-start")}
             initial="offscreen"
             whileInView="onscreen"
             viewport={{ once: true }}
           >
             <motion.div
               className={twMerge(
-                "flex w-full flex-1 flex-col items-center justify-start gap-6 rounded-md bg-plum-500/90 p-4 text-white backdrop-blur-sm",
+                "flex w-full flex-1 flex-col items-center justify-start gap-5 border-l border-plum-600/70 px-4 py-2 text-white",
               )}
               variants={{
                 offscreen: {
@@ -61,7 +59,7 @@ export const TestimonialsList = ({ testimonials }: TestimonialsListProps) => {
                     : null
               }
             >
-              <div className="flex w-full items-start justify-start gap-2">
+              <div className="flex w-full items-start justify-start gap-3">
                 <Image
                   src={img.src}
                   width={50}
@@ -81,7 +79,7 @@ export const TestimonialsList = ({ testimonials }: TestimonialsListProps) => {
                 </section>
               </div>
 
-              <p className="inline-flex h-max w-full items-start justify-start px-2 leading-tight tracking-wide lg:h-full">
+              <p className="inline-flex h-max w-full items-start justify-start px-1 leading-relaxed tracking-wide lg:h-full">
                 {content}
               </p>
             </motion.div>

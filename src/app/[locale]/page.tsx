@@ -12,7 +12,8 @@ import { ArticlesView } from "@/components/organisms/Articles";
 import { TestimonialsView } from "@/components/organisms/Testimonials";
 
 const yearsOfExperience = Math.floor(
-  (Date.now() - new Date(2019, 5, 11).getTime()) / (1000 * 60 * 60 * 24 * 365.25),
+  (Date.now() - new Date(2019, 5, 11).getTime()) /
+    (1000 * 60 * 60 * 24 * 365.25),
 );
 
 export default async function Home() {
@@ -82,41 +83,42 @@ export default async function Home() {
         className="pt-14 min-[300px]:pt-24 md:pt-32 xl:pt-52"
         id="about-me"
       >
-        <section className="flex flex-col gap-10 md:flex-row">
-          <HighlightCard icon="Rocket">
+        <section className="grid w-full grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-6">
+          <NarrativeBlock icon="Rocket">
             {t.rich("about-me.cards.years-experience", {
               time: formattedYears,
               highlight: (chunks) => (
-                <span className="text-xl text-plum-300">{chunks}</span>
+                <span className="text-plum-300">{chunks}</span>
               ),
             })}
-          </HighlightCard>
+          </NarrativeBlock>
 
-          <HighlightCard icon="MagnifyingGlass">
+          <NarrativeBlock icon="MagnifyingGlass">
             {t.rich("about-me.cards.attention-details", {
               highlight: (chunks) => (
-                <span className="text-xl text-plum-300">{chunks}</span>
+                <span className="text-plum-300">{chunks}</span>
               ),
             })}
-          </HighlightCard>
+          </NarrativeBlock>
 
-          <HighlightCard icon="Globe">
+          <NarrativeBlock icon="Globe">
             {t.rich("about-me.cards.worldwide", {
               highlight: (chunks) => (
-                <span className="text-xl text-plum-300">{chunks}</span>
+                <span className="text-plum-300">{chunks}</span>
               ),
             })}
-          </HighlightCard>
+          </NarrativeBlock>
         </section>
       </SessionWrapper>
 
       <SessionWrapper
-        className="pt-14 min-[300px]:pt-24 md:pt-32 lg:items-start xl:pt-52"
+        className="pt-16 min-[300px]:pt-28 md:pt-36 lg:items-start xl:pt-56"
         id="articles"
       >
         <SessionHeader
           title={t("articles.title")}
           quote={t("articles.quote")}
+          className="max-w-3xl"
         />
 
         <section className="flex w-full flex-col items-center justify-center gap-6">
@@ -134,12 +136,13 @@ export default async function Home() {
       </SessionWrapper>
 
       <SessionWrapper
-        className="pt-16 min-[300px]:pt-28 md:pt-36 lg:items-start xl:pt-56"
+        className="pt-20 min-[300px]:pt-32 md:pt-40 lg:items-start xl:pt-60"
         id="references"
       >
         <SessionHeader
           title={t("references.title")}
           quote={t("references.quote")}
+          className="max-w-3xl"
         />
 
         <section className="flex w-full flex-wrap items-start justify-start gap-14 xl:flex-nowrap">
@@ -194,7 +197,7 @@ export default async function Home() {
 const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={twMerge(
-      "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-12 font-lato max-[2000px]:px-[10vw]",
+      "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-16 font-lato max-[2000px]:px-[10vw]",
       className,
     )}
     {...props}
@@ -217,19 +220,16 @@ const SessionHeader = ({
   >
     <h2 className="font-fira-sans text-xl font-bold lg:text-2xl">{title}</h2>
 
-    <p className="leading-snug tracking-wide">{quote}</p>
+    {quote ? <p className="leading-snug tracking-wide">{quote}</p> : null}
   </header>
 );
 
-type HighlightCardProps = ComponentProps<"p"> & {
+type NarrativeBlockProps = ComponentProps<"p"> & {
   icon: IconProp;
 };
-const HighlightCard = ({ icon, ...props }: HighlightCardProps) => (
-  <div className="flex flex-col items-center justify-start gap-4 text-plum-50">
-    <Icon icon={icon} size="lg" />
-    <p
-      className="text-center text-base leading-normal tracking-wider"
-      {...props}
-    />
+const NarrativeBlock = ({ icon, ...props }: NarrativeBlockProps) => (
+  <div className="flex flex-col gap-4 border-l border-plum-600/70 pl-5 text-plum-50">
+    <Icon icon={icon} size="md" />
+    <p className="text-base leading-relaxed tracking-wide" {...props} />
   </div>
 );

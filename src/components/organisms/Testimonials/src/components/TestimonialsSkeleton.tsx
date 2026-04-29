@@ -14,12 +14,12 @@ export const TestimonialsSkeleton = () => {
         )}
       >
         <div className="flex w-full items-start justify-start gap-2">
-          <span className="aspect-square h-[50px] w-[50px] animate-pulse rounded-full bg-white/80 object-contain select-none" />
+          <span className="aspect-square h-12.5 w-12.5 animate-pulse rounded-full bg-white/80 object-contain select-none" />
 
           <section className="flex w-full flex-col items-start justify-start gap-1">
             <span className="h-6 w-36 animate-pulse rounded-md bg-white/80" />
 
-            <span className="h-4 w-full max-w-[max(40%,_220px)] animate-pulse rounded-md bg-white/80" />
+            <span className="h-4 w-full max-w-[max(40%,220px)] animate-pulse rounded-md bg-white/80" />
           </section>
         </div>
 

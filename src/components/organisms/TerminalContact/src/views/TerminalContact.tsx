@@ -206,7 +206,7 @@ export const TerminalContact = () => {
             aria-modal="true"
             aria-label="Terminal"
             ref={dialogRef}
-            className="flex h-[480px] w-full max-w-2xl flex-col overflow-hidden rounded border border-border-strong bg-[#0d0d0d] shadow-[0_16px_48px_rgba(0,0,0,0.7)]"
+            className="flex h-120 w-full max-w-2xl flex-col overflow-hidden rounded border border-border-strong bg-[#0d0d0d] shadow-[0_16px_48px_rgba(0,0,0,0.7)]"
             onClick={(e) => e.stopPropagation()}
           >
             <header className="flex shrink-0 items-center gap-2 border-b border-border-subtle bg-[#111] px-4 py-2.5">

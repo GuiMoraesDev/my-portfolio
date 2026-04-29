@@ -1,14 +1,14 @@
+import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import pick from "lodash/pick";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { Suspense } from "react";
 
 import { HeaderComponent, LanguageSelectorElement, Wrapper } from "./Header";
-import { Hamburger } from "./icons/hamburger";
 
 const Skeleton = () => (
   <Wrapper id="header">
     <span className="flex animate-pulse cursor-not-allowed items-center rounded-sm bg-plum-900/5 opacity-10">
-      <Hamburger />
+      <HamburgerMenuIcon className="h-5 w-5" />
     </span>
 
     <span className="flex animate-pulse cursor-not-allowed items-center rounded-sm bg-plum-900/5 opacity-10">

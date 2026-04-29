@@ -1,14 +1,11 @@
 "use client";
 
-import * as Switch from "@radix-ui/react-switch";
+import { Cross2Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { type ComponentProps, useRef, useState, useTransition } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Hamburger } from "./icons/hamburger";
-
-import { Icon } from "@/components/atoms/Icon";
 import { useHandleClickOutside } from "@/hooks/useDetectClickOutside";
 
 export const Wrapper = ({
@@ -18,17 +15,13 @@ export const Wrapper = ({
 }: ComponentProps<"header">) => (
   <header
     className={twMerge(
-      "fixed z-20 flex h-20 w-full max-w-7xl items-center justify-center max-[2000px]:px-[10vw]",
+      "sticky top-0 z-20 flex h-20 w-full max-w-480 shrink-0 flex-col items-center justify-between gap-16 font-body max-[2000px]:px-[10vw]",
       "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:bg-plum-900 before:opacity-95 before:content-['']",
       className,
     )}
     {...props}
   >
-    <nav
-      className={twMerge(
-        "relative flex h-full w-full items-center justify-between",
-      )}
-    >
+    <nav className="relative flex h-full w-full items-center justify-between">
       {children}
     </nav>
   </header>
@@ -56,47 +49,35 @@ export const LanguageSelectorElement = ({
       </div>
     )}
 
-    <div className="relative inline-flex h-8 w-fit items-center gap-2">
+    <div className="border-plum-600 relative inline-flex h-8 w-fit items-center gap-1 rounded-sm border p-0.5 text-xs font-semibold tracking-widest uppercase">
       <button
         disabled={disabled}
         type="button"
-        className="rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 disabled:cursor-not-allowed"
         aria-label="Switch language to Portuguese"
         onClick={() => handleLanguageChange?.("pt")}
+        className={twMerge(
+          "rounded-xs px-2 py-0.5 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 disabled:cursor-not-allowed",
+          locale === "pt"
+            ? "bg-plum-100 text-plum-900"
+            : "text-text-secondary hover:text-text-primary",
+        )}
       >
-        <Icon
-          icon="FlagBr"
-          className="block h-6 w-6 rounded-full"
-          title="Brazilian portuguese"
-        />
+        PT
       </button>
-
-      <Switch.Root
-        className="border-plum-600 relative h-6 w-11 cursor-pointer rounded-full border outline-none focus-visible:shadow-[0_0_0_2px] focus-visible:shadow-accent-400 disabled:cursor-not-allowed data-[state=checked]:bg-plum-900"
-        id="Language-selector"
-        aria-label="Toggle language"
-        checked={locale === "en"}
-        disabled={disabled || isLoading}
-        onCheckedChange={() => handleLanguageChange?.()}
-      >
-        <Switch.Thumb
-          title="language-selector"
-          className="block h-5 w-5 translate-x-0.5 rounded-full bg-plum-100 transition-transform will-change-transform data-[state=checked]:translate-x-4.75"
-        />
-      </Switch.Root>
 
       <button
         disabled={disabled}
         type="button"
-        className="rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 disabled:cursor-not-allowed"
         aria-label="Switch language to English"
         onClick={() => handleLanguageChange?.("en")}
+        className={twMerge(
+          "rounded-xs px-2 py-0.5 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 disabled:cursor-not-allowed",
+          locale === "en"
+            ? "bg-plum-100 text-plum-900"
+            : "text-text-secondary hover:text-text-primary",
+        )}
       >
-        <Icon
-          icon="FlagUs"
-          className="block h-6 w-6 rounded-full"
-          title="American english"
-        />
+        EN
       </button>
     </div>
   </>
@@ -104,13 +85,10 @@ export const LanguageSelectorElement = ({
 
 export const HeaderComponent = (props: ComponentProps<"header">) => {
   const locale = useLocale();
-
   const router = useRouter();
-
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
-
   const t = useTranslations("links");
 
   useHandleClickOutside({
@@ -124,9 +102,7 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
     { href: "#articles", label: t("blog") },
   ];
 
-  const handleToggleMenu = () => {
-    setIsOpen((state) => !state);
-  };
+  const handleToggleMenu = () => setIsOpen((s) => !s);
 
   const handleLanguageChange = (lng?: string) => {
     const finalLocale = locale === "en" ? "pt" : "en";
@@ -137,21 +113,22 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
 
   return (
     <Wrapper {...props}>
-      {/* Mobile hamburger + dropdown */}
-      <div
-        className={twMerge("relative flex items-center lg:hidden")}
-        ref={wrapperRef}
-      >
+      {/* Mobile menu button + dropdown */}
+      <div className="relative flex items-center lg:hidden" ref={wrapperRef}>
         <button
           onClick={handleToggleMenu}
           type="button"
-          className="z-20 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
+          className="z-20 rounded-sm text-text-secondary transition hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
           title="menu"
           aria-label="Toggle navigation menu"
           aria-expanded={isOpen}
           aria-controls="mobile-nav-links"
         >
-          <Hamburger isOpen={isOpen} />
+          {isOpen ? (
+            <Cross2Icon className="h-5 w-5" />
+          ) : (
+            <HamburgerMenuIcon className="h-5 w-5" />
+          )}
         </button>
 
         <section
@@ -159,7 +136,7 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
           className={twMerge(
             "absolute bottom-1/2 left-0 flex h-0 min-w-52 flex-col gap-6 transition-[height,pb,pt]",
             "data-[is-open=true]:top-0 data-[is-open=true]:bottom-auto data-[is-open=true]:z-10 data-[is-open=true]:h-auto data-[is-open=true]:pt-16 data-[is-open=true]:pb-3",
-            "before:absolute before:top-0 before:left-0 before:h-[calc(100%+2.5rem)] before:w-[calc(100%+2.5rem)] before:origin-top-left before:translate-x-1 before:translate-y-1 before:scale-0 before:rounded-xl before:bg-white/98 before:p-5 before:transition before:content-[''] lg:before:h-[calc(100%+1.5rem)]",
+            "before:absolute before:top-0 before:left-0 before:h-[calc(100%+2.5rem)] before:w-[calc(100%+2.5rem)] before:origin-top-left before:translate-x-1 before:translate-y-1 before:scale-0 before:rounded-xl before:border-2 before:border-white before:bg-plum-900 before:p-5 before:transition before:content-['']",
             "data-[is-open=true]:before:-translate-x-5 data-[is-open=true]:before:-translate-y-5 data-[is-open=true]:before:scale-100 data-[is-open=true]:before:rounded-md",
           )}
         >
@@ -189,7 +166,7 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
               <a
                 href="#footer"
                 onClick={() => setIsOpen(false)}
-                className="inline-flex rounded-sm border border-accent-400 px-4 py-1.5 text-sm font-semibold uppercase tracking-widest text-accent-400 transition hover:bg-accent-400 hover:text-plum-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
+                className="inline-flex rounded-sm border border-accent-400 px-4 py-1.5 text-sm font-semibold tracking-widest text-accent-400 uppercase transition hover:bg-accent-400 hover:text-plum-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
               >
                 {t("get-in-touch")}
               </a>
@@ -204,7 +181,7 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
           <li key={label}>
             <a
               href={href}
-              className="text-sm font-medium uppercase tracking-widest text-text-secondary transition hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
+              className="text-sm font-medium tracking-widest text-text-secondary uppercase transition hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
             >
               {label}
             </a>
@@ -212,11 +189,11 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
         ))}
       </ul>
 
-      {/* Right side: GET IN TOUCH (desktop) + language selector */}
+      {/* Right: GET IN TOUCH (desktop) + language toggle */}
       <div className="flex items-center gap-4">
         <a
           href="#footer"
-          className="hidden rounded-sm border border-accent-400 px-4 py-1.5 text-sm font-semibold uppercase tracking-widest text-accent-400 transition hover:bg-accent-400 hover:text-plum-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 lg:inline-flex"
+          className="hidden rounded-sm border border-accent-400 px-4 py-1.5 text-sm font-semibold tracking-widest text-accent-400 uppercase transition hover:bg-accent-400 hover:text-plum-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 lg:inline-flex"
         >
           {t("get-in-touch")}
         </a>

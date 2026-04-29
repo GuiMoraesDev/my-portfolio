@@ -28,7 +28,7 @@ Changes in `src/app/[locale]/page.tsx`:
 **Status: DONE — awaiting review**
 
 Changes in `src/app/[locale]/page.tsx`:
-- `NarrativeBlock`: removed `border-l border-[color:var(--color-border-strong)] pl-5` (the card-left-border feel)
+- `NarrativeBlock`: removed `border-l border-border-strong pl-5` (the card-left-border feel)
 - Icon size reduced from `md` to `sm` (lower visual weight)
 - Grid gap increased: `gap-8 → gap-14` on mobile, `gap-6 → gap-10` on desktop
 - No boxes, no backgrounds — pure spacing and typography

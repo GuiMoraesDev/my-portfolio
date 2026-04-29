@@ -140,7 +140,7 @@ export default async function Home() {
         className={twMerge(
           "mt-8 min-[300px]:mt-16 md:mt-28 xl:mt-44",
           "py-4 min-[300px]:py-8 md:py-14 xl:py-24",
-          "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-[100vw] before:-translate-x-1/2 before:bg-black/90 before:opacity-95 before:content-['']",
+          "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:bg-black/90 before:opacity-95 before:content-['']",
         )}
         id="footer"
       >

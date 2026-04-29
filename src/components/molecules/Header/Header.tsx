@@ -49,14 +49,14 @@ export const LanguageSelectorElement = ({
       </div>
     )}
 
-    <div className="border-plum-600 relative inline-flex h-8 w-fit items-center gap-1 rounded-sm border p-0.5 text-xs font-semibold tracking-widest uppercase">
+    <div className="border-plum-600 relative inline-flex h-8 w-fit items-center gap-1 rounded-sm border p-1 text-xs font-semibold tracking-widest uppercase">
       <button
         disabled={disabled}
         type="button"
         aria-label="Switch language to Portuguese"
         onClick={() => handleLanguageChange?.("pt")}
         className={twMerge(
-          "rounded-xs px-2 py-0.5 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 disabled:cursor-not-allowed",
+          "cursor-pointer rounded-xs px-2 py-0.5 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 disabled:cursor-not-allowed",
           locale === "pt"
             ? "bg-plum-100 text-plum-900"
             : "text-text-secondary hover:text-text-primary",
@@ -71,7 +71,7 @@ export const LanguageSelectorElement = ({
         aria-label="Switch language to English"
         onClick={() => handleLanguageChange?.("en")}
         className={twMerge(
-          "rounded-xs px-2 py-0.5 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 disabled:cursor-not-allowed",
+          "cursor-pointer rounded-xs px-2 py-0.5 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 disabled:cursor-not-allowed",
           locale === "en"
             ? "bg-plum-100 text-plum-900"
             : "text-text-secondary hover:text-text-primary",

@@ -6,26 +6,26 @@ export const HowIWorkView = async () => {
   const t = await getTranslations("about-me.how-i-work");
 
   return (
-    <div className="grid w-full grid-cols-1 gap-px bg-border-subtle md:grid-cols-2 lg:grid-cols-5">
-      <BentoCell className="bg-bg-elevated/30 lg:col-span-3">
+    <div className="grid w-full grid-cols-1 gap-1.5 md:grid-cols-2 lg:grid-cols-3">
+      <BentoCell className="motion-enter bg-bg-elevated/70 lg:col-span-2">
         <BentoCell.Label>{t("think.label")}</BentoCell.Label>
         <BentoCell.Heading>{t("think.heading")}</BentoCell.Heading>
         <BentoCell.Body>{t("think.body")}</BentoCell.Body>
       </BentoCell>
 
-      <BentoCell className="bg-bg-elevated lg:col-span-2">
+      <BentoCell className="motion-enter motion-enter-delay-1 bg-plum-700/60">
         <BentoCell.Label>{t("decide.label")}</BentoCell.Label>
         <BentoCell.Heading>{t("decide.heading")}</BentoCell.Heading>
         <BentoCell.Body>{t("decide.body")}</BentoCell.Body>
       </BentoCell>
 
-      <BentoCell className="bg-plum-500/40 lg:col-span-2">
+      <BentoCell className="motion-enter motion-enter-delay-2 bg-plum-500/40">
         <BentoCell.Label>{t("ship.label")}</BentoCell.Label>
         <BentoCell.Heading>{t("ship.heading")}</BentoCell.Heading>
         <BentoCell.Body>{t("ship.body")}</BentoCell.Body>
       </BentoCell>
 
-      <BentoCell className="bg-bg-elevated/60 md:col-span-2 lg:col-span-3">
+      <BentoCell className="motion-enter motion-enter-delay-1 bg-bg-elevated/40 md:col-span-2 lg:col-span-2">
         <BentoCell.Label>{t("collaborate.label")}</BentoCell.Label>
         <BentoCell.Heading>{t("collaborate.heading")}</BentoCell.Heading>
         <BentoCell.Body>{t("collaborate.body")}</BentoCell.Body>
@@ -39,7 +39,11 @@ type BentoCellHeadingProps = ComponentProps<"h3"> & { size?: "lg" | "md" };
 const BentoCell = Object.assign(
   ({ className, ...props }: ComponentProps<"div">) => (
     <div
-      className={twMerge("flex flex-col gap-3 p-8 md:p-10", className)}
+      className={twMerge(
+        "flex flex-col gap-3 p-8 md:p-10",
+
+        className,
+      )}
       {...props}
     />
   ),

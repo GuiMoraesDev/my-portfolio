@@ -2,7 +2,7 @@
 
 ## Completed Phases
 
-- [ ] Phase 1 — Hero Refactor
+- [x] Phase 1 — Hero Refactor
 - [ ] Phase 2 — How I Work Refactor
 - [ ] Phase 3 — Terminal Interaction
 - [ ] Phase 4 — Blog System
@@ -14,12 +14,12 @@
 
 ## Current Phase
 
-Phase 1 — Hero Refactor
+Phase 2 — How I Work Refactor
 
 ## Notes
 
-- Starting fresh execution from Phase 1
+- Phase 1: removed DrawContainer dead code, refactored hero with eyebrow label, fluid display type for name, removed wave emoji
 
 ## Next Step
 
-Execute Phase 1: remove profile image from hero, improve layout and typography
+Execute Phase 2: remove card-based layout from "How I Work / About Me" section, improve structure

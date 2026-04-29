@@ -2,7 +2,6 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { DrawContainer } from "@/components/atoms/Draws";
 import { Icon, type IconProp } from "@/components/atoms/Icon";
 import { Spheres } from "@/components/atoms/Spheres";
 import { Header } from "@/components/molecules/Header";
@@ -28,7 +27,6 @@ export default async function Home() {
   return (
     <main className="relative container flex flex-col items-center bg-bg-canvas font-body text-text-primary">
       <Spheres />
-      <DrawContainer />
 
       <Header />
       <TerminalContact />
@@ -38,26 +36,24 @@ export default async function Home() {
         id="presentation"
       >
         <section className="flex w-full flex-col gap-8 text-text-primary md:gap-12">
-          <header className="flex flex-col gap-6 md:gap-8">
-            <h1 className="motion-enter lg text-text-headline inline-flex flex-col text-2xl md:text-4xl">
+          <header className="flex flex-col gap-3 md:gap-4">
+            <p className="motion-enter text-sm font-medium tracking-widest uppercase">
               {t("presentation.name")}
-              <strong className="inline-flex gap-1 text-accent-400">
-                Guilherme Moraes
-                <span className="inline-block w-fit origin-bottom-right animate-wave text-base select-none">
-                  👋
-                </span>
-              </strong>
+            </p>
+
+            <h1 className="motion-enter motion-enter-delay-1 font-title text-display leading-tight font-bold tracking-tight text-accent-500">
+              Guilherme Moraes
             </h1>
 
             <h2
               id="my-title"
-              className="motion-enter motion-enter-delay-1 text-text-display font-title text-lg tracking-tight md:text-xl lg:leading-tight"
+              className="motion-enter motion-enter-delay-2 font-title text-headline tracking-tight text-text-secondary"
             >
               {t("presentation.title")}
             </h2>
           </header>
 
-          <p className="motion-enter motion-enter-delay-2 text-body-lg leading-relaxed tracking-wide text-text-secondary md:max-w-[70%]">
+          <p className="motion-enter motion-enter-delay-2 text-body-lg leading-relaxed tracking-wide text-text-secondary md:max-w-[65%]">
             {t("presentation.subtitle")}
           </p>
 

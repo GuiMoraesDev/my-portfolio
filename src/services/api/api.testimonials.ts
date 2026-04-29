@@ -1,16 +1,9 @@
-import { cookies } from "next/headers";
-
 import { type Testimonial } from "@/app/api/testimonials/list/src/@types";
 
 const list = async (): Promise<{
   data: Testimonial[];
 }> => {
-  const cookiesList = await cookies();
-  const domain = cookiesList.get("domain-origin");
-
-  const { href } = new URL(`${domain?.value}/api/testimonials/list`);
-
-  const response = await fetch(href, {
+  const response = await fetch("/api/testimonials/list", {
     method: "GET",
   });
   return response.json();

@@ -1,16 +1,9 @@
-import { cookies } from "next/headers";
-
 import { type DevDotToArticle } from "@/app/api/articles/list/src/@types";
 
 const list = async (): Promise<{
   data: DevDotToArticle[];
 }> => {
-  const cookiesList = await cookies();
-  const domain = cookiesList.get("domain-origin");
-
-  const { href } = new URL(`${domain?.value}/api/articles/list`);
-
-  const response = await fetch(href, {
+  const response = await fetch("/api/articles/list", {
     method: "GET",
   });
   return response.json();

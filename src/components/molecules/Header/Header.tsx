@@ -118,12 +118,10 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
     callback: () => setIsOpen(false),
   });
 
-  const links = [
-    { href: "#presentation", label: t("presentation") },
-    { href: "#about-me", label: t("about-me") },
-    { href: "#articles", label: t("articles") },
-    { href: "#references", label: t("references") },
-    { href: "#projects", label: t("projects") },
+  const navLinks = [
+    { href: "#presentation", label: t("home") },
+    { href: "#references", label: t("testimonials") },
+    { href: "#articles", label: t("blog") },
   ];
 
   const handleToggleMenu = () => {
@@ -139,8 +137,9 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
 
   return (
     <Wrapper {...props}>
+      {/* Mobile hamburger + dropdown */}
       <div
-        className={twMerge("relative flex items-center justify-between")}
+        className={twMerge("relative flex items-center lg:hidden")}
         ref={wrapperRef}
       >
         <button
@@ -171,29 +170,64 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
               isOpen ? "visible delay-200" : "invisible",
             )}
           >
-            {links.map(({ href, label }) => (
+            {navLinks.map(({ href, label }) => (
               <li
                 key={label}
                 className="origin-left uppercase transition hover:scale-105 hover:font-semibold"
               >
                 <a
                   href={href}
+                  onClick={() => setIsOpen(false)}
                   className="inline-flex h-full rounded-sm leading-snug tracking-wide focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
                 >
                   {label}
                 </a>
               </li>
             ))}
+
+            <li className="mt-2">
+              <a
+                href="#footer"
+                onClick={() => setIsOpen(false)}
+                className="inline-flex rounded-sm border border-accent-400 px-4 py-1.5 text-sm font-semibold uppercase tracking-widest text-accent-400 transition hover:bg-accent-400 hover:text-plum-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
+              >
+                {t("get-in-touch")}
+              </a>
+            </li>
           </ul>
         </section>
       </div>
 
-      <LanguageSelectorElement
-        locale={locale}
-        handleLanguageChange={handleLanguageChange}
-        disabled={isPending}
-        isLoading={isPending}
-      />
+      {/* Desktop inline nav */}
+      <ul className="hidden items-center gap-8 lg:flex">
+        {navLinks.map(({ href, label }) => (
+          <li key={label}>
+            <a
+              href={href}
+              className="text-sm font-medium uppercase tracking-widest text-text-secondary transition hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      {/* Right side: GET IN TOUCH (desktop) + language selector */}
+      <div className="flex items-center gap-4">
+        <a
+          href="#footer"
+          className="hidden rounded-sm border border-accent-400 px-4 py-1.5 text-sm font-semibold uppercase tracking-widest text-accent-400 transition hover:bg-accent-400 hover:text-plum-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 lg:inline-flex"
+        >
+          {t("get-in-touch")}
+        </a>
+
+        <LanguageSelectorElement
+          locale={locale}
+          handleLanguageChange={handleLanguageChange}
+          disabled={isPending}
+          isLoading={isPending}
+        />
+      </div>
     </Wrapper>
   );
 };

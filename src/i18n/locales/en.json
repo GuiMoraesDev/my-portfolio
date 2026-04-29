@@ -1,10 +1,9 @@
 {
   "links": {
-    "presentation": "Presentation",
-    "about-me": "About me",
-    "articles": "Articles",
-    "references": "References",
-    "projects": "Projects"
+    "home": "Home",
+    "testimonials": "Testimonials",
+    "blog": "Blog",
+    "get-in-touch": "Get in touch"
   },
   "presentation": {
     "name": "Hi, I'm",

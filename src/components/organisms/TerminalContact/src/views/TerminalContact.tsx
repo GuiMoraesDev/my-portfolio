@@ -185,11 +185,11 @@ export const TerminalContact = () => {
         type="button"
         aria-label="Open terminal"
         onClick={() => setIsOpen(true)}
-        className="fixed right-6 bottom-6 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-[color:var(--color-border-strong)] bg-[color:var(--color-bg-elevated)] shadow-lg transition-all hover:border-[color:var(--color-accent-400)] hover:shadow-[0_0_20px_rgba(0,0,0,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent-400)] active:scale-95"
+        className="fixed right-6 bottom-6 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-border-strong bg-bg-elevated shadow-lg transition-all hover:border-accent-400 hover:shadow-[0_0_20px_rgba(0,0,0,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 active:scale-95"
       >
         <span
           aria-hidden
-          className="font-mono text-sm leading-none font-bold text-[color:var(--color-accent-400)]"
+          className="font-mono text-sm leading-none font-bold text-accent-400"
         >
           &gt;_
         </span>
@@ -206,10 +206,10 @@ export const TerminalContact = () => {
             aria-modal="true"
             aria-label="Terminal"
             ref={dialogRef}
-            className="flex h-[480px] w-full max-w-2xl flex-col overflow-hidden rounded border border-[color:var(--color-border-strong)] bg-[#0d0d0d] shadow-[0_16px_48px_rgba(0,0,0,0.7)]"
+            className="flex h-[480px] w-full max-w-2xl flex-col overflow-hidden rounded border border-border-strong bg-[#0d0d0d] shadow-[0_16px_48px_rgba(0,0,0,0.7)]"
             onClick={(e) => e.stopPropagation()}
           >
-            <header className="flex shrink-0 items-center gap-2 border-b border-[color:var(--color-border-subtle)] bg-[#111] px-4 py-2.5">
+            <header className="flex shrink-0 items-center gap-2 border-b border-border-subtle bg-[#111] px-4 py-2.5">
               <button
                 type="button"
                 aria-label="Close terminal"
@@ -218,7 +218,7 @@ export const TerminalContact = () => {
               />
               <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
-              <span className="ml-auto font-mono text-xs text-[color:var(--color-text-muted)]">
+              <span className="ml-auto font-mono text-xs text-text-muted">
                 ~ portfolio
               </span>
             </header>
@@ -228,12 +228,8 @@ export const TerminalContact = () => {
                 if (line.type === "input") {
                   return (
                     <div key={line.id} className="flex gap-2">
-                      <span className="text-[color:var(--color-accent-400)] select-none">
-                        $
-                      </span>
-                      <span className="text-[color:var(--color-text-primary)]">
-                        {line.text}
-                      </span>
+                      <span className="text-accent-400 select-none">$</span>
+                      <span className="text-text-primary">{line.text}</span>
                     </div>
                   );
                 }
@@ -244,7 +240,7 @@ export const TerminalContact = () => {
                         href={line.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[color:var(--color-accent-400)] underline hover:opacity-80"
+                        className="text-accent-400 underline hover:opacity-80"
                       >
                         {line.text}
                       </a>
@@ -259,10 +255,7 @@ export const TerminalContact = () => {
                   );
                 }
                 return (
-                  <div
-                    key={line.id}
-                    className="pl-4 text-[color:var(--color-text-secondary)]"
-                  >
+                  <div key={line.id} className="pl-4 text-text-secondary">
                     {line.text}
                   </div>
                 );
@@ -270,11 +263,8 @@ export const TerminalContact = () => {
               <div ref={bottomRef} />
             </div>
 
-            <div className="flex shrink-0 items-center gap-2 border-t border-[color:var(--color-border-subtle)] px-4 py-3 font-mono text-sm">
-              <span
-                aria-hidden
-                className="text-[color:var(--color-accent-400)] select-none"
-              >
+            <div className="flex shrink-0 items-center gap-2 border-t border-border-subtle px-4 py-3 font-mono text-sm">
+              <span aria-hidden className="text-accent-400 select-none">
                 $
               </span>
               <input
@@ -283,7 +273,7 @@ export const TerminalContact = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                className="flex-1 bg-transparent text-[color:var(--color-text-primary)] caret-[color:var(--color-accent-400)] outline-none placeholder:text-[color:var(--color-text-muted)]"
+                className="flex-1 bg-transparent text-text-primary caret-accent-400 outline-none placeholder:text-text-muted"
                 placeholder="type a command..."
                 aria-label="Terminal input"
                 autoComplete="off"

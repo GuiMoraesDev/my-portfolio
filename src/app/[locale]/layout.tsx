@@ -71,7 +71,7 @@ export default async function RootLayout({
     <html className="scroll-smooth" lang={locale}>
       <body
         className={twMerge(
-          "flex h-dvh w-full flex-col items-center gap-3 overflow-x-hidden bg-[color:var(--color-bg-canvas)] text-[color:var(--color-text-primary)]",
+          "flex h-dvh w-full flex-col items-center gap-3 overflow-x-hidden bg-bg-canvas text-text-primary",
           lato.className,
           firaSans.className,
         )}

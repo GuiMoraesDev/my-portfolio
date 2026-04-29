@@ -93,7 +93,7 @@ const AnimatedArticle = ({ index, children }: AnimatedArticleProps) => {
       >
         {children({
           linkClassName:
-            "group flex w-full flex-col gap-4 border-b border-plum-700/60 py-5 transition-colors duration-200 hover:border-[color:var(--color-border-strong)] md:flex-row md:items-center md:justify-between md:gap-8",
+            "group flex w-full flex-col gap-4 border-b border-plum-700/60 py-5 transition-colors duration-200 hover:border-border-strong md:flex-row md:items-center md:justify-between md:gap-8",
         })}
       </motion.div>
     </motion.div>

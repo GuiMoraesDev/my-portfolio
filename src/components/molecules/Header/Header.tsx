@@ -60,7 +60,7 @@ export const LanguageSelectorElement = ({
       <button
         disabled={disabled}
         type="button"
-        className="rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent-400)] disabled:cursor-not-allowed"
+        className="rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 disabled:cursor-not-allowed"
         aria-label="Switch language to Portuguese"
         onClick={() => handleLanguageChange?.("pt")}
       >
@@ -72,7 +72,7 @@ export const LanguageSelectorElement = ({
       </button>
 
       <Switch.Root
-        className="relative h-6 w-11 cursor-pointer rounded-full border border-plum-600 outline-none focus-visible:shadow-[0_0_0_2px] focus-visible:shadow-[color:var(--color-accent-400)] disabled:cursor-not-allowed data-[state=checked]:bg-plum-900"
+        className="relative h-6 w-11 cursor-pointer rounded-full border border-plum-600 outline-none focus-visible:shadow-[0_0_0_2px] focus-visible:shadow-accent-400 disabled:cursor-not-allowed data-[state=checked]:bg-plum-900"
         id="Language-selector"
         aria-label="Toggle language"
         checked={locale === "en"}
@@ -88,7 +88,7 @@ export const LanguageSelectorElement = ({
       <button
         disabled={disabled}
         type="button"
-        className="rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent-400)] disabled:cursor-not-allowed"
+        className="rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 disabled:cursor-not-allowed"
         aria-label="Switch language to English"
         onClick={() => handleLanguageChange?.("en")}
       >
@@ -146,7 +146,7 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
         <button
           onClick={handleToggleMenu}
           type="button"
-          className="z-20 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent-400)]"
+          className="z-20 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
           title="menu"
           aria-label="Toggle navigation menu"
           aria-expanded={isOpen}
@@ -178,7 +178,7 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
               >
                 <a
                   href={href}
-                  className="inline-flex h-full rounded-sm leading-snug tracking-wide focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent-400)]"
+                  className="inline-flex h-full rounded-sm leading-snug tracking-wide focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
                 >
                   {label}
                 </a>

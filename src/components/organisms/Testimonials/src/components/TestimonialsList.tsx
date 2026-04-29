@@ -36,21 +36,21 @@ export const TestimonialsList = ({ testimonials }: TestimonialsListProps) => {
                 direction: "y",
                 reducedMotion: Boolean(reducedMotion),
               })}
-              className="border-l border-[color:var(--color-border-strong)] pl-4"
+              className="border-l border-border-strong pl-4"
             >
               <header className="mb-2">
-                <strong className="text-sm font-semibold text-[color:var(--color-text-primary)]">
+                <strong className="text-sm font-semibold text-text-primary">
                   {name}
                 </strong>
-                <p className="text-[color:var(--color-text-muted)] text-[var(--text-caption)]">
+                <p className="text-text-muted text-sm">
                   {role} at {company}
                 </p>
-                <p className="text-[color:var(--color-text-muted)] text-[var(--text-caption)]">
+                <p className="text-text-muted text-sm">
                   {relationship}
                 </p>
               </header>
 
-              <p className="text-sm leading-relaxed text-[color:var(--color-text-secondary)]">
+              <p className="text-sm leading-relaxed text-text-secondary">
                 {content}
               </p>
             </motion.article>

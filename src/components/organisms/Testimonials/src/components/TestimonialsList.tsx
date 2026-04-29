@@ -42,12 +42,10 @@ export const TestimonialsList = ({ testimonials }: TestimonialsListProps) => {
                 <strong className="text-sm font-semibold text-text-primary">
                   {name}
                 </strong>
-                <p className="text-text-muted text-sm">
+                <p className="text-sm text-text-muted">
                   {role} at {company}
                 </p>
-                <p className="text-text-muted text-sm">
-                  {relationship}
-                </p>
+                <p className="text-sm text-text-muted">{relationship}</p>
               </header>
 
               <p className="text-sm leading-relaxed text-text-secondary">

@@ -33,40 +33,46 @@ export const ArticlesList = ({ articles }: ArticlesListProps) => (
       ) => (
         <AnimatedArticle key={id} index={index}>
           {({ linkClassName }) => (
-          <motion.a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkClassName}
-          >
-            <header className="flex items-center justify-start gap-3">
-              <FileTextIcon className="h-5 w-5 text-plum-200" />
-              <p
-                className={twMerge(
-                  "relative text-sm text-white md:text-base",
-                  "before:absolute before:bottom-0 before:left-0 before:h-px before:w-0 before:rounded-md before:bg-white before:transition-all before:content-['']",
-                  "group-hover:before:w-full",
-                )}
-              >
-                {title}
-              </p>
-            </header>
+            <motion.a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={linkClassName}
+            >
+              <header className="flex items-center justify-start gap-3">
+                <FileTextIcon className="h-5 w-5 text-plum-200" />
+                <p
+                  className={twMerge(
+                    "relative text-sm text-white md:text-base",
+                    "before:absolute before:bottom-0 before:left-0 before:h-px before:w-0 before:rounded-md before:bg-white before:transition-all before:content-['']",
+                    "group-hover:before:w-full",
+                  )}
+                >
+                  {title}
+                </p>
+              </header>
 
-            <section className="flex items-center justify-start gap-6 md:gap-5">
-              <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-plum-100">
-                <StopwatchIcon className="h-4 w-4 text-plum-200" aria-hidden />
-                {reading_time_minutes} min
-              </span>
-              <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-plum-100">
-                <HeartFilledIcon className="h-4 w-4 text-plum-200" aria-hidden />
-                {positive_reactions_count}
-              </span>
-              <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-plum-100">
-                <KeyboardIcon className="h-4 w-4 text-plum-200" aria-hidden />
-                {comments_count}
-              </span>
-            </section>
-          </motion.a>
+              <section className="flex items-center justify-start gap-6 md:gap-5">
+                <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-plum-100">
+                  <StopwatchIcon
+                    className="h-4 w-4 text-plum-200"
+                    aria-hidden
+                  />
+                  {reading_time_minutes} min
+                </span>
+                <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-plum-100">
+                  <HeartFilledIcon
+                    className="h-4 w-4 text-plum-200"
+                    aria-hidden
+                  />
+                  {positive_reactions_count}
+                </span>
+                <span className="inline-flex w-max flex-nowrap items-center justify-center gap-1.5 text-xs text-plum-100">
+                  <KeyboardIcon className="h-4 w-4 text-plum-200" aria-hidden />
+                  {comments_count}
+                </span>
+              </section>
+            </motion.a>
           )}
         </AnimatedArticle>
       ),
@@ -83,7 +89,11 @@ const AnimatedArticle = ({ index, children }: AnimatedArticleProps) => {
   const reducedMotion = useReducedMotion();
 
   return (
-    <motion.div initial="offscreen" whileInView="onscreen" viewport={{ once: true }}>
+    <motion.div
+      initial="offscreen"
+      whileInView="onscreen"
+      viewport={{ once: true }}
+    >
       <motion.div
         variants={createRevealVariants({
           index,

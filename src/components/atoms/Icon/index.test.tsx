@@ -26,21 +26,32 @@ describe("Icon", () => {
 
   it("applies rounded-full when rounded='full'", () => {
     const { container } = render(<Icon icon="Github" rounded="full" />);
-    expect(container.querySelector("span")!.className).toContain("rounded-full");
+    expect(container.querySelector("span")!.className).toContain(
+      "rounded-full",
+    );
   });
 
   it("passes additional className to the span", () => {
-    const { container } = render(<Icon icon="Github" className="custom-class" />);
-    expect(container.querySelector("span")!.className).toContain("custom-class");
+    const { container } = render(
+      <Icon icon="Github" className="custom-class" />,
+    );
+    expect(container.querySelector("span")!.className).toContain(
+      "custom-class",
+    );
   });
 
-  it.each(["FlagBr", "FlagUs", "Github", "Globe", "LinkedIn", "MagnifyingGlass", "Rocket"] as const)(
-    "renders the %s icon without error",
-    (icon) => {
-      const { container } = render(<Icon icon={icon} />);
-      expect(container.querySelector("span")).not.toBeNull();
-    },
-  );
+  it.each([
+    "FlagBr",
+    "FlagUs",
+    "Github",
+    "Globe",
+    "LinkedIn",
+    "MagnifyingGlass",
+    "Rocket",
+  ] as const)("renders the %s icon without error", (icon) => {
+    const { container } = render(<Icon icon={icon} />);
+    expect(container.querySelector("span")).not.toBeNull();
+  });
 
   it("renders SVG content inside the span", () => {
     const { container } = render(<Icon icon="Github" />);

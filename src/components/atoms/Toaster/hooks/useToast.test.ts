@@ -3,7 +3,11 @@ import { describe, expect, it } from "@jest/globals";
 import { reducer } from "./useToast";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const makeToast = (id: string, open = true): any => ({ id, title: `Toast ${id}`, open });
+const makeToast = (id: string, open = true): any => ({
+  id,
+  title: `Toast ${id}`,
+  open,
+});
 
 describe("useToast reducer", () => {
   const empty = { toasts: [] };
@@ -17,7 +21,10 @@ describe("useToast reducer", () => {
 
     it("prepends the new toast and slices to TOAST_LIMIT (1)", () => {
       const state = { toasts: [makeToast("old")] };
-      const next = reducer(state, { type: "ADD_TOAST", toast: makeToast("new") });
+      const next = reducer(state, {
+        type: "ADD_TOAST",
+        toast: makeToast("new"),
+      });
       expect(next.toasts).toHaveLength(1);
       expect(next.toasts[0].id).toBe("new");
     });

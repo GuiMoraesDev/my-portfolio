@@ -2,6 +2,7 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 import prettierConfig from "eslint-config-prettier/flat";
+import prettierPlugin from "eslint-plugin-prettier";
 import unusedImportsPlugin from "eslint-plugin-unused-imports";
 
 const eslintConfig = defineConfig([
@@ -21,6 +22,7 @@ const eslintConfig = defineConfig([
     files: ["**/*.{js,jsx,ts,tsx}"],
     plugins: {
       "unused-imports": unusedImportsPlugin,
+      prettier: prettierPlugin,
     },
     settings: {
       "import/resolver": {
@@ -30,6 +32,7 @@ const eslintConfig = defineConfig([
       },
     },
     rules: {
+      "prettier/prettier": "warn",
       "no-console": "error",
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": "off",

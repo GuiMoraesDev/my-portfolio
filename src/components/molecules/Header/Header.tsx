@@ -72,7 +72,7 @@ export const LanguageSelectorElement = ({
       </button>
 
       <Switch.Root
-        className="relative h-6 w-11 cursor-pointer rounded-full border border-plum-600 outline-none focus-visible:shadow-[0_0_0_2px] focus-visible:shadow-accent-400 disabled:cursor-not-allowed data-[state=checked]:bg-plum-900"
+        className="border-plum-600 relative h-6 w-11 cursor-pointer rounded-full border outline-none focus-visible:shadow-[0_0_0_2px] focus-visible:shadow-accent-400 disabled:cursor-not-allowed data-[state=checked]:bg-plum-900"
         id="Language-selector"
         aria-label="Toggle language"
         checked={locale === "en"}
@@ -167,7 +167,7 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
           <ul
             id="mobile-nav-links"
             className={twMerge(
-              "relative z-20 flex flex-col gap-4 font-medium text-plum-800",
+              "text-plum-800 relative z-20 flex flex-col gap-4 font-medium",
               isOpen ? "visible delay-200" : "invisible",
             )}
           >

@@ -1,4 +1,11 @@
-import { afterEach, beforeEach, describe, expect, it, jest } from "@jest/globals";
+import {
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  jest,
+} from "@jest/globals";
 import { act, renderHook } from "@testing-library/react";
 import { useRef } from "react";
 
@@ -25,7 +32,9 @@ describe("useHandleClickOutside", () => {
     });
 
     act(() => {
-      document.body.dispatchEvent(new MouseEvent("mousedown", { bubbles: true }));
+      document.body.dispatchEvent(
+        new MouseEvent("mousedown", { bubbles: true }),
+      );
     });
 
     expect(callback).toHaveBeenCalledTimes(1);

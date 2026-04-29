@@ -114,7 +114,7 @@ export default async function Home() {
         <section className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
           <a
             href="https://dev.to/guimoraes"
-            className="rounded-sm p-3 text-center leading-tight font-medium text-sm text-text-secondary hover:text-text-primary hover:underline"
+            className="rounded-sm p-3 text-center text-sm leading-tight font-medium text-text-secondary hover:text-text-primary hover:underline"
           >
             {t("articles.all-articles")}
           </a>
@@ -146,7 +146,7 @@ export default async function Home() {
       >
         <footer className="z-10 flex h-full w-full flex-col items-center justify-between gap-4 text-sm text-text-secondary md:flex-row lg:items-end">
           <div className="flex flex-col gap-3">
-            <strong className="mb-2 inline-block leading-normal tracking-tight text-headline text-text-primary">
+            <strong className="mb-2 inline-block text-headline leading-normal tracking-tight text-text-primary">
               {t("footer.title")}
             </strong>
 
@@ -189,12 +189,12 @@ const SessionHeader = ({
     className={twMerge("flex w-full flex-col gap-2", className)}
     {...props}
   >
-    <h2 className="font-title font-bold tracking-tight text-headline">
+    <h2 className="font-title text-headline font-bold tracking-tight">
       {title}
     </h2>
 
     {quote ? (
-      <p className="leading-snug tracking-wide text-text-muted text-base">
+      <p className="text-base leading-snug tracking-wide text-text-muted">
         {quote}
       </p>
     ) : null}
@@ -207,9 +207,6 @@ type NarrativeBlockProps = ComponentProps<"p"> & {
 const NarrativeBlock = ({ icon, ...props }: NarrativeBlockProps) => (
   <div className="flex flex-col gap-4 text-text-secondary">
     <Icon icon={icon} size="sm" />
-    <p
-      className="leading-relaxed tracking-wide text-base"
-      {...props}
-    />
+    <p className="text-base leading-relaxed tracking-wide" {...props} />
   </div>
 );

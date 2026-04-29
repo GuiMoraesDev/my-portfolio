@@ -13,7 +13,7 @@ export const ShowMoreButton = () => {
   return (
     <button
       onClick={handleToggleShowMore}
-      className="motion-hover-lift rounded border border-border-strong bg-transparent px-3 py-2 text-center leading-tight font-medium text-sm text-text-secondary hover:border-accent-400 hover:text-text-primary"
+      className="motion-hover-lift rounded border border-border-strong bg-transparent px-3 py-2 text-center text-sm leading-tight font-medium text-text-secondary hover:border-accent-400 hover:text-text-primary"
     >
       {showMore ? t("show-less") : t("show-more")}
     </button>

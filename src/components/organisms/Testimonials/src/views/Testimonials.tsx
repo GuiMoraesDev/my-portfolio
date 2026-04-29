@@ -39,7 +39,7 @@ export const TestimonialsView = async () => {
               <a
                 href="https://www.linkedin.com/in/guimoraesdev/details/recommendations/"
                 target="_blank"
-                className="rounded-sm py-1 text-center leading-tight font-medium text-sm text-text-secondary hover:text-text-primary hover:underline"
+                className="rounded-sm py-1 text-center text-sm leading-tight font-medium text-text-secondary hover:text-text-primary hover:underline"
               >
                 {t("leave-reference")}
               </a>

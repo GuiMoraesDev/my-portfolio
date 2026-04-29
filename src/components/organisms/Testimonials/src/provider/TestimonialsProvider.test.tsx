@@ -59,7 +59,11 @@ describe("TestimonialsProvider", () => {
 
     fireEvent.click(within(containerA).getByText("toggle"));
 
-    expect(within(containerA).getByTestId("show-more").textContent).toBe("true");
-    expect(within(containerB).getByTestId("show-more").textContent).toBe("false");
+    expect(within(containerA).getByTestId("show-more").textContent).toBe(
+      "true",
+    );
+    expect(within(containerB).getByTestId("show-more").textContent).toBe(
+      "false",
+    );
   });
 });

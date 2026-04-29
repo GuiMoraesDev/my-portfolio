@@ -1,53 +1,129 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-type TerminalContactLabels = {
-  trigger: string;
-  close: string;
-  messageLabel: string;
-  messagePlaceholder: string;
-  sendCta: string;
-  whoamiOutput: string;
-  contactMethodsOutput: string;
+const GITHUB_URL = "https://github.com/GuiMoraesDev";
+const LINKEDIN_URL = "https://www.linkedin.com/in/guimoraesdev";
+
+type LineType = "input" | "output" | "error" | "link";
+
+type TerminalLine = {
+  id: number;
+  type: LineType;
+  text: string;
+  href?: string;
 };
 
-type TerminalContactProps = {
-  email: string;
-  labels: TerminalContactLabels;
-};
+let lineId = 0;
+const mkLine = (type: LineType, text: string, href?: string): TerminalLine => ({
+  id: lineId++,
+  type,
+  text,
+  href,
+});
 
-export const TerminalContact = ({ email, labels }: TerminalContactProps) => {
+const WELCOME: TerminalLine[] = [
+  mkLine("output", "Welcome. Type 'help' for available commands."),
+];
+
+function runCommand(raw: string): { lines: TerminalLine[]; clear?: boolean } {
+  const trimmed = raw.trim();
+  if (!trimmed) return { lines: [] };
+
+  const [cmd, ...args] = trimmed.toLowerCase().split(/\s+/);
+  const rawArgs = trimmed.slice(cmd.length).trim();
+
+  switch (cmd) {
+    case "help":
+      return {
+        lines: [
+          mkLine("output", "  whoami          ->   who is this person"),
+          mkLine("output", "  contact         ->   show contact links"),
+          mkLine("output", "  echo [text]     ->   print text"),
+          mkLine("output", "  open github     ->   open GitHub profile"),
+          mkLine("output", "  open linkedin   ->   open LinkedIn profile"),
+          mkLine("output", "  clear           ->   clear the terminal"),
+          mkLine("output", "  help            ->   show this message"),
+        ],
+      };
+
+    case "whoami":
+      return {
+        lines: [
+          mkLine("output", "Guilherme Moraes — Senior Software Engineer"),
+          mkLine("output", "Building frontend systems that hold up over time."),
+        ],
+      };
+
+    case "contact":
+      return {
+        lines: [
+          mkLine("link", "GitHub", GITHUB_URL),
+          mkLine("link", "LinkedIn", LINKEDIN_URL),
+          mkLine("output", "email: guimoraes.dev@gmail.com"),
+        ],
+      };
+
+    case "echo":
+      return { lines: rawArgs ? [mkLine("output", rawArgs)] : [] };
+
+    case "open":
+      if (args[0] === "github") {
+        window.open(GITHUB_URL, "_blank", "noopener,noreferrer");
+        return { lines: [mkLine("output", "Opening GitHub...")] };
+      }
+      if (args[0] === "linkedin") {
+        window.open(LINKEDIN_URL, "_blank", "noopener,noreferrer");
+        return { lines: [mkLine("output", "Opening LinkedIn...")] };
+      }
+      return {
+        lines: [mkLine("error", `unknown target: ${args[0] ?? ""}`)],
+      };
+
+    case "clear":
+      return { clear: true, lines: [] };
+
+    default:
+      return {
+        lines: [
+          mkLine("error", `command not found: ${cmd}`),
+          mkLine("output", "type 'help' for available commands"),
+        ],
+      };
+  }
+}
+
+export const TerminalContact = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [message, setMessage] = useState("");
+  const [lines, setLines] = useState<TerminalLine[]>(WELCOME);
+  const [input, setInput] = useState("");
+  const [history, setHistory] = useState<string[]>([]);
+  const [historyIdx, setHistoryIdx] = useState(-1);
+
   const dialogRef = useRef<HTMLElement>(null);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!isOpen) return;
+    inputRef.current?.focus();
 
-    textareaRef.current?.focus();
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+      if (e.key !== "Tab" || !dialogRef.current) return;
 
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsOpen(false);
-      if (event.key !== "Tab" || !dialogRef.current) return;
-
-      const focusableElements = dialogRef.current.querySelectorAll<
-        HTMLButtonElement | HTMLAnchorElement | HTMLTextAreaElement
-      >("button, a[href], textarea");
-      const first = focusableElements[0];
-      const last = focusableElements[focusableElements.length - 1];
-
+      const focusable = dialogRef.current.querySelectorAll<
+        HTMLButtonElement | HTMLAnchorElement | HTMLInputElement
+      >("button, a[href], input");
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
       if (!first || !last) return;
 
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
         last.focus();
-        return;
-      }
-
-      if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
         first.focus();
       }
     };
@@ -56,22 +132,67 @@ export const TerminalContact = ({ email, labels }: TerminalContactProps) => {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [isOpen]);
 
-  const mailToHref = useMemo(() => {
-    const params = new URLSearchParams({
-      subject: "Portfolio contact",
-      body: message,
-    });
-    return `mailto:${email}?${params.toString()}`;
-  }, [email, message]);
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [lines]);
+
+  const submit = () => {
+    const trimmed = input.trim();
+    const inputLine = mkLine("input", trimmed);
+    const result = runCommand(trimmed);
+
+    if (trimmed) {
+      setHistory((prev) => [trimmed, ...prev]);
+      setHistoryIdx(-1);
+    }
+
+    if (result.clear) {
+      setLines([...WELCOME]);
+    } else {
+      setLines((prev) => [...prev, inputLine, ...result.lines]);
+    }
+    setInput("");
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      submit();
+      return;
+    }
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      const next = Math.min(historyIdx + 1, history.length - 1);
+      setHistoryIdx(next);
+      setInput(history[next] ?? "");
+      return;
+    }
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      const next = historyIdx - 1;
+      if (next < 0) {
+        setHistoryIdx(-1);
+        setInput("");
+      } else {
+        setHistoryIdx(next);
+        setInput(history[next] ?? "");
+      }
+    }
+  };
 
   return (
     <>
       <button
         type="button"
+        aria-label="Open terminal"
         onClick={() => setIsOpen(true)}
-        className="rounded border border-[color:var(--color-border-strong)] bg-[color:var(--color-bg-elevated)] px-4 py-2 text-[var(--text-caption)] font-medium text-[color:var(--color-text-primary)] transition-colors hover:border-[color:var(--color-accent-400)] hover:text-[color:var(--color-accent-400)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent-400)]"
+        className="fixed right-6 bottom-6 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-[color:var(--color-border-strong)] bg-[color:var(--color-bg-elevated)] shadow-lg transition-all hover:border-[color:var(--color-accent-400)] hover:shadow-[0_0_20px_rgba(0,0,0,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent-400)] active:scale-95"
       >
-        {labels.trigger}
+        <span
+          aria-hidden
+          className="font-mono text-sm leading-none font-bold text-[color:var(--color-accent-400)]"
+        >
+          &gt;_
+        </span>
       </button>
 
       {isOpen ? (
@@ -83,77 +204,93 @@ export const TerminalContact = ({ email, labels }: TerminalContactProps) => {
           <section
             role="dialog"
             aria-modal="true"
-            aria-label={labels.trigger}
+            aria-label="Terminal"
             ref={dialogRef}
-            className="w-full max-w-3xl overflow-hidden rounded border border-[color:var(--color-border-strong)] bg-[color:var(--color-bg-elevated)] shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
-            onClick={(event) => event.stopPropagation()}
+            className="flex h-[480px] w-full max-w-2xl flex-col overflow-hidden rounded border border-[color:var(--color-border-strong)] bg-[#0d0d0d] shadow-[0_16px_48px_rgba(0,0,0,0.7)]"
+            onClick={(e) => e.stopPropagation()}
           >
-            <header className="flex items-center justify-between border-b border-[color:var(--color-border-subtle)] px-4 py-3">
-              <div className="flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
-              </div>
-
+            <header className="flex shrink-0 items-center gap-2 border-b border-[color:var(--color-border-subtle)] bg-[#111] px-4 py-2.5">
               <button
                 type="button"
+                aria-label="Close terminal"
                 onClick={() => setIsOpen(false)}
-                className="rounded px-2 py-1 text-[var(--text-caption)] text-[color:var(--color-text-muted)] transition-colors hover:text-[color:var(--color-text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent-400)]"
-              >
-                {labels.close}
-              </button>
+                className="h-2.5 w-2.5 rounded-full bg-[#ff5f56] focus-visible:outline-2 focus-visible:outline-offset-1"
+              />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
+              <span className="ml-auto font-mono text-xs text-[color:var(--color-text-muted)]">
+                ~ portfolio
+              </span>
             </header>
 
-            <div className="space-y-4 p-4 font-mono text-sm leading-relaxed text-[color:var(--color-text-secondary)]">
-              <p>
-                <span className="text-[color:var(--color-accent-400)]">$</span>{" "}
-                whoami
-              </p>
-              <p className="pl-4 text-[color:var(--color-text-primary)]">
-                {labels.whoamiOutput}
-              </p>
-
-              <p>
-                <span className="text-[color:var(--color-accent-400)]">$</span>{" "}
-                contact --methods
-              </p>
-              <p className="pl-4 text-[color:var(--color-text-primary)]">
-                {labels.contactMethodsOutput}
-              </p>
-
-              <div className="space-y-2">
-                <p>
-                  <span className="text-[color:var(--color-accent-400)]">$</span>{" "}
-                  send-message
-                </p>
-                <label className="sr-only" htmlFor="terminal-message">
-                  {labels.messageLabel}
-                </label>
-                <div className="relative rounded border border-[color:var(--color-border-subtle)] bg-black/20 p-3 focus-within:border-[color:var(--color-accent-400)]">
-                  <textarea
-                    id="terminal-message"
-                    ref={textareaRef}
-                    value={message}
-                    onChange={(event) => setMessage(event.target.value)}
-                    placeholder={labels.messagePlaceholder}
-                    className="min-h-28 w-full resize-y bg-transparent pr-4 text-[color:var(--color-text-primary)] outline-none placeholder:text-[color:var(--color-text-muted)]"
-                  />
-                  <span
-                    aria-hidden="true"
-                    className="pointer-events-none absolute right-3 bottom-3 inline-block h-4 w-px bg-[color:var(--color-accent-400)] animate-terminal-caret"
-                  />
-                </div>
-              </div>
+            <div className="flex-1 overflow-y-auto p-4 font-mono text-sm leading-relaxed">
+              {lines.map((line) => {
+                if (line.type === "input") {
+                  return (
+                    <div key={line.id} className="flex gap-2">
+                      <span className="text-[color:var(--color-accent-400)] select-none">
+                        $
+                      </span>
+                      <span className="text-[color:var(--color-text-primary)]">
+                        {line.text}
+                      </span>
+                    </div>
+                  );
+                }
+                if (line.type === "link") {
+                  return (
+                    <div key={line.id} className="pl-4">
+                      <a
+                        href={line.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[color:var(--color-accent-400)] underline hover:opacity-80"
+                      >
+                        {line.text}
+                      </a>
+                    </div>
+                  );
+                }
+                if (line.type === "error") {
+                  return (
+                    <div key={line.id} className="pl-4 text-red-400">
+                      {line.text}
+                    </div>
+                  );
+                }
+                return (
+                  <div
+                    key={line.id}
+                    className="pl-4 text-[color:var(--color-text-secondary)]"
+                  >
+                    {line.text}
+                  </div>
+                );
+              })}
+              <div ref={bottomRef} />
             </div>
 
-            <footer className="flex justify-end border-t border-[color:var(--color-border-subtle)] px-4 py-3">
-              <a
-                href={mailToHref}
-                className="rounded border border-[color:var(--color-accent-400)] px-3 py-2 text-[var(--text-caption)] font-semibold text-[color:var(--color-accent-400)] transition-colors hover:bg-[color:var(--color-accent-400)] hover:text-[color:var(--color-bg-canvas)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-accent-400)]"
+            <div className="flex shrink-0 items-center gap-2 border-t border-[color:var(--color-border-subtle)] px-4 py-3 font-mono text-sm">
+              <span
+                aria-hidden
+                className="text-[color:var(--color-accent-400)] select-none"
               >
-                {labels.sendCta}
-              </a>
-            </footer>
+                $
+              </span>
+              <input
+                ref={inputRef}
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                className="flex-1 bg-transparent text-[color:var(--color-text-primary)] caret-[color:var(--color-accent-400)] outline-none placeholder:text-[color:var(--color-text-muted)]"
+                placeholder="type a command..."
+                aria-label="Terminal input"
+                autoComplete="off"
+                autoCorrect="off"
+                spellCheck={false}
+              />
+            </div>
           </section>
         </div>
       ) : null}

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
@@ -32,51 +31,35 @@ export default async function Home() {
       <DrawContainer />
 
       <Header />
+      <TerminalContact />
 
       <SessionWrapper
-        className="mt-14 pt-12 min-[300px]:pt-20 md:flex-row md:pt-36 xl:pt-56"
+        className="mt-14 items-start pt-12 min-[300px]:pt-20 md:pt-36 xl:pt-56"
         id="presentation"
       >
-        <section className="flex flex-col gap-[var(--space-block)] text-[color:var(--color-text-primary)] md:gap-[var(--space-block-lg)]">
-          <div className="flex max-w-2xl flex-col gap-6 md:gap-10">
-            <h1 className="motion-enter inline-flex flex-col text-[var(--text-headline)]">
-              {t("presentation.name")}
-              <strong className="inline-flex gap-1">
-                Guilherme Moraes
-                <span className="inline-block w-fit origin-bottom-right animate-wave text-base select-none">
-                  👋
-                </span>
-              </strong>
-            </h1>
+        <section className="flex w-full flex-col gap-8 text-[color:var(--color-text-primary)] md:gap-12">
+          <h1 className="motion-enter inline-flex flex-col text-[var(--text-headline)]">
+            {t("presentation.name")}
+            <strong className="inline-flex gap-1">
+              Guilherme Moraes
+              <span className="inline-block w-fit origin-bottom-right animate-wave text-base select-none">
+                👋
+              </span>
+            </strong>
+          </h1>
 
-            <h2
-              id="my-title"
-              className="motion-enter motion-enter-delay-1 font-title text-[var(--text-display)] font-bold tracking-tight text-[color:var(--color-accent-400)] lg:leading-tight"
-            >
-              {t("presentation.title")}
-            </h2>
+          <h2
+            id="my-title"
+            className="motion-enter motion-enter-delay-1 max-w-[20ch] font-title font-bold tracking-tight text-[color:var(--color-accent-400)] text-[var(--text-display)] lg:leading-tight"
+          >
+            {t("presentation.title")}
+          </h2>
 
-            <p className="motion-enter motion-enter-delay-2 text-[var(--text-body-lg)] leading-tight tracking-wide text-[color:var(--color-text-secondary)]">
-              {t("presentation.subtitle")}
-            </p>
-          </div>
+          <p className="motion-enter motion-enter-delay-2 max-w-[56ch] leading-relaxed tracking-wide text-[color:var(--color-text-secondary)] text-[var(--text-body-lg)]">
+            {t("presentation.subtitle")}
+          </p>
 
-          <SocialMedia className="hidden md:flex" />
-        </section>
-
-        <section className="flex flex-col items-center justify-center gap-6">
-          <div className="relative h-[240px] w-[240px] transition-all sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80">
-            <Image
-              src="/profile.png"
-              fill
-              sizes="100%"
-              className="aspect-square h-72 object-cover drop-shadow-[0px_0px_4px_rgba(242,226,236,0.2)] select-none md:h-auto"
-              priority
-              alt={t("presentation.profile-image-alt")}
-            />
-          </div>
-
-          <SocialMedia className="flex md:hidden" />
+          <SocialMedia className="justify-start" />
         </section>
       </SessionWrapper>
 
@@ -84,7 +67,7 @@ export default async function Home() {
         className="pt-14 min-[300px]:pt-24 md:pt-32 xl:pt-52"
         id="about-me"
       >
-        <section className="grid w-full grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-6">
+        <section className="grid w-full grid-cols-1 gap-14 lg:grid-cols-3 lg:gap-10">
           <NarrativeBlock icon="Rocket">
             {t.rich("about-me.cards.years-experience", {
               time: formattedYears,
@@ -135,7 +118,7 @@ export default async function Home() {
         <section className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
           <a
             href="https://dev.to/guimoraes"
-            className="rounded-sm p-3 text-center text-[var(--text-caption)] leading-tight font-medium text-[color:var(--color-text-secondary)] hover:text-[color:var(--color-text-primary)] hover:underline"
+            className="rounded-sm p-3 text-center leading-tight font-medium text-[color:var(--color-text-secondary)] text-[var(--text-caption)] hover:text-[color:var(--color-text-primary)] hover:underline"
           >
             {t("articles.all-articles")}
           </a>
@@ -165,28 +148,11 @@ export default async function Home() {
         )}
         id="footer"
       >
-        <footer className="z-10 flex h-full w-full flex-col items-center justify-between gap-4 text-[var(--text-caption)] text-[color:var(--color-text-secondary)] md:flex-row lg:items-end">
+        <footer className="z-10 flex h-full w-full flex-col items-center justify-between gap-4 text-[color:var(--color-text-secondary)] text-[var(--text-caption)] md:flex-row lg:items-end">
           <div className="flex flex-col gap-3">
-            <strong className="mb-2 inline-block text-[var(--text-headline)] leading-normal tracking-tight text-[color:var(--color-text-primary)]">
+            <strong className="mb-2 inline-block leading-normal tracking-tight text-[color:var(--color-text-primary)] text-[var(--text-headline)]">
               {t("footer.title")}
             </strong>
-
-            <p className="inline-block leading-normal tracking-wide">
-              {t("footer.contact-me-by")}
-            </p>
-
-            <TerminalContact
-              email="guimoraes.dev@gmail.com"
-              labels={{
-                trigger: t("contact.terminal.trigger"),
-                close: t("contact.terminal.close"),
-                messageLabel: t("contact.terminal.message-label"),
-                messagePlaceholder: t("contact.terminal.message-placeholder"),
-                sendCta: t("contact.terminal.send"),
-                whoamiOutput: t("contact.terminal.whoami-output"),
-                contactMethodsOutput: t("contact.terminal.contact-methods-output"),
-              }}
-            />
 
             <span className="inline-block leading-relaxed tracking-wider">
               <span className="mr-1 uppercase">
@@ -227,12 +193,12 @@ const SessionHeader = ({
     className={twMerge("flex w-full flex-col gap-2", className)}
     {...props}
   >
-    <h2 className="font-title text-[var(--text-headline)] font-bold tracking-tight">
+    <h2 className="font-title font-bold tracking-tight text-[var(--text-headline)]">
       {title}
     </h2>
 
     {quote ? (
-      <p className="text-[var(--text-body)] leading-snug tracking-wide text-[color:var(--color-text-muted)]">
+      <p className="leading-snug tracking-wide text-[color:var(--color-text-muted)] text-[var(--text-body)]">
         {quote}
       </p>
     ) : null}
@@ -243,8 +209,11 @@ type NarrativeBlockProps = ComponentProps<"p"> & {
   icon: IconProp;
 };
 const NarrativeBlock = ({ icon, ...props }: NarrativeBlockProps) => (
-  <div className="flex flex-col gap-4 border-l border-[color:var(--color-border-strong)] pl-5 text-[color:var(--color-text-secondary)]">
-    <Icon icon={icon} size="md" />
-    <p className="text-[var(--text-body)] leading-relaxed tracking-wide" {...props} />
+  <div className="flex flex-col gap-4 text-[color:var(--color-text-secondary)]">
+    <Icon icon={icon} size="sm" />
+    <p
+      className="leading-relaxed tracking-wide text-[var(--text-body)]"
+      {...props}
+    />
   </div>
 );

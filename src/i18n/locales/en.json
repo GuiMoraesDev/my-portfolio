@@ -4,22 +4,36 @@
     "about-me": "About me",
     "articles": "Articles",
     "references": "References",
-    "projects": "Projects",
-    "contact": "Get in touch"
+    "projects": "Projects"
   },
   "presentation": {
     "name": "Hi, I'm",
     "title": "Senior Software Engineer",
     "subtitle": "I build frontend systems that hold up over time. My focus is Next.js, TypeScript, and making the architectural calls that keep teams from slowing down.",
-    "profile-image-alt": "Photo of Guilherme Moraes",
     "my-resume": "My resume"
   },
   "about-me": {
-    "quote": "",
-    "cards": {
-      "years-experience": "Over <highlight>{time} shipping production software</highlight>, from early-stage startups to distributed teams. I know which tradeoffs matter and which ones are a distraction.",
-      "attention-details": "I write code the next engineer can follow. <highlight>Testability and maintainability</highlight> are things I design for upfront, not fix later.",
-      "worldwide": "I've worked with people across <highlight>different timezones and cultures</highlight>. That experience made clear that communication and async habits matter as much as the code itself."
+    "how-i-work": {
+      "think": {
+        "label": "How I think",
+        "heading": "The code is not the product. The solution is.",
+        "body": "Messy code is not always a sign of bad decisions. Sometimes it was the right call at the time. I refactor when it starts slowing people down, not because it bothers me aesthetically, but when it is worth it and it gives the team more confidence to move."
+      },
+      "decide": {
+        "label": "How I decide",
+        "heading": "I default to simple",
+        "body": "Complexity is a cost. I add it only when there is a clear reason for it, and I make sure that reason is documented. Most of the time, simple is enough."
+      },
+      "ship": {
+        "label": "How I ship",
+        "heading": "I own what I put out",
+        "body": "The code has to be easy to read, understand, and change without having to find me first."
+      },
+      "collaborate": {
+        "label": "How I collaborate",
+        "heading": "I want the people around me to do well",
+        "body": "I get more satisfaction from unblocking someone than from shipping something alone. A team that moves well is worth more than any individual output. Code is written by people for people, and clarity is what makes that work."
+      }
     }
   },
   "articles": {
@@ -34,104 +48,8 @@
     "show-more": "Show more",
     "show-less": "Show less"
   },
-  "projects": {
-    "title": "Talk is cheap. Show me the code.",
-    "quote": "'The code is the documentation' - Unknown",
-    "all-projects": "Do you wanna see all projects? Click here! 💻",
-    "cards-description": {
-      "my-portfolio": "This is super portfolio project, to show my skills and experiences. It's a Next.js app with Tailwind CSS and Typescript. integrated with AI tools to generate Email and a markdown editor.",
-      "lnk-bio": "This is a link shortener that allows you to create a custom page with your social media links. It's a Next.js app with Tailwind CSS and Typescript.",
-      "prep-pal": "This is a tool that helps you to prepare for a job interview. It uses OpenAI's GPT-3 to generate questions and answers based on the job description."
-    }
-  },
-  "contact": {
-    "title": "Get in touch",
-    "subtitle": "Have a project, role, or idea worth discussing? I read every message.",
-    "terminal": {
-      "trigger": "Open contact terminal",
-      "close": "Close",
-      "message-label": "Type your message",
-      "message-placeholder": "Write your message here...",
-      "send": "Send via email",
-      "whoami-output": "Guilherme Moraes — Senior Software Engineer",
-      "contact-methods-output": "email: guimoraes.dev@gmail.com | linkedin: /in/guimoraesdev"
-    },
-    "form": {
-      "title": "Let's talk!",
-      "labels": {
-        "first_name": "Your first name",
-        "last_name": "Your last name",
-        "email": "Your best email",
-        "subject": "Subject",
-        "message": "Message <small>(markdown supported)</small>"
-      },
-      "placeholders": {
-        "email": "johnDoe@example.com",
-        "subject": "I have an opportunity for you",
-        "message": "Type your message here..."
-      },
-      "errors": {
-        "first_name_required": "First name is required",
-        "last_name_required": "Last name is required",
-        "email_invalid": "Please enter a valid email",
-        "subject_required": "Email subject is required",
-        "message_required": "Email message is required"
-      },
-      "toolbar": {
-        "undo": "Undo",
-        "redo": "Redo",
-        "bold": "Bold",
-        "italic": "Italic",
-        "underline": "Underline",
-        "strikethrough": "Strikethrough",
-        "code": "Code",
-        "divider": "Divider",
-        "generate": "Generate message with AI"
-      },
-      "toasts": {
-        "send-email": {
-          "mutation": {
-            "title": "Sending your message...",
-            "message": "Please wait a moment"
-          },
-          "error": {
-            "title": "An error occurred",
-            "message": "An error occurred while sending your message. Please try again later."
-          },
-          "success": {
-            "title": "Message sent",
-            "message": "Your message was sent successfully!"
-          }
-        },
-        "generate-email": {
-          "mutation": {
-            "title": "Generating message...",
-            "message": "Please wait a moment"
-          },
-          "error": {
-            "title": "An error occurred",
-            "message": "An error occurred while generating your message. Please try again later."
-          },
-          "success": {
-            "title": "New message generated",
-            "message": "Your message was generated successfully!"
-          }
-        }
-      },
-      "buttons": {
-        "close": "Close",
-        "send": "Send"
-      }
-    },
-    "preview": {
-      "title": "Preview",
-      "awaiting": "Your email preview will be shown here",
-      "unsupported": "Your browser does not support this feature"
-    }
-  },
   "footer": {
     "title": "Let's work together.",
-    "contact-me-by": "Reach me directly at",
     "made-with-love": "Built by Guilherme Moraes"
   }
 }

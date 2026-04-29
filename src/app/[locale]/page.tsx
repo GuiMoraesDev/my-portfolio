@@ -1,40 +1,26 @@
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Icon, type IconProp } from "@/components/atoms/Icon";
 import { Spheres } from "@/components/atoms/Spheres";
 import { Header } from "@/components/molecules/Header";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { ArticlesView } from "@/components/organisms/Articles";
+import { HowIWorkView } from "@/components/organisms/HowIWork";
 import { TerminalContact } from "@/components/organisms/TerminalContact";
 import { TestimonialsView } from "@/components/organisms/Testimonials";
 
-const yearsOfExperience = Math.floor(
-  (Date.now() - new Date(2019, 5, 11).getTime()) /
-    (1000 * 60 * 60 * 24 * 365.25),
-);
-
 export default async function Home() {
-  const locale = await getLocale();
   const t = await getTranslations();
-  const formattedYears = new Intl.NumberFormat(locale, {
-    style: "unit",
-    unit: "year",
-    unitDisplay: "long",
-  }).format(yearsOfExperience);
 
   return (
-    <main className="relative container flex flex-col items-center bg-bg-canvas font-body text-text-primary">
+    <main className="relative container flex flex-col items-center gap-12 bg-bg-canvas font-body text-text-primary">
       <Spheres />
 
       <Header />
       <TerminalContact />
 
-      <SessionWrapper
-        className="mt-14 items-start pt-12 min-[300px]:pt-20 md:pt-36 xl:pt-56"
-        id="presentation"
-      >
+      <SessionWrapper className="mt-22" id="presentation">
         <section className="flex w-full flex-col gap-8 text-text-primary md:gap-12">
           <header className="flex flex-col gap-3 md:gap-4">
             <p className="motion-enter text-sm font-medium tracking-widest uppercase">
@@ -61,42 +47,11 @@ export default async function Home() {
         </section>
       </SessionWrapper>
 
-      <SessionWrapper
-        className="pt-14 min-[300px]:pt-24 md:pt-32 xl:pt-52"
-        id="about-me"
-      >
-        <section className="grid w-full grid-cols-1 gap-14 lg:grid-cols-3 lg:gap-10">
-          <NarrativeBlock icon="Rocket">
-            {t.rich("about-me.cards.years-experience", {
-              time: formattedYears,
-              highlight: (chunks) => (
-                <span className="text-accent-400">{chunks}</span>
-              ),
-            })}
-          </NarrativeBlock>
-
-          <NarrativeBlock icon="MagnifyingGlass">
-            {t.rich("about-me.cards.attention-details", {
-              highlight: (chunks) => (
-                <span className="text-accent-400">{chunks}</span>
-              ),
-            })}
-          </NarrativeBlock>
-
-          <NarrativeBlock icon="Globe">
-            {t.rich("about-me.cards.worldwide", {
-              highlight: (chunks) => (
-                <span className="text-accent-400">{chunks}</span>
-              ),
-            })}
-          </NarrativeBlock>
-        </section>
+      <SessionWrapper id="about-me">
+        <HowIWorkView />
       </SessionWrapper>
 
-      <SessionWrapper
-        className="pt-16 min-[300px]:pt-28 md:pt-36 lg:items-start xl:pt-56"
-        id="articles"
-      >
+      <SessionWrapper id="articles">
         <SessionHeader
           title={t("articles.title")}
           quote={t("articles.quote")}
@@ -117,10 +72,7 @@ export default async function Home() {
         </section>
       </SessionWrapper>
 
-      <SessionWrapper
-        className="pt-20 min-[300px]:pt-32 md:pt-40 lg:items-start xl:pt-60"
-        id="references"
-      >
+      <SessionWrapper id="references">
         <SessionHeader
           title={t("references.title")}
           quote={t("references.quote")}
@@ -134,8 +86,6 @@ export default async function Home() {
 
       <SessionWrapper
         className={twMerge(
-          "mt-8 min-[300px]:mt-16 md:mt-28 xl:mt-44",
-          "py-4 min-[300px]:py-8 md:py-14 xl:py-24",
           "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:bg-black/90 before:opacity-95 before:content-['']",
         )}
         id="footer"
@@ -164,7 +114,7 @@ export default async function Home() {
 const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={twMerge(
-      "relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-between gap-16 font-body max-[2000px]:px-[10vw]",
+      "relative z-10 flex h-full w-full max-w-480 flex-col items-center justify-between gap-16 py-10 font-body max-[2000px]:px-[10vw]",
       className,
     )}
     {...props}
@@ -195,14 +145,4 @@ const SessionHeader = ({
       </p>
     ) : null}
   </header>
-);
-
-type NarrativeBlockProps = ComponentProps<"p"> & {
-  icon: IconProp;
-};
-const NarrativeBlock = ({ icon, ...props }: NarrativeBlockProps) => (
-  <div className="flex flex-col gap-4 text-text-secondary">
-    <Icon icon={icon} size="sm" />
-    <p className="text-base leading-relaxed tracking-wide" {...props} />
-  </div>
 );

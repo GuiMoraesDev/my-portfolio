@@ -1,11 +1,9 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-export const HowIWorkView = () => {
-  const t = useTranslations("about-me.how-i-work");
+export const HowIWorkView = async () => {
+  const t = await getTranslations("about-me.how-i-work");
 
   return (
     <div className="grid w-full grid-cols-1 gap-px bg-border-subtle md:grid-cols-2 lg:grid-cols-5">

@@ -20,7 +20,7 @@ export default async function Home() {
       <Header />
       <TerminalContact />
 
-      <SessionWrapper className="mt-22" id="presentation">
+      <SessionWrapper id="presentation">
         <section className="flex w-full flex-col gap-8 text-text-primary md:gap-12">
           <header className="flex flex-col gap-3 md:gap-4">
             <p className="motion-enter text-sm font-medium tracking-widest uppercase">

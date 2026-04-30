@@ -86,7 +86,6 @@ test.describe("Page elements", () => {
     await expect(page.locator("#presentation")).toBeVisible();
     await expect(page.locator("#about-me")).toBeVisible();
     await expect(page.locator("#articles")).toBeVisible();
-    await expect(page.locator("#references")).toBeVisible();
   });
 
   test("if the page has a header", async ({ page }) => {

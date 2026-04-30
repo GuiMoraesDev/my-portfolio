@@ -98,7 +98,6 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
 
   const navLinks = [
     { href: "#presentation", label: t("home") },
-    { href: "#references", label: t("testimonials") },
     { href: "/blog", label: t("blog") },
   ];
 

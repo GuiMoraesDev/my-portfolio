@@ -1,7 +1,6 @@
 {
   "links": {
     "home": "Início",
-    "testimonials": "Depoimentos",
     "blog": "Blog",
     "get-in-touch": "Entre em contato"
   },
@@ -40,14 +39,7 @@
     "quote": "Escrevo quando processo algo que vale compartilhar. Textos práticos sobre arquitetura, tradeoffs e problemas que encontrei em projetos reais.",
     "all-articles": "Ver todos os artigos"
   },
-  "references": {
-    "title": "O que as pessoas dizem",
-    "quote": "Feedback de engenheiros e gestores com quem trabalhei, em diferentes empresas, fusos horários e fases de produto.",
-    "leave-reference": "Trabalhou comigo? Deixe uma recomendação no LinkedIn.",
-    "show-more": "Mostrar mais",
-    "show-less": "Mostrar menos"
-  },
-  "footer": {
+"footer": {
     "title": "Vamos trabalhar juntos.",
     "made-with-love": "Feito por Guilherme Moraes"
   }

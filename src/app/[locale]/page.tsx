@@ -9,7 +9,6 @@ import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { ArticlesView } from "@/components/organisms/Articles";
 import { HowIWorkView } from "@/components/organisms/HowIWork";
 import { TerminalContact } from "@/components/organisms/TerminalContact";
-import { TestimonialsView } from "@/components/organisms/Testimonials";
 
 export default async function Home() {
   const t = await getTranslations();
@@ -73,17 +72,6 @@ export default async function Home() {
         </section>
       </SessionWrapper>
 
-      <SessionWrapper id="references">
-        <SessionHeader
-          title={t("references.title")}
-          quote={t("references.quote")}
-          className="max-w-3xl"
-        />
-
-        <section className="flex w-full flex-wrap items-start justify-start gap-14 xl:flex-nowrap">
-          <TestimonialsView />
-        </section>
-      </SessionWrapper>
 
       <SessionWrapper
         className={twMerge(

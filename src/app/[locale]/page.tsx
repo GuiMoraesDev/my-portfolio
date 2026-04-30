@@ -16,9 +16,9 @@ export default async function Home() {
   return (
     <main className="relative container flex flex-col items-center gap-12 bg-bg-canvas font-body text-text-primary">
       <Spheres />
+      <TerminalContact />
 
       <Header />
-      <TerminalContact />
 
       <SessionWrapper id="presentation">
         <section className="flex w-full flex-col gap-8 text-text-primary md:gap-12">
@@ -71,7 +71,6 @@ export default async function Home() {
           </Link>
         </section>
       </SessionWrapper>
-
 
       <SessionWrapper
         className={twMerge(

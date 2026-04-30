@@ -3,6 +3,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Lato, Fira_Sans } from "next/font/google";
 import "@/styles/globals.css";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import { twMerge } from "tailwind-merge";
 
 import { Toaster } from "@/components/atoms/Toaster";
@@ -58,14 +60,17 @@ export const metadata: Metadata = {
   },
 };
 
+type RootLayoutProps = {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+};
+
 export default async function RootLayout({
   children,
   params,
-}: {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-}) {
+}: RootLayoutProps) {
   const { locale } = await params;
+  const messages = getMessages();
 
   return (
     <html className="scroll-smooth" lang={locale}>
@@ -77,10 +82,12 @@ export default async function RootLayout({
         )}
       >
         <QueryProvider>
-          {children}
-          <Toaster />
-          <Analytics />
-          <SpeedInsights />
+          <NextIntlClientProvider messages={messages}>
+            {children}
+            <Toaster />
+            <Analytics />
+            <SpeedInsights />
+          </NextIntlClientProvider>
         </QueryProvider>
       </body>
     </html>

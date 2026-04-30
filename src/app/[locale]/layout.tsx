@@ -7,7 +7,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { twMerge } from "tailwind-merge";
 
-import { Toaster } from "@/components/atoms/Toaster";
+import { Spheres } from "@/components/atoms/Spheres";
+import { TerminalContact } from "@/components/molecules/TerminalContact";
 import { QueryProvider } from "@/provider/QueryProvider";
 
 const lato = Lato({
@@ -73,7 +74,7 @@ export default async function RootLayout({
   const messages = getMessages();
 
   return (
-    <html className="scroll-smooth" lang={locale}>
+    <html className="scroll-smooth" data-scroll-behavior="smooth" lang={locale}>
       <body
         className={twMerge(
           "flex h-dvh w-full flex-col items-center gap-3 overflow-x-hidden bg-bg-canvas text-text-primary",
@@ -83,8 +84,13 @@ export default async function RootLayout({
       >
         <QueryProvider>
           <NextIntlClientProvider messages={messages}>
-            {children}
-            <Toaster />
+            <main className="relative container flex flex-col items-center gap-12 bg-bg-canvas font-body text-text-primary">
+              <Spheres />
+
+              <TerminalContact />
+
+              {children}
+            </main>
             <Analytics />
             <SpeedInsights />
           </NextIntlClientProvider>

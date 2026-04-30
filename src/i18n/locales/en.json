@@ -10,28 +10,26 @@
     "subtitle": "I build frontend systems that hold up over time. My focus is Next.js, TypeScript, and making the architectural calls that keep teams from slowing down.",
     "my-resume": "My resume"
   },
-  "about-me": {
-    "how-i-work": {
-      "think": {
-        "label": "How I think",
-        "heading": "The code is not the product. The solution is.",
-        "body": "Messy code is not always a sign of bad decisions. Sometimes it was the right call at the time. I refactor when it starts slowing people down, not because it bothers me aesthetically, but when it is worth it and it gives the team more confidence to move."
-      },
-      "decide": {
-        "label": "How I decide",
-        "heading": "I default to simple",
-        "body": "Complexity is a cost. I add it only when there is a clear reason for it, and I make sure that reason is documented. Most of the time, simple is enough."
-      },
-      "ship": {
-        "label": "How I ship",
-        "heading": "I own what I put out",
-        "body": "The code has to be easy to read, understand, and change without having to find me first."
-      },
-      "collaborate": {
-        "label": "How I collaborate",
-        "heading": "I want the people around me to do well",
-        "body": "I get more satisfaction from unblocking someone than from shipping something alone. A team that moves well is worth more than any individual output. Code is written by people for people, and clarity is what makes that work."
-      }
+  "how-i-work": {
+    "think": {
+      "label": "How I think",
+      "heading": "The code is not the product. The solution is.",
+      "body": "Messy code is not always a sign of bad decisions. Sometimes it was the right call at the time. I refactor when it starts slowing people down, not because it bothers me aesthetically, but when it is worth it and it gives the team more confidence to move."
+    },
+    "decide": {
+      "label": "How I decide",
+      "heading": "I default to simple",
+      "body": "Complexity is a cost. I add it only when there is a clear reason for it, and I make sure that reason is documented. Most of the time, simple is enough."
+    },
+    "ship": {
+      "label": "How I ship",
+      "heading": "I own what I put out",
+      "body": "The code has to be easy to read, understand, and change without having to find me first."
+    },
+    "collaborate": {
+      "label": "How I collaborate",
+      "heading": "I want the people around me to do well",
+      "body": "I get more satisfaction from unblocking someone than from shipping something alone. A team that moves well is worth more than any individual output. Code is written by people for people, and clarity is what makes that work."
     }
   },
   "articles": {
@@ -39,7 +37,7 @@
     "quote": "I write when I've worked through something worth sharing. Practical pieces on architecture, tradeoffs, and problems I've run into in real codebases.",
     "all-articles": "View all posts"
   },
-"footer": {
+  "footer": {
     "title": "Let's work together.",
     "made-with-love": "Built by Guilherme Moraes"
   }

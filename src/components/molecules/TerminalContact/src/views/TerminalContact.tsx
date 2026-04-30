@@ -2,8 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const GITHUB_URL = "https://github.com/GuiMoraesDev";
-const LINKEDIN_URL = "https://www.linkedin.com/in/guimoraesdev";
+import { GITHUB_URL, LINKEDIN_URL } from "@/constants/socialMedia";
 
 type LineType = "input" | "output" | "error" | "link";
 

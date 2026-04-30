@@ -3,22 +3,56 @@ import { getTranslations } from "next-intl/server";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Spheres } from "@/components/atoms/Spheres";
-import { Header } from "@/components/molecules/Header";
+import { BentoCell } from "@/components/atoms/BentoCell";
+import { LanguageSwitcher } from "@/components/atoms/LanguageSwitcher";
+import { MenuWrapper } from "@/components/atoms/MenuWrapper";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { ArticlesView } from "@/components/organisms/Articles";
-import { HowIWorkView } from "@/components/organisms/HowIWork";
-import { TerminalContact } from "@/components/organisms/TerminalContact";
 
 export default async function Home() {
   const t = await getTranslations();
 
-  return (
-    <main className="relative container flex flex-col items-center gap-12 bg-bg-canvas font-body text-text-primary">
-      <Spheres />
-      <TerminalContact />
+  const NAV_LINKS = [
+    { href: "#presentation", label: t("links.home") },
+    { href: "/blog", label: t("links.blog") },
+  ];
 
-      <Header />
+  return (
+    <>
+      <header
+        className={twMerge(
+          "sticky top-0 z-20 flex h-20 w-full max-w-480 shrink-0 flex-col items-center justify-between gap-16 font-body max-[2000px]:px-[10vw]",
+          "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:bg-plum-900 before:opacity-95 before:content-['']",
+        )}
+      >
+        <nav className="relative flex h-full w-full items-center justify-between">
+          <MenuWrapper>
+            <ul className="relative flex flex-col gap-8 md:flex-row md:items-center">
+              {NAV_LINKS.map(({ href, label }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    className="text-sm font-medium tracking-widest text-text-secondary uppercase transition hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <section className="relative flex flex-col gap-4 md:flex-row md:items-center">
+              <Link
+                href="#footer"
+                className="w-fit rounded-sm border border-accent-400 px-4 py-1.5 text-sm font-semibold tracking-widest text-accent-400 uppercase transition hover:bg-accent-400 hover:text-plum-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
+              >
+                {t("links.get-in-touch")}
+              </Link>
+
+              <LanguageSwitcher />
+            </section>
+          </MenuWrapper>
+        </nav>
+      </header>
 
       <SessionWrapper id="presentation">
         <section className="flex w-full flex-col gap-8 text-text-primary md:gap-12">
@@ -48,28 +82,66 @@ export default async function Home() {
       </SessionWrapper>
 
       <SessionWrapper id="about-me">
-        <HowIWorkView />
+        <div className="grid w-full grid-cols-1 gap-1.5 md:grid-cols-2 lg:grid-cols-3">
+          <BentoCell.Wrapper className="motion-enter bg-bg-elevated/70 lg:col-span-2">
+            <BentoCell.Label>{t("how-i-work.think.label")}</BentoCell.Label>
+            <BentoCell.Heading>
+              {t("how-i-work.think.heading")}
+            </BentoCell.Heading>
+            <BentoCell.Body>{t("how-i-work.think.body")}</BentoCell.Body>
+          </BentoCell.Wrapper>
+
+          <BentoCell.Wrapper className="motion-enter motion-enter-delay-1 bg-plum-700/60">
+            <BentoCell.Label>{t("how-i-work.decide.label")}</BentoCell.Label>
+            <BentoCell.Heading>
+              {t("how-i-work.decide.heading")}
+            </BentoCell.Heading>
+            <BentoCell.Body>{t("how-i-work.decide.body")}</BentoCell.Body>
+          </BentoCell.Wrapper>
+
+          <BentoCell.Wrapper className="motion-enter motion-enter-delay-2 bg-plum-500/40">
+            <BentoCell.Label>{t("how-i-work.ship.label")}</BentoCell.Label>
+            <BentoCell.Heading>
+              {t("how-i-work.ship.heading")}
+            </BentoCell.Heading>
+            <BentoCell.Body>{t("how-i-work.ship.body")}</BentoCell.Body>
+          </BentoCell.Wrapper>
+
+          <BentoCell.Wrapper className="motion-enter motion-enter-delay-1 bg-bg-elevated/40 md:col-span-2 lg:col-span-2">
+            <BentoCell.Label>
+              {t("how-i-work.collaborate.label")}
+            </BentoCell.Label>
+            <BentoCell.Heading>
+              {t("how-i-work.collaborate.heading")}
+            </BentoCell.Heading>
+            <BentoCell.Body>{t("how-i-work.collaborate.body")}</BentoCell.Body>
+          </BentoCell.Wrapper>
+        </div>
       </SessionWrapper>
 
       <SessionWrapper id="articles">
-        <SessionHeader
-          title={t("articles.title")}
-          quote={t("articles.quote")}
-          className="max-w-3xl"
-        />
+        <header className="flex w-full flex-col gap-2">
+          <h2 className="font-title text-headline font-bold tracking-tight">
+            {t("articles.title")}
+          </h2>
+
+          <p className="text-base leading-snug tracking-wide text-text-muted">
+            {t("articles.quote")}
+          </p>
+        </header>
 
         <section className="flex w-full flex-col items-center justify-center gap-6">
           <ArticlesView />
         </section>
 
-        <section className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
+        <footer className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
           <Link
             href="/blog"
             className="rounded-sm p-3 text-center text-sm leading-tight font-medium text-text-secondary hover:text-text-primary hover:underline"
           >
             {t("articles.all-articles")}
           </Link>
-        </section>
+        </footer>
       </SessionWrapper>
 
       <SessionWrapper
@@ -95,7 +167,7 @@ export default async function Home() {
           <SocialMedia />
         </footer>
       </SessionWrapper>
-    </main>
+    </>
   );
 }
 
@@ -107,30 +179,4 @@ const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
     )}
     {...props}
   />
-);
-
-type SessionHeaderProps = ComponentProps<"h2"> & {
-  title: string;
-  quote: string;
-};
-const SessionHeader = ({
-  title,
-  quote,
-  className,
-  ...props
-}: SessionHeaderProps) => (
-  <header
-    className={twMerge("flex w-full flex-col gap-2", className)}
-    {...props}
-  >
-    <h2 className="font-title text-headline font-bold tracking-tight">
-      {title}
-    </h2>
-
-    {quote ? (
-      <p className="text-base leading-snug tracking-wide text-text-muted">
-        {quote}
-      </p>
-    ) : null}
-  </header>
 );

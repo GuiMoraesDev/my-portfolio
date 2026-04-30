@@ -99,7 +99,7 @@ export const HeaderComponent = (props: ComponentProps<"header">) => {
   const navLinks = [
     { href: "#presentation", label: t("home") },
     { href: "#references", label: t("testimonials") },
-    { href: "#articles", label: t("blog") },
+    { href: "/blog", label: t("blog") },
   ];
 
   const handleToggleMenu = () => setIsOpen((s) => !s);

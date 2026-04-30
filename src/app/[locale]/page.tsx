@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
@@ -63,12 +64,12 @@ export default async function Home() {
         </section>
 
         <section className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
-          <a
-            href="https://dev.to/guimoraes"
+          <Link
+            href="/blog"
             className="rounded-sm p-3 text-center text-sm leading-tight font-medium text-text-secondary hover:text-text-primary hover:underline"
           >
             {t("articles.all-articles")}
-          </a>
+          </Link>
         </section>
       </SessionWrapper>
 

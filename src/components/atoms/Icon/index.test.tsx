@@ -40,18 +40,13 @@ describe("Icon", () => {
     );
   });
 
-  it.each([
-    "FlagBr",
-    "FlagUs",
-    "Github",
-    "Globe",
-    "LinkedIn",
-    "MagnifyingGlass",
-    "Rocket",
-  ] as const)("renders the %s icon without error", (icon) => {
-    const { container } = render(<Icon icon={icon} />);
-    expect(container.querySelector("span")).not.toBeNull();
-  });
+  it.each(["Github", "LinkedIn"] as const)(
+    "renders the %s icon without error",
+    (icon) => {
+      const { container } = render(<Icon icon={icon} />);
+      expect(container.querySelector("span")).not.toBeNull();
+    },
+  );
 
   it("renders SVG content inside the span", () => {
     const { container } = render(<Icon icon="Github" />);

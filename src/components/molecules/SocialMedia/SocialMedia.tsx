@@ -7,6 +7,7 @@ import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Icon } from "@/components/atoms/Icon";
+import { GITHUB_URL, LINKEDIN_URL } from "@/constants/socialMedia";
 
 export const SocialMediaComponent = ({
   className,
@@ -24,7 +25,9 @@ export const SocialMediaComponent = ({
       {...props}
     >
       <Link
-        href="https://github.com/GuiMoraesDev"
+        href={GITHUB_URL}
+        target="_blank"
+        rel="noopener noreferrer"
         className="motion-hover-lift order-2 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 md:order-1"
       >
         <Icon icon="Github" size="md" />
@@ -32,7 +35,9 @@ export const SocialMediaComponent = ({
       </Link>
 
       <Link
-        href="https://www.linkedin.com/in/guimoraesdev"
+        href={LINKEDIN_URL}
+        target="_blank"
+        rel="noopener noreferrer"
         className="motion-hover-lift order-2 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 md:order-1"
       >
         <Icon icon="LinkedIn" size="md" />

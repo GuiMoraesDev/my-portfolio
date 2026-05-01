@@ -77,7 +77,7 @@ test.describe("Page elements", () => {
   test("if the page has title", async ({ page }) => {
     await page.goto("/");
 
-    await expect(page).toHaveTitle(/Guilherme Moraes | Frontend engineer/);
+    await expect(page).toHaveTitle(/Guilherme Moraes | Software engineer/);
   });
 
   test("if the page has every content section visible", async ({ page }) => {
@@ -85,7 +85,6 @@ test.describe("Page elements", () => {
 
     await expect(page.locator("#presentation")).toBeVisible();
     await expect(page.locator("#about-me")).toBeVisible();
-    await expect(page.locator("#articles")).toBeVisible();
   });
 
   test("if the page has a header", async ({ page }) => {

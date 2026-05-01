@@ -1,128 +1,45 @@
 {
   "links": {
-    "presentation": "Apresentação",
-    "about-me": "Sobre mim",
-    "articles": "Artigos",
-    "references": "Referencias",
-    "projects": "Projetos",
-    "contact": "Entrar em contato"
+    "home": "Início",
+    "blog": "Blog",
+    "get-in-touch": "Entre em contato"
   },
   "presentation": {
-    "name": "E aí, meu nome é",
-    "title": "Engenheiro de software",
-    "subtitle": "Sou especialista em criação de apps utilizando Next.js, TypeScript, Node.js, testes automatizados e muito mais!",
-    "profile-image-alt": "Um avatar meu gerado por IA",
+    "name": "Olá, sou",
+    "title": "Engenheiro de Software Sênior",
+    "subtitle": "Construo sistemas frontend que se sustentam ao longo do tempo. Foco em Next.js, TypeScript e nas decisões arquiteturais que evitam que times percam velocidade.",
     "my-resume": "Meu currículo"
   },
-  "about-me": {
-    "quote": "'Codificando códigos e histórias, uma fotografia da minha odisseia digital' - ChatGPT",
-    "cards": {
-      "years-experience": "Tenho <highlight>{time} de experiência</highlight> em desenvolvimento de software, sou especialista em criar interfaces web amigáveis com foco em <highlight>escalabilidade</highlight>.",
-      "attention-details": "Minha atenção aos detalhes garante uma experiência de usuário perfeita, enquanto meu código é projetado para <highlight> fácil manutenção, testabilidade e escalabilidade</highlight>.",
-      "worldwide": "Adotando uma <highlight>mentalidade de remote-first</highlight>, tive a oportunidade de <highlight>colaborar em todo o mundo</highlight> criando soluções digitais excepcionais."
+  "how-i-work": {
+    "think": {
+      "label": "Como penso",
+      "heading": "O código não é o produto. A solução é.",
+      "body": "Código bagunçado nem sempre é sinal de má decisão. Às vezes foi a escolha certa na época. Refatoro quando começa a travar o time, não por estética, mas quando vale a pena e dá mais confiança pra seguir em frente."
+    },
+    "decide": {
+      "label": "Como decido",
+      "heading": "Prefiro o simples por padrão",
+      "body": "Complexidade tem um custo. Só adiciono quando há uma razão clara pra isso, e me certifico de que essa razão está documentada. Na maioria das vezes, simples é suficiente."
+    },
+    "ship": {
+      "label": "Como entrego",
+      "heading": "Sou responsável pelo que coloco em produção",
+      "body": "O código tem que ser fácil de ler, entender e mudar sem precisar me encontrar primeiro."
+    },
+    "collaborate": {
+      "label": "Como colaboro",
+      "heading": "Quero que as pessoas ao meu redor se saiam bem",
+      "body": "Tenho mais satisfação em desbloquear alguém do que em entregar algo sozinho. Um time que se move bem vale mais do que qualquer resultado individual. Código é feito por pessoas para pessoas, e clareza é o que torna isso possível."
     }
   },
   "articles": {
-    "title": "Explorando meu conhecimento",
-    "quote": "'Lorem ipsum dolor sit amet' - lipsum.com",
-    "all-articles": "Quer ver todos os artigos? Clique aqui! 📚"
-  },
-  "references": {
-    "title": "O que estão dizendo sobre mim?",
-    "quote": "'Ele é o menino mais bonito do mundo' - Mãe",
-    "leave-reference": "Você já trabalhou comigo? Deixe uma recomendação! 📝",
-    "show-more": "Mostrar mais",
-    "show-less": "Mostrar menos"
-  },
-  "projects": {
-    "title": "Falar é fácil. Mostre-me o código.",
-    "quote": "'O código é a documentação' - Desconhecido",
-    "all-projects": "Quer ver todos os projetos? Clique aqui! 💻",
-    "cards-description": {
-      "my-portfolio": "Este é um super projeto de portfólio, para mostrar minhas habilidades e experiências. É um aplicativo Next.js com Tailwind CSS e Typescript. integrado com ferramentas de IA para gerar e-mail e um editor de descontos.",
-      "lnk-bio": "Este é um encurtador de links que permite criar uma página personalizada com seus links de mídia social. É um aplicativo Next.js com Tailwind CSS e Typescript.",
-      "prep-pal": "Esta é uma ferramenta que ajuda você a se preparar para uma entrevista de emprego. Ele usa GPT-3 da OpenAI para gerar perguntas e respostas com base na descrição do cargo."
-    }
-  },
-  "contact": {
-    "title": "Entrar em contato",
-    "subtitle": "E aí! Tem algo em mente? Manda uma mensagem pra mim.",
-    "form": {
-      "title": "Vamos conversar",
-      "labels": {
-        "first_name": "Seu nome",
-        "last_name": "Seu sobrenome",
-        "email": "Seu melhor e-mail",
-        "subject": "Assunto",
-        "message": "Mensagem <small>(Markdown suportado)</small>"
-      },
-      "placeholders": {
-        "email": "johnDoe@exemplo.com.br",
-        "subject": "Eu tenho uma oportunidade pra você",
-        "message": "Digite sua mensagem aqui..."
-      },
-      "errors": {
-        "first_name_required": "Nome é obrigatório",
-        "last_name_required": "Sobrenome é obrigatório",
-        "email_invalid": "Por favor, insira um e-mail válido",
-        "subject_required": "O assunto do e-mail é obrigatório",
-        "message_required": "A mensagem do e-mail é obrigatória"
-      },
-      "toolbar": {
-        "undo": "Desfazer",
-        "redo": "Refazer",
-        "bold": "Negrito",
-        "italic": "Itálico",
-        "underline": "Sublinhado",
-        "strikethrough": "Riscado",
-        "code": "Código",
-        "divider": "Divisor",
-        "generate": "Gerar mensagem com IA"
-      },
-      "toasts": {
-        "send-email": {
-          "mutation": {
-            "title": "Enviando sua mensagem...",
-            "message": "Por favor, aguarde um momento"
-          },
-          "error": {
-            "title": "Ocorreu um erro",
-            "message": "Ocorreu um erro enquanto enviava sua mensagem. Por favor, tente novamente mais tarde."
-          },
-          "success": {
-            "title": "Mensagem enviada",
-            "message": "Sua mensagem foi enviada com sucesso!"
-          }
-        },
-        "generate-email": {
-          "mutation": {
-            "title": "Gerando mensagem...",
-            "message": "Por favor, aguarde um momento"
-          },
-          "error": {
-            "title": "Ocorreu um erro",
-            "message": "Ocorreu um erro enquanto gerava sua mensagem. Por favor, tente novamente mais tarde."
-          },
-          "success": {
-            "title": "Nova mensagem gerada",
-            "message": "Sua mensagem foi gerada com sucesso!"
-          }
-        }
-      },
-      "buttons": {
-        "close": "Fechar",
-        "send": "Enviar"
-      }
-    },
-    "preview": {
-      "title": "Preview",
-      "awaiting": "Um preview do seu e-mail vai aparecer aqui",
-      "unsupported": "Seu navegador não suporta este recurso"
-    }
+    "title": "Artigos",
+    "quote": "Escrevo quando processo algo que vale compartilhar. Textos práticos sobre arquitetura, tradeoffs e problemas que encontrei em projetos reais.",
+    "all-articles": "Ver todos os artigos"
   },
   "footer": {
     "title": "Que bom ter você aqui!",
     "contact-me-by": "Entre em contato comigo por",
-    "made-with-love": "Feito com amor"
+    "made-with-love": "Feito com café"
   }
 }

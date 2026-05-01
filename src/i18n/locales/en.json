@@ -1,128 +1,45 @@
 {
   "links": {
-    "presentation": "Presentation",
-    "about-me": "About me",
-    "articles": "Articles",
-    "references": "References",
-    "projects": "Projects",
-    "contact": "Get in touch"
+    "home": "Home",
+    "blog": "Blog",
+    "get-in-touch": "Get in touch"
   },
   "presentation": {
-    "name": "Hey, my name is",
-    "title": "Software Engineer",
-    "subtitle": "I'm specialist in creating apps using Next.js, TypeScript, Node.js, automated tests, and more!",
-    "profile-image-alt": "An IA generated avatar from myself",
+    "name": "Hi, I'm",
+    "title": "Senior Software Engineer",
+    "subtitle": "I build frontend systems that hold up over time. My focus is Next.js, TypeScript, and making the architectural calls that keep teams from slowing down.",
     "my-resume": "My resume"
   },
-  "about-me": {
-    "quote": "'Crafting code and stories, a snapshot of my digital odyssey' - ChatGPT",
-    "cards": {
-      "years-experience": "With <highlight>{time} of experience</highlight> in software development, I specialize in creating user-friendly web interfaces with a focus on <highlight>scalability</highlight>.",
-      "attention-details": "My attention to detail ensures a seamless user experience, while my code is designed for <highlight> easy maintenance, testability, and scalability</highlight>.",
-      "worldwide": "Embracing a <highlight>remote-first mindset</highlight>, I had the opportunity to <highlight>collaborate worldwide</highlight> creating exceptional digital solutions."
+  "how-i-work": {
+    "think": {
+      "label": "How I think",
+      "heading": "The code is not the product. The solution is.",
+      "body": "Messy code is not always a sign of bad decisions. Sometimes it was the right call at the time. I refactor when it starts slowing people down, not because it bothers me aesthetically, but when it is worth it and it gives the team more confidence to move."
+    },
+    "decide": {
+      "label": "How I decide",
+      "heading": "I default to simple",
+      "body": "Complexity is a cost. I add it only when there is a clear reason for it, and I make sure that reason is documented. Most of the time, simple is enough."
+    },
+    "ship": {
+      "label": "How I ship",
+      "heading": "I own what I put out",
+      "body": "The code has to be easy to read, understand, and change without having to find me first."
+    },
+    "collaborate": {
+      "label": "How I collaborate",
+      "heading": "I want the people around me to do well",
+      "body": "I get more satisfaction from unblocking someone than from shipping something alone. A team that moves well is worth more than any individual output. Code is written by people for people, and clarity is what makes that work."
     }
   },
   "articles": {
-    "title": "Exploring my know-how",
-    "quote": "'Lorem ipsum dolor sit amet' - lipsum.com",
-    "all-articles": "Do you wanna see all articles? Click here! 📚"
-  },
-  "references": {
-    "title": "What's the buzz about me?",
-    "quote": "'He is the most handsome boy in the world' - Mom",
-    "leave-reference": "Have you work with me? Leave a recommendation! 📝",
-    "show-more": "Show more",
-    "show-less": "Show less"
-  },
-  "projects": {
-    "title": "Talk is cheap. Show me the code.",
-    "quote": "'The code is the documentation' - Unknown",
-    "all-projects": "Do you wanna see all projects? Click here! 💻",
-    "cards-description": {
-      "my-portfolio": "This is super portfolio project, to show my skills and experiences. It's a Next.js app with Tailwind CSS and Typescript. integrated with AI tools to generate Email and a markdown editor.",
-      "lnk-bio": "This is a link shortener that allows you to create a custom page with your social media links. It's a Next.js app with Tailwind CSS and Typescript.",
-      "prep-pal": "This is a tool that helps you to prepare for a job interview. It uses OpenAI's GPT-3 to generate questions and answers based on the job description."
-    }
-  },
-  "contact": {
-    "title": "Get in touch!",
-    "subtitle": "Hey there! Got something on your mind? Shoot me a message",
-    "form": {
-      "title": "Let's talk!",
-      "labels": {
-        "first_name": "Your first name",
-        "last_name": "Your last name",
-        "email": "Your best email",
-        "subject": "Subject",
-        "message": "Message <small>(markdown supported)</small>"
-      },
-      "placeholders": {
-        "email": "johnDoe@example.com",
-        "subject": "I have an opportunity for you",
-        "message": "Type your message here..."
-      },
-      "errors": {
-        "first_name_required": "First name is required",
-        "last_name_required": "Last name is required",
-        "email_invalid": "Please enter a valid email",
-        "subject_required": "Email subject is required",
-        "message_required": "Email message is required"
-      },
-      "toolbar": {
-        "undo": "Undo",
-        "redo": "Redo",
-        "bold": "Bold",
-        "italic": "Italic",
-        "underline": "Underline",
-        "strikethrough": "Strikethrough",
-        "code": "Code",
-        "divider": "Divider",
-        "generate": "Generate message with AI"
-      },
-      "toasts": {
-        "send-email": {
-          "mutation": {
-            "title": "Sending your message...",
-            "message": "Please wait a moment"
-          },
-          "error": {
-            "title": "An error occurred",
-            "message": "An error occurred while sending your message. Please try again later."
-          },
-          "success": {
-            "title": "Message sent",
-            "message": "Your message was sent successfully!"
-          }
-        },
-        "generate-email": {
-          "mutation": {
-            "title": "Generating message...",
-            "message": "Please wait a moment"
-          },
-          "error": {
-            "title": "An error occurred",
-            "message": "An error occurred while generating your message. Please try again later."
-          },
-          "success": {
-            "title": "New message generated",
-            "message": "Your message was generated successfully!"
-          }
-        }
-      },
-      "buttons": {
-        "close": "Close",
-        "send": "Send"
-      }
-    },
-    "preview": {
-      "title": "Preview",
-      "awaiting": "Your email preview will be shown here",
-      "unsupported": "Your browser does not support this feature"
-    }
+    "title": "Writing",
+    "quote": "I write when I've worked through something worth sharing. Practical pieces on architecture, tradeoffs, and problems I've run into in real codebases.",
+    "all-articles": "View all posts"
   },
   "footer": {
     "title": "Nice to have you here!",
     "contact-me-by": "Contact me by",
-    "made-with-love": "Made with love"
+    "made-with-love": "Made with coffee"
   }
 }

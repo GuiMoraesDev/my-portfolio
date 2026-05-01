@@ -1,56 +1,53 @@
-"use client";
-
 import { DownloadIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Icon } from "@/components/atoms/Icon";
+import { GITHUB_URL, LINKEDIN_URL } from "@/constants/socialMedia";
 
-export const SocialMediaComponent = ({
+export const SocialMedia = async ({
   className,
   ...props
 }: ComponentProps<"div">) => {
-  const t = useTranslations("presentation");
-
-  const handleDownloadCv = () => {
-    window.open("/GM-Resume.pdf");
-  };
+  const t = await getTranslations("presentation");
 
   return (
     <div
-      className={twMerge(
-        "flex flex-wrap items-center justify-evenly gap-8 md:flex-nowrap md:justify-start",
-        className,
-      )}
+      className={twMerge("flex items-center justify-evenly gap-6", className)}
       {...props}
     >
       <Link
-        href="https://github.com/GuiMoraesDev"
-        className="order-2 flex cursor-pointer flex-col items-center justify-center gap-2 md:order-1"
+        href={GITHUB_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="motion-hover-lift order-2 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 md:order-1"
       >
-        <Icon icon="Github" size="md" />
+        <Icon name="Github" size="md" />
         <span className="text-sm tracking-wider text-white">GitHub</span>
       </Link>
 
       <Link
-        href="https://www.linkedin.com/in/guimoraesdev"
-        className="order-2 flex cursor-pointer flex-col items-center justify-center gap-2 md:order-1"
+        href={LINKEDIN_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="motion-hover-lift order-2 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 md:order-1"
       >
-        <Icon icon="LinkedIn" size="md" />
+        <Icon name="LinkedIn" size="md" />
         <span className="text-sm tracking-wider text-white">LinkedIn</span>
       </Link>
 
-      <button
-        onClick={handleDownloadCv}
-        className="group bg-plum-500/90 hover:shadow-plum-100/80 order-1 flex w-full min-w-40 cursor-pointer items-center justify-center gap-2 rounded-md p-4 shadow-sm transition md:w-auto"
+      <Link
+        href="/GM-Resume.pdf"
+        target="_blank"
+        className="motion-hover-lift group order-1 flex w-full cursor-pointer items-center justify-center gap-2 rounded-md bg-plum-500/90 p-4 shadow-sm transition-colors duration-200 hover:bg-plum-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 md:w-auto"
       >
-        <DownloadIcon className="h-6 w-6 group-hover:animate-bounce" />
-        <span className="text-sm tracking-wider text-white">
+        <DownloadIcon className="h-6 w-6" />
+        <span className="text-sm tracking-wider whitespace-nowrap text-white">
           {t("my-resume")}
         </span>
-      </button>
+      </Link>
     </div>
   );
 };

@@ -1,113 +1,122 @@
 # External Integrations
 
-**Analysis Date:** 2026-04-28
+**Analysis Date:** 2026-04-30
 
 ## APIs & External Services
 
-**AI / Language Models:**
-- OpenAI - Used via the `openai` SDK (^6.10.0)
-  - SDK: `openai` npm package
-  - Auth: `NEXT_PUBLIC_OPENAI_API_KEY`
-  - Purpose: AI-generated content (likely message/text generation based on `src/schemas/generateMessage/`)
-
-**Email Delivery:**
-- Resend - Transactional email sending via `resend` SDK (^6.6.0)
-  - SDK: `resend` npm package
-  - Auth: `NEXT_PUBLIC_RESEND_API_KEY`
-  - Templates built with `@react-email/components` and `@react-email/markdown`
+**Publishing / Content:**
+- Dev.to API (public, no auth required) - Fetches published articles for the portfolio
+  - Endpoint: `https://dev.to/api/articles?username=guimoraes`
+  - Consumed by: `src/app/api/articles/list/route.ts` (Next.js Route Handler)
+  - Client service: `src/services/api/api.articles.ts` calls the internal route at `/api/articles/list`
+  - Response type: `DevDotToArticle[]` defined in `src/app/api/articles/list/src/@types/index.ts`
 
 **GitHub:**
-- GitHub REST API (public) - Fetching repository data
-  - Auth: `NEXT_PUBLIC_GH_TOKEN` (personal access token)
-  - Used by: `src/app/api/repos/list/route.ts` (currently reads from local JSON, token may be used elsewhere)
-  - Remote image patterns configured for `raw.githubusercontent.com` in `next.config.ts`
+- GitHub REST API - Remote image hosting from `raw.githubusercontent.com`
+  - Auth: `NEXT_PUBLIC_GH_TOKEN` (personal access token; declared in `.env.example` but no active API call using it was found in current source)
+  - Remote image pattern allowed in `next.config.ts`: `raw.githubusercontent.com`
+  - GitHub profile URL used as static links in `src/constants/socialMedia.ts` and `src/components/molecules/SocialMedia/SocialMedia.tsx`
 
-**Publishing / Content:**
-- Dev.to API (public, no auth) - Fetching published articles
-  - Endpoint: `https://dev.to/api/articles?username=guimoraes`
-  - Used by: `src/app/api/articles/list/route.ts`
-  - No API key required for read access
+**Email / Messaging:**
+- Resend - Declared in `.env.example` as `NEXT_PUBLIC_RESEND_API_KEY`
+  - Status: No active Resend SDK (`resend` package) is present in `package.json`. The env var exists but no integration code was found in current source. Likely removed or planned.
+
+**AI:**
+- OpenAI - Declared in `.env.example` as `NEXT_PUBLIC_OPENAI_API_KEY`
+  - Status: No `openai` SDK package present in `package.json`. The env var exists but no integration code was found in current source. Likely removed or planned.
 
 ## Data Storage
 
 **Databases:**
 - None detected - no database client or ORM in dependencies
 
-**Static Data (JSON):**
-- `src/app/api/repos/list/src/data/repositories.json` - Hardcoded repository list
-- `src/app/api/testimonials/list/src/data/testimonials.json` - Hardcoded testimonials
+**Static Data (local):**
+- `src/data/blog-posts.ts` - Hardcoded internal blog post records (title, slug, date, content)
+- `src/i18n/locales/en.json` - English translation strings
+- `src/i18n/locales/pt.json` - Portuguese translation strings
+- `src/posts/` - Raw blog post content files (Markdown/MDX); `src/posts/draft/` for drafts
 
 **File Storage:**
-- Local filesystem only (public assets in `public/`)
-- Remote images proxied from `raw.githubusercontent.com` via Next.js image optimization
+- Local filesystem only; public assets served from `public/`
+  - `public/cover/` - Open Graph images (256p, 800p, 1800p)
+  - `public/projects/` - Project screenshots
+  - `public/testimonial/` - Testimonial images
+- Remote images proxied via Next.js image optimization from `raw.githubusercontent.com`
 
 **Caching:**
-- @tanstack/react-query 5.90.12 - Client-side API response caching
-- No external cache service (Redis, Memcached, etc.) detected
+- @tanstack/react-query 5.100.6 - Client-side API response caching (no external cache service)
 
 ## Authentication & Identity
 
 **Auth Provider:**
-- None detected - no authentication library (NextAuth, Clerk, Auth0, etc.) in dependencies
-- The site is a portfolio and appears to have no user authentication
+- None - no authentication library detected (no NextAuth, Clerk, Auth0, etc.)
+- Site is a public portfolio with no user authentication
 
 ## Monitoring & Observability
 
 **Error Tracking:**
-- Sentry (`@sentry/nextjs` ^10.1.0) - Full-stack error monitoring
-  - DSN: configured in `sentry.server.config.ts`, `sentry.edge.config.ts`, `instrumentation-client.ts`
-  - Env vars: `NEXT_PUBLIC_SENTRY_ORG`, `NEXT_PUBLIC_SENTRY_PROJECT`
-  - Features enabled: Session Replay (`Sentry.replayIntegration()`), request error capture, router transition tracking
-  - Source maps uploaded during CI builds
+- Sentry (`@sentry/nextjs` 10.51.0) - Full-stack error monitoring
+  - DSN (hardcoded): `https://72a10c22d8b66638f1beb39b8deee486@o4506790144245760.ingest.us.sentry.io/4506791074922496`
+  - Sentry org: `guilherme-moraes`, project: `my-portifolio` (in `next.config.ts`)
   - Tunnel route: `/monitoring` (bypasses ad blockers)
+  - Features: `tracesSampleRate: 1`, `enableLogs: true`, `sendDefaultPii: true`
   - Config files:
-    - `sentry.server.config.ts` - Node.js runtime
-    - `sentry.edge.config.ts` - Edge runtime
-    - `src/instrumentation.ts` - Next.js instrumentation hook
-    - `src/instrumentation-client.ts` - Client-side init
-  - Build plugin config: `.env.sentry-build-plugin`, `.sentryclirc`
+    - `sentry.server.config.ts` - Node.js runtime initialization
+    - `sentry.edge.config.ts` - Edge runtime initialization
+    - `src/instrumentation.ts` - Next.js instrumentation hook (loads configs by runtime)
+  - Source maps uploaded during CI builds (`silent: !process.env.CI` in `next.config.ts`)
+  - Build plugin config: `.env.sentry-build-plugin`
 
 **Analytics:**
-- Vercel Analytics (`@vercel/analytics` ^1.6.1) - Page view and event analytics
+- Vercel Analytics (`@vercel/analytics` 2.0.1) - Page view analytics
   - Component: `<Analytics />` rendered in `src/app/[locale]/layout.tsx`
-  - No additional env vars required (auto-detected on Vercel)
+  - No env vars required (auto-detected on Vercel)
 
 **Performance:**
-- Vercel Speed Insights (`@vercel/speed-insights` ^1.3.1) - Core Web Vitals monitoring
+- Vercel Speed Insights (`@vercel/speed-insights` 2.0.0) - Core Web Vitals monitoring
   - Component: `<SpeedInsights />` rendered in `src/app/[locale]/layout.tsx`
-  - No additional env vars required (auto-detected on Vercel)
+  - No env vars required (auto-detected on Vercel)
 
 **Logs:**
-- Custom console wrapper at `src/util/logToConsole.ts` - Suppresses logs in production (`NODE_ENV === "production"`)
+- No custom logging utility detected; `no-console` ESLint rule is set to `"error"` (console usage is disallowed in source)
+- Sentry `enableLogs: true` routes logs to Sentry
+
+## Internationalization
+
+- next-intl 4.11.0 - Locale-based routing and message loading
+  - Supported locales: `en`, `pt`
+  - Config entry: `src/i18n/index.ts`
+  - Routing config: `src/i18n/routing.ts`
+  - Message files: `src/i18n/locales/en.json`, `src/i18n/locales/pt.json`
+  - Client provider: `<NextIntlClientProvider>` in `src/app/[locale]/layout.tsx`
 
 ## CI/CD & Deployment
 
 **Hosting:**
-- Vercel (inferred from `@vercel/analytics`, `@vercel/speed-insights`, and Sentry tunnel config)
+- Vercel (inferred from `@vercel/analytics`, `@vercel/speed-insights`, Sentry `automaticVercelMonitors: true`)
 
 **CI Pipeline:**
-- GitHub Actions (`.github/` directory present)
-  - Sentry source map upload activated when `CI` env var is set
+- GitHub Actions; workflow: `.github/workflows/ci.yaml`
+- Triggers: pull requests to `homolog` or `main`
+- Sentry source maps uploaded when `CI` env var is set
 
 ## Environment Configuration
 
-**Required env vars:**
-- `NEXT_PUBLIC_GH_TOKEN` - GitHub personal access token
-- `NEXT_PUBLIC_RESEND_API_KEY` - Resend email API key
-- `NEXT_PUBLIC_OPENAI_API_KEY` - OpenAI API key
-- `NEXT_PUBLIC_SENTRY_ORG` - Sentry organization slug (build-time)
-- `NEXT_PUBLIC_SENTRY_PROJECT` - Sentry project slug (build-time)
+**Declared in `.env.example`:**
+- `NEXT_PUBLIC_GH_TOKEN` - GitHub personal access token (purpose: remote image auth or future API use)
+- `NEXT_PUBLIC_RESEND_API_KEY` - Resend email API key (no active integration found)
+- `NEXT_PUBLIC_OPENAI_API_KEY` - OpenAI API key (no active integration found)
 
-**Env var notes:**
-- All keys use `NEXT_PUBLIC_` prefix, meaning they are exposed to the browser bundle. This is a potential security concern for server-side secrets (see CONCERNS.md).
-- Example file: `.env.example`
-- Sentry build plugin has its own config: `.env.sentry-build-plugin`
+**Runtime env vars (set by Next.js / CI):**
+- `NEXT_RUNTIME` - `"nodejs"` or `"edge"`, used in `src/instrumentation.ts` to load Sentry config
+- `CI` - Set in CI pipelines; affects Sentry log verbosity and Playwright retries
+- `TEST_ENV` - Set to `"true"` when running E2E tests (`npm run test:e2e`)
 
-**Runtime env vars (internal):**
-- `NEXT_RUNTIME` - Set by Next.js (`nodejs` or `edge`), used in `src/instrumentation.ts`
-- `NODE_ENV` - Standard Node.js env (`production` suppresses console logs)
-- `CI` - Set in CI pipelines; affects Sentry logging and Playwright retry behavior
-- `TEST_ENV` - Set to `true` when running E2E tests (Playwright scripts)
+**Security note:**
+- All three declared public keys use the `NEXT_PUBLIC_` prefix, exposing them to the browser bundle. For server-only secrets this is a risk. See CONCERNS.md.
+
+**Sentry build:**
+- `.env.sentry-build-plugin` - Contains Sentry auth token for source map upload (not committed)
 
 ## Webhooks & Callbacks
 
@@ -116,9 +125,8 @@
 
 **Outgoing:**
 - Dev.to API - outbound fetch from `src/app/api/articles/list/route.ts`
-- OpenAI API - outbound calls via SDK
-- Resend API - outbound email delivery via SDK
+- Sentry ingest - error/trace events sent from server, edge, and client runtimes
 
 ---
 
-*Integration audit: 2026-04-28*
+*Integration audit: 2026-04-30*

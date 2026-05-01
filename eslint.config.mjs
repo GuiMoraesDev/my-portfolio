@@ -2,11 +2,14 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 import prettierConfig from "eslint-config-prettier/flat";
+import prettierPlugin from "eslint-plugin-prettier";
+import tailwindCanonicalClasses from "eslint-plugin-tailwind-canonical-classes";
 import unusedImportsPlugin from "eslint-plugin-unused-imports";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  ...tailwindCanonicalClasses.configs["flat/recommended"],
   globalIgnores([
     "node_modules/**",
     "playwright-report/**",
@@ -18,9 +21,10 @@ const eslintConfig = defineConfig([
     ".claude/**",
   ]),
   {
-    files: ["**/*.{js,jsx,ts,tsx}"],
+    files: ["**/*.{js,mjs,cjs,jsx,ts,tsx}"],
     plugins: {
       "unused-imports": unusedImportsPlugin,
+      prettier: prettierPlugin,
     },
     settings: {
       "import/resolver": {
@@ -30,6 +34,7 @@ const eslintConfig = defineConfig([
       },
     },
     rules: {
+      "prettier/prettier": "warn",
       "no-console": "error",
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": "off",
@@ -55,6 +60,12 @@ const eslintConfig = defineConfig([
         {
           "newlines-between": "always",
           alphabetize: { order: "asc", caseInsensitive: true },
+        },
+      ],
+      "tailwind-canonical-classes/tailwind-canonical-classes": [
+        "warn",
+        {
+          cssPath: "./src/styles/globals.css",
         },
       ],
     },

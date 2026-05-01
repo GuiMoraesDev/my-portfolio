@@ -65,7 +65,7 @@ export default async function RootLayout({
 
   return (
     <html
-      className="scroll-pt-20 scroll-smooth"
+      className="flex scroll-pt-20 items-center justify-center scroll-smooth"
       data-scroll-behavior="smooth"
       lang={locale}
     >

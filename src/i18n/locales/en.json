@@ -38,7 +38,8 @@
     "all-articles": "View all posts"
   },
   "footer": {
-    "title": "Let's work together.",
-    "made-with-love": "Built by Guilherme Moraes"
+    "title": "Nice to have you here!",
+    "contact-me-by": "Contact me by",
+    "made-with-love": "Made with coffee"
   }
 }

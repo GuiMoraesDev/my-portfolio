@@ -1,59 +1,15 @@
-import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { BentoCell } from "@/components/atoms/BentoCell";
-import { LanguageSwitcher } from "@/components/atoms/LanguageSwitcher";
-import { MenuWrapper } from "@/components/atoms/MenuWrapper";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
-import { ArticlesView } from "@/components/organisms/Articles";
 
 export default async function Home() {
   const t = await getTranslations();
 
-  const NAV_LINKS = [
-    { href: "#presentation", label: t("links.home") },
-    { href: "/blog", label: t("links.blog") },
-  ];
-
   return (
     <>
-      <header
-        className={twMerge(
-          "sticky top-0 z-20 flex h-20 w-full max-w-480 shrink-0 flex-col items-center justify-between gap-16 font-body max-[2000px]:px-[10vw]",
-          "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:bg-plum-900 before:opacity-95 before:content-['']",
-        )}
-      >
-        <nav className="relative flex h-full w-full items-center justify-between">
-          <MenuWrapper>
-            <ul className="relative flex flex-col gap-8 md:flex-row md:items-center">
-              {NAV_LINKS.map(({ href, label }) => (
-                <li key={label}>
-                  <a
-                    href={href}
-                    className="text-sm font-medium tracking-widest text-text-secondary uppercase transition hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <section className="relative flex flex-col gap-4 md:flex-row md:items-center">
-              <Link
-                href="#footer"
-                className="w-fit rounded-sm border border-accent-400 px-4 py-1.5 text-sm font-semibold tracking-widest text-accent-400 uppercase transition hover:bg-accent-400 hover:text-plum-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
-              >
-                {t("links.get-in-touch")}
-              </Link>
-
-              <LanguageSwitcher />
-            </section>
-          </MenuWrapper>
-        </nav>
-      </header>
-
       <SessionWrapper id="presentation">
         <section className="flex w-full flex-col gap-8 text-text-primary md:gap-12">
           <header className="flex flex-col gap-3 md:gap-4">
@@ -117,55 +73,6 @@ export default async function Home() {
             <BentoCell.Body>{t("how-i-work.collaborate.body")}</BentoCell.Body>
           </BentoCell.Wrapper>
         </div>
-      </SessionWrapper>
-
-      <SessionWrapper id="articles">
-        <header className="flex w-full flex-col gap-2">
-          <h2 className="font-title text-headline font-bold tracking-tight">
-            {t("articles.title")}
-          </h2>
-
-          <p className="text-base leading-snug tracking-wide text-text-muted">
-            {t("articles.quote")}
-          </p>
-        </header>
-
-        <section className="flex w-full flex-col items-center justify-center gap-6">
-          <ArticlesView />
-        </section>
-
-        <footer className="flex w-full flex-col items-center justify-center gap-4 md:items-end">
-          <Link
-            href="/blog"
-            className="rounded-sm p-3 text-center text-sm leading-tight font-medium text-text-secondary hover:text-text-primary hover:underline"
-          >
-            {t("articles.all-articles")}
-          </Link>
-        </footer>
-      </SessionWrapper>
-
-      <SessionWrapper
-        className={twMerge(
-          "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:bg-black/90 before:opacity-95 before:content-['']",
-        )}
-        id="footer"
-      >
-        <footer className="z-10 flex h-full w-full flex-col items-center justify-between gap-4 text-sm text-text-secondary md:flex-row lg:items-end">
-          <div className="flex flex-col gap-3">
-            <strong className="mb-2 inline-block text-headline leading-normal tracking-tight text-text-primary">
-              {t("footer.title")}
-            </strong>
-
-            <span className="inline-block leading-relaxed tracking-wider">
-              <span className="mr-1 uppercase">
-                {t("footer.made-with-love")}
-              </span>{" "}
-              © 2024 Guilherme Moraes
-            </span>
-          </div>
-
-          <SocialMedia />
-        </footer>
       </SessionWrapper>
     </>
   );

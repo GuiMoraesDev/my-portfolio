@@ -43,23 +43,6 @@ export const metadata: Metadata = {
       "I'm specialist in creating apps using Next.js, TypeScript, Node.js, automated tests, and more!",
     url: "https://www.guimoraes.dev/",
     siteName: "Guilherme Moraes | Software engineer",
-    images: [
-      {
-        url: "/cover/256p.png",
-        width: 256,
-        height: 256,
-      },
-      {
-        url: "/cover/800p.png",
-        width: 800,
-        height: 600,
-      },
-      {
-        url: "/cover/1800p.png",
-        width: 1800,
-        height: 1600,
-      },
-    ],
     locale: "en",
     type: "website",
   },

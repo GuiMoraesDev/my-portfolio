@@ -1,9 +1,9 @@
 "use client";
 
-import { Cross2Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useRef, useState, type ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
+import { Icon } from "@/components/atoms/Icon";
 import { useHandleClickOutside } from "@/hooks/useDetectClickOutside";
 
 type MenuWrapperProps = {
@@ -35,9 +35,9 @@ export const MenuWrapper = ({ children }: MenuWrapperProps) => {
           aria-controls="mobile-nav-links"
         >
           {isOpen ? (
-            <Cross2Icon className="h-5 w-5" />
+            <Icon name="Cross" size="sm" />
           ) : (
-            <HamburgerMenuIcon className="h-5 w-5" />
+            <Icon name="HamburgerMenu" size="sm" />
           )}
         </button>
 

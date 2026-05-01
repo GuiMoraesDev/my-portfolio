@@ -2,8 +2,8 @@ import { getTranslations } from "next-intl/server";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
-import { BentoCell } from "@/components/atoms/BentoCell";
-import { SocialMedia } from "@/components/atoms/SocialMedia";
+import { BentoCell } from "@/components/molecules/BentoCell";
+import { SocialMedia } from "@/components/molecules/SocialMedia";
 
 export default async function Home() {
   const t = await getTranslations();

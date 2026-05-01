@@ -24,7 +24,7 @@ export const SocialMedia = async ({
         rel="noopener noreferrer"
         className="motion-hover-lift order-2 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 md:order-1"
       >
-        <Icon icon="Github" size="md" />
+        <Icon name="Github" size="md" />
         <span className="text-sm tracking-wider text-white">GitHub</span>
       </Link>
 
@@ -34,7 +34,7 @@ export const SocialMedia = async ({
         rel="noopener noreferrer"
         className="motion-hover-lift order-2 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 md:order-1"
       >
-        <Icon icon="LinkedIn" size="md" />
+        <Icon name="LinkedIn" size="md" />
         <span className="text-sm tracking-wider text-white">LinkedIn</span>
       </Link>
 

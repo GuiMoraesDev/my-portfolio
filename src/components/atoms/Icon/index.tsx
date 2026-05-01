@@ -1,8 +1,21 @@
+import {
+  Cross2Icon,
+  HamburgerMenuIcon,
+  DownloadIcon,
+} from "@radix-ui/react-icons";
 import { type ComponentProps } from "react";
 import { type VariantProps, tv } from "tailwind-variants";
 
 import "./styles.css";
-import { icons } from "./icons";
+import { Github, LinkedIn } from "./CustomIcons";
+
+const icons = {
+  Github,
+  LinkedIn,
+  Cross: Cross2Icon,
+  HamburgerMenu: HamburgerMenuIcon,
+  Download: DownloadIcon,
+};
 
 const iconVariants = tv({
   base: "inline-flex items-center justify-center overflow-hidden",
@@ -21,20 +34,20 @@ const iconVariants = tv({
   },
 });
 
-export type IconProp = keyof typeof icons;
-export type IconProps = ComponentProps<"span"> &
+type IconProps = ComponentProps<"span"> &
   VariantProps<typeof iconVariants> & {
-    icon: IconProp;
+    name: keyof typeof icons;
   };
 
 export const Icon = ({
   size,
-  icon,
+  name,
   rounded,
   className,
   ...props
 }: IconProps) => {
-  const IconComponent = icons[icon];
+  const IconComponent = icons[name];
+
   return (
     <span
       className={iconVariants({

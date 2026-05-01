@@ -3,7 +3,6 @@ import {
   HamburgerMenuIcon,
   DownloadIcon,
 } from "@radix-ui/react-icons";
-import { type ComponentProps } from "react";
 import { type VariantProps, tv } from "tailwind-variants";
 
 import "./styles.css";
@@ -34,30 +33,21 @@ const iconVariants = tv({
   },
 });
 
-type IconProps = ComponentProps<"span"> &
-  VariantProps<typeof iconVariants> & {
-    name: keyof typeof icons;
-  };
+type IconProps = VariantProps<typeof iconVariants> & {
+  name: keyof typeof icons;
+  className?: string;
+};
 
-export const Icon = ({
-  size,
-  name,
-  rounded,
-  className,
-  ...props
-}: IconProps) => {
+export const Icon = ({ size, name, rounded, className }: IconProps) => {
   const IconComponent = icons[name];
 
   return (
-    <span
+    <IconComponent
       className={iconVariants({
         size,
         rounded,
         className,
       })}
-      {...props}
-    >
-      <IconComponent />
-    </span>
+    />
   );
 };

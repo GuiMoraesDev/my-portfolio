@@ -11,25 +11,25 @@ export default async function Home() {
   return (
     <>
       <SessionWrapper id="presentation">
-        <section className="flex w-full flex-col gap-8 text-text-primary md:gap-12">
+        <section className="flex w-full flex-col gap-10 text-text-primary md:gap-16">
           <header className="flex flex-col gap-3 md:gap-4">
             <p className="motion-enter text-sm font-medium tracking-widest uppercase">
               {t("presentation.name")}
             </p>
 
-            <h1 className="motion-enter motion-enter-delay-1 font-title text-display leading-tight font-bold tracking-tight text-accent-500">
+            <h1 className="motion-enter motion-enter-delay-1 font-title text-4xl leading-tight font-bold tracking-tight text-accent-500 md:text-5xl lg:text-6xl">
               Guilherme Moraes
             </h1>
 
             <h2
               id="my-title"
-              className="motion-enter motion-enter-delay-2 font-title text-headline tracking-tight text-text-secondary"
+              className="motion-enter motion-enter-delay-2 font-title text-2xl tracking-tight text-text-secondary md:text-3xl"
             >
               {t("presentation.title")}
             </h2>
           </header>
 
-          <p className="motion-enter motion-enter-delay-2 text-body-lg leading-relaxed tracking-wide text-text-secondary md:max-w-[65%]">
+          <p className="motion-enter motion-enter-delay-2 text-lg leading-relaxed tracking-wide text-text-secondary md:max-w-[65%]">
             {t("presentation.subtitle")}
           </p>
 
@@ -81,7 +81,8 @@ export default async function Home() {
 const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={twMerge(
-      "relative z-10 flex h-full w-full max-w-480 flex-col items-center justify-between gap-16 py-10 font-body max-[2000px]:px-[10vw]",
+      "relative z-10 flex h-full w-full max-w-480 flex-col items-center justify-between py-14 font-body max-[2000px]:px-[10vw]",
+      "first-of-type:mt-14 last-of-type:mb-14",
       className,
     )}
     {...props}

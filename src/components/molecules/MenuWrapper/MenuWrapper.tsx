@@ -28,16 +28,16 @@ export const MenuWrapper = ({ children }: MenuWrapperProps) => {
         <button
           onClick={handleToggleMenu}
           type="button"
-          className="z-20 rounded-sm text-text-secondary transition hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
+          className="z-20 rounded-sm text-text-secondary transition hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300"
           title="menu"
           aria-label="Toggle navigation menu"
           aria-expanded={isOpen}
           aria-controls="mobile-nav-links"
         >
           {isOpen ? (
-            <Icon name="Cross" size="sm" />
+            <Icon name="Cross" size="md" />
           ) : (
-            <Icon name="HamburgerMenu" size="sm" />
+            <Icon name="HamburgerMenu" size="md" />
           )}
         </button>
 

@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+  --font-michroma: "Michroma", "serif";
   --font-lato: "Lato", "sans-serif";
-  --font-fira-sans: "Fira Sans", "sans-serif";
-  --font-title: var(--font-fira-sans);
+  --font-title: var(--font-michroma);
   --font-body: var(--font-lato);
 
   /* Core palette */
@@ -17,7 +17,6 @@
   --color-ink-950: #07060b;
   --color-ink-900: #111019;
 
-  --color-accent-400: #c26e9f;
   --color-accent-500: #ebb220;
 
   /* Semantic colors */
@@ -28,11 +27,6 @@
   --color-text-muted: #b8afca;
   --color-border-subtle: #2b2638;
   --color-border-strong: #413957;
-
-  /* Type scale */
-  --text-display: clamp(2rem, 1.3rem + 2.4vw, 3.5rem);
-  --text-headline: clamp(1.4rem, 1.1rem + 1vw, 2rem);
-  --text-body-lg: clamp(1.05rem, 0.95rem + 0.3vw, 1.25rem);
 
   --animate-wave: wave 1s infinite;
   --animate-terminal-caret: terminal-caret 1s step-end infinite;

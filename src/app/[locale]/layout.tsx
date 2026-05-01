@@ -1,7 +1,7 @@
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Lato, Fira_Sans } from "next/font/google";
+import { Lato, Michroma } from "next/font/google";
 import "@/styles/globals.css";
 import Link from "next/link";
 import { NextIntlClientProvider } from "next-intl";
@@ -15,16 +15,16 @@ import { Spheres } from "@/components/molecules/Spheres";
 import { TerminalContact } from "@/components/organisms/TerminalContact";
 import { QueryProvider } from "@/provider/QueryProvider";
 
+const michroma = Michroma({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-microma",
+});
+
 const lato = Lato({
   weight: ["100", "300", "400", "700", "900"],
   subsets: ["latin"],
   variable: "--font-lato",
-});
-
-const firaSans = Fira_Sans({
-  weight: ["100", "300", "400", "700", "900"],
-  subsets: ["latin"],
-  variable: "--font-fira",
 });
 
 export const metadata: Metadata = {
@@ -72,8 +72,8 @@ export default async function RootLayout({
       <body
         className={twMerge(
           "container flex h-dvh w-full flex-col items-center gap-3 overflow-x-hidden bg-bg-canvas text-text-primary",
+          michroma.className,
           lato.className,
-          firaSans.className,
         )}
       >
         <QueryProvider>
@@ -92,7 +92,7 @@ export default async function RootLayout({
                       <li key={label}>
                         <Link
                           href={href}
-                          className="text-sm font-medium tracking-widest text-text-secondary uppercase transition hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
+                          className="text-sm font-medium tracking-widest text-text-secondary uppercase transition hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300"
                         >
                           {label}
                         </Link>
@@ -101,13 +101,6 @@ export default async function RootLayout({
                   </ul>
 
                   <section className="relative flex flex-col gap-4 md:flex-row md:items-center">
-                    <Link
-                      href="#footer"
-                      className="w-fit rounded-sm border border-accent-400 px-4 py-1.5 text-sm font-semibold tracking-widest text-accent-400 uppercase transition hover:bg-accent-400 hover:text-plum-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400"
-                    >
-                      {t("links.get-in-touch")}
-                    </Link>
-
                     <LanguageSwitcher />
                   </section>
                 </MenuWrapper>

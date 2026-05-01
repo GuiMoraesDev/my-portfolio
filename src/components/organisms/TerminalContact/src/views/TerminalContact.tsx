@@ -184,11 +184,11 @@ export const TerminalContact = () => {
         type="button"
         aria-label="Open terminal"
         onClick={() => setIsOpen(true)}
-        className="fixed right-6 bottom-6 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-border-strong bg-bg-elevated shadow-lg transition-all hover:border-accent-400 hover:shadow-[0_0_20px_rgba(0,0,0,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 active:scale-95"
+        className="fixed right-6 bottom-6 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-border-strong bg-bg-elevated shadow-lg transition-all hover:border-plum-300 hover:shadow-[0_0_20px_rgba(0,0,0,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300 active:scale-95"
       >
         <span
           aria-hidden
-          className="font-mono text-sm leading-none font-bold text-accent-400"
+          className="font-mono text-sm leading-none font-bold text-plum-300"
         >
           &gt;_
         </span>
@@ -227,7 +227,7 @@ export const TerminalContact = () => {
                 if (line.type === "input") {
                   return (
                     <div key={line.id} className="flex gap-2">
-                      <span className="text-accent-400 select-none">$</span>
+                      <span className="text-plum-300 select-none">$</span>
                       <span className="text-text-primary">{line.text}</span>
                     </div>
                   );
@@ -239,7 +239,7 @@ export const TerminalContact = () => {
                         href={line.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-accent-400 underline hover:opacity-80"
+                        className="text-plum-300 underline hover:opacity-80"
                       >
                         {line.text}
                       </a>
@@ -263,7 +263,7 @@ export const TerminalContact = () => {
             </div>
 
             <div className="flex shrink-0 items-center gap-2 border-t border-border-subtle px-4 py-3 font-mono text-sm">
-              <span aria-hidden className="text-accent-400 select-none">
+              <span aria-hidden className="text-plum-300 select-none">
                 $
               </span>
               <input
@@ -272,7 +272,7 @@ export const TerminalContact = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                className="flex-1 bg-transparent text-text-primary caret-accent-400 outline-none placeholder:text-text-muted"
+                className="flex-1 bg-transparent text-text-primary caret-plum-300 outline-none placeholder:text-text-muted"
                 placeholder="type a command..."
                 aria-label="Terminal input"
                 autoComplete="off"

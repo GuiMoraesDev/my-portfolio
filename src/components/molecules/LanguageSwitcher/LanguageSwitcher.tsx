@@ -38,7 +38,7 @@ export const LanguageSwitcher = () => {
       >
         <span
           className={twMerge(
-            "rounded-xs px-2 py-0.5 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 disabled:cursor-not-allowed",
+            "rounded-xs px-2 py-0.5 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300 disabled:cursor-not-allowed",
             locale === "pt"
               ? "bg-plum-100 text-plum-900"
               : "text-text-secondary hover:text-text-primary",
@@ -49,7 +49,7 @@ export const LanguageSwitcher = () => {
 
         <span
           className={twMerge(
-            "rounded-xs px-2 py-0.5 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 disabled:cursor-not-allowed",
+            "rounded-xs px-2 py-0.5 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300 disabled:cursor-not-allowed",
             locale === "en"
               ? "bg-plum-100 text-plum-900"
               : "text-text-secondary hover:text-text-primary",

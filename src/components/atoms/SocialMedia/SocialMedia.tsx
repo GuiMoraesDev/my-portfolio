@@ -1,23 +1,17 @@
-"use client";
-
 import { DownloadIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Icon } from "@/components/atoms/Icon";
 import { GITHUB_URL, LINKEDIN_URL } from "@/constants/socialMedia";
 
-export const SocialMediaComponent = ({
+export const SocialMedia = async ({
   className,
   ...props
 }: ComponentProps<"div">) => {
-  const t = useTranslations("presentation");
-
-  const handleDownloadCv = () => {
-    window.open("/GM-Resume.pdf");
-  };
+  const t = await getTranslations("presentation");
 
   return (
     <div
@@ -44,15 +38,16 @@ export const SocialMediaComponent = ({
         <span className="text-sm tracking-wider text-white">LinkedIn</span>
       </Link>
 
-      <button
-        onClick={handleDownloadCv}
+      <Link
+        href="/GM-Resume.pdf"
+        target="_blank"
         className="motion-hover-lift group order-1 flex w-full cursor-pointer items-center justify-center gap-2 rounded-md bg-plum-500/90 p-4 shadow-sm transition-colors duration-200 hover:bg-plum-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-400 md:w-auto"
       >
         <DownloadIcon className="h-6 w-6" />
         <span className="text-sm tracking-wider whitespace-nowrap text-white">
           {t("my-resume")}
         </span>
-      </button>
+      </Link>
     </div>
   );
 };

@@ -10,8 +10,8 @@ import { twMerge } from "tailwind-merge";
 
 import { LanguageSwitcher } from "@/components/atoms/LanguageSwitcher";
 import { MenuWrapper } from "@/components/atoms/MenuWrapper";
+import { SocialMedia } from "@/components/atoms/SocialMedia";
 import { Spheres } from "@/components/atoms/Spheres";
-import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { TerminalContact } from "@/components/molecules/TerminalContact";
 import { QueryProvider } from "@/provider/QueryProvider";
 

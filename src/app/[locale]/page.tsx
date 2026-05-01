@@ -3,7 +3,7 @@ import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { BentoCell } from "@/components/atoms/BentoCell";
-import { SocialMedia } from "@/components/molecules/SocialMedia";
+import { SocialMedia } from "@/components/atoms/SocialMedia";
 
 export default async function Home() {
   const t = await getTranslations();

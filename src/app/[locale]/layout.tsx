@@ -8,11 +8,11 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { twMerge } from "tailwind-merge";
 
-import { LanguageSwitcher } from "@/components/atoms/LanguageSwitcher";
-import { MenuWrapper } from "@/components/atoms/MenuWrapper";
-import { SocialMedia } from "@/components/atoms/SocialMedia";
-import { Spheres } from "@/components/atoms/Spheres";
-import { TerminalContact } from "@/components/molecules/TerminalContact";
+import { LanguageSwitcher } from "@/components/molecules/LanguageSwitcher";
+import { MenuWrapper } from "@/components/molecules/MenuWrapper";
+import { SocialMedia } from "@/components/molecules/SocialMedia";
+import { Spheres } from "@/components/molecules/Spheres";
+import { TerminalContact } from "@/components/organisms/TerminalContact";
 import { QueryProvider } from "@/provider/QueryProvider";
 
 const lato = Lato({
@@ -79,6 +79,7 @@ export default async function RootLayout({
         <QueryProvider>
           <NextIntlClientProvider messages={messages}>
             <header
+              id="header"
               className={twMerge(
                 "sticky top-0 z-20 flex h-20 w-full max-w-480 shrink-0 flex-col items-center justify-between gap-16 font-body max-[2000px]:px-[10vw]",
                 "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:bg-plum-900 before:opacity-95 before:content-['']",

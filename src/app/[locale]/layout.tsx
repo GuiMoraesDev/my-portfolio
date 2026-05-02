@@ -109,7 +109,7 @@ export default async function RootLayout({
                   <strong
                     className={twMerge(
                       "mb-2 text-2xl leading-normal tracking-wide",
-                      "animate-gradient-x inline-block bg-linear-to-r from-plum-200 via-plum-400 to-plum-50 bg-clip-text text-transparent",
+                      "inline-block animate-gradient-x bg-linear-to-r from-plum-200 via-plum-400 to-plum-50 bg-clip-text text-transparent",
                     )}
                   >
                     {t("footer.title")}

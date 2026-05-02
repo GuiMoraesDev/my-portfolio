@@ -31,8 +31,8 @@ const Heading = ({
 }: BentoCellHeadingProps) => (
   <h3
     className={twMerge(
-      "font-title font-bold tracking-tight text-text-primary",
-      size === "lg" ? "text-headline" : "text-xl",
+      "font-title tracking-tight text-text-primary",
+      size === "lg" ? "text-2xl md:text-3xl" : "text-xl",
       className,
     )}
     {...props}
@@ -42,7 +42,7 @@ const Heading = ({
 const Body = ({ className, ...props }: ComponentProps<"p">) => (
   <p
     className={twMerge(
-      "text-body-lg leading-relaxed tracking-wide text-text-secondary",
+      "text-lg leading-relaxed tracking-wide text-text-secondary",
       className,
     )}
     {...props}

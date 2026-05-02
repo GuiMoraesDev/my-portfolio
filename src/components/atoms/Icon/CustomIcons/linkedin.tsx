@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { type ComponentProps, useEffect, useRef, useState } from "react";
 
-export const LinkedIn = () => {
+export const LinkedIn = (props: ComponentProps<"svg">) => {
   const [iconLength, setIconLength] = useState(240);
   const biggestPathRef = useRef<SVGPathElement | null>(null);
 
@@ -22,6 +22,7 @@ export const LinkedIn = () => {
       viewBox="0 0 33 34"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
         fill="white"

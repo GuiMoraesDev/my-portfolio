@@ -2,8 +2,9 @@ import {
   Cross2Icon,
   HamburgerMenuIcon,
   DownloadIcon,
+  QuoteIcon,
 } from "@radix-ui/react-icons";
-import { type ComponentProps } from "react";
+import { type ComponentPropsWithRef } from "react";
 import { type VariantProps, tv } from "tailwind-variants";
 
 import "./styles.css";
@@ -15,6 +16,7 @@ const icons = {
   Cross: Cross2Icon,
   HamburgerMenu: HamburgerMenuIcon,
   Download: DownloadIcon,
+  Quote: QuoteIcon,
 };
 
 const iconVariants = tv({
@@ -34,9 +36,10 @@ const iconVariants = tv({
   },
 });
 
-type IconProps = ComponentProps<"span"> &
-  VariantProps<typeof iconVariants> & {
+type IconProps = VariantProps<typeof iconVariants> &
+  ComponentPropsWithRef<"svg"> & {
     name: keyof typeof icons;
+    children?: never;
   };
 
 export const Icon = ({
@@ -49,15 +52,13 @@ export const Icon = ({
   const IconComponent = icons[name];
 
   return (
-    <span
+    <IconComponent
       className={iconVariants({
         size,
         rounded,
         className,
       })}
       {...props}
-    >
-      <IconComponent />
-    </span>
+    />
   );
 };

@@ -4,52 +4,48 @@ import { render } from "@testing-library/react";
 import { Icon } from "./index";
 
 describe("Icon", () => {
-  it("renders a span wrapping the icon", () => {
-    const { container } = render(<Icon name="Github" />);
-    expect(container.querySelector("span")).not.toBeNull();
+  it("renders an svg icon", () => {
+    const { getByTestId } = render(<Icon name="Github" data-testid="icon" />);
+    expect(getByTestId("icon")).not.toBeNull();
   });
 
   it("applies the md size class by default", () => {
-    const { container } = render(<Icon name="Github" />);
-    expect(container.querySelector("span")!.className).toContain("size-5");
+    const { getByTestId } = render(<Icon name="Cross" data-testid="icon" />);
+    expect(getByTestId("icon").getAttribute("class")).toContain("size-5");
   });
 
   it("applies the sm size class when size='sm'", () => {
-    const { container } = render(<Icon name="Github" size="sm" />);
-    expect(container.querySelector("span")!.className).toContain("size-3");
+    const { getByTestId } = render(<Icon name="Cross" size="sm" data-testid="icon" />);
+    expect(getByTestId("icon").getAttribute("class")).toContain("size-3");
   });
 
   it("applies the lg size class when size='lg'", () => {
-    const { container } = render(<Icon name="Github" size="lg" />);
-    expect(container.querySelector("span")!.className).toContain("size-7");
+    const { getByTestId } = render(<Icon name="Cross" size="lg" data-testid="icon" />);
+    expect(getByTestId("icon").getAttribute("class")).toContain("size-7");
   });
 
   it("applies rounded-full when rounded='full'", () => {
-    const { container } = render(<Icon name="Github" rounded="full" />);
-    expect(container.querySelector("span")!.className).toContain(
-      "rounded-full",
-    );
+    const { getByTestId } = render(<Icon name="Cross" rounded="full" data-testid="icon" />);
+    expect(getByTestId("icon").getAttribute("class")).toContain("rounded-full");
   });
 
-  it("passes additional className to the span", () => {
-    const { container } = render(
-      <Icon name="Github" className="custom-class" />,
+  it("passes additional className to the icon", () => {
+    const { getByTestId } = render(
+      <Icon name="Cross" className="custom-class" data-testid="icon" />,
     );
-    expect(container.querySelector("span")!.className).toContain(
-      "custom-class",
-    );
+    expect(getByTestId("icon").getAttribute("class")).toContain("custom-class");
   });
 
   it.each(["Github", "LinkedIn"] as const)(
     "renders the %s icon without error",
     (icon) => {
-      const { container } = render(<Icon name={icon} />);
-      expect(container.querySelector("span")).not.toBeNull();
+      const { getByTestId } = render(<Icon name={icon} data-testid="icon" />);
+      expect(getByTestId("icon")).not.toBeNull();
     },
   );
 
-  it("renders SVG content inside the span", () => {
-    const { container } = render(<Icon name="Github" />);
-    expect(container.querySelector("svg")).not.toBeNull();
+  it("renders SVG content", () => {
+    const { getByTestId } = render(<Icon name="Github" data-testid="icon" />);
+    expect(getByTestId("icon").querySelector("path")).not.toBeNull();
   });
 });

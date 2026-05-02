@@ -4,6 +4,7 @@ import {
   DownloadIcon,
   QuoteIcon,
 } from "@radix-ui/react-icons";
+import { type ComponentPropsWithRef } from "react";
 import { type VariantProps, tv } from "tailwind-variants";
 
 import "./styles.css";
@@ -35,12 +36,19 @@ const iconVariants = tv({
   },
 });
 
-type IconProps = VariantProps<typeof iconVariants> & {
-  name: keyof typeof icons;
-  className?: string;
-};
+type IconProps = VariantProps<typeof iconVariants> &
+  ComponentPropsWithRef<"svg"> & {
+    name: keyof typeof icons;
+    children?: never;
+  };
 
-export const Icon = ({ size, name, rounded, className }: IconProps) => {
+export const Icon = ({
+  size,
+  name,
+  rounded,
+  className,
+  ...props
+}: IconProps) => {
   const IconComponent = icons[name];
 
   return (
@@ -50,6 +58,7 @@ export const Icon = ({ size, name, rounded, className }: IconProps) => {
         rounded,
         className,
       })}
+      {...props}
     />
   );
 };

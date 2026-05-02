@@ -77,6 +77,7 @@ export const TerminalContact = () => {
   return (
     <>
       <button
+        data-testid="terminal-open-button"
         type="button"
         aria-label="Open terminal"
         onClick={handleOpenModal}
@@ -91,6 +92,7 @@ export const TerminalContact = () => {
       </button>
 
       <dialog
+        data-testid="terminal-dialog"
         role="dialog"
         aria-modal="true"
         aria-label="Terminal"
@@ -103,6 +105,7 @@ export const TerminalContact = () => {
       >
         <header className="flex shrink-0 items-center gap-2 border-b border-border-subtle bg-[#111] px-4 py-2.5">
           <button
+            data-testid="terminal-close-button"
             type="button"
             aria-label="Close terminal"
             onClick={handleCloseModal}
@@ -115,7 +118,10 @@ export const TerminalContact = () => {
           </button>
           <span className="h-3.5 w-3.5 rounded-full bg-[#ffbd2e]" />
           <span className="h-3.5 w-3.5 rounded-full bg-[#27c93f]" />
-          <span className="ml-auto font-mono text-xs text-text-muted">
+          <span
+            data-testid="terminal-path"
+            className="ml-auto font-mono text-xs text-text-muted"
+          >
             ~/.guimoraes.dev
           </span>
         </header>
@@ -124,7 +130,7 @@ export const TerminalContact = () => {
           {lines.map((line, lineIndex) => (
             <li key={lineIndex} className="flex flex-col">
               {line.type === "input" && (
-                <div className="flex gap-2">
+                <div data-testid="terminal-line-input" className="flex gap-2">
                   <span className="text-plum-300 select-none">$</span>
                   <span className="text-text-primary">{line.text}</span>
                 </div>
@@ -132,6 +138,7 @@ export const TerminalContact = () => {
               {line.type === "link" && (
                 <div key={lineIndex + "_link"} className="pl-4">
                   <a
+                    data-testid="terminal-line-link"
                     href={line.href}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -142,12 +149,17 @@ export const TerminalContact = () => {
                 </div>
               )}
               {line.type === "error" && (
-                <div key={lineIndex + "_error"} className="pl-4 text-red-400">
+                <div
+                  data-testid="terminal-line-error"
+                  key={lineIndex + "_error"}
+                  className="pl-4 text-red-400"
+                >
                   {line.text}
                 </div>
               )}
               {line.type === "output" && (
                 <div
+                  data-testid="terminal-line-output"
                   key={lineIndex + "_text"}
                   className="pl-4 text-text-secondary"
                 >
@@ -164,6 +176,7 @@ export const TerminalContact = () => {
             $
           </span>
           <input
+            data-testid="terminal-input"
             ref={inputRef}
             type="text"
             value={input}

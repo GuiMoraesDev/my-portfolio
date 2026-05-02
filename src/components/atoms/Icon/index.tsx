@@ -2,6 +2,7 @@ import {
   Cross2Icon,
   HamburgerMenuIcon,
   DownloadIcon,
+  QuoteIcon,
 } from "@radix-ui/react-icons";
 import { type VariantProps, tv } from "tailwind-variants";
 
@@ -14,6 +15,7 @@ const icons = {
   Cross: Cross2Icon,
   HamburgerMenu: HamburgerMenuIcon,
   Download: DownloadIcon,
+  Quote: QuoteIcon,
 };
 
 const iconVariants = tv({

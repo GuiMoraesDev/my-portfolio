@@ -1,8 +1,8 @@
+import "@/styles/globals.css";
+
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Lato, Michroma } from "next/font/google";
-import "@/styles/globals.css";
 import Link from "next/link";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
@@ -14,18 +14,6 @@ import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { Spheres } from "@/components/molecules/Spheres";
 import { TerminalContact } from "@/components/organisms/TerminalContact";
 import { QueryProvider } from "@/provider/QueryProvider";
-
-const michroma = Michroma({
-  weight: ["400"],
-  subsets: ["latin"],
-  variable: "--font-microma",
-});
-
-const lato = Lato({
-  weight: ["100", "300", "400", "700", "900"],
-  subsets: ["latin"],
-  variable: "--font-lato",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.guimoraes.dev"),
@@ -69,20 +57,14 @@ export default async function RootLayout({
       data-scroll-behavior="smooth"
       lang={locale}
     >
-      <body
-        className={twMerge(
-          "container flex h-dvh w-full flex-col items-center gap-3 overflow-x-hidden bg-bg-canvas text-text-primary",
-          michroma.className,
-          lato.className,
-        )}
-      >
+      <body className="container flex h-dvh w-full flex-col items-center gap-3 overflow-x-hidden bg-[#12131A] text-text-primary">
         <QueryProvider>
           <NextIntlClientProvider messages={messages}>
             <header
               id="header"
               className={twMerge(
                 "sticky top-0 z-20 flex h-20 w-full max-w-480 shrink-0 flex-col items-center justify-between gap-16 font-body max-[2000px]:px-[10vw]",
-                "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:bg-plum-900 before:opacity-95 before:content-['']",
+                "before: before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:bg-linear-to-br before:from-plum-900 before:to-plum-700 before:opacity-95 before:content-['']",
               )}
             >
               <nav className="relative flex h-full w-full items-center justify-between">
@@ -107,7 +89,7 @@ export default async function RootLayout({
               </nav>
             </header>
 
-            <main className="relative flex flex-col items-center gap-12 bg-bg-canvas font-body text-text-primary">
+            <main className="relative flex flex-col items-center gap-12 font-body text-text-primary">
               <Spheres />
 
               <TerminalContact />
@@ -127,7 +109,7 @@ export default async function RootLayout({
                   <strong
                     className={twMerge(
                       "mb-2 text-2xl leading-normal tracking-wide",
-                      "animate-gradient-x via-plum-400 inline-block bg-linear-to-r from-plum-200 to-plum-50 bg-clip-text text-transparent",
+                      "animate-gradient-x inline-block bg-linear-to-r from-plum-200 via-plum-400 to-plum-50 bg-clip-text text-transparent",
                     )}
                   >
                     {t("footer.title")}

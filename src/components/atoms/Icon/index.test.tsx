@@ -15,17 +15,23 @@ describe("Icon", () => {
   });
 
   it("applies the sm size class when size='sm'", () => {
-    const { getByTestId } = render(<Icon name="Cross" size="sm" data-testid="icon" />);
+    const { getByTestId } = render(
+      <Icon name="Cross" size="sm" data-testid="icon" />,
+    );
     expect(getByTestId("icon").getAttribute("class")).toContain("size-3");
   });
 
   it("applies the lg size class when size='lg'", () => {
-    const { getByTestId } = render(<Icon name="Cross" size="lg" data-testid="icon" />);
+    const { getByTestId } = render(
+      <Icon name="Cross" size="lg" data-testid="icon" />,
+    );
     expect(getByTestId("icon").getAttribute("class")).toContain("size-7");
   });
 
   it("applies rounded-full when rounded='full'", () => {
-    const { getByTestId } = render(<Icon name="Cross" rounded="full" data-testid="icon" />);
+    const { getByTestId } = render(
+      <Icon name="Cross" rounded="full" data-testid="icon" />,
+    );
     expect(getByTestId("icon").getAttribute("class")).toContain("rounded-full");
   });
 

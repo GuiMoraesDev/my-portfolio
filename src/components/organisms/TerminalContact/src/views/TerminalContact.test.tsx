@@ -23,8 +23,7 @@ beforeEach(() => {
 const openTerminal = () =>
   fireEvent.click(screen.getByTestId("terminal-open-button"));
 
-const getInput = () =>
-  screen.getByTestId("terminal-input") as HTMLInputElement;
+const getInput = () => screen.getByTestId("terminal-input") as HTMLInputElement;
 
 describe("TerminalContact", () => {
   describe("trigger button", () => {
@@ -110,9 +109,9 @@ describe("TerminalContact", () => {
       fireEvent.keyDown(input, { key: "Enter" });
 
       const inputLines = screen.getAllByTestId("terminal-line-input");
-      expect(
-        inputLines.some((el) => el.textContent?.includes("whoami")),
-      ).toBe(true);
+      expect(inputLines.some((el) => el.textContent?.includes("whoami"))).toBe(
+        true,
+      );
     });
 
     it("navigates history with ArrowUp and restores value in input", () => {

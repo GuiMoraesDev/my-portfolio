@@ -11,25 +11,25 @@ export default async function Home() {
   return (
     <>
       <SessionWrapper id="presentation">
-        <section className="flex w-full flex-col gap-10 text-text-primary md:gap-16">
+        <section className="flex w-full flex-col gap-10 text-text-primary md:gap-12">
           <header className="flex flex-col gap-4 md:gap-6">
             <p className="motion-enter text-sm font-medium tracking-widest md:text-base lg:text-lg">
               {t("presentation.name")}
             </p>
 
-            <h1 className="motion-enter motion-enter-delay-1 font-title text-2xl leading-tight font-bold tracking-tight text-accent-500 md:text-5xl lg:text-7xl">
+            <h1 className="motion-enter motion-enter-delay-1 font-title text-xl leading-tight font-bold tracking-tight text-accent-500 md:text-3xl lg:text-5xl">
               Guilherme Moraes
             </h1>
 
             <h2
               id="my-title"
-              className="motion-enter motion-enter-delay-2 font-title text-lg tracking-tight text-text-secondary md:text-2xl lg:text-4xl"
+              className="motion-enter motion-enter-delay-2 font-title text-lg tracking-tight text-text-secondary md:text-xl lg:text-2xl"
             >
               {t("presentation.title")}
             </h2>
           </header>
 
-          <p className="motion-enter motion-enter-delay-2 text-lg leading-relaxed tracking-wide text-text-secondary md:max-w-[75%]">
+          <p className="motion-enter motion-enter-delay-2 leading-relaxed tracking-wide text-text-secondary md:max-w-[75%] md:text-lg">
             {t("presentation.subtitle")}
           </p>
 

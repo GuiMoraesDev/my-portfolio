@@ -81,7 +81,7 @@ export const TerminalContact = () => {
         type="button"
         aria-label="Open terminal"
         onClick={handleOpenModal}
-        className="fixed right-6 bottom-6 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-border-strong bg-bg-elevated shadow-lg transition-all hover:border-plum-300 hover:shadow-[0_0_20px_rgba(0,0,0,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300 active:scale-95"
+        className="fixed top-60 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-border-strong bg-bg-elevated shadow-lg transition-all hover:border-plum-300 hover:shadow-[0_0_20px_rgba(0,0,0,0.5)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300 active:scale-95"
       >
         <span
           aria-hidden

@@ -124,7 +124,9 @@ export const TerminalContact = () => {
               <span className="text-text-muted"> · portfolio</span>
             </p>
             <p className="text-text-muted">Full-stack developer</p>
-            <p data-testid="terminal-path" className="text-text-muted">~/.guimoraes.dev</p>
+            <p data-testid="terminal-path" className="text-text-muted">
+              ~/.guimoraes.dev
+            </p>
           </div>
         </div>
 

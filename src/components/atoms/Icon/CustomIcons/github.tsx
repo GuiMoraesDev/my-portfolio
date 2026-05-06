@@ -1,9 +1,9 @@
 import { type ComponentProps } from "react";
+import { twMerge } from "tailwind-merge";
 
-export const Github = (props: ComponentProps<"svg">) => (
+export const Github = ({ className, ...props }: ComponentProps<"svg">) => (
   <svg
-    id="github"
-    className="h-full w-auto"
+    className={twMerge("group h-full w-auto", className)}
     width="28"
     height="29"
     viewBox="0 0 28 29"
@@ -24,11 +24,11 @@ export const Github = (props: ComponentProps<"svg">) => (
     />
 
     <path
-      id="tail"
       d="M12.5 25C2.5 25 7.99999 17.5 1.50002 17.5"
       stroke="white"
       strokeWidth="2"
       strokeLinecap="round"
+      className="group-hover:animate-tail"
     />
   </svg>
 );

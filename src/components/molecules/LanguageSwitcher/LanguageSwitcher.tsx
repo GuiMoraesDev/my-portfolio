@@ -34,7 +34,7 @@ export const LanguageSwitcher = () => {
         type="button"
         aria-label="Switch language to Portuguese"
         onClick={handleLanguageChange}
-        className="border-plum-600 relative inline-flex h-8 w-fit cursor-pointer items-center gap-1 rounded-sm border p-1 text-xs font-semibold tracking-widest uppercase"
+        className="relative inline-flex h-8 w-fit cursor-pointer items-center gap-1 rounded-sm border border-plum-200 p-1 text-xs font-semibold tracking-widest uppercase"
       >
         <span
           className={twMerge(

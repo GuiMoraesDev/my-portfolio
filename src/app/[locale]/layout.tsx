@@ -9,7 +9,6 @@ import { LanguageSwitcher } from "@/components/molecules/LanguageSwitcher";
 import { MenuWrapper } from "@/components/molecules/MenuWrapper";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { Wave } from "@/components/molecules/Wave";
-import { TerminalContact } from "@/components/organisms/TerminalContact";
 import { AppProvider } from "@/provider/AppProvider";
 
 export const metadata: Metadata = {
@@ -85,10 +84,8 @@ export default async function RootLayout({
             </nav>
           </header>
 
-          <main className="relative container flex flex-col items-center gap-12 font-body text-text-primary">
+          <main className="relative container flex flex-col items-center gap-10 font-body text-text-primary">
             <Wave />
-
-            <TerminalContact />
 
             {children}
           </main>

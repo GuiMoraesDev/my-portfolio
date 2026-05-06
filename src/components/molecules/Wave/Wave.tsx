@@ -1,11 +1,11 @@
 export const Wave = () => {
   return (
-    <div className="flex min-h-[50vh] w-screen -rotate-12 items-center justify-center md:min-h-[30vh]">
+    <div className="flex h-16 w-screen -rotate-12 items-center justify-center xl:min-h-[20vh]">
       <svg
         viewBox="0 0 800 450"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid slice"
-        className="absolute w-full scale-x-105"
+        className="absolute h-auto w-full scale-x-105"
       >
         <defs>
           <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">

@@ -76,7 +76,7 @@ export const TerminalContact = () => {
   const handleCloseModal = () => dialogRef.current?.close();
 
   return (
-    <nav className="relative top-60 right-6 z-40">
+    <nav className="z-40">
       <button
         data-testid="terminal-open-button"
         type="button"
@@ -94,9 +94,9 @@ export const TerminalContact = () => {
         aria-label="Terminal"
         ref={dialogRef}
         className={twMerge(
-          "invisible fixed top-1/2 left-1/2 h-0 w-0 border-0",
-          "open:visible open:h-120 open:w-[90%] open:border",
-          "z-50 flex max-w-2xl origin-center -translate-1/2 flex-col overflow-hidden rounded border-border-strong bg-[#0d0d0d] shadow-[0_16px_48px_rgba(0,0,0,0.7)] transition-all",
+          "invisible h-0 w-0 border-0",
+          "open:visible open:h-[min(30rem,85dvh)] open:w-screen open:border",
+          "fixed top-1/2 left-1/2 z-50 flex max-w-2xl origin-center flex-col overflow-hidden rounded border-border-strong bg-[#0d0d0d] shadow-[0_16px_48px_rgba(0,0,0,0.7)] transition-all open:-translate-1/2",
         )}
       >
         <header className="flex shrink-0 items-center gap-2 border-b border-border-subtle bg-[#111] px-4 py-2.5">

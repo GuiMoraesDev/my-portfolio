@@ -4,6 +4,7 @@ import { twMerge } from "tailwind-merge";
 
 import { BentoCell } from "@/components/molecules/BentoCell";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
+import { TerminalContact } from "@/components/organisms/TerminalContact";
 
 export default async function Home() {
   const t = await getTranslations();
@@ -17,16 +18,22 @@ export default async function Home() {
               {t("presentation.name")}
             </p>
 
-            <h1 className="motion-enter motion-enter-delay-1 font-title text-xl leading-tight font-bold tracking-tight text-accent-500 md:text-3xl lg:text-5xl">
-              Guilherme Moraes
-            </h1>
+            <div className="flex w-full gap-6">
+              <section className="flex flex-col gap-6">
+                <h1 className="motion-enter motion-enter-delay-1 font-title text-xl leading-tight font-bold tracking-tight text-accent-500 md:text-3xl lg:text-5xl">
+                  Guilherme Moraes
+                </h1>
 
-            <h2
-              id="my-title"
-              className="motion-enter motion-enter-delay-2 font-title text-lg tracking-tight text-text-secondary md:text-xl lg:text-2xl"
-            >
-              {t("presentation.title")}
-            </h2>
+                <h2
+                  id="my-title"
+                  className="motion-enter motion-enter-delay-2 font-title text-lg tracking-tight text-text-secondary md:text-xl lg:text-2xl"
+                >
+                  {t("presentation.title")}
+                </h2>
+              </section>
+
+              <TerminalContact />
+            </div>
           </header>
 
           <p className="motion-enter motion-enter-delay-2 leading-relaxed tracking-wide text-text-secondary md:max-w-[75%] md:text-lg">
@@ -81,7 +88,7 @@ export default async function Home() {
 const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={twMerge(
-      "relative z-10 flex h-full w-full max-w-480 flex-col items-center justify-between py-8 font-body max-[2000px]:px-[10vw] md:py-12 lg:py-16",
+      "relative z-10 flex w-full max-w-480 flex-col items-center justify-between py-8 font-body max-[2000px]:px-[10vw] md:py-12 lg:py-16",
       "first-of-type:mt-8 last-of-type:mb-8 md:first-of-type:mt-12 md:last-of-type:mb-12 lg:first-of-type:mt-16 lg:last-of-type:mb-16",
       className,
     )}

@@ -7,8 +7,8 @@ import {
 import { type ComponentPropsWithRef } from "react";
 import { type VariantProps, tv } from "tailwind-variants";
 
-import "./styles.css";
-import { Github, LinkedIn } from "./CustomIcons";
+import { Github } from "./CustomIcons/github";
+import { LinkedIn } from "./CustomIcons/linkedin";
 
 const icons = {
   Github,

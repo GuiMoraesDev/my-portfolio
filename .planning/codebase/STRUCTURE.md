@@ -1,238 +1,176 @@
 # Codebase Structure
 
-**Analysis Date:** 2026-04-28
+**Analysis Date:** 2026-05-07
 
 ## Directory Layout
 
 ```
 my-portifolio/
-├── src/                        # All application source code
-│   ├── app/                    # Next.js App Router (pages + API routes)
-│   │   ├── [locale]/           # Locale-prefixed route group (en/pt)
-│   │   │   ├── layout.tsx      # Root HTML shell, font loading, providers
-│   │   │   └── page.tsx        # Single-page portfolio (Home)
-│   │   ├── api/                # Next.js Route Handlers
-│   │   │   ├── articles/list/  # GET /api/articles/list — proxies dev.to API
-│   │   │   ├── repos/list/     # GET /api/repos/list — serves static JSON
-│   │   │   ├── testimonials/list/ # GET /api/testimonials/list — serves static JSON
-│   │   │   └── sentry-example-api/ # Sentry error demo endpoint
-│   │   ├── sentry-example-page/ # Sentry error demo page
-│   │   ├── favicon.ico
-│   │   └── global-error.tsx    # Global error boundary (Sentry)
-│   ├── components/             # UI components (Atomic Design)
-│   │   ├── atoms/              # Smallest, stateless UI primitives
-│   │   ├── molecules/          # Composed UI from atoms
-│   │   └── organisms/          # Complex feature sections
-│   ├── hooks/                  # Shared custom React hooks
-│   ├── i18n/                   # Internationalization config + locale strings
-│   │   └── locales/            # en.json, pt.json translation files
-│   ├── provider/               # React context providers
-│   │   └── QueryProvider/      # TanStack Query client wrapper
-│   ├── schemas/                # Zod validation schemas
-│   │   └── generateMessage/    # Contact form schema + unit test
-│   ├── services/               # API client functions
-│   │   └── api/                # Fetcher modules per resource
-│   ├── styles/                 # Global CSS
-│   ├── tests/                  # E2E tests (Playwright)
-│   ├── util/                   # Pure utility functions
-│   ├── instrumentation.ts      # Sentry server-side instrumentation
-│   ├── instrumentation-client.ts # Sentry client-side instrumentation
-│   └── proxy.ts                # next-intl middleware (locale detection)
-├── public/                     # Static assets served at /
-│   ├── cover/                  # OG image variants (256p, 800p, 1800p)
-│   ├── projects/               # Project screenshot images
-│   ├── testimonial/            # Testimonial author avatars
-│   ├── GM-Resume.pdf           # Downloadable resume
-│   └── profile.png             # Profile photo
-├── .github/workflows/          # CI/CD pipeline definitions
-├── .husky/                     # Git hooks (pre-commit)
-├── .planning/codebase/         # GSD analysis documents
-├── .vscode/                    # Editor settings
-├── eslint.config.mjs           # ESLint flat config
-├── jest.config.ts              # Jest config (unit tests)
-├── jest.setup.ts               # Jest global setup
-├── next.config.ts              # Next.js config (Sentry plugin, i18n)
-├── playwright.config.ts        # Playwright E2E config
-├── postcss.config.mjs          # PostCSS / Tailwind pipeline
-├── tsconfig.json               # TypeScript config (path alias @/→src/)
-├── .prettierrc                 # Prettier formatting rules
-└── package.json                # npm scripts + dependencies
+├── src/
+│   ├── app/
+│   │   └── [locale]/         # Next.js App Router — locale-scoped pages
+│   │       ├── layout.tsx    # Root layout: nav, footer, AppProvider
+│   │       └── page.tsx      # Home page (only route)
+│   │   └── global-error.tsx  # Global error boundary (Sentry)
+│   ├── components/
+│   │   ├── atoms/            # Primitive UI: Icon, custom SVGs
+│   │   ├── molecules/        # Composed UI: BentoCell, LanguageSwitcher, MenuWrapper, SocialMedia, Wave
+│   │   └── organisms/
+│   │       └── TerminalContact/   # Interactive terminal modal (self-contained feature)
+│   │           ├── index.ts
+│   │           └── src/
+│   │               ├── components/   # TerminalInput, TerminalWindow, Mascot
+│   │               ├── hooks/        # useControlCommandLine, useTerminalInput
+│   │               ├── utils/        # suggestion.ts (Levenshtein)
+│   │               └── views/        # TerminalContact (top-level view + dialog)
+│   ├── constants/            # App-wide constants (socialMedia.ts)
+│   ├── hooks/                # Shared hooks (useDetectClickOutside)
+│   ├── i18n/
+│   │   ├── index.ts          # next-intl request config
+│   │   ├── routing.ts        # Locale list + prefix strategy
+│   │   └── locales/          # en.json, pt.json
+│   ├── posts/                # Draft blog posts and templates (not rendered yet)
+│   ├── provider/
+│   │   ├── AppProvider.tsx   # Composition root: wraps QueryProvider + LanguageProvider
+│   │   └── src/
+│   │       ├── LanguageProvider.tsx   # NextIntlClientProvider + message hydration
+│   │       └── QueryProvider.tsx      # TanStack Query client
+│   ├── styles/
+│   │   └── globals.css       # Tailwind base styles
+│   ├── tests/
+│   │   └── home.spec.ts      # Playwright E2E test
+│   ├── instrumentation.ts        # Sentry server instrumentation
+│   ├── instrumentation-client.ts # Sentry client instrumentation
+│   └── proxy.ts              # Next.js middleware: next-intl locale routing
+├── public/                   # Static assets (favicons, images)
+├── .planning/                # GSD planning documents
+├── .github/workflows/        # CI pipeline definitions
+├── .husky/                   # Git hooks
+├── next.config.ts            # Next.js config: next-intl plugin + Sentry wrapper
+├── tsconfig.json             # TypeScript config with `@/` path alias
+├── jest.config.ts            # Jest config for unit/component tests
+├── jest.setup.ts             # Jest global setup
+├── playwright.config.ts      # Playwright E2E config
+├── eslint.config.mjs         # ESLint flat config
+└── .prettierrc               # Prettier config
 ```
 
 ## Directory Purposes
 
-**`src/app/[locale]/`**
-- Purpose: The locale-aware Next.js route that renders the entire portfolio
-- Key files: `layout.tsx` (fonts, providers, metadata), `page.tsx` (full page layout with all sections)
-- All sections (presentation, about-me, articles, references, footer) are assembled here
+**`src/app/[locale]/`:**
+- Purpose: Next.js App Router pages, locale-scoped
+- Contains: `layout.tsx` (shell), `page.tsx` (home page)
+- Key files: `layout.tsx` — only place to modify global nav, footer, or metadata
 
-**`src/app/api/`**
-- Purpose: Next.js Route Handlers acting as a lightweight BFF (backend-for-frontend)
-- Each resource has its own subdirectory following `api/<resource>/<action>/route.ts`
-- Internal types live at `src/app/api/<resource>/<action>/src/@types/index.ts`
-- Static data (repos, testimonials) lives at `src/app/api/<resource>/<action>/src/data/<resource>.json`
+**`src/components/atoms/`:**
+- Purpose: Smallest reusable UI units with no business logic
+- Contains: `Icon` component with custom SVG icons
+- Key files: `src/components/atoms/Icon/index.tsx`
 
-**`src/components/atoms/`**
-- Purpose: Primitive UI building blocks with no business logic
-- Key components: `Icon`, `Draws`, `Spheres`, `Toaster`, `Tooltip`, `Input`, `Label`, `TextArea`, `ErrorMessage`
-- Each atom is a directory with `index.tsx` as its public entry point, plus optional `styles.css` and subdirectories for sub-elements/hooks
+**`src/components/molecules/`:**
+- Purpose: Multi-element UI blocks, stateless or lightly stateful, no domain logic
+- Contains: `BentoCell` (compound component), `LanguageSwitcher`, `MenuWrapper`, `SocialMedia`, `Wave`
+- Pattern: Each molecule has its own directory with `index.ts` barrel re-export
 
-**`src/components/molecules/`**
-- Purpose: Composed components built from atoms, with limited interaction logic
-- Key components: `Header` (navigation + language selector), `SocialMedia` (icon link row)
-- Molecules follow `ComponentName/index.tsx` (re-export) + `ComponentName/ComponentName.tsx` (implementation) split
+**`src/components/organisms/TerminalContact/`:**
+- Purpose: Self-contained interactive feature — terminal modal with command execution
+- Internal structure mirrors a mini-app: `views/`, `components/`, `hooks/`, `utils/`
+- Key files: `src/views/TerminalContact.tsx` (entry), `src/hooks/useControlCommandLine.ts` (command state)
 
-**`src/components/organisms/`**
-- Purpose: Full feature sections that fetch data and render complex UI
-- Key organisms: `Articles` (fetches dev.to articles via API), `Testimonials` (fetches testimonials, handles show-more)
-- Each organism uses a `src/` subdirectory with `views/`, `components/`, and optionally `provider/`
-- Public entry point is `index.ts` at the organism root
+**`src/provider/`:**
+- Purpose: React context providers composed into a single `AppProvider`
+- Key files: `AppProvider.tsx` — mount point used in `layout.tsx`
 
-**`src/hooks/`**
-- Purpose: Shared custom React hooks used across components
-- Key file: `useDetectClickOutside.tsx`
+**`src/i18n/`:**
+- Purpose: All internationalisation config and message files
+- Key files: `routing.ts` (locale list), `locales/en.json` + `locales/pt.json` (all copy)
 
-**`src/i18n/`**
-- Purpose: Internationalization setup for next-intl
-- `routing.ts` — defines supported locales (`en`, `pt`) and `defaultLocale`
-- `index.ts` — next-intl request config
-- `locales/en.json`, `locales/pt.json` — translation keys; `*_new.json` variants are work-in-progress copies
+**`src/constants/`:**
+- Purpose: App-wide static values shared across components
+- Key files: `socialMedia.ts` — GitHub and LinkedIn URLs used in terminal commands and footer
 
-**`src/provider/`**
-- Purpose: React context providers wrapping the app
-- `QueryProvider/index.tsx` — TanStack Query `QueryClient` setup
+**`src/hooks/`:**
+- Purpose: Shared custom hooks not specific to any one component
+- Key files: `useDetectClickOutside.tsx`
 
-**`src/schemas/`**
-- Purpose: Zod schemas for runtime validation
-- `generateMessage/schema.ts` — contact form payload validation
-- `generateMessage/test.spec.ts` — Jest unit tests for the schema
+**`src/tests/`:**
+- Purpose: Playwright E2E tests (separate from co-located unit tests)
+- Key files: `home.spec.ts`
 
-**`src/services/api/`**
-- Purpose: Typed fetch wrappers for internal Next.js API routes
-- `api.articles.ts`, `api.testimonials.ts` — resource-specific fetchers
-- `index.ts` — aggregated `api` object: `api.articles.list()`, `api.testimonials.list()`
-
-**`src/styles/`**
-- Purpose: Global CSS (Tailwind directives, custom properties, animations)
-- Key file: `globals.css`
-
-**`src/tests/`**
-- Purpose: Playwright E2E tests
-- Key file: `home.spec.ts` — locale detection, page sections visibility, form interaction
-
-**`src/util/`**
-- Purpose: Pure, framework-agnostic helper functions
-- Key files: `capitalizeFirstLetter.ts`, `logToConsole.ts`
-
-## Key File Locations
-
-**Entry Points:**
-- `src/app/[locale]/layout.tsx` — HTML root, global fonts, providers, SEO metadata
-- `src/app/[locale]/page.tsx` — Sole page; all portfolio sections in one component
-- `src/proxy.ts` — Middleware: next-intl locale detection, runs on every request
-
-**Configuration:**
-- `tsconfig.json` — TypeScript, path alias `@/*` → `./src/*`
-- `next.config.ts` — Next.js + Sentry build plugin
-- `eslint.config.mjs` — ESLint rules
-- `.prettierrc` — Prettier formatting
-- `jest.config.ts` — Jest unit test runner
-- `playwright.config.ts` — Playwright E2E runner
-- `src/i18n/routing.ts` — Locale definitions
-
-**Core Logic:**
-- `src/services/api/index.ts` — Single `api` object used by organisms to fetch data
-- `src/components/organisms/Articles/src/views/Articles.tsx` — Articles section with Suspense streaming
-- `src/components/organisms/Testimonials/src/views/Testimonials.tsx` — Testimonials section with provider + Suspense
-- `src/components/molecules/Header/index.tsx` — Navigation with locale-aware Suspense wrapper
-
-**Testing:**
-- `src/tests/home.spec.ts` — Playwright E2E tests
-- `src/schemas/generateMessage/test.spec.ts` — Jest unit test for Zod schema
+**`src/posts/`:**
+- Purpose: Draft blog posts and post templates (Markdown); not yet wired to any rendered route
 
 ## Naming Conventions
 
 **Files:**
-- React components: PascalCase matching the exported component name — `ArticlesList.tsx`, `Header.tsx`
-- Index re-exports: always `index.tsx` (components) or `index.ts` (non-JSX)
-- API route handlers: `route.ts` (Next.js convention)
-- Service files: `api.<resource>.ts` — e.g., `api.articles.ts`
-- Schema files: `schema.ts` within a named schema directory
-- Utility files: camelCase — `capitalizeFirstLetter.ts`, `logToConsole.ts`
-- Test files: `<name>.spec.ts`
-- Type files: `index.ts` inside a `@types/` directory
+- Components: PascalCase (`TerminalWindow.tsx`, `BentoCell.tsx`)
+- Hooks: camelCase prefixed with `use` (`useControlCommandLine.ts`)
+- Utilities: camelCase (`suggestion.ts`)
+- Constants: camelCase (`socialMedia.ts`)
+- Barrel exports: `index.ts` (re-exports named component)
 
 **Directories:**
-- Components: PascalCase — `Icon/`, `Header/`, `Articles/`
-- Atomic design layers: lowercase plural — `atoms/`, `molecules/`, `organisms/`
-- Feature internals: `src/` subdirectory inside organism for `components/`, `views/`, `provider/`
-- API type definitions: `@types/` (prefixed with `@`)
-- Static data: `data/` inside API route `src/`
-- Locales: lowercase language code — `en.json`, `pt.json`
+- Component directories: PascalCase matching the component name (`TerminalContact/`, `BentoCell/`)
+- Utility/hook directories: camelCase (`hooks/`, `utils/`)
+
+## Entry Points
+
+- **HTTP:** `src/proxy.ts` — Next.js middleware, first handler for every non-asset request
+- **App shell:** `src/app/[locale]/layout.tsx` — root layout, mounts providers, nav, footer
+- **Home page:** `src/app/[locale]/page.tsx` — sole rendered route
+- **Error boundary:** `src/app/global-error.tsx` — catches unhandled errors
+- **Monitoring:** `src/instrumentation.ts` (server), `src/instrumentation-client.ts` (browser)
+
+## Key Files That Govern Behavior
+
+| File | Controls |
+|------|----------|
+| `src/proxy.ts` | Locale detection and routing for all requests |
+| `src/i18n/routing.ts` | Supported locales (`en`, `pt`), prefix strategy (`never`) |
+| `src/i18n/locales/en.json` | All English UI copy |
+| `src/i18n/locales/pt.json` | All Portuguese UI copy |
+| `src/provider/AppProvider.tsx` | Provider composition order |
+| `next.config.ts` | next-intl plugin wiring, Sentry config, image domains |
+| `tsconfig.json` | `@/` path alias pointing to `src/` |
+| `src/components/organisms/TerminalContact/src/hooks/useControlCommandLine.ts` | All terminal commands and their output |
 
 ## Where to Add New Code
 
-**New page section / feature organism:**
-- Implementation: `src/components/organisms/<FeatureName>/src/views/<FeatureName>.tsx`
-- Sub-components: `src/components/organisms/<FeatureName>/src/components/`
-- State/context: `src/components/organisms/<FeatureName>/src/provider/`
-- Public re-export: `src/components/organisms/<FeatureName>/index.ts`
-- Import in page: `src/app/[locale]/page.tsx`
-
-**New API endpoint:**
-- Route handler: `src/app/api/<resource>/<action>/route.ts`
-- Types: `src/app/api/<resource>/<action>/src/@types/index.ts`
-- Static data (if needed): `src/app/api/<resource>/<action>/src/data/<resource>.json`
-
-**New service fetcher:**
-- File: `src/services/api/api.<resource>.ts`
-- Register in: `src/services/api/index.ts`
-
-**New atom component:**
-- Directory + entry: `src/components/atoms/<ComponentName>/index.tsx`
+**New page section:**
+- Add a `<SessionWrapper>` block in `src/app/[locale]/page.tsx`
+- Add copy keys to `src/i18n/locales/en.json` and `src/i18n/locales/pt.json`
 
 **New molecule component:**
-- Implementation: `src/components/molecules/<ComponentName>/<ComponentName>.tsx`
-- Re-export: `src/components/molecules/<ComponentName>/index.tsx`
+- Create `src/components/molecules/ComponentName/ComponentName.tsx` and `index.ts`
 
-**New utility function:**
-- File: `src/util/<functionName>.ts`
+**New organism (self-contained feature):**
+- Create `src/components/organisms/FeatureName/` with `index.ts`, `src/views/`, `src/hooks/`, `src/components/`
+
+**New terminal command:**
+- Edit `src/components/organisms/TerminalContact/src/hooks/useControlCommandLine.ts` — add to `runCommand` switch
+
+**New locale string:**
+- Add key to both `src/i18n/locales/en.json` and `src/i18n/locales/pt.json`
 
 **New shared hook:**
-- File: `src/hooks/use<HookName>.tsx`
+- Add to `src/hooks/`
 
-**New Zod schema:**
-- Schema: `src/schemas/<schemaName>/schema.ts`
-- Tests: `src/schemas/<schemaName>/test.spec.ts`
-
-**New translation key:**
-- Add to both `src/i18n/locales/en.json` and `src/i18n/locales/pt.json`
-
-**New E2E test:**
-- File: `src/tests/<feature>.spec.ts`
+**New constant:**
+- Add to `src/constants/` (new file per domain, e.g. `navigation.ts`)
 
 ## Special Directories
 
-**`.planning/codebase/`:**
-- Purpose: GSD analysis documents for AI-assisted planning
-- Generated: No
+**`.planning/`:**
+- Purpose: GSD planning and codebase analysis documents
+- Generated: No (manually maintained)
 - Committed: Yes
 
-**`.next/`:**
-- Purpose: Next.js build output and cache
-- Generated: Yes
-- Committed: No
-
-**`node_modules/`:**
-- Purpose: npm package dependencies
-- Generated: Yes
-- Committed: No
-
-**`.github/workflows/`:**
-- Purpose: GitHub Actions CI/CD pipelines
+**`src/posts/`:**
+- Purpose: Draft blog content — templates and in-progress posts
 - Generated: No
 - Committed: Yes
+- Note: Not connected to any rendered route; future blog feature material
 
 ---
 
-*Structure analysis: 2026-04-28*
+*Structure analysis: 2026-05-07*

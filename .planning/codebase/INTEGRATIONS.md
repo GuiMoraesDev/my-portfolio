@@ -1,132 +1,96 @@
 # External Integrations
 
-**Analysis Date:** 2026-04-30
+**Analysis Date:** 2026-05-07
 
 ## APIs & External Services
 
-**Publishing / Content:**
-- Dev.to API (public, no auth required) - Fetches published articles for the portfolio
-  - Endpoint: `https://dev.to/api/articles?username=guimoraes`
-  - Consumed by: `src/app/api/articles/list/route.ts` (Next.js Route Handler)
-  - Client service: `src/services/api/api.articles.ts` calls the internal route at `/api/articles/list`
-  - Response type: `DevDotToArticle[]` defined in `src/app/api/articles/list/src/@types/index.ts`
-
 **GitHub:**
-- GitHub REST API - Remote image hosting from `raw.githubusercontent.com`
-  - Auth: `NEXT_PUBLIC_GH_TOKEN` (personal access token; declared in `.env.example` but no active API call using it was found in current source)
-  - Remote image pattern allowed in `next.config.ts`: `raw.githubusercontent.com`
-  - GitHub profile URL used as static links in `src/constants/socialMedia.ts` and `src/components/molecules/SocialMedia/SocialMedia.tsx`
+- Used for: Fetching repository/profile data (referenced in social links and potentially projects section)
+  - Auth: `NEXT_PUBLIC_GH_TOKEN` env var
+  - Client: Native `fetch` (inferred from env var presence)
 
-**Email / Messaging:**
-- Resend - Declared in `.env.example` as `NEXT_PUBLIC_RESEND_API_KEY`
-  - Status: No active Resend SDK (`resend` package) is present in `package.json`. The env var exists but no integration code was found in current source. Likely removed or planned.
+**Resend:**
+- Used for: Email sending (contact form or notifications)
+  - Auth: `NEXT_PUBLIC_RESEND_API_KEY` env var
+  - Note: Key is prefixed `NEXT_PUBLIC_` — exposed to client bundle; review if this is intentional
 
-**AI:**
-- OpenAI - Declared in `.env.example` as `NEXT_PUBLIC_OPENAI_API_KEY`
-  - Status: No `openai` SDK package present in `package.json`. The env var exists but no integration code was found in current source. Likely removed or planned.
+**OpenAI:**
+- Used for: AI-powered feature (likely terminal assistant or contact feature)
+  - Auth: `NEXT_PUBLIC_OPENAI_API_KEY` env var
+  - Note: Key is prefixed `NEXT_PUBLIC_` — exposed to client bundle; this is a security concern
 
 ## Data Storage
 
 **Databases:**
-- None detected - no database client or ORM in dependencies
-
-**Static Data (local):**
-- `src/data/blog-posts.ts` - Hardcoded internal blog post records (title, slug, date, content)
-- `src/i18n/locales/en.json` - English translation strings
-- `src/i18n/locales/pt.json` - Portuguese translation strings
-- `src/posts/` - Raw blog post content files (Markdown/MDX); `src/posts/draft/` for drafts
+- None detected
 
 **File Storage:**
-- Local filesystem only; public assets served from `public/`
-  - `public/cover/` - Open Graph images (256p, 800p, 1800p)
-  - `public/projects/` - Project screenshots
-  - `public/testimonial/` - Testimonial images
-- Remote images proxied via Next.js image optimization from `raw.githubusercontent.com`
+- Remote images served from `raw.githubusercontent.com` (allowed via `next.config.ts` `remotePatterns`)
 
 **Caching:**
-- @tanstack/react-query 5.100.6 - Client-side API response caching (no external cache service)
+- `@tanstack/react-query` for client-side cache; no external cache layer
 
 ## Authentication & Identity
 
 **Auth Provider:**
-- None - no authentication library detected (no NextAuth, Clerk, Auth0, etc.)
-- Site is a public portfolio with no user authentication
+- None detected — portfolio site has no user authentication
 
 ## Monitoring & Observability
 
 **Error Tracking:**
-- Sentry (`@sentry/nextjs` 10.51.0) - Full-stack error monitoring
-  - DSN (hardcoded): `https://72a10c22d8b66638f1beb39b8deee486@o4506790144245760.ingest.us.sentry.io/4506791074922496`
-  - Sentry org: `guilherme-moraes`, project: `my-portifolio` (in `next.config.ts`)
-  - Tunnel route: `/monitoring` (bypasses ad blockers)
-  - Features: `tracesSampleRate: 1`, `enableLogs: true`, `sendDefaultPii: true`
-  - Config files:
-    - `sentry.server.config.ts` - Node.js runtime initialization
-    - `sentry.edge.config.ts` - Edge runtime initialization
-    - `src/instrumentation.ts` - Next.js instrumentation hook (loads configs by runtime)
-  - Source maps uploaded during CI builds (`silent: !process.env.CI` in `next.config.ts`)
-  - Build plugin config: `.env.sentry-build-plugin`
+- Sentry (`@sentry/nextjs` 10.51)
+  - DSN: hardcoded in `sentry.server.config.ts`, `sentry.edge.config.ts`, `src/instrumentation-client.ts`
+  - Org: `guilherme-moraes`, Project: `my-portifolio`
+  - Session Replay enabled client-side (10% session rate, 100% on error)
+  - Trace sample rate: 1.0 (100%) — consider reducing in production
+  - Source maps uploaded at build time via `@sentry/webpack-plugin`
+  - Tunnel route: `/monitoring` (bypasses ad-blockers)
 
 **Analytics:**
-- Vercel Analytics (`@vercel/analytics` 2.0.1) - Page view analytics
-  - Component: `<Analytics />` rendered in `src/app/[locale]/layout.tsx`
-  - No env vars required (auto-detected on Vercel)
-
-**Performance:**
-- Vercel Speed Insights (`@vercel/speed-insights` 2.0.0) - Core Web Vitals monitoring
-  - Component: `<SpeedInsights />` rendered in `src/app/[locale]/layout.tsx`
-  - No env vars required (auto-detected on Vercel)
+- Vercel Analytics (`@vercel/analytics`) — page view tracking; no env var required, tied to Vercel deployment
+- Vercel Speed Insights (`@vercel/speed-insights`) — Core Web Vitals; no env var required
 
 **Logs:**
-- No custom logging utility detected; `no-console` ESLint rule is set to `"error"` (console usage is disallowed in source)
-- Sentry `enableLogs: true` routes logs to Sentry
-
-## Internationalization
-
-- next-intl 4.11.0 - Locale-based routing and message loading
-  - Supported locales: `en`, `pt`
-  - Config entry: `src/i18n/index.ts`
-  - Routing config: `src/i18n/routing.ts`
-  - Message files: `src/i18n/locales/en.json`, `src/i18n/locales/pt.json`
-  - Client provider: `<NextIntlClientProvider>` in `src/app/[locale]/layout.tsx`
+- Sentry log ingestion enabled (`enableLogs: true` in all Sentry configs)
 
 ## CI/CD & Deployment
 
 **Hosting:**
-- Vercel (inferred from `@vercel/analytics`, `@vercel/speed-insights`, Sentry `automaticVercelMonitors: true`)
+- Vercel (inferred from `@vercel/analytics`, `@vercel/speed-insights`, and Sentry `automaticVercelMonitors`)
 
 **CI Pipeline:**
-- GitHub Actions; workflow: `.github/workflows/ci.yaml`
-- Triggers: pull requests to `homolog` or `main`
-- Sentry source maps uploaded when `CI` env var is set
+- Not detected in repository; Sentry build plugin uses `CI` env var to control log verbosity
 
 ## Environment Configuration
 
-**Declared in `.env.example`:**
-- `NEXT_PUBLIC_GH_TOKEN` - GitHub personal access token (purpose: remote image auth or future API use)
-- `NEXT_PUBLIC_RESEND_API_KEY` - Resend email API key (no active integration found)
-- `NEXT_PUBLIC_OPENAI_API_KEY` - OpenAI API key (no active integration found)
+**Required env vars (from `.env.example`):**
+- `NEXT_PUBLIC_GH_TOKEN` — GitHub API token for repository data
+- `NEXT_PUBLIC_RESEND_API_KEY` — Resend email API key
+- `NEXT_PUBLIC_OPENAI_API_KEY` — OpenAI API key
 
-**Runtime env vars (set by Next.js / CI):**
-- `NEXT_RUNTIME` - `"nodejs"` or `"edge"`, used in `src/instrumentation.ts` to load Sentry config
-- `CI` - Set in CI pipelines; affects Sentry log verbosity and Playwright retries
-- `TEST_ENV` - Set to `"true"` when running E2E tests (`npm run test:e2e`)
+**Sentry build credentials:**
+- `.env.sentry-build-plugin` present — contains Sentry auth token for source map uploads (do not commit)
 
-**Security note:**
-- All three declared public keys use the `NEXT_PUBLIC_` prefix, exposing them to the browser bundle. For server-only secrets this is a risk. See CONCERNS.md.
-
-**Sentry build:**
-- `.env.sentry-build-plugin` - Contains Sentry auth token for source map upload (not committed)
+**Secrets location:**
+- `.env.example` documents required vars
+- Actual values in `.env` (not committed)
 
 ## Webhooks & Callbacks
 
 **Incoming:**
-- None detected
+- `/monitoring` — Sentry tunnel route (proxies browser error reports through Next.js to avoid ad-blockers)
 
 **Outgoing:**
-- Dev.to API - outbound fetch from `src/app/api/articles/list/route.ts`
-- Sentry ingest - error/trace events sent from server, edge, and client runtimes
+- None detected
+
+## i18n
+
+**Provider:** next-intl 4.11
+- Locales: `en` (default), `pt`
+- Locale prefix strategy: `never` (locale not shown in URL)
+- Middleware: `src/proxy.ts` handles locale routing via `createIntlMiddleware`
+- Translations: `src/i18n/locales/`
 
 ---
 
-*Integration audit: 2026-04-30*
+*Integration audit: 2026-05-07*

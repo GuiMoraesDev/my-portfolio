@@ -1,70 +1,125 @@
 # Codebase Concerns
 
-_Last updated: 2026-04-30_
+**Analysis Date:** 2026-05-07
 
----
+## Tech Debt
 
-## Performance Concerns
+**QueryClient instantiated on every render:**
+- Issue: `QueryProvider` creates a `new QueryClient()` directly inside the function body, not inside a `useState` or `useRef`. This causes a fresh QueryClient — and an empty cache — to be created on every re-render of the provider.
+- Files: `src/provider/src/QueryProvider.tsx`
+- Impact: Any React Query data is lost on re-render; the client is also never shared correctly with devtools.
+- Fix approach: Wrap instantiation in `useState(() => new QueryClient())` or `useRef`.
 
-- [HIGH] `QueryClient` recreated on every render — should be lifted outside component or use `useState`
-- [HIGH] `getMessages()` missing `await` — silent failure in i18n message loading
-- [MEDIUM] Dead dev.to API route still in codebase — fetches external API that is no longer used
-- [MEDIUM] 5 always-on CSS animations running regardless of viewport visibility — consider `IntersectionObserver` triggers
-- [MEDIUM] Blog post HTML strings bloating the JS bundle — raw HTML stored inline rather than fetched on demand
+**Nested `<footer>` inside `<footer>`:**
+- Issue: `src/app/[locale]/layout.tsx` (line 94–131) wraps a `<footer id="footer">` element that itself contains another `<footer>` element as its direct child. This is invalid HTML.
+- Files: `src/app/[locale]/layout.tsx`
+- Impact: Screen readers and accessibility tree parse errors; potential SEO penalty.
+- Fix approach: Replace the inner `<footer>` with a `<div>` or `<section>`.
 
----
+**Duplicate mascot SVG definition:**
+- Issue: The full mascot SVG (300×300, ~250 lines of paths) lives in `Mascot.tsx`, and a pixel-art version (40×52) duplicates the same shape logic inline inside `TerminalWindow.tsx` as a local `MascotPixel` component. There is no shared abstraction.
+- Files: `src/components/organisms/TerminalContact/src/components/Mascot.tsx`, `src/components/organisms/TerminalContact/src/components/TerminalWindow.tsx`
+- Impact: Visual drift if the mascot design changes — only one copy gets updated.
+- Fix approach: Export `MascotPixel` from `Mascot.tsx` or a shared `src/components/atoms/Mascot/` atom.
 
-## Security Concerns
+**`src/posts/` directory is inert:**
+- Issue: `src/posts/draft/` contains one `.md` draft article and `src/posts/templates/` has five template files. None are consumed by any code. There is no blog rendering infrastructure.
+- Files: `src/posts/draft/How I debugged a working solution.md`, `src/posts/templates/`
+- Impact: The directory signals planned work that is not implemented; new developers will not know its purpose.
+- Fix approach: Either implement a blog listing page or move the content out of `src/` (e.g., into a `content/` directory) to avoid confusion.
 
-- [HIGH] `dangerouslySetInnerHTML` used with no sanitization — blog post HTML content rendered directly; XSS risk if content source is ever untrusted
-- [MEDIUM] Raw error object leaked from API route — `catch (e) { return Response.json({ error: e })` exposes stack traces
-- [LOW] API proxy route has no rate limiting — unprotected endpoint could be abused
-- [LOW] Email address hardcoded in client component — exposed in bundle; consider obfuscation or server-side rendering
+**Stale copyright year in footer:**
+- Issue: `src/app/[locale]/layout.tsx` (line 123) hard-codes `© 2024 Guilherme Moraes`.
+- Files: `src/app/[locale]/layout.tsx`
+- Fix approach: Replace with `new Date().getFullYear()` or update to the current year.
 
----
+**`lodash` imported as full bundle:**
+- Issue: `lodash` is listed as a production dependency but no named subpath imports (`lodash/get`, etc.) were found. Full `lodash` adds ~70 KB minified.
+- Files: `package.json`
+- Impact: Unnecessary bundle weight for a small portfolio site.
+- Fix approach: Audit actual usage and switch to `lodash-es` subpath imports or replace with native equivalents.
 
-## Code Quality Concerns
+## Known Bugs
 
-- [MEDIUM] `ArticlesSkeleton` component defined but disconnected — not used anywhere in the current render tree
-- [MEDIUM] Duplicate social media URLs — defined in multiple places; should be a single source of truth
-- [MEDIUM] `children` rendered twice in `MenuWrapper` — likely a copy-paste bug causing double rendering
-- [LOW] Module-level mutable `lineId` counter — shared mutable state at module scope risks incorrect IDs across renders
-- [LOW] Wrong `aria-label` on `LanguageSwitcher` — accessibility label does not match the control's actual function
+**E2E test asserts stale welcome message text:**
+- Symptoms: `src/tests/home.spec.ts` (line 92) checks for `"Welcome. Type 'help' for available commands."` (without slash before `help`), but the actual welcome line in `useControlCommandLine.ts` (line 35) reads `"Welcome. Type '/help' for available commands."`.
+- Files: `src/tests/home.spec.ts`, `src/components/organisms/TerminalContact/src/hooks/useControlCommandLine.ts`
+- Impact: The E2E test will always fail when run against the live app.
+- Fix approach: Update the expected string in `home.spec.ts` to `'/help'`.
 
----
+## Security Considerations
 
-## Architecture Concerns
+**`window.open` called from a hook:**
+- Risk: `useControlCommandLine.ts` calls `window.open(URL, "_blank", "noopener,noreferrer")` directly. URLs are hard-coded constants, so injection is not currently possible, but the pattern is fragile if URLs are ever made dynamic.
+- Files: `src/components/organisms/TerminalContact/src/hooks/useControlCommandLine.ts`
+- Current mitigation: `noopener,noreferrer` is correctly set. URLs are string literals.
+- Recommendations: Keep URLs as typed constants; never interpolate user input into `window.open` calls.
 
-- [MEDIUM] Blog content layer has no abstraction — raw file reads and HTML parsing scattered across route handlers
-- [MEDIUM] `src/posts/` directory appears unused — posts data may have moved elsewhere, leaving dead directory
-- [LOW] `SessionWrapper` not extracted as a named component — anonymous wrapper makes debugging and testing harder
-- [LOW] `TerminalContact` mounted globally in root layout — loaded on every page even when not visible
+**SEO metadata keywords reference an unrelated product:**
+- Risk: `src/app/[locale]/layout.tsx` (line 17) includes `"confer-all"` and `"Confer All"` in the keywords array — these appear to be from a different project.
+- Files: `src/app/[locale]/layout.tsx`
+- Fix approach: Remove or replace with relevant portfolio keywords.
 
----
+## Performance Bottlenecks
 
-## Maintainability Concerns
+**Mascot component runs multiple concurrent `setInterval`-equivalent timers:**
+- Problem: `Mascot.tsx` runs a recursive `setTimeout` chain (showNextMessage) that is reset and restarted every time `isInView`, `isHovered`, or `isOpen` changes. Combined with three simultaneous Framer Motion `animate` loops (leg animations, eye blinking), this creates constant background work even when the mascot is partially off-screen.
+- Files: `src/components/organisms/TerminalContact/src/components/Mascot.tsx`
+- Cause: No `reduce-motion` media query check; `useInView` only stops the message loop, not the CSS animation loops.
+- Improvement path: Wrap `animate` props in a check against `useReducedMotion()` from Framer Motion. Pause leg/eye animations when `isOpen` is true.
 
-- [MEDIUM] 3 unused Radix UI packages in `package.json` — increases install time and audit surface with no benefit
-- [LOW] Lodash imported for a single `pick` call — heavy dependency for trivial operation; replace with native destructuring
-- [LOW] Copyright year hardcoded as `2024` — will become stale; use `new Date().getFullYear()`
-- [LOW] SEO keywords appear stale — meta keywords don't reflect current portfolio focus areas
-- [LOW] `metadataBase` set as a string, not a `URL` object — Next.js expects `new URL(...)` for correct OG/sitemap resolution
+**Wave component contains 84 static SVG path elements:**
+- Problem: `Wave.tsx` renders dozens of nearly-identical `<path>` elements hard-coded as JSX. No Framer Motion or CSS animation, but it still adds significant DOM nodes on every page load.
+- Files: `src/components/molecules/Wave/Wave.tsx`
+- Cause: Path generation was done manually and inlined.
+- Improvement path: Low priority for a portfolio, but could be replaced with a single animatable `<path>` and CSS gradient if bundle size becomes a concern.
 
----
+## Fragile Areas
+
+**`TerminalContact` uses `<dialog>` with manual open/close via ref:**
+- Files: `src/components/organisms/TerminalContact/src/views/TerminalContact.tsx`
+- Why fragile: `dialogRef.current?.showModal()` and `dialogRef.current?.close()` are called imperatively. `isOpen` React state is a separate boolean that must be kept in sync manually. If the dialog is closed by pressing Escape (native browser behaviour), `isOpen` state is never updated — leaving the mascot in a "closed" visual state while `isOpen` remains `true`.
+- Safe modification: Listen to the `close` event on the dialog element and call `setIsOpen(false)` inside a `useEffect`.
+- Test coverage: The unit tests mock `showModal`/`close` so they do not catch this Escape-key desync.
+
+**Levenshtein matrix allocated on every suggestion lookup:**
+- Files: `src/components/organisms/TerminalContact/src/utils/suggestion.ts`
+- Why fragile: `levenshtein` allocates a full `rows × cols` 2D array on every call with no memoisation. Acceptable for the current tiny command set (6 commands), but would degrade with larger command lists.
+- Safe modification: No change needed at current scale; note before expanding the command set.
 
 ## Test Coverage Gaps
 
-- [HIGH] E2E test uses `#header` selector that doesn't exist in the DOM — test is silently passing a broken assertion
-- [MEDIUM] Page title mismatch: E2E expects `"Frontend"` but rendered title says `"Software engineer"` — stale assertion
-- [MEDIUM] Blog pages (list + detail) have zero test coverage — new feature with no tests
-- [LOW] `TerminalContact` component has no test coverage — complex interactive component untested
+**No unit tests for `LanguageSwitcher`:**
+- What's not tested: locale switching logic, active locale highlighting, keyboard interaction.
+- Files: `src/components/molecules/LanguageSwitcher/LanguageSwitcher.tsx`
+- Risk: Regression when i18n routing changes.
+- Priority: Medium
+
+**No unit tests for `BentoCell`, `SocialMedia`, or `MenuWrapper`:**
+- What's not tested: Compound component composition (BentoCell), external link rendering (SocialMedia), mobile menu open/close (MenuWrapper).
+- Files: `src/components/molecules/BentoCell/BentoCell.tsx`, `src/components/molecules/SocialMedia/SocialMedia.tsx`, `src/components/molecules/MenuWrapper/MenuWrapper.tsx`
+- Risk: Regressions go undetected; currently only caught if an E2E test happens to render them.
+- Priority: Low (presentational components) to Medium (MenuWrapper has interaction logic).
+
+**No tests for `Mascot` component:**
+- What's not tested: Timer lifecycle, message sequencing, hover state transitions.
+- Files: `src/components/organisms/TerminalContact/src/components/Mascot.tsx`
+- Risk: Timer bugs (like the Escape-key desync described above) are invisible.
+- Priority: Medium
+
+**E2E tests run on Chromium and mobile Chrome only:**
+- What's not tested: Safari / WebKit (relevant for iOS users), Firefox.
+- Files: `playwright.config.ts`
+- Risk: WebKit-specific `<dialog>` or CSS animation bugs ship silently.
+- Priority: Medium
+
+## Scaling Limits
+
+**Terminal command set is a monolithic switch statement:**
+- Current capacity: 8 named commands in `useControlCommandLine.ts`.
+- Limit: Adding more commands requires editing the hook directly. No plugin or registry pattern exists.
+- Scaling path: Introduce a `commands/` map keyed by command name, each entry exporting `{ name, description, run }`. The hook becomes a dispatcher.
 
 ---
 
-## Opportunities
-
-- **MDX pipeline**: Replace raw HTML string blog posts with MDX for syntax highlighting, component embedding, and type safety
-- **Delete dead API layer**: Remove the unused dev.to API route and any related fetcher code to reduce confusion
-- **Fix 2 failing E2E tests**: `#header` selector and title mismatch are likely causing silent CI failures — fix assertions
-- **Extract `SessionWrapper`**: Named component improves React DevTools clarity and enables isolated testing
-- **Remove 3 unused Radix packages**: Audit and remove `@radix-ui/*` entries not referenced anywhere in the codebase
+*Concerns audit: 2026-05-07*

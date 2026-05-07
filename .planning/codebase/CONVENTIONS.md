@@ -1,137 +1,110 @@
-# Code Conventions
+# Coding Conventions
 
-**Analysis Date:** 2026-04-28
+**Analysis Date:** 2026-05-07
 
-## TypeScript
+## Naming Patterns
 
-- **Strict mode enabled** — `"strict": true` in `tsconfig.json`
-- Target: `esnext`, module resolution: `bundler`
-- `isolatedModules: true` — no cross-file type-only constructs
-- `resolveJsonModule: true` — JSON files importable as typed modules
-- **Consistent type imports enforced** via ESLint: `@typescript-eslint/consistent-type-imports` with `inline-type-imports` fix style
-  - Example: `import { type Foo } from './foo'` (not a separate `import type` line)
+**Files:**
+- React components: PascalCase matching the export name — `BentoCell.tsx`, `TerminalInput.tsx`
+- Hooks: camelCase prefixed with `use` — `useDetectClickOutside.tsx`, `useControlCommandLine.ts`
+- Barrel files: `index.ts` or `index.tsx` at directory root re-exporting the primary named export
+- Test files: co-located with the source file, same name with `.test.tsx` / `.test.ts` suffix
+- Playwright specs: `*.spec.ts` inside `src/tests/`
 
-## ESLint Rules
+**Components:**
+- Named exports only — no default exports on components
+- Example: `export const Icon = ...`, `export const BentoCell = { Wrapper, Label, Heading, Body }`
 
-Config: `eslint.config.mjs` (flat config format)
+**Hooks:**
+- Named exports, camelCase with `use` prefix
+- Accept a single options object (destructured), never positional args
+- Example: `useHandleClickOutside({ ref, callback })`
 
-Key rules:
-- `no-console: error` — no console.log in source; use `src/util/logToConsole.ts` wrapper
-- `unused-imports/no-unused-imports: error` — zero dead imports
-- `unused-imports/no-unused-vars: error` — unused vars disallowed; prefix with `_` to suppress
-- `import/order: error` — imports must be grouped with newlines between groups, alphabetized (case-insensitive)
-- Extends: `eslint-config-next/core-web-vitals`, `eslint-config-next/typescript`, `eslint-config-prettier`
+**Types:**
+- Defined inline near usage or at the top of the file
+- Named with PascalCase and a `Props` suffix for component props: `IconProps`, `BentoCellHeadingProps`
+- Type imports use inline syntax: `import { type ComponentProps } from "react"`
 
-Pre-commit hook runs: `npm run check-types && npm run lint`
+**Constants:**
+- SCREAMING_SNAKE_CASE for exported constants: `GITHUB_URL`, `LINKEDIN_URL`
+- Stored in `src/constants/`
 
-## Prettier
+## Code Style
 
-Config: `.prettierrc`
-```json
-{
-  "plugins": ["prettier-plugin-tailwindcss"],
-  "tailwindStylesheet": "./src/styles/globals.css"
-}
-```
-- Tailwind class sorting is automatic via `prettier-plugin-tailwindcss`
-- Prettier integrated into ESLint via `eslint-config-prettier` (disables conflicting rules)
+**Formatting:**
+- Tool: Prettier with `prettier-plugin-tailwindcss`
+- Tailwind stylesheet: `./src/styles/globals.css`
+- Config: `.prettierrc`
+- Run via: `npm run lint:fix` (do NOT use raw `eslint --fix`)
 
-## Naming Conventions
+**Linting:**
+- Tool: ESLint flat config at `eslint.config.mjs`
+- Extends: `eslint-config-next/core-web-vitals`, `eslint-config-next/typescript`, `tailwind-canonical-classes`
+- Key rules:
+  - `no-console`: error — no console statements allowed
+  - `unused-imports/no-unused-imports`: error — remove all unused imports
+  - `unused-imports/no-unused-vars`: error — prefix unused vars/args with `_` to suppress
+  - `@typescript-eslint/consistent-type-imports`: error — enforce `import { type X }` inline style
+  - `import/order`: error — imports must be sorted alphabetically with newlines between groups
+  - `tailwind-canonical-classes`: warn — Tailwind classes must follow canonical order
 
-**Components (files):**
-- PascalCase matching exported name: `ArticlesList.tsx`, `Header.tsx`, `SocialMedia.tsx`
-- Entry point always `index.tsx` (JSX) or `index.ts` (non-JSX)
-- Implementation file: `ComponentName/ComponentName.tsx` (for molecules/organisms)
-- Re-export file: `ComponentName/index.tsx` or `ComponentName/index.ts`
+## Import Organization
 
-**Non-component files:**
-- Utilities: camelCase — `capitalizeFirstLetter.ts`, `logToConsole.ts`
-- Services: `api.<resource>.ts` — e.g., `api.articles.ts`, `api.testimonials.ts`
-- Schemas: `schema.ts` inside a named directory
-- Tests: `<name>.spec.ts`
-- Types: `index.ts` inside a `@types/` directory
-- Route handlers: `route.ts` (Next.js convention)
+**Order (enforced by `import/order` rule, alphabetical within groups):**
+1. External packages (e.g., `react`, `framer-motion`, `@radix-ui/react-icons`)
+2. Internal aliases starting with `@/` (e.g., `@/components/...`, `@/hooks/...`)
+3. Relative imports (e.g., `./useControlCommandLine`)
 
-**Directories:**
-- Component directories: PascalCase — `Icon/`, `Header/`, `Articles/`
-- Layer directories: lowercase plural — `atoms/`, `molecules/`, `organisms/`
-- Organism internals: `src/` subdirectory containing `views/`, `components/`, `provider/`
-- Type directories: `@types/` (prefixed with `@`)
+**Blank line required between each group.**
 
-**CSS classes:**
-- Tailwind utility classes only — no custom CSS classes in components
-- Complex class composition via `tailwind-variants` and `tailwind-merge`
-- Global styles only in `src/styles/globals.css`
+**Path Aliases:**
+- `@/*` → `src/*` (defined in `tsconfig.json` and mirrored in `jest.config.ts`)
+- Always prefer `@/` over deep relative paths for cross-module imports
+- Use relative imports only within the same component's local `src/` subtree
 
-## Import Patterns
-
-- **Path alias:** `@/*` maps to `./src/*` (configured in `tsconfig.json`)
-  - Example: `import { api } from '@/services/api'`
-- Use absolute `@/` imports for cross-module references
-- Use relative imports only within the same component's own subdirectory
-- Import groups ordered alphabetically with blank lines between groups (enforced by ESLint)
+**Type Imports:**
+- Use inline `type` keyword: `import { type ComponentProps } from "react"`
+- Never use `import type { ... }` (top-level form) — ESLint enforces inline style
 
 ## Component Structure Patterns
 
-**Atom:** single file, no sub-structure
-```
-atoms/ComponentName/
-  index.tsx          ← implementation + export
-  styles.css         ← optional, component-scoped styles
-```
+**Server Components (default in Next.js App Router):**
+- No directive needed
+- Keep data fetching and async logic here
 
-**Molecule:** split implementation from entry
-```
-molecules/ComponentName/
-  index.tsx          ← re-export only
-  ComponentName.tsx  ← implementation
-```
+**Client Components:**
+- Add `"use client"` as the very first line
+- Use when hooks, event handlers, or browser APIs are needed
+- Examples: `MenuWrapper.tsx`, `TerminalContact.tsx`, `TerminalInput.tsx`
 
-**Organism:** full internal module structure
-```
-organisms/FeatureName/
-  index.ts                        ← public re-export
-  src/
-    views/FeatureName.tsx         ← main view component
-    components/                   ← sub-components
-    provider/                     ← context/state if needed
-    @types/index.ts               ← local type definitions
-```
+**Compound Components:**
+- Group sub-components as properties of a namespace object
+- Example pattern from `BentoCell.tsx`:
+  ```tsx
+  export const BentoCell = { Wrapper, Label, Heading, Body };
+  ```
 
-## State Management
+**Styling:**
+- Tailwind CSS only — no CSS modules, no inline `style` props for layout
+- `twMerge` for conditional class merging when Tailwind variants are not involved
+- `tailwind-variants` (`tv`) for multi-variant component APIs (see `Icon/index.tsx`)
+- `data-*` attributes for state-driven styles (e.g., `data-is-open={isOpen}`) instead of inline conditionals
 
-- **Server state:** TanStack Query (`@tanstack/react-query`) — all API data fetching
-- **Form state:** React Hook Form (`react-hook-form`) with Zod resolvers
-- **Local UI state:** React `useState` / `useReducer` within components
-- **No global client state manager** (no Redux, Zustand, etc.)
-- `QueryProvider` wraps the app at `src/provider/QueryProvider/index.tsx`
+**Props:**
+- Extend native HTML element props with `ComponentProps<"element">` or `ComponentPropsWithRef<"element">`
+- Spread remaining props onto the root DOM element
+- Use `children?: never` to explicitly disallow children when not supported
 
-## CSS / Styling
+## Commit Message Format
 
-- **Tailwind CSS v4** — utility-first, configured via `postcss.config.mjs`
-- `tailwind-variants` for component variants (replaces `cva`)
-- `tailwind-merge` for conditional class merging
-- Global CSS: `src/styles/globals.css` (Tailwind directives + custom properties)
-- No CSS modules — Tailwind classes directly in JSX
-
-## Animation
-
-- **Motion** (`motion` package, formerly Framer Motion) for animations
-- Used in organisms and page-level transitions
-
-## Internationalization
-
-- `next-intl` for i18n; locales: `en` (default), `pt`
-- Translation keys in `src/i18n/locales/en.json` and `pt.json`
-- Always add keys to both locale files when creating new translatable text
-- Access via `useTranslations()` hook in components
-
-## Git Conventions
-
-- Pre-commit: type-check + lint (via Husky)
-- Branches: feature branches targeting `homolog` or `main`
-- CI runs on PRs to `homolog` and `main`
+- Conventional Commits style: `type: description`
+- Types observed: `feat`, `refactor`, `fix`
+- Lowercase, imperative mood, no period
+- Examples from history:
+  - `feat: make terminal window draggable via framer-motion`
+  - `refactor: move input logic into TerminalInput, TerminalWindow owns only lines and scroll`
+  - `feat: suggest closest command on typo using Levenshtein distance`
 
 ---
 
-*Conventions analysis: 2026-04-28*
+*Convention analysis: 2026-05-07*

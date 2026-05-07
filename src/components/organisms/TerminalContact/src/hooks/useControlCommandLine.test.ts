@@ -197,7 +197,7 @@ describe("useControlCommandLine", () => {
       expect(errorLines.some((l) => l.text.includes("foobar"))).toBe(true);
     });
 
-    it("unknown command also appends the 'type /help' hint", () => {
+    it("unknown command also appends the 'type /help' hint when no suggestion matches", () => {
       const { result } = renderHook(() => useControlCommandLine());
 
       act(() => {
@@ -208,6 +208,40 @@ describe("useControlCommandLine", () => {
         (l) => l.type === "output",
       );
       expect(outputLines.some((l) => l.text.includes("/help"))).toBe(true);
+    });
+
+    it("near-miss slash command shows 'Do you mean' suggestion instead of hint", () => {
+      const { result } = renderHook(() => useControlCommandLine());
+
+      act(() => {
+        result.current.onSubmitCommand("/hlep");
+      });
+
+      const errorLines = result.current.lines.filter((l) => l.type === "error");
+      expect(
+        errorLines.some((l) => l.text.includes("Do you mean /help?")),
+      ).toBe(true);
+      const outputLines = result.current.lines.filter(
+        (l) => l.type === "output",
+      );
+      expect(
+        outputLines.some(
+          (l) => l.text === "type '/help' for available commands",
+        ),
+      ).toBe(false);
+    });
+
+    it("near-miss plain command shows 'Do you mean' suggestion", () => {
+      const { result } = renderHook(() => useControlCommandLine());
+
+      act(() => {
+        result.current.onSubmitCommand("claer");
+      });
+
+      const errorLines = result.current.lines.filter((l) => l.type === "error");
+      expect(
+        errorLines.some((l) => l.text.includes("Do you mean clear?")),
+      ).toBe(true);
     });
 
     it("linux commands are case-insensitive", () => {

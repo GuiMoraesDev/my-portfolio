@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { findSuggestion } from "../utils/suggestion";
+
 import { GITHUB_URL, LINKEDIN_URL } from "@/constants/socialMedia";
 
 export type TerminalLine = {
@@ -21,6 +23,12 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   { name: "/open linkedin", description: "open LinkedIn profile" },
 ];
 
+const SLASH_COMMAND_NAMES = [
+  ...new Set(SLASH_COMMANDS.map((c) => c.name.slice(1).split(" ")[0])),
+];
+
+const PLAIN_COMMAND_NAMES = ["whoami", "echo", "clear"];
+
 const INITIAL_STATE: TerminalLine[] = [
   {
     type: "output",
@@ -34,29 +42,14 @@ const HELP_LINES: TerminalLine[] = [
   { type: "output", text: "  clear           ->   clear the terminal" },
   { type: "output", text: "  /help           ->   show this message" },
   { type: "output", text: "  /contact        ->   show contact links" },
-  {
-    type: "output",
-    text: "  /games          ->   show games I've built",
-  },
-  {
-    type: "output",
-    text: "  /open github    ->   open GitHub profile",
-  },
-  {
-    type: "output",
-    text: "  /open linkedin  ->   open LinkedIn profile",
-  },
+  { type: "output", text: "  /games          ->   show games I've built" },
+  { type: "output", text: "  /open github    ->   open GitHub profile" },
+  { type: "output", text: "  /open linkedin  ->   open LinkedIn profile" },
 ];
 
 const WHOAMI_LINES: TerminalLine[] = [
-  {
-    type: "output",
-    text: "Guilherme Moraes — Senior Software Engineer",
-  },
-  {
-    type: "output",
-    text: "Building frontend systems that hold up over time.",
-  },
+  { type: "output", text: "Guilherme Moraes — Senior Software Engineer" },
+  { type: "output", text: "Building frontend systems that hold up over time." },
 ];
 
 const GAMES_LINES: TerminalLine[] = [
@@ -77,16 +70,39 @@ const CONTACT_LINES: TerminalLine[] = [
   { type: "output", text: "email: guimoraes.dev@gmail.com" },
 ];
 
-type RunCommandArgs = { lines: TerminalLine[]; clear?: boolean };
+const notFoundLines = (
+  cmd: string,
+  prefix: string,
+  candidates: string[],
+): TerminalLine[] => {
+  const suggestion = findSuggestion(cmd, candidates);
+  return [
+    {
+      type: "error",
+      text: suggestion
+        ? `command not found: ${prefix}${cmd}. Do you mean ${prefix}${suggestion}?`
+        : `command not found: ${prefix}${cmd}`,
+    },
+    ...(suggestion
+      ? []
+      : [
+          {
+            type: "output" as const,
+            text: "type '/help' for available commands",
+          },
+        ]),
+  ];
+};
 
-const runCommand = (raw: string): RunCommandArgs => {
+type RunCommandResult = { lines: TerminalLine[]; clear?: boolean };
+
+const runCommand = (raw: string): RunCommandResult => {
   const trimmed = raw.trim();
 
   if (!trimmed) return { lines: [] };
 
   if (trimmed.startsWith("/")) {
-    const withoutSlash = trimmed.slice(1);
-    const [cmd, ...args] = withoutSlash.toLowerCase().split(/\s+/);
+    const [cmd, ...args] = trimmed.slice(1).toLowerCase().split(/\s+/);
 
     switch (cmd) {
       case "help":
@@ -100,29 +116,23 @@ const runCommand = (raw: string): RunCommandArgs => {
 
       case "open":
         switch (args[0]) {
-          case "github": {
+          case "github":
             window.open(GITHUB_URL, "_blank", "noopener,noreferrer");
             return { lines: [{ type: "output", text: "Opening GitHub..." }] };
-          }
-          case "linkedin": {
+          case "linkedin":
             window.open(LINKEDIN_URL, "_blank", "noopener,noreferrer");
             return { lines: [{ type: "output", text: "Opening LinkedIn..." }] };
-          }
-          default: {
+          default:
             return {
               lines: [
                 { type: "error", text: `unknown target: ${args[0] ?? ""}` },
               ],
             };
-          }
         }
 
       default:
         return {
-          lines: [
-            { type: "error", text: `command not found: /${cmd}` },
-            { type: "output", text: "type '/help' for available commands" },
-          ],
+          lines: notFoundLines(cmd, "/", SLASH_COMMAND_NAMES),
         };
     }
   }
@@ -142,10 +152,7 @@ const runCommand = (raw: string): RunCommandArgs => {
 
     default:
       return {
-        lines: [
-          { type: "error", text: `command not found: ${cmd}` },
-          { type: "output", text: "type '/help' for available commands" },
-        ],
+        lines: notFoundLines(cmd, "", PLAIN_COMMAND_NAMES),
       };
   }
 };
@@ -157,7 +164,6 @@ export const useControlCommandLine = () => {
 
   const onSubmitCommand = (input: string) => {
     const trimmed = input.trim();
-
     const result = runCommand(trimmed);
 
     if (trimmed) {
@@ -170,10 +176,7 @@ export const useControlCommandLine = () => {
 
     setLines((prev) => [
       ...prev,
-      {
-        type: "input",
-        text: trimmed,
-      },
+      { type: "input", text: trimmed },
       ...result.lines,
     ]);
   };

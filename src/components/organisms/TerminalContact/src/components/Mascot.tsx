@@ -4,17 +4,17 @@ import { AnimatePresence, motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const BUBBLE_MESSAGES = [
-  "hey, let's talk",
-  "click me!",
-  "i don't bite... probably",
+  "Hey, let's talk",
+  "Click on me!",
+  "I don't bite... probably",
 ];
-const BUBBLE_HOVER_MESSAGES = ["hey, it tickles...", "ok fine, I like it"];
+const BUBBLE_HOVER_MESSAGES = ["Hey, it tickles...", "Ok fine, I like it"];
 const BUBBLE_SHOW_DURATION = 3_000;
 const BUBBLE_HOVER_SHOW_DURATION = 2_000;
-const BUBBLE_BETWEEN_DELAY = 2_000;
+const BUBBLE_BETWEEN_DELAY = 4_000;
 const BUBBLE_HOVER_BETWEEN_DELAY = 1_000;
 const BUBBLE_PAUSE_DURATION = 10_000;
-const BUBBLE_VISIBILITY_THRESHOLD = 4_000;
+const BUBBLE_VISIBILITY_THRESHOLD = 10_000;
 
 type TerminalMascotProps = {
   isOpen: boolean;

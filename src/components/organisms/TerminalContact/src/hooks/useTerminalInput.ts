@@ -76,7 +76,8 @@ export const useTerminalInput = () => {
   const handleTab = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (filteredSuggestions.length === 0) return;
     e.preventDefault();
-    const target = filteredSuggestions[suggestionIndex >= 0 ? suggestionIndex : 0];
+    const target =
+      filteredSuggestions[suggestionIndex >= 0 ? suggestionIndex : 0];
     if (target) selectSuggestion(target.name);
   };
 

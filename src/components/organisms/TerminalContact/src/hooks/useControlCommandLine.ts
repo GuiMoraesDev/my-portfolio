@@ -16,6 +16,7 @@ export type SlashCommand = {
 export const SLASH_COMMANDS: SlashCommand[] = [
   { name: "/help", description: "show available commands" },
   { name: "/contact", description: "show contact links" },
+  { name: "/games", description: "show games I've built" },
   { name: "/open github", description: "open GitHub profile" },
   { name: "/open linkedin", description: "open LinkedIn profile" },
 ];
@@ -35,6 +36,10 @@ const HELP_LINES: TerminalLine[] = [
   { type: "output", text: "  /contact        ->   show contact links" },
   {
     type: "output",
+    text: "  /games          ->   show games I've built",
+  },
+  {
+    type: "output",
     text: "  /open github    ->   open GitHub profile",
   },
   {
@@ -51,6 +56,18 @@ const WHOAMI_LINES: TerminalLine[] = [
   {
     type: "output",
     text: "Building frontend systems that hold up over time.",
+  },
+];
+
+const GAMES_LINES: TerminalLine[] = [
+  {
+    type: "link",
+    text: "Rock Paper Scissors",
+    href: "https://rock-paper-scissor.guimoraes.dev/",
+  },
+  {
+    type: "output",
+    text: "classic hand game, play against AI or in real-time multiplayer.",
   },
 ];
 
@@ -77,6 +94,9 @@ const runCommand = (raw: string): RunCommandArgs => {
 
       case "contact":
         return { lines: CONTACT_LINES };
+
+      case "games":
+        return { lines: GAMES_LINES };
 
       case "open":
         switch (args[0]) {

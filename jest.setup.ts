@@ -12,6 +12,16 @@ global.TextDecoder = TextDecoder;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 (global.SVGElement.prototype as any).getTotalLength = () => 0;
 
+// jsdom does not implement IntersectionObserver (used by framer-motion useInView)
+global.IntersectionObserver = class {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+  takeRecords() {
+    return [];
+  }
+} as unknown as typeof IntersectionObserver;
+
 // @testing-library/react auto-cleanup uses global afterEach which is not
 // injected when --injectGlobals false is set, so we wire it up manually.
 afterEach(cleanup);

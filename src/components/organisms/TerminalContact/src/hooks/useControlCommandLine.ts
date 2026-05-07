@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { GITHUB_URL, LINKEDIN_URL } from "@/constants/socialMedia";
 
-type TerminalLine = {
+export type TerminalLine = {
   type: "input" | "output" | "error" | "link";
   text: string;
   href?: string;

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { twMerge } from "tailwind-merge";
 
 import { useTerminalInput } from "../hooks/useTerminalInput";
 
@@ -17,6 +18,7 @@ export const TerminalWindow = ({ onClose }: TerminalWindowProps) => {
     bottomRef,
     lines,
     filteredSuggestions,
+    suggestionIndex,
     onSelectSuggestion,
     onKeyDown,
     onInputChange,
@@ -100,7 +102,7 @@ export const TerminalWindow = ({ onClose }: TerminalWindowProps) => {
 
       {filteredSuggestions.length > 0 && (
         <div className="shrink-0 border-t border-border-subtle bg-[#0d0d0d] font-mono text-sm">
-          {filteredSuggestions.map((cmd) => (
+          {filteredSuggestions.map((cmd, i) => (
             <button
               key={cmd.name}
               type="button"
@@ -108,7 +110,10 @@ export const TerminalWindow = ({ onClose }: TerminalWindowProps) => {
                 e.preventDefault();
                 onSelectSuggestion(cmd.name);
               }}
-              className="flex w-full gap-4 px-4 py-1.5 text-left hover:bg-[#1a1a1a]"
+              className={twMerge(
+                "flex w-full gap-4 px-4 py-1.5 text-left hover:bg-[#1a1a1a]",
+                i === suggestionIndex && "bg-[#1a1a1a]",
+              )}
             >
               <span className="text-plum-300">{cmd.name}</span>
               <span className="text-text-muted">{cmd.description}</span>

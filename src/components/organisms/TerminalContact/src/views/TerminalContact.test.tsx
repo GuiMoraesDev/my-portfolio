@@ -147,6 +147,14 @@ describe("TerminalContact", () => {
     });
   });
 
+  describe("drag", () => {
+    it("renders the drag handle in the header", () => {
+      render(<TerminalContact />);
+      openTerminal();
+      expect(screen.getByTestId("terminal-drag-handle")).not.toBeNull();
+    });
+  });
+
   describe("line rendering", () => {
     it("renders error lines for unknown commands", () => {
       render(<TerminalContact />);

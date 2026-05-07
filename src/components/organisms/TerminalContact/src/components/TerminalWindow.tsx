@@ -11,9 +11,13 @@ import { Icon } from "@/components/atoms/Icon";
 
 type TerminalWindowProps = {
   onClose: VoidFunction;
+  onDragStart?: (e: React.PointerEvent<HTMLElement>) => void;
 };
 
-export const TerminalWindow = ({ onClose }: TerminalWindowProps) => {
+export const TerminalWindow = ({
+  onClose,
+  onDragStart,
+}: TerminalWindowProps) => {
   const {
     lines,
     history,
@@ -28,12 +32,17 @@ export const TerminalWindow = ({ onClose }: TerminalWindowProps) => {
 
   return (
     <>
-      <header className="flex shrink-0 items-center gap-2 border-b border-border-subtle bg-[#111] px-4 py-2.5">
+      <header
+        data-testid="terminal-drag-handle"
+        onPointerDown={onDragStart}
+        className="flex shrink-0 cursor-grab items-center gap-2 border-b border-border-subtle bg-[#111] px-4 py-2.5 active:cursor-grabbing"
+      >
         <button
           data-testid="terminal-close-button"
           type="button"
           aria-label="Close terminal"
           onClick={onClose}
+          onPointerDown={(e) => e.stopPropagation()}
           className="group relative h-3.5 w-3.5 rounded-full bg-[#ff5f56] focus-visible:outline-2 focus-visible:outline-offset-1"
         >
           <Icon

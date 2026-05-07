@@ -1,7 +1,7 @@
 "use client";
 
+import { motion, useDragControls } from "framer-motion";
 import { useRef, useState } from "react";
-import { twMerge } from "tailwind-merge";
 
 import { TerminalMascot } from "../components/Mascot";
 import { TerminalWindow } from "../components/TerminalWindow";
@@ -9,6 +9,7 @@ import { TerminalWindow } from "../components/TerminalWindow";
 export const TerminalContact = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const dragControls = useDragControls();
 
   const handleOpen = () => {
     dialogRef.current?.showModal();
@@ -38,13 +39,22 @@ export const TerminalContact = () => {
         aria-modal="true"
         aria-label="Terminal"
         ref={dialogRef}
-        className={twMerge(
-          "invisible h-0 w-0 border-0",
-          "open:visible open:h-[min(30rem,85dvh)] open:w-screen open:border",
-          "fixed top-1/2 left-1/2 z-50 flex max-w-2xl origin-center flex-col overflow-hidden rounded border-border-strong bg-[#0d0d0d] shadow-[0_16px_48px_rgba(0,0,0,0.7)] transition-all open:-translate-1/2",
-        )}
+        className="fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none items-center justify-center border-0 bg-transparent p-0 open:flex"
       >
-        <TerminalWindow onClose={handleClose} />
+        <motion.div
+          drag
+          dragControls={dragControls}
+          dragListener={false}
+          dragConstraints={dialogRef}
+          dragElastic={0}
+          dragMomentum={false}
+          className="flex h-[min(30rem,85dvh)] w-full max-w-2xl flex-col overflow-hidden rounded border border-border-strong bg-[#0d0d0d] shadow-[0_16px_48px_rgba(0,0,0,0.7)]"
+        >
+          <TerminalWindow
+            onClose={handleClose}
+            onDragStart={(e) => dragControls.start(e)}
+          />
+        </motion.div>
       </dialog>
     </nav>
   );

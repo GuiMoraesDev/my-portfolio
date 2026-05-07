@@ -1,21 +1,35 @@
 import { describe, expect, it, jest, beforeEach } from "@jest/globals";
 import { act, renderHook } from "@testing-library/react";
 
+import { useControlCommandLine } from "./useControlCommandLine";
 import { useTerminalInput } from "./useTerminalInput";
 
 beforeEach(() => {
   Element.prototype.scrollIntoView = jest.fn<() => void>();
 });
 
+const renderWithCommandLine = () =>
+  renderHook(() => {
+    const cl = useControlCommandLine();
+    const input = useTerminalInput({
+      history: cl.history,
+      currentHistoryIndex: cl.currentHistoryIndex,
+      onSubmitCommand: cl.onSubmitCommand,
+      onUpdateCurrentHistoryIndex: cl.onUpdateCurrentHistoryIndex,
+      scrollToBottom: jest.fn(),
+    });
+    return { ...input, lines: cl.lines };
+  });
+
 describe("useTerminalInput", () => {
   describe("initial state", () => {
     it("starts with an empty input", () => {
-      const { result } = renderHook(() => useTerminalInput());
+      const { result } = renderWithCommandLine();
       expect(result.current.input).toBe("");
     });
 
     it("exposes the welcome line from useControlCommandLine", () => {
-      const { result } = renderHook(() => useTerminalInput());
+      const { result } = renderWithCommandLine();
       expect(
         result.current.lines.some((l) =>
           l.text.includes("Welcome. Type '/help' for available commands."),
@@ -26,7 +40,7 @@ describe("useTerminalInput", () => {
 
   describe("onInputChange", () => {
     it("updates the input value", () => {
-      const { result } = renderHook(() => useTerminalInput());
+      const { result } = renderWithCommandLine();
 
       act(() => {
         result.current.onInputChange({
@@ -40,7 +54,7 @@ describe("useTerminalInput", () => {
 
   describe("onKeyDown — Enter", () => {
     it("clears the input after submitting", () => {
-      const { result } = renderHook(() => useTerminalInput());
+      const { result } = renderWithCommandLine();
 
       act(() => {
         result.current.onInputChange({
@@ -58,7 +72,7 @@ describe("useTerminalInput", () => {
     });
 
     it("appends the command as an input line", () => {
-      const { result } = renderHook(() => useTerminalInput());
+      const { result } = renderWithCommandLine();
 
       act(() => {
         result.current.onInputChange({
@@ -81,7 +95,7 @@ describe("useTerminalInput", () => {
 
   describe("onKeyDown — ArrowUp / ArrowDown", () => {
     it("ArrowUp restores the most recent command", () => {
-      const { result } = renderHook(() => useTerminalInput());
+      const { result } = renderWithCommandLine();
 
       act(() => {
         result.current.onInputChange({
@@ -103,7 +117,7 @@ describe("useTerminalInput", () => {
     });
 
     it("ArrowDown past the start clears the input", () => {
-      const { result } = renderHook(() => useTerminalInput());
+      const { result } = renderWithCommandLine();
 
       act(() => {
         result.current.onInputChange({
@@ -130,7 +144,7 @@ describe("useTerminalInput", () => {
     });
 
     it("ArrowUp navigates through multiple history entries", () => {
-      const { result } = renderHook(() => useTerminalInput());
+      const { result } = renderWithCommandLine();
 
       act(() => {
         result.current.onInputChange({
@@ -171,7 +185,7 @@ describe("useTerminalInput", () => {
 
   describe("unhandled keys", () => {
     it("does not change input for unhandled keys", () => {
-      const { result } = renderHook(() => useTerminalInput());
+      const { result } = renderWithCommandLine();
 
       act(() => {
         result.current.onInputChange({

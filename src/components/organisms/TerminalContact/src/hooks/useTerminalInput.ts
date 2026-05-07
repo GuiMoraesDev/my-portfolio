@@ -1,24 +1,25 @@
 import { useMemo, useRef, useState } from "react";
 
 import { SLASH_COMMANDS } from "./useControlCommandLine";
-import { useControlCommandLine } from "./useControlCommandLine";
 
-export const useTerminalInput = () => {
+type UseTerminalInputArgs = {
+  history: string[];
+  currentHistoryIndex: number;
+  onSubmitCommand: (cmd: string) => void;
+  onUpdateCurrentHistoryIndex: (index: number) => void;
+  scrollToBottom: () => void;
+};
+
+export const useTerminalInput = ({
+  history,
+  currentHistoryIndex,
+  onSubmitCommand,
+  onUpdateCurrentHistoryIndex,
+  scrollToBottom,
+}: UseTerminalInputArgs) => {
   const [input, setInput] = useState("");
   const [suggestionIndex, setSuggestionIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement>(null);
-  const bottomRef = useRef<HTMLDivElement>(null);
-
-  const {
-    lines,
-    history,
-    currentHistoryIndex,
-    onSubmitCommand,
-    onUpdateCurrentHistoryIndex,
-  } = useControlCommandLine();
-
-  const scrollToBottom = () =>
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
 
   const filteredSuggestions = useMemo(() => {
     if (!input.startsWith("/")) return [];
@@ -94,16 +95,12 @@ export const useTerminalInput = () => {
     }
   };
 
-  const onSelectSuggestion = (name: string) => selectSuggestion(name);
-
   return {
     input,
     inputRef,
-    bottomRef,
-    lines,
     filteredSuggestions,
     suggestionIndex,
-    onSelectSuggestion,
+    onSelectSuggestion: selectSuggestion,
     onKeyDown: handleKeyDown,
     onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => {
       setInput(e.target.value);

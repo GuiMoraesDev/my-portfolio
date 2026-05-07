@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useRef } from "react";
 
-import { useTerminalInput } from "../hooks/useTerminalInput";
+import { useControlCommandLine } from "../hooks/useControlCommandLine";
 
 import { TerminalInput } from "./TerminalInput";
 
@@ -14,16 +15,16 @@ type TerminalWindowProps = {
 
 export const TerminalWindow = ({ onClose }: TerminalWindowProps) => {
   const {
-    input,
-    inputRef,
-    bottomRef,
     lines,
-    filteredSuggestions,
-    suggestionIndex,
-    onSelectSuggestion,
-    onKeyDown,
-    onInputChange,
-  } = useTerminalInput();
+    history,
+    currentHistoryIndex,
+    onSubmitCommand,
+    onUpdateCurrentHistoryIndex,
+  } = useControlCommandLine();
+
+  const bottomRef = useRef<HTMLDivElement>(null);
+  const scrollToBottom = () =>
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <>
@@ -102,13 +103,11 @@ export const TerminalWindow = ({ onClose }: TerminalWindowProps) => {
       </ul>
 
       <TerminalInput
-        input={input}
-        inputRef={inputRef}
-        filteredSuggestions={filteredSuggestions}
-        suggestionIndex={suggestionIndex}
-        onSelectSuggestion={onSelectSuggestion}
-        onKeyDown={onKeyDown}
-        onInputChange={onInputChange}
+        history={history}
+        currentHistoryIndex={currentHistoryIndex}
+        onSubmitCommand={onSubmitCommand}
+        onUpdateCurrentHistoryIndex={onUpdateCurrentHistoryIndex}
+        scrollToBottom={scrollToBottom}
       />
     </>
   );

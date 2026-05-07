@@ -11,8 +11,16 @@ type TerminalWindowProps = {
 };
 
 export const TerminalWindow = ({ onClose }: TerminalWindowProps) => {
-  const { input, inputRef, bottomRef, lines, onKeyDown, onInputChange } =
-    useTerminalInput();
+  const {
+    input,
+    inputRef,
+    bottomRef,
+    lines,
+    filteredSuggestions,
+    onSelectSuggestion,
+    onKeyDown,
+    onInputChange,
+  } = useTerminalInput();
 
   return (
     <>
@@ -89,6 +97,25 @@ export const TerminalWindow = ({ onClose }: TerminalWindowProps) => {
         ))}
         <div ref={bottomRef} />
       </ul>
+
+      {filteredSuggestions.length > 0 && (
+        <div className="shrink-0 border-t border-border-subtle bg-[#0d0d0d] font-mono text-sm">
+          {filteredSuggestions.map((cmd) => (
+            <button
+              key={cmd.name}
+              type="button"
+              onMouseDown={(e) => {
+                e.preventDefault();
+                onSelectSuggestion(cmd.name);
+              }}
+              className="flex w-full gap-4 px-4 py-1.5 text-left hover:bg-[#1a1a1a]"
+            >
+              <span className="text-plum-300">{cmd.name}</span>
+              <span className="text-text-muted">{cmd.description}</span>
+            </button>
+          ))}
+        </div>
+      )}
 
       <footer className="flex shrink-0 items-center gap-2 border-t border-border-subtle px-4 py-3 font-mono text-sm">
         <span aria-hidden className="text-plum-300 select-none">

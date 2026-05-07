@@ -67,7 +67,7 @@ describe("TerminalContact", () => {
       expect(
         outputLines.some((el) =>
           el.textContent?.includes(
-            "Welcome. Type 'help' for available commands.",
+            "Welcome. Type '/help' for available commands.",
           ),
         ),
       ).toBe(true);
@@ -169,7 +169,7 @@ describe("TerminalContact", () => {
       openTerminal();
       const input = getInput();
 
-      fireEvent.change(input, { target: { value: "contact" } });
+      fireEvent.change(input, { target: { value: "/contact" } });
       fireEvent.keyDown(input, { key: "Enter" });
 
       const links = screen

@@ -17,7 +17,7 @@ describe("useControlCommandLine", () => {
     const { result } = renderHook(() => useControlCommandLine());
 
     expect(result.current.lines).toEqual([
-      { type: "output", text: "Welcome. Type 'help' for available commands." },
+      { type: "output", text: "Welcome. Type '/help' for available commands." },
     ]);
     expect(result.current.history).toEqual([]);
     expect(result.current.currentHistoryIndex).toBe(-1);
@@ -37,10 +37,10 @@ describe("useControlCommandLine", () => {
     const { result } = renderHook(() => useControlCommandLine());
 
     act(() => {
-      result.current.onSubmitCommand("help");
+      result.current.onSubmitCommand("/help");
     });
 
-    expect(result.current.history).toEqual(["help"]);
+    expect(result.current.history).toEqual(["/help"]);
   });
 
   it("prepends newer commands so history[0] is the most recent", () => {
@@ -48,10 +48,10 @@ describe("useControlCommandLine", () => {
 
     act(() => {
       result.current.onSubmitCommand("whoami");
-      result.current.onSubmitCommand("help");
+      result.current.onSubmitCommand("/help");
     });
 
-    expect(result.current.history[0]).toBe("help");
+    expect(result.current.history[0]).toBe("/help");
     expect(result.current.history[1]).toBe("whoami");
   });
 
@@ -66,11 +66,11 @@ describe("useControlCommandLine", () => {
   });
 
   describe("commands", () => {
-    it("'help' appends all help output lines", () => {
+    it("'/help' appends all help output lines", () => {
       const { result } = renderHook(() => useControlCommandLine());
 
       act(() => {
-        result.current.onSubmitCommand("help");
+        result.current.onSubmitCommand("/help");
       });
 
       const outputLines = result.current.lines.filter(
@@ -92,11 +92,11 @@ describe("useControlCommandLine", () => {
       expect(texts.some((t) => t.includes("Guilherme Moraes"))).toBe(true);
     });
 
-    it("'contact' appends GitHub and LinkedIn links and the email", () => {
+    it("'/contact' appends GitHub and LinkedIn links and the email", () => {
       const { result } = renderHook(() => useControlCommandLine());
 
       act(() => {
-        result.current.onSubmitCommand("contact");
+        result.current.onSubmitCommand("/contact");
       });
 
       const linkLines = result.current.lines.filter((l) => l.type === "link");
@@ -139,7 +139,7 @@ describe("useControlCommandLine", () => {
       const { result } = renderHook(() => useControlCommandLine());
 
       act(() => {
-        result.current.onSubmitCommand("help");
+        result.current.onSubmitCommand("/help");
         result.current.onSubmitCommand("clear");
       });
 
@@ -147,11 +147,11 @@ describe("useControlCommandLine", () => {
       expect(result.current.lines[0].text).toContain("Welcome");
     });
 
-    it("'open github' calls window.open with the GitHub URL", () => {
+    it("'/open github' calls window.open with the GitHub URL", () => {
       const { result } = renderHook(() => useControlCommandLine());
 
       act(() => {
-        result.current.onSubmitCommand("open github");
+        result.current.onSubmitCommand("/open github");
       });
 
       expect(window.open).toHaveBeenCalledWith(
@@ -161,11 +161,11 @@ describe("useControlCommandLine", () => {
       );
     });
 
-    it("'open linkedin' calls window.open with the LinkedIn URL", () => {
+    it("'/open linkedin' calls window.open with the LinkedIn URL", () => {
       const { result } = renderHook(() => useControlCommandLine());
 
       act(() => {
-        result.current.onSubmitCommand("open linkedin");
+        result.current.onSubmitCommand("/open linkedin");
       });
 
       expect(window.open).toHaveBeenCalledWith(
@@ -175,42 +175,42 @@ describe("useControlCommandLine", () => {
       );
     });
 
-    it("'open <unknown>' appends an error line", () => {
+    it("'/open <unknown>' appends an error line", () => {
       const { result } = renderHook(() => useControlCommandLine());
 
       act(() => {
-        result.current.onSubmitCommand("open foobar");
+        result.current.onSubmitCommand("/open foobar");
       });
 
       const errorLines = result.current.lines.filter((l) => l.type === "error");
       expect(errorLines.some((l) => l.text.includes("foobar"))).toBe(true);
     });
 
-    it("unknown command appends a 'command not found' error", () => {
+    it("unknown slash command appends a 'command not found' error", () => {
       const { result } = renderHook(() => useControlCommandLine());
 
       act(() => {
-        result.current.onSubmitCommand("foobar");
+        result.current.onSubmitCommand("/foobar");
       });
 
       const errorLines = result.current.lines.filter((l) => l.type === "error");
       expect(errorLines.some((l) => l.text.includes("foobar"))).toBe(true);
     });
 
-    it("unknown command also appends the 'type help' hint", () => {
+    it("unknown command also appends the 'type /help' hint", () => {
       const { result } = renderHook(() => useControlCommandLine());
 
       act(() => {
-        result.current.onSubmitCommand("foobar");
+        result.current.onSubmitCommand("/foobar");
       });
 
       const outputLines = result.current.lines.filter(
         (l) => l.type === "output",
       );
-      expect(outputLines.some((l) => l.text.includes("help"))).toBe(true);
+      expect(outputLines.some((l) => l.text.includes("/help"))).toBe(true);
     });
 
-    it("commands are case-insensitive", () => {
+    it("linux commands are case-insensitive", () => {
       const { result } = renderHook(() => useControlCommandLine());
 
       act(() => {
@@ -219,6 +219,17 @@ describe("useControlCommandLine", () => {
 
       const texts = result.current.lines.map((l) => l.text);
       expect(texts.some((t) => t.includes("Guilherme Moraes"))).toBe(true);
+    });
+
+    it("slash commands are case-insensitive", () => {
+      const { result } = renderHook(() => useControlCommandLine());
+
+      act(() => {
+        result.current.onSubmitCommand("/CONTACT");
+      });
+
+      const linkLines = result.current.lines.filter((l) => l.type === "link");
+      expect(linkLines.length).toBeGreaterThan(0);
     });
   });
 });

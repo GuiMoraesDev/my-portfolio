@@ -18,7 +18,7 @@ describe("useTerminalInput", () => {
       const { result } = renderHook(() => useTerminalInput());
       expect(
         result.current.lines.some((l) =>
-          l.text.includes("Welcome. Type 'help' for available commands."),
+          l.text.includes("Welcome. Type '/help' for available commands."),
         ),
       ).toBe(true);
     });

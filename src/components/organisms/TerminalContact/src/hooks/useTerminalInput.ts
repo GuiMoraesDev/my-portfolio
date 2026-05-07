@@ -1,5 +1,6 @@
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
+import { SLASH_COMMANDS } from "./useControlCommandLine";
 import { useControlCommandLine } from "./useControlCommandLine";
 
 export const useTerminalInput = () => {
@@ -52,11 +53,25 @@ export const useTerminalInput = () => {
     }
   };
 
+  const filteredSuggestions = useMemo(() => {
+    if (!input.startsWith("/")) return [];
+    return SLASH_COMMANDS.filter((cmd) =>
+      cmd.name.startsWith(input.toLowerCase()),
+    );
+  }, [input]);
+
+  const onSelectSuggestion = (name: string) => {
+    setInput(name);
+    inputRef.current?.focus();
+  };
+
   return {
     input,
     inputRef,
     bottomRef,
     lines,
+    filteredSuggestions,
+    onSelectSuggestion,
     onKeyDown: handleKeyDown,
     onInputChange: (e: React.ChangeEvent<HTMLInputElement>) =>
       setInput(e.target.value),

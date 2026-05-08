@@ -1,23 +1,16 @@
 "use client";
 
-import { motion, useDragControls } from "motion/react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { TerminalMascot } from "../components/Mascot";
 import { TerminalWindow } from "../components/TerminalWindow";
 
-import {
-  DialogContent,
-  DialogOverlay,
-  DialogPortal,
-  DialogRoot,
-} from "@/components/atoms/Dialog";
+import { DialogRoot } from "@/components/atoms/Dialog";
 
 export const TerminalContact = () => {
   const t = useTranslations("terminal");
   const [isOpen, setIsOpen] = useState(false);
-  const dragControls = useDragControls();
 
   return (
     <nav className="z-40">
@@ -32,28 +25,7 @@ export const TerminalContact = () => {
       </button>
 
       <DialogRoot open={isOpen} onOpenChange={setIsOpen}>
-        <DialogPortal>
-          <DialogOverlay className="fixed inset-0" />
-          <DialogContent
-            data-testid="terminal-dialog"
-            className="fixed inset-0 flex items-center justify-center bg-transparent p-0"
-            onInteractOutside={(e) => e.preventDefault()}
-          >
-            <motion.div
-              drag
-              dragControls={dragControls}
-              dragListener={false}
-              dragElastic={0}
-              dragMomentum={false}
-              className="flex h-[min(30rem,85dvh)] w-full max-w-2xl flex-col overflow-hidden rounded border border-border-strong bg-terminal-surface shadow-[0_16px_48px_rgba(0,0,0,0.7)]"
-            >
-              <TerminalWindow
-                onClose={() => setIsOpen(false)}
-                onDragStart={(e) => dragControls.start(e)}
-              />
-            </motion.div>
-          </DialogContent>
-        </DialogPortal>
+        <TerminalWindow onClose={() => setIsOpen(false)} />
       </DialogRoot>
     </nav>
   );

@@ -45,6 +45,7 @@
   "terminal": {
     "open-label": "Open terminal",
     "close-label": "Close terminal",
+    "description": "Interactive terminal to explore my portfolio and get in touch.",
     "input-placeholder": "type a command...",
     "input-label": "Terminal input",
     "tagline": "Full-stack developer",

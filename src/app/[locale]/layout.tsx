@@ -14,7 +14,15 @@ import { AppProvider } from "@/provider/AppProvider";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.guimoraes.dev"),
   referrer: "origin-when-cross-origin",
-  keywords: ["confer-all", "Confer All", "Next.js", "React", "JavaScript"],
+  keywords: [
+    "portfolio",
+    "frontend engineer",
+    "TypeScript",
+    "Next.js",
+    "React",
+    "JavaScript",
+    "Node.js",
+  ],
   authors: { name: "Guilherme Moraes", url: "https://github.com/GuiMoraesDev" },
   creator: "Guilherme Moraes",
   publisher: "Guilherme Moraes",

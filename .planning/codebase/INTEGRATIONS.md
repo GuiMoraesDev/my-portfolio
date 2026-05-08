@@ -1,23 +1,9 @@
 # External Integrations
-
-**Analysis Date:** 2026-05-07
+> Last updated: 2026-05-07
 
 ## APIs & External Services
 
-**GitHub:**
-- Used for: Fetching repository/profile data (referenced in social links and potentially projects section)
-  - Auth: `NEXT_PUBLIC_GH_TOKEN` env var
-  - Client: Native `fetch` (inferred from env var presence)
-
-**Resend:**
-- Used for: Email sending (contact form or notifications)
-  - Auth: `NEXT_PUBLIC_RESEND_API_KEY` env var
-  - Note: Key is prefixed `NEXT_PUBLIC_` — exposed to client bundle; review if this is intentional
-
-**OpenAI:**
-- Used for: AI-powered feature (likely terminal assistant or contact feature)
-  - Auth: `NEXT_PUBLIC_OPENAI_API_KEY` env var
-  - Note: Key is prefixed `NEXT_PUBLIC_` — exposed to client bundle; this is a security concern
+None — no external API integrations in the codebase.
 
 ## Data Storage
 
@@ -25,71 +11,78 @@
 - None detected
 
 **File Storage:**
-- Remote images served from `raw.githubusercontent.com` (allowed via `next.config.ts` `remotePatterns`)
+- No object storage (S3, Cloudinary, etc.) detected
 
 **Caching:**
-- `@tanstack/react-query` for client-side cache; no external cache layer
+- TanStack Query (`src/provider/src/QueryProvider.tsx`) — client-side cache only; no Redis or external cache layer
 
 ## Authentication & Identity
 
 **Auth Provider:**
-- None detected — portfolio site has no user authentication
+- None — portfolio site has no user authentication
 
 ## Monitoring & Observability
 
 **Error Tracking:**
-- Sentry (`@sentry/nextjs` 10.51)
-  - DSN: hardcoded in `sentry.server.config.ts`, `sentry.edge.config.ts`, `src/instrumentation-client.ts`
+- Sentry (`@sentry/nextjs` ^10.51.0)
+  - DSN hardcoded in `sentry.server.config.ts`, `sentry.edge.config.ts`, `src/instrumentation-client.ts`
   - Org: `guilherme-moraes`, Project: `my-portifolio`
-  - Session Replay enabled client-side (10% session rate, 100% on error)
-  - Trace sample rate: 1.0 (100%) — consider reducing in production
-  - Source maps uploaded at build time via `@sentry/webpack-plugin`
+  - Session Replay enabled client-side: 10% session rate, 100% on error
+  - Trace sample rate: 1.0 (100%) on all runtimes
+  - `sendDefaultPii: true` on server and edge
+  - Source maps uploaded at build time via Sentry webpack plugin (token in `.env.sentry-build-plugin`)
   - Tunnel route: `/monitoring` (bypasses ad-blockers)
+  - `Suspense Exception` events filtered out in `src/instrumentation-client.ts` via `beforeSend`
+  - Router transition tracing: `onRouterTransitionStart` exported from `src/instrumentation-client.ts`
+  - Request error capture: `onRequestError` exported from `src/instrumentation.ts`
 
 **Analytics:**
-- Vercel Analytics (`@vercel/analytics`) — page view tracking; no env var required, tied to Vercel deployment
-- Vercel Speed Insights (`@vercel/speed-insights`) — Core Web Vitals; no env var required
+- Vercel Analytics (`@vercel/analytics` ^2.0.1) — page view tracking; rendered in `src/provider/AppProvider.tsx`; no env var required, tied to Vercel deployment
+- Vercel Speed Insights (`@vercel/speed-insights` ^2.0.0) — Core Web Vitals reporting; rendered in `src/provider/AppProvider.tsx`
 
 **Logs:**
-- Sentry log ingestion enabled (`enableLogs: true` in all Sentry configs)
+- Sentry log ingestion enabled (`enableLogs: true`) on all runtimes (server, edge, client)
 
 ## CI/CD & Deployment
 
 **Hosting:**
-- Vercel (inferred from `@vercel/analytics`, `@vercel/speed-insights`, and Sentry `automaticVercelMonitors`)
+- Vercel (`@vercel/analytics`, `@vercel/speed-insights`, Sentry `automaticVercelMonitors: true` in `next.config.ts`)
 
 **CI Pipeline:**
-- Not detected in repository; Sentry build plugin uses `CI` env var to control log verbosity
+- No CI config file detected in repository; Sentry build plugin uses `CI` env var to suppress verbose output
+
+## Fonts
+
+**Google Fonts:**
+- `Michroma` — title font (`--font-title`); loaded via `@import url(...)` in `src/styles/globals.css`
+- `Space Grotesk` (weights 300–700) — body font (`--font-body`); loaded via `@import url(...)` in `src/styles/globals.css`
+- No self-hosting; requires network access on first load
 
 ## Environment Configuration
 
-**Required env vars (from `.env.example`):**
-- `NEXT_PUBLIC_GH_TOKEN` — GitHub API token for repository data
-- `NEXT_PUBLIC_RESEND_API_KEY` — Resend email API key
-- `NEXT_PUBLIC_OPENAI_API_KEY` — OpenAI API key
+**Required env vars:**
+- None beyond Sentry build secrets
 
-**Sentry build credentials:**
-- `.env.sentry-build-plugin` present — contains Sentry auth token for source map uploads (do not commit)
+**Build-only secrets:**
+- `.env.sentry-build-plugin` — Sentry auth token for source map uploads (present, not committed)
 
-**Secrets location:**
-- `.env.example` documents required vars
-- Actual values in `.env` (not committed)
 
 ## Webhooks & Callbacks
 
 **Incoming:**
-- `/monitoring` — Sentry tunnel route (proxies browser error reports through Next.js to avoid ad-blockers)
+- `GET/POST /monitoring` — Sentry tunnel route (configured via `tunnelRoute` in `next.config.ts`); proxies browser error reports through Next.js to avoid ad-blockers
 
 **Outgoing:**
 - None detected
 
 ## i18n
 
-**Provider:** next-intl 4.11
+**Provider:** next-intl ^4.11.0
 - Locales: `en` (default), `pt`
 - Locale prefix strategy: `never` (locale not shown in URL)
-- Middleware: `src/proxy.ts` handles locale routing via `createIntlMiddleware`
-- Translations: `src/i18n/locales/`
+- Routing config: `src/i18n/routing.ts`
+- Request config: `src/i18n/index.ts` (loads `src/i18n/locales/{locale}.json` dynamically)
+- next-intl is fully mocked in unit tests via `__mocks__/next-intl.ts`
 
 ---
 

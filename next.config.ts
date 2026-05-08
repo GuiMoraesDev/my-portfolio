@@ -4,15 +4,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin("./src/i18n/index.ts");
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        hostname: "raw.githubusercontent.com",
-      },
-    ],
-  },
-};
+const nextConfig = {};
 
 export default withSentryConfig(withNextIntl(nextConfig), {
   // For all available options, see:

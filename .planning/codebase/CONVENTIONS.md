@@ -1,109 +1,122 @@
 # Coding Conventions
-
-**Analysis Date:** 2026-05-07
+> Last updated: 2026-05-07
 
 ## Naming Patterns
 
 **Files:**
-- React components: PascalCase matching the export name — `BentoCell.tsx`, `TerminalInput.tsx`
-- Hooks: camelCase prefixed with `use` — `useDetectClickOutside.tsx`, `useControlCommandLine.ts`
-- Barrel files: `index.ts` or `index.tsx` at directory root re-exporting the primary named export
-- Test files: co-located with the source file, same name with `.test.tsx` / `.test.ts` suffix
-- Playwright specs: `*.spec.ts` inside `src/tests/`
+- React components: PascalCase `.tsx` file, same name as the component (e.g., `BentoCell.tsx`, `TerminalWindow.tsx`)
+- Hooks: camelCase prefixed with `use` (e.g., `useDetectClickOutside.tsx`, `useControlCommandLine.ts`)
+- Barrel re-exports: `index.ts` (not `index.tsx`) per component folder
+- Test files: co-located alongside source, named `<source-file>.test.ts(x)` (e.g., `index.test.tsx`, `useControlCommandLine.test.ts`)
 
 **Components:**
-- Named exports only — no default exports on components
-- Example: `export const Icon = ...`, `export const BentoCell = { Wrapper, Label, Heading, Body }`
-
-**Hooks:**
-- Named exports, camelCase with `use` prefix
-- Accept a single options object (destructured), never positional args
-- Example: `useHandleClickOutside({ ref, callback })`
+- Named exports only — no default exports for components
+- Component names are PascalCase: `TerminalContact`, `TerminalWindow`, `Icon`
 
 **Types:**
-- Defined inline near usage or at the top of the file
-- Named with PascalCase and a `Props` suffix for component props: `IconProps`, `BentoCellHeadingProps`
-- Type imports use inline syntax: `import { type ComponentProps } from "react"`
+- `type` keyword preferred over `interface`
+- Component prop types: `<ComponentName>Props` suffix (e.g., `IconProps`, `TerminalWindowProps`, `BentoCellHeadingProps`)
+- Hook argument types: `Use<HookName>Args` or `Use<HookName>Props` suffix (e.g., `UseTerminalInputArgs`, `UseHandleClickOutsideProps`)
+- Internal/utility types: descriptive name without suffix (e.g., `RunCommandResult`)
+- Generic page-level props: `Props` (used only in minimal cases like `global-error.tsx`)
 
-**Constants:**
-- SCREAMING_SNAKE_CASE for exported constants: `GITHUB_URL`, `LINKEDIN_URL`
-- Stored in `src/constants/`
+**Functions:**
+- camelCase for all functions and handlers
+- Event handlers prefixed with `handle` (e.g., `handleOpen`, `handleClose`, `handleClickOutside`)
+- Callback props prefixed with `on` (e.g., `onClose`, `onSubmitCommand`, `onInputChange`)
+
+**Variables:**
+- camelCase throughout
+- Boolean state variables use descriptive names: `isOpen`
 
 ## Code Style
 
 **Formatting:**
-- Tool: Prettier with `prettier-plugin-tailwindcss`
-- Tailwind stylesheet: `./src/styles/globals.css`
-- Config: `.prettierrc`
-- Run via: `npm run lint:fix` (do NOT use raw `eslint --fix`)
+- Prettier with `prettier-plugin-tailwindcss`
+- Tailwind class ordering enforced by `eslint-plugin-tailwind-canonical-classes` (warn level) with CSS path `./src/styles/globals.css`
+- Configured via `.prettierrc` with `tailwindStylesheet` pointing to `./src/styles/globals.css`
 
 **Linting:**
-- Tool: ESLint flat config at `eslint.config.mjs`
-- Extends: `eslint-config-next/core-web-vitals`, `eslint-config-next/typescript`, `tailwind-canonical-classes`
-- Key rules:
-  - `no-console`: error — no console statements allowed
-  - `unused-imports/no-unused-imports`: error — remove all unused imports
-  - `unused-imports/no-unused-vars`: error — prefix unused vars/args with `_` to suppress
-  - `@typescript-eslint/consistent-type-imports`: error — enforce `import { type X }` inline style
-  - `import/order`: error — imports must be sorted alphabetically with newlines between groups
-  - `tailwind-canonical-classes`: warn — Tailwind classes must follow canonical order
+- ESLint flat config (`eslint.config.mjs`) using `eslint-config-next/core-web-vitals` + `eslint-config-next/typescript`
+- `prettier/prettier` rule set to `warn` (not error)
+- `no-console`: `error` — console statements are forbidden in all source files
+- Unused imports: `error` via `eslint-plugin-unused-imports`; vars prefixed with `_` are exempt
+- `@typescript-eslint/no-unused-vars`: off (delegated to `unused-imports` plugin)
+- **Fix command:** always use `npm run lint:fix` — never manually patch or use raw `eslint --fix`
+
+**TypeScript:**
+- `strict: true` — all strict checks enabled
+- `noEmit: true` — type-check only, no compiled output
+- `isolatedModules: true`
+- Target: `esnext`, module resolution: `bundler`
+- Path alias: `@/` maps to `src/`
+- Type-only imports must use `import { type X }` inline syntax (enforced by `@typescript-eslint/consistent-type-imports` with `fixStyle: "inline-type-imports"`)
 
 ## Import Organization
 
-**Order (enforced by `import/order` rule, alphabetical within groups):**
-1. External packages (e.g., `react`, `framer-motion`, `@radix-ui/react-icons`)
-2. Internal aliases starting with `@/` (e.g., `@/components/...`, `@/hooks/...`)
-3. Relative imports (e.g., `./useControlCommandLine`)
+**Order (enforced by `import/order` rule, error level):**
+1. External packages (e.g., `framer-motion`, `react`)
+2. Internal aliases with `@/` prefix
+3. Relative imports (`../`, `./`)
 
-**Blank line required between each group.**
+**Within each group:** alphabetical, case-insensitive. Blank line between each group.
+
+**Example from `src/components/organisms/TerminalContact/src/views/TerminalContact.tsx`:**
+```typescript
+import { motion, useDragControls } from "framer-motion";
+import { useRef, useState } from "react";
+
+import { TerminalMascot } from "../components/Mascot";
+import { TerminalWindow } from "../components/TerminalWindow";
+```
 
 **Path Aliases:**
-- `@/*` → `src/*` (defined in `tsconfig.json` and mirrored in `jest.config.ts`)
-- Always prefer `@/` over deep relative paths for cross-module imports
-- Use relative imports only within the same component's local `src/` subtree
+- `@/` → `src/` (defined in `tsconfig.json` and mirrored in `jest.config.ts`)
 
-**Type Imports:**
-- Use inline `type` keyword: `import { type ComponentProps } from "react"`
-- Never use `import type { ... }` (top-level form) — ESLint enforces inline style
+## Next.js Directives
 
-## Component Structure Patterns
+- `"use client"` is placed as the very first line (before any imports) in components that use browser APIs, hooks, or interactivity
+- Server components (the default) have no directive
+- `"use server"` is not used in this codebase
 
-**Server Components (default in Next.js App Router):**
-- No directive needed
-- Keep data fetching and async logic here
+## Component Design
 
-**Client Components:**
-- Add `"use client"` as the very first line
-- Use when hooks, event handlers, or browser APIs are needed
-- Examples: `MenuWrapper.tsx`, `TerminalContact.tsx`, `TerminalInput.tsx`
-
-**Compound Components:**
-- Group sub-components as properties of a namespace object
-- Example pattern from `BentoCell.tsx`:
-  ```tsx
-  export const BentoCell = { Wrapper, Label, Heading, Body };
-  ```
+**Exports:**
+- Named exports only from all component files and barrel `index.ts` files
+- Barrel pattern: `export { BentoCell } from "./BentoCell";` — one line per named export
 
 **Styling:**
-- Tailwind CSS only — no CSS modules, no inline `style` props for layout
-- `twMerge` for conditional class merging when Tailwind variants are not involved
-- `tailwind-variants` (`tv`) for multi-variant component APIs (see `Icon/index.tsx`)
-- `data-*` attributes for state-driven styles (e.g., `data-is-open={isOpen}`) instead of inline conditionals
+- Tailwind CSS v4 utility classes
+- Variant-based styling via `tailwind-variants` (`tv()`) for multi-variant components (see `src/components/atoms/Icon/index.tsx`)
+- `className` prop accepted and merged via `tv()`'s built-in className support
 
 **Props:**
-- Extend native HTML element props with `ComponentProps<"element">` or `ComponentPropsWithRef<"element">`
-- Spread remaining props onto the root DOM element
-- Use `children?: never` to explicitly disallow children when not supported
+- Always destructured from a single object parameter — never positional arguments
+- `children?: never` used to explicitly forbid children when a component does not accept them
 
-## Commit Message Format
+## Testing Attributes
 
-- Conventional Commits style: `type: description`
-- Types observed: `feat`, `refactor`, `fix`
-- Lowercase, imperative mood, no period
-- Examples from history:
-  - `feat: make terminal window draggable via framer-motion`
-  - `refactor: move input logic into TerminalInput, TerminalWindow owns only lines and scroll`
-  - `feat: suggest closest command on typo using Levenshtein distance`
+- `data-testid` attributes are placed directly in production JSX (not conditionally added for tests)
+- Naming: kebab-case with a component-scoped prefix (e.g., `terminal-open-button`, `terminal-dialog`, `terminal-line-error`)
+- Tests query by testid using `getByTestId` / `getAllByTestId` (Testing Library) and `page.getByTestId()` (Playwright)
+
+## Commit Messages
+
+- Angular commit format required: `<type>(<scope>): <short description>`
+- Common types in repo history: `feat`, `fix`, `refactor`, `docs`, `test`, `chore`
+- Husky pre-commit hook runs `npm run check-types` then `npm run lint` before every commit
+- Never bypass with `--no-verify`
+
+## Error Handling
+
+- No global error boundary beyond Next.js `src/app/global-error.tsx`
+- Hook-level errors surface as typed terminal lines (`{ type: "error", text: string }`) — errors do not throw
+- No try/catch observed in UI layer
+
+## Logging
+
+- `no-console` ESLint rule is set to `error` — console statements are disallowed in all source files
+- No logging framework is used
 
 ---
 

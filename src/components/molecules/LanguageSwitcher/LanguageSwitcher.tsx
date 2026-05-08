@@ -1,13 +1,15 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useTransition } from "react";
 import { twMerge } from "tailwind-merge";
 
+import { usePathname, useRouter } from "@/i18n/navigation";
+
 export const LanguageSwitcher = () => {
   const locale = useLocale();
   const router = useRouter();
+  const pathname = usePathname();
 
   const [isPending, startTransition] = useTransition();
 
@@ -15,7 +17,7 @@ export const LanguageSwitcher = () => {
     const finalLocale = locale === "en" ? "pt" : "en";
 
     startTransition(() => {
-      router.replace(`/${finalLocale}${window?.location.hash || ""}`);
+      router.replace(pathname, { locale: finalLocale });
     });
   };
 

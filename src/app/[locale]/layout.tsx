@@ -66,7 +66,7 @@ export default async function RootLayout({
           <header
             id="header"
             className={twMerge(
-              "sticky top-0 z-20 container flex h-20 w-full shrink-0 flex-col items-center justify-between gap-16 font-body max-[2000px]:px-[10vw]",
+              "sticky top-0 z-20 container flex h-20 w-full shrink-0 flex-col items-center justify-between gap-16 font-body max-ultra:px-[10vw]",
               "before: before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:bg-linear-to-br before:from-plum-700/80 before:to-plum-900/60 before:content-['']",
             )}
           >
@@ -100,7 +100,7 @@ export default async function RootLayout({
 
           <footer
             className={twMerge(
-              "relative z-10 container flex h-full w-full max-w-480 flex-col items-center justify-between gap-4 gap-16 py-10 font-body text-sm text-white max-[2000px]:px-[10vw] md:flex-row lg:items-end",
+              "relative z-10 container flex h-full w-full max-w-480 flex-col items-center justify-between gap-4 gap-16 py-10 font-body text-sm text-white max-ultra:px-[10vw] md:flex-row lg:items-end",
               "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:bg-black/90 before:opacity-95 before:content-['']",
             )}
             id="footer"

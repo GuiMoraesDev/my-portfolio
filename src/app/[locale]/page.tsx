@@ -88,7 +88,7 @@ export default async function Home() {
 const SessionWrapper = ({ className, ...props }: ComponentProps<"div">) => (
   <div
     className={twMerge(
-      "relative z-10 flex w-full max-w-480 flex-col items-center justify-between py-8 font-body max-[2000px]:px-[10vw] md:py-12 lg:py-16",
+      "relative z-10 flex w-full max-w-480 flex-col items-center justify-between py-8 font-body max-ultra:px-[10vw] md:py-12 lg:py-16",
       "first-of-type:mt-8 last-of-type:mb-8 md:first-of-type:mt-12 md:last-of-type:mb-12 lg:first-of-type:mt-16 lg:last-of-type:mb-16",
       className,
     )}

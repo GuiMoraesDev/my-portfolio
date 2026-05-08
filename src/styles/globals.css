@@ -24,6 +24,14 @@
 
   --color-accent-500: #ebb220;
 
+  /* Terminal UI chrome */
+  --color-terminal-surface: #0d0d0d;
+  --color-terminal-hover: #1a1a1a;
+  --color-terminal-titlebar: #111111;
+  --color-terminal-close: #ff5f56;
+  --color-terminal-minimize: #ffbd2e;
+  --color-terminal-maximize: #27c93f;
+
   /* Semantic colors */
   --color-bg-canvas: var(--color-ink-950);
   --color-bg-elevated: var(--color-ink-900);

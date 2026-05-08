@@ -26,7 +26,7 @@ export const TerminalInput = (props: TerminalInputProps) => {
   return (
     <>
       {filteredSuggestions.length > 0 && (
-        <div className="shrink-0 border-t border-border-subtle bg-[#0d0d0d] font-mono text-sm">
+        <div className="shrink-0 border-t border-border-subtle bg-terminal-surface font-mono text-sm">
           {filteredSuggestions.map((cmd, i) => (
             <button
               key={cmd.name}
@@ -36,8 +36,8 @@ export const TerminalInput = (props: TerminalInputProps) => {
                 onSelectSuggestion(cmd.name);
               }}
               className={twMerge(
-                "flex w-full gap-4 px-4 py-1.5 text-left hover:bg-[#1a1a1a]",
-                i === suggestionIndex && "bg-[#1a1a1a]",
+                "flex w-full gap-4 px-4 py-1.5 text-left hover:bg-terminal-hover",
+                i === suggestionIndex && "bg-terminal-hover",
               )}
             >
               <span className="text-plum-300">{cmd.name}</span>

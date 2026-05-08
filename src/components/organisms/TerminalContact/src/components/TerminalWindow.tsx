@@ -35,7 +35,7 @@ export const TerminalWindow = ({
       <header
         data-testid="terminal-drag-handle"
         onPointerDown={onDragStart}
-        className="flex shrink-0 cursor-grab items-center gap-2 border-b border-border-subtle bg-[#111] px-4 py-2.5 active:cursor-grabbing"
+        className="flex shrink-0 cursor-grab items-center gap-2 border-b border-border-subtle bg-terminal-titlebar px-4 py-2.5 active:cursor-grabbing"
       >
         <button
           data-testid="terminal-close-button"
@@ -43,18 +43,18 @@ export const TerminalWindow = ({
           aria-label="Close terminal"
           onClick={onClose}
           onPointerDown={(e) => e.stopPropagation()}
-          className="group relative h-3.5 w-3.5 rounded-full bg-[#ff5f56] focus-visible:outline-2 focus-visible:outline-offset-1"
+          className="group relative h-3.5 w-3.5 rounded-full bg-terminal-close focus-visible:outline-2 focus-visible:outline-offset-1"
         >
           <Icon
             name="Cross"
             className="absolute top-1/2 left-1/2 flex size-3.5! -translate-1/2 items-center justify-center stroke-2 font-medium opacity-0 transition-opacity group-hover:opacity-100"
           />
         </button>
-        <span className="h-3.5 w-3.5 rounded-full bg-[#ffbd2e]" />
-        <span className="h-3.5 w-3.5 rounded-full bg-[#27c93f]" />
+        <span className="h-3.5 w-3.5 rounded-full bg-terminal-minimize" />
+        <span className="h-3.5 w-3.5 rounded-full bg-terminal-maximize" />
       </header>
 
-      <div className="flex shrink-0 items-center gap-3 border-b border-border-subtle bg-[#0d0d0d] px-4 py-3">
+      <div className="flex shrink-0 items-center gap-3 border-b border-border-subtle bg-terminal-surface px-4 py-3">
         <MascotPixel className="h-10 w-auto" />
         <div className="font-mono text-xs leading-5">
           <p>

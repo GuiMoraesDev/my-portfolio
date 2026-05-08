@@ -43,7 +43,7 @@ export const TerminalContact = () => {
               dragListener={false}
               dragElastic={0}
               dragMomentum={false}
-              className="flex h-[min(30rem,85dvh)] w-full max-w-2xl flex-col overflow-hidden rounded border border-border-strong bg-[#0d0d0d] shadow-[0_16px_48px_rgba(0,0,0,0.7)]"
+              className="flex h-[min(30rem,85dvh)] w-full max-w-2xl flex-col overflow-hidden rounded border border-border-strong bg-terminal-surface shadow-[0_16px_48px_rgba(0,0,0,0.7)]"
             >
               <TerminalWindow
                 onClose={() => setIsOpen(false)}

@@ -130,7 +130,7 @@ export default async function RootLayout({
                   <span className="mr-1 uppercase">
                     {t("footer.made-with-love")}
                   </span>{" "}
-                  © 2024 Guilherme Moraes
+                  © {new Date().getFullYear()} Guilherme Moraes
                 </span>
               </div>
 

@@ -41,5 +41,60 @@
     "title": "Que bom ter você aqui!",
     "contact-me-by": "Entre em contato comigo por",
     "made-with-love": "Feito com café"
+  },
+  "terminal": {
+    "open-label": "Abrir terminal",
+    "close-label": "Fechar terminal",
+    "input-placeholder": "digite um comando...",
+    "input-label": "Entrada do terminal",
+    "tagline": "Desenvolvedor full-stack",
+    "welcome": "Bem-vindo. Digite '/help' para ver os comandos.",
+    "commands": {
+      "help": {
+        "description": "mostrar comandos disponíveis",
+        "lines": {
+          "whoami": "  whoami          ->   quem é essa pessoa",
+          "echo": "  echo [texto]    ->   imprimir texto",
+          "clear": "  clear           ->   limpar o terminal",
+          "help": "  /help           ->   mostrar esta mensagem",
+          "contact": "  /contact        ->   mostrar links de contato",
+          "games": "  /games          ->   mostrar jogos que criei",
+          "open-github": "  /open github    ->   abrir perfil do GitHub",
+          "open-linkedin": "  /open linkedin  ->   abrir perfil do LinkedIn"
+        }
+      },
+      "contact": {
+        "description": "mostrar links de contato",
+        "email": "email: guimoraes.dev@gmail.com"
+      },
+      "games": {
+        "description": "mostrar jogos que criei",
+        "rps-title": "Pedra Papel Tesoura",
+        "rps-description": "jogo clássico de mão, jogue contra a IA ou em multiplayer em tempo real."
+      },
+      "open": {
+        "github-description": "abrir perfil do GitHub",
+        "linkedin-description": "abrir perfil do LinkedIn",
+        "opening-github": "Abrindo GitHub...",
+        "opening-linkedin": "Abrindo LinkedIn..."
+      },
+      "whoami": {
+        "line1": "Guilherme Moraes — Engenheiro de Software Sênior",
+        "line2": "Construindo sistemas de frontend que se sustentam ao longo do tempo."
+      }
+    },
+    "errors": {
+      "not-found": "comando não encontrado: {prefix}{cmd}",
+      "not-found-suggestion": "comando não encontrado: {prefix}{cmd}. Você quis dizer {prefix}{suggestion}?",
+      "try-help": "digite '/help' para ver os comandos disponíveis",
+      "unknown-target": "destino desconhecido: {target}"
+    },
+    "mascot": {
+      "bubble-0": "Olá, vamos conversar",
+      "bubble-1": "Clique em mim!",
+      "bubble-2": "Eu não mordo... provavelmente",
+      "hover-0": "Ei, está fazendo cócegas...",
+      "hover-1": "Tá bom, eu gostei"
+    }
   }
 }

@@ -1,10 +1,13 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { twMerge } from "tailwind-merge";
 
+import type { SlashCommand } from "../hooks/useControlCommandLine";
 import { useTerminalInput } from "../hooks/useTerminalInput";
 
 type TerminalInputProps = {
+  slashCommands: SlashCommand[];
   history: string[];
   currentHistoryIndex: number;
   onSubmitCommand: (cmd: string) => void;
@@ -13,6 +16,7 @@ type TerminalInputProps = {
 };
 
 export const TerminalInput = (props: TerminalInputProps) => {
+  const t = useTranslations("terminal");
   const {
     input,
     inputRef,
@@ -59,8 +63,8 @@ export const TerminalInput = (props: TerminalInputProps) => {
           onChange={onInputChange}
           onKeyDown={onKeyDown}
           className="flex-1 bg-transparent text-text-primary caret-plum-300 outline-none placeholder:text-text-muted"
-          placeholder="type a command..."
-          aria-label="Terminal input"
+          placeholder={t("input-placeholder")}
+          aria-label={t("input-label")}
           autoComplete="off"
           autoCorrect="off"
           spellCheck={false}

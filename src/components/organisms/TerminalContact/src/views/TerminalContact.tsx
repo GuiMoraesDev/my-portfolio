@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useDragControls } from "motion/react";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { TerminalMascot } from "../components/Mascot";
@@ -14,6 +15,7 @@ import {
 } from "@/components/atoms/Dialog";
 
 export const TerminalContact = () => {
+  const t = useTranslations("terminal");
   const [isOpen, setIsOpen] = useState(false);
   const dragControls = useDragControls();
 
@@ -22,7 +24,7 @@ export const TerminalContact = () => {
       <button
         data-testid="terminal-open-button"
         type="button"
-        aria-label="Open terminal"
+        aria-label={t("open-label")}
         onClick={() => setIsOpen(true)}
         className="flex size-14 cursor-pointer items-center justify-center"
       >

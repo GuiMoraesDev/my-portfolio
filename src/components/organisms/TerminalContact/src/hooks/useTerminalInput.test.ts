@@ -12,6 +12,7 @@ const renderWithCommandLine = () =>
   renderHook(() => {
     const cl = useControlCommandLine();
     const input = useTerminalInput({
+      slashCommands: cl.slashCommands,
       history: cl.history,
       currentHistoryIndex: cl.currentHistoryIndex,
       onSubmitCommand: cl.onSubmitCommand,

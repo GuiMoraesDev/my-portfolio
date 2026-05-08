@@ -6,14 +6,8 @@ import {
   useInView,
   useReducedMotion,
 } from "motion/react";
-import { useEffect, useRef, useState } from "react";
-
-const BUBBLE_MESSAGES = [
-  "Hey, let's talk",
-  "Click on me!",
-  "I don't bite... probably",
-];
-const BUBBLE_HOVER_MESSAGES = ["Hey, it tickles...", "Ok fine, I like it"];
+import { useTranslations } from "next-intl";
+import { useEffect, useMemo, useRef, useState } from "react";
 const BUBBLE_SHOW_DURATION = 3_000;
 const BUBBLE_HOVER_SHOW_DURATION = 2_000;
 const BUBBLE_BETWEEN_DELAY = 4_000;
@@ -26,6 +20,15 @@ type TerminalMascotProps = {
 };
 
 export const TerminalMascot = ({ isOpen }: TerminalMascotProps) => {
+  const t = useTranslations("terminal");
+  const BUBBLE_MESSAGES = useMemo(
+    () => [t("mascot.bubble-0"), t("mascot.bubble-1"), t("mascot.bubble-2")],
+    [t],
+  );
+  const BUBBLE_HOVER_MESSAGES = useMemo(
+    () => [t("mascot.hover-0"), t("mascot.hover-1")],
+    [t],
+  );
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef);
   const reducedMotion = useReducedMotion();
@@ -86,7 +89,14 @@ export const TerminalMascot = ({ isOpen }: TerminalMascotProps) => {
       cancelled = true;
       resetState();
     };
-  }, [isInView, isHovered, isOpen, reducedMotion]);
+  }, [
+    BUBBLE_HOVER_MESSAGES,
+    BUBBLE_MESSAGES,
+    isInView,
+    isHovered,
+    isOpen,
+    reducedMotion,
+  ]);
 
   return (
     <motion.div

@@ -41,5 +41,60 @@
     "title": "Nice to have you here!",
     "contact-me-by": "Contact me by",
     "made-with-love": "Made with coffee"
+  },
+  "terminal": {
+    "open-label": "Open terminal",
+    "close-label": "Close terminal",
+    "input-placeholder": "type a command...",
+    "input-label": "Terminal input",
+    "tagline": "Full-stack developer",
+    "welcome": "Welcome. Type '/help' for available commands.",
+    "commands": {
+      "help": {
+        "description": "show available commands",
+        "lines": {
+          "whoami": "  whoami          ->   who is this person",
+          "echo": "  echo [text]     ->   print text",
+          "clear": "  clear           ->   clear the terminal",
+          "help": "  /help           ->   show this message",
+          "contact": "  /contact        ->   show contact links",
+          "games": "  /games          ->   show games I've built",
+          "open-github": "  /open github    ->   open GitHub profile",
+          "open-linkedin": "  /open linkedin  ->   open LinkedIn profile"
+        }
+      },
+      "contact": {
+        "description": "show contact links",
+        "email": "email: guimoraes.dev@gmail.com"
+      },
+      "games": {
+        "description": "show games I've built",
+        "rps-title": "Rock Paper Scissors",
+        "rps-description": "classic hand game, play against AI or in real-time multiplayer."
+      },
+      "open": {
+        "github-description": "open GitHub profile",
+        "linkedin-description": "open LinkedIn profile",
+        "opening-github": "Opening GitHub...",
+        "opening-linkedin": "Opening LinkedIn..."
+      },
+      "whoami": {
+        "line1": "Guilherme Moraes — Senior Software Engineer",
+        "line2": "Building frontend systems that hold up over time."
+      }
+    },
+    "errors": {
+      "not-found": "command not found: {prefix}{cmd}",
+      "not-found-suggestion": "command not found: {prefix}{cmd}. Do you mean {prefix}{suggestion}?",
+      "try-help": "type '/help' for available commands",
+      "unknown-target": "unknown target: {target}"
+    },
+    "mascot": {
+      "bubble-0": "Hey, let's talk",
+      "bubble-1": "Click on me!",
+      "bubble-2": "I don't bite... probably",
+      "hover-0": "Hey, it tickles...",
+      "hover-1": "Ok fine, I like it"
+    }
   }
 }

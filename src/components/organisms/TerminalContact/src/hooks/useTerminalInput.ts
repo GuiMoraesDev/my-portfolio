@@ -1,8 +1,9 @@
 import { useMemo, useRef, useState } from "react";
 
-import { SLASH_COMMANDS } from "./useControlCommandLine";
+import type { SlashCommand } from "./useControlCommandLine";
 
 type UseTerminalInputArgs = {
+  slashCommands: SlashCommand[];
   history: string[];
   currentHistoryIndex: number;
   onSubmitCommand: (cmd: string) => void;
@@ -11,6 +12,7 @@ type UseTerminalInputArgs = {
 };
 
 export const useTerminalInput = ({
+  slashCommands,
   history,
   currentHistoryIndex,
   onSubmitCommand,
@@ -23,10 +25,10 @@ export const useTerminalInput = ({
 
   const filteredSuggestions = useMemo(() => {
     if (!input.startsWith("/")) return [];
-    return SLASH_COMMANDS.filter((cmd) =>
+    return slashCommands.filter((cmd) =>
       cmd.name.startsWith(input.toLowerCase()),
     );
-  }, [input]);
+  }, [input, slashCommands]);
 
   const selectSuggestion = (name: string) => {
     setInput(name);

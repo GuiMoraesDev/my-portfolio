@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { useMemo, useState } from "react";
 
 import { findSuggestion } from "../utils/suggestion";
 
@@ -15,152 +16,174 @@ export type SlashCommand = {
   description: string;
 };
 
-export const SLASH_COMMANDS: SlashCommand[] = [
-  { name: "/help", description: "show available commands" },
-  { name: "/contact", description: "show contact links" },
-  { name: "/games", description: "show games I've built" },
-  { name: "/open github", description: "open GitHub profile" },
-  { name: "/open linkedin", description: "open LinkedIn profile" },
-];
-
-const SLASH_COMMAND_NAMES = [
-  ...new Set(SLASH_COMMANDS.map((c) => c.name.slice(1).split(" ")[0])),
-];
-
 const PLAIN_COMMAND_NAMES = ["whoami", "echo", "clear"];
-
-const INITIAL_STATE: TerminalLine[] = [
-  {
-    type: "output",
-    text: "Welcome. Type '/help' for available commands.",
-  },
-];
-
-const HELP_LINES: TerminalLine[] = [
-  { type: "output", text: "  whoami          ->   who is this person" },
-  { type: "output", text: "  echo [text]     ->   print text" },
-  { type: "output", text: "  clear           ->   clear the terminal" },
-  { type: "output", text: "  /help           ->   show this message" },
-  { type: "output", text: "  /contact        ->   show contact links" },
-  { type: "output", text: "  /games          ->   show games I've built" },
-  { type: "output", text: "  /open github    ->   open GitHub profile" },
-  { type: "output", text: "  /open linkedin  ->   open LinkedIn profile" },
-];
-
-const WHOAMI_LINES: TerminalLine[] = [
-  { type: "output", text: "Guilherme Moraes — Senior Software Engineer" },
-  { type: "output", text: "Building frontend systems that hold up over time." },
-];
-
-const GAMES_LINES: TerminalLine[] = [
-  {
-    type: "link",
-    text: "Rock Paper Scissors",
-    href: "https://rock-paper-scissor.guimoraes.dev/",
-  },
-  {
-    type: "output",
-    text: "classic hand game, play against AI or in real-time multiplayer.",
-  },
-];
-
-const CONTACT_LINES: TerminalLine[] = [
-  { type: "link", text: "GitHub", href: GITHUB_URL },
-  { type: "link", text: "LinkedIn", href: LINKEDIN_URL },
-  { type: "output", text: "email: guimoraes.dev@gmail.com" },
-];
-
-const notFoundLines = (
-  cmd: string,
-  prefix: string,
-  candidates: string[],
-): TerminalLine[] => {
-  const suggestion = findSuggestion(cmd, candidates);
-  return [
-    {
-      type: "error",
-      text: suggestion
-        ? `command not found: ${prefix}${cmd}. Do you mean ${prefix}${suggestion}?`
-        : `command not found: ${prefix}${cmd}`,
-    },
-    ...(suggestion
-      ? []
-      : [
-          {
-            type: "output" as const,
-            text: "type '/help' for available commands",
-          },
-        ]),
-  ];
-};
 
 type RunCommandResult = { lines: TerminalLine[]; clear?: boolean };
 
-const runCommand = (raw: string): RunCommandResult => {
-  const trimmed = raw.trim();
+export const useControlCommandLine = () => {
+  const t = useTranslations("terminal");
 
-  if (!trimmed) return { lines: [] };
+  const slashCommands = useMemo<SlashCommand[]>(
+    () => [
+      { name: "/help", description: t("commands.help.description") },
+      { name: "/contact", description: t("commands.contact.description") },
+      { name: "/games", description: t("commands.games.description") },
+      {
+        name: "/open github",
+        description: t("commands.open.github-description"),
+      },
+      {
+        name: "/open linkedin",
+        description: t("commands.open.linkedin-description"),
+      },
+    ],
+    [t],
+  );
 
-  if (trimmed.startsWith("/")) {
-    const [cmd, ...args] = trimmed.slice(1).toLowerCase().split(/\s+/);
+  const slashCommandNames = [
+    ...new Set(slashCommands.map((c) => c.name.slice(1).split(" ")[0])),
+  ];
+
+  const initialLines: TerminalLine[] = [{ type: "output", text: t("welcome") }];
+
+  const [lines, setLines] = useState<TerminalLine[]>(initialLines);
+  const [history, setHistory] = useState<string[]>([]);
+  const [currentHistoryIndex, setCurrentHistoryIndex] = useState(-1);
+
+  const notFoundLines = (
+    cmd: string,
+    prefix: string,
+    candidates: string[],
+  ): TerminalLine[] => {
+    const suggestion = findSuggestion(cmd, candidates);
+    return [
+      {
+        type: "error",
+        text: suggestion
+          ? t("errors.not-found-suggestion", { prefix, cmd, suggestion })
+          : t("errors.not-found", { prefix, cmd }),
+      },
+      ...(suggestion
+        ? []
+        : [
+            {
+              type: "output" as const,
+              text: t("errors.try-help"),
+            },
+          ]),
+    ];
+  };
+
+  const runCommand = (raw: string): RunCommandResult => {
+    const trimmed = raw.trim();
+
+    if (!trimmed) return { lines: [] };
+
+    if (trimmed.startsWith("/")) {
+      const [cmd, ...args] = trimmed.slice(1).toLowerCase().split(/\s+/);
+
+      switch (cmd) {
+        case "help":
+          return {
+            lines: [
+              { type: "output", text: t("commands.help.lines.whoami") },
+              { type: "output", text: t("commands.help.lines.echo") },
+              { type: "output", text: t("commands.help.lines.clear") },
+              { type: "output", text: t("commands.help.lines.help") },
+              { type: "output", text: t("commands.help.lines.contact") },
+              { type: "output", text: t("commands.help.lines.games") },
+              { type: "output", text: t("commands.help.lines.open-github") },
+              {
+                type: "output",
+                text: t("commands.help.lines.open-linkedin"),
+              },
+            ],
+          };
+
+        case "contact":
+          return {
+            lines: [
+              { type: "link", text: "GitHub", href: GITHUB_URL },
+              { type: "link", text: "LinkedIn", href: LINKEDIN_URL },
+              { type: "output", text: t("commands.contact.email") },
+            ],
+          };
+
+        case "games":
+          return {
+            lines: [
+              {
+                type: "link",
+                text: t("commands.games.rps-title"),
+                href: "https://rock-paper-scissor.guimoraes.dev/",
+              },
+              { type: "output", text: t("commands.games.rps-description") },
+            ],
+          };
+
+        case "open":
+          switch (args[0]) {
+            case "github":
+              window.open(GITHUB_URL, "_blank", "noopener,noreferrer");
+              return {
+                lines: [
+                  { type: "output", text: t("commands.open.opening-github") },
+                ],
+              };
+            case "linkedin":
+              window.open(LINKEDIN_URL, "_blank", "noopener,noreferrer");
+              return {
+                lines: [
+                  {
+                    type: "output",
+                    text: t("commands.open.opening-linkedin"),
+                  },
+                ],
+              };
+            default:
+              return {
+                lines: [
+                  {
+                    type: "error",
+                    text: t("errors.unknown-target", {
+                      target: args[0] ?? "",
+                    }),
+                  },
+                ],
+              };
+          }
+
+        default:
+          return {
+            lines: notFoundLines(cmd, "/", slashCommandNames),
+          };
+      }
+    }
+
+    const [cmd] = trimmed.toLowerCase().split(/\s+/);
+    const rawArgs = trimmed.slice(cmd.length).trim();
 
     switch (cmd) {
-      case "help":
-        return { lines: HELP_LINES };
+      case "whoami":
+        return {
+          lines: [
+            { type: "output", text: t("commands.whoami.line1") },
+            { type: "output", text: t("commands.whoami.line2") },
+          ],
+        };
 
-      case "contact":
-        return { lines: CONTACT_LINES };
+      case "echo":
+        return { lines: rawArgs ? [{ type: "output", text: rawArgs }] : [] };
 
-      case "games":
-        return { lines: GAMES_LINES };
-
-      case "open":
-        switch (args[0]) {
-          case "github":
-            window.open(GITHUB_URL, "_blank", "noopener,noreferrer");
-            return { lines: [{ type: "output", text: "Opening GitHub..." }] };
-          case "linkedin":
-            window.open(LINKEDIN_URL, "_blank", "noopener,noreferrer");
-            return { lines: [{ type: "output", text: "Opening LinkedIn..." }] };
-          default:
-            return {
-              lines: [
-                { type: "error", text: `unknown target: ${args[0] ?? ""}` },
-              ],
-            };
-        }
+      case "clear":
+        return { clear: true, lines: [] };
 
       default:
         return {
-          lines: notFoundLines(cmd, "/", SLASH_COMMAND_NAMES),
+          lines: notFoundLines(cmd, "", PLAIN_COMMAND_NAMES),
         };
     }
-  }
-
-  const [cmd] = trimmed.toLowerCase().split(/\s+/);
-  const rawArgs = trimmed.slice(cmd.length).trim();
-
-  switch (cmd) {
-    case "whoami":
-      return { lines: WHOAMI_LINES };
-
-    case "echo":
-      return { lines: rawArgs ? [{ type: "output", text: rawArgs }] : [] };
-
-    case "clear":
-      return { clear: true, lines: [] };
-
-    default:
-      return {
-        lines: notFoundLines(cmd, "", PLAIN_COMMAND_NAMES),
-      };
-  }
-};
-
-export const useControlCommandLine = () => {
-  const [lines, setLines] = useState<TerminalLine[]>(INITIAL_STATE);
-  const [history, setHistory] = useState<string[]>([]);
-  const [currentHistoryIndex, setCurrentHistoryIndex] = useState(-1);
+  };
 
   const onSubmitCommand = (input: string) => {
     const trimmed = input.trim();
@@ -171,7 +194,7 @@ export const useControlCommandLine = () => {
     }
 
     if (result.clear) {
-      return setLines(INITIAL_STATE);
+      return setLines(initialLines);
     }
 
     setLines((prev) => [
@@ -189,6 +212,7 @@ export const useControlCommandLine = () => {
     lines,
     history,
     currentHistoryIndex,
+    slashCommands,
     onSubmitCommand,
     onUpdateCurrentHistoryIndex,
   };

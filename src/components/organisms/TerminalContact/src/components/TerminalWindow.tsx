@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { useRef } from "react";
 
 import { useControlCommandLine } from "../hooks/useControlCommandLine";
@@ -18,10 +19,12 @@ export const TerminalWindow = ({
   onClose,
   onDragStart,
 }: TerminalWindowProps) => {
+  const t = useTranslations("terminal");
   const {
     lines,
     history,
     currentHistoryIndex,
+    slashCommands,
     onSubmitCommand,
     onUpdateCurrentHistoryIndex,
   } = useControlCommandLine();
@@ -40,7 +43,7 @@ export const TerminalWindow = ({
         <button
           data-testid="terminal-close-button"
           type="button"
-          aria-label="Close terminal"
+          aria-label={t("close-label")}
           onClick={onClose}
           onPointerDown={(e) => e.stopPropagation()}
           className="group relative h-3.5 w-3.5 rounded-full bg-terminal-close focus-visible:outline-2 focus-visible:outline-offset-1"
@@ -61,7 +64,7 @@ export const TerminalWindow = ({
             <span className="font-bold text-text-primary">guimoraes.dev</span>
             <span className="text-text-muted"> · portfolio</span>
           </p>
-          <p className="text-text-muted">Full-stack developer</p>
+          <p className="text-text-muted">{t("tagline")}</p>
           <p data-testid="terminal-path" className="text-text-muted">
             ~/.guimoraes.dev
           </p>
@@ -112,6 +115,7 @@ export const TerminalWindow = ({
       </ul>
 
       <TerminalInput
+        slashCommands={slashCommands}
         history={history}
         currentHistoryIndex={currentHistoryIndex}
         onSubmitCommand={onSubmitCommand}

@@ -11,7 +11,7 @@
 - Locale-aware routing via `next-intl` middleware; all pages live under `src/app/[locale]/`
 - `localePrefix: "never"` — URLs never show `/en/` or `/pt/`; locale inferred from `Accept-Language` / cookie by `src/proxy.ts`
 - Single-page portfolio; no API routes; all content is static or translation-driven
-- Provider tree (`QueryProvider` → `LanguageProvider` → Analytics) wraps the entire app from `AppProvider`
+- Provider tree (`LanguageProvider` → Analytics) wraps the entire app from `AppProvider`
 
 ## Layers
 
@@ -59,10 +59,9 @@
 - Purpose: App-wide React context composition
 - Location: `src/provider/AppProvider.tsx`, `src/provider/src/`
 - Contains:
-  - `AppProvider` — composition root; renders `QueryProvider` → `LanguageProvider` → children + Analytics + SpeedInsights
-  - `QueryProvider` — `"use client"`; wraps tree with `QueryClientProvider` (singleton `QueryClient` hoisted at module level)
+  - `AppProvider` — composition root; renders `LanguageProvider` → children + Analytics + SpeedInsights
   - `LanguageProvider` — async Server Component; calls `getMessages()` and passes messages to `NextIntlClientProvider`
-- Depends on: `@tanstack/react-query`, `next-intl`, `@vercel/analytics`, `@vercel/speed-insights`
+- Depends on: `next-intl`, `@vercel/analytics`, `@vercel/speed-insights`
 - Used by: `src/app/[locale]/layout.tsx`
 
 **i18n:**
@@ -106,7 +105,7 @@ src/components/organisms/TerminalContact/
 ```
 
 **Responsibilities:**
-- `TerminalContact.tsx` — owns `<dialog>` ref via `useRef<HTMLDialogElement>`, `isOpen` state, `useDragControls`; hands `dragControls.start` to `TerminalWindow`
+- `TerminalContact.tsx` — owns `isOpen` state, `useDragControls`; uses Radix UI `Dialog.Root`/`Dialog.Content` (via `src/components/atoms/Dialog/`) rather than a native `<dialog>` ref; hands `dragControls.start` to `TerminalWindow`
 - `TerminalWindow.tsx` — calls `useControlCommandLine`; renders typed terminal lines by `type` (`input` | `output` | `error` | `link`); exposes `scrollToBottom` ref
 - `TerminalInput.tsx` — purely presentational; delegates all logic to `useTerminalInput`; renders suggestion list when `filteredSuggestions.length > 0`
 - `useControlCommandLine.ts` — `runCommand(raw)` is a pure function returning `{ lines, clear? }`; slash commands (`/help`, `/contact`, `/games`, `/open github|linkedin`) and plain commands (`whoami`, `echo`, `clear`); unknown commands pass through `findSuggestion`
@@ -131,7 +130,6 @@ src/components/organisms/TerminalContact/
 - `useControlCommandLine`: `lines[]`, `history[]`, `currentHistoryIndex`
 - `useTerminalInput`: `input` string, `suggestionIndex`
 - `TerminalContact` view: `isOpen` boolean
-- TanStack Query is configured in `QueryProvider` but has zero active queries in the current codebase
 
 ## Routing Strategy
 
@@ -159,7 +157,7 @@ src/components/organisms/TerminalContact/
 
 **Styling:** Tailwind CSS v4 applied inline on JSX; `tailwind-merge` (`twMerge`) used in every component for conditional class merging; `tailwind-variants` (`tv()`) used for variant-driven component APIs (e.g., `Icon`)
 
-**Animation:** `framer-motion` used in: `TerminalContact.tsx` (drag constraints), `TerminalWindow.tsx` (inline mascot pixel blink), `Mascot.tsx` (bobbing loop, `AnimatePresence` speech bubble)
+**Animation:** `motion/react` used in: `TerminalContact.tsx` (drag constraints), `TerminalWindow.tsx` (inline mascot pixel blink), `Mascot.tsx` (bobbing loop, `AnimatePresence` speech bubble)
 
 ---
 

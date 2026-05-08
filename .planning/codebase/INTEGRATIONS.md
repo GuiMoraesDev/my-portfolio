@@ -14,7 +14,7 @@ None — no external API integrations in the codebase.
 - No object storage (S3, Cloudinary, etc.) detected
 
 **Caching:**
-- TanStack Query (`src/provider/src/QueryProvider.tsx`) — client-side cache only; no Redis or external cache layer
+- None
 
 ## Authentication & Identity
 

@@ -29,11 +29,8 @@
 **Internationalization:**
 - next-intl ^4.11.0 — locale routing and server/client translations; routing config at `src/i18n/routing.ts` (locales: `en`, `pt`; `localePrefix: "never"`); request config at `src/i18n/index.ts`
 
-**Data Fetching:**
-- TanStack Query (React Query) ^5.100.6 — client-side async state management; `QueryClient` initialized in `src/provider/src/QueryProvider.tsx`
-
 **Animation:**
-- Framer Motion (imported as `"framer-motion"` from the `motion` ^12.38.0 package) — drag, presence animations, viewport detection; used in `src/components/organisms/TerminalContact/src/`
+- motion ^12.38.0 (imported as `"motion/react"`) — drag, presence animations, viewport detection; used in `src/components/organisms/TerminalContact/src/`
 
 **Testing:**
 - Jest ^30.3.0 + jest-environment-jsdom — unit tests; config at `jest.config.ts`, setup at `jest.setup.ts`
@@ -54,15 +51,8 @@
 
 ## UI Component Primitives
 
+- @radix-ui/react-dialog ^1.1.15
 - @radix-ui/react-icons ^1.3.2
-- @radix-ui/react-label ^2.1.8
-- @radix-ui/react-switch ^1.2.6
-- @radix-ui/react-toast ^1.2.15
-- @radix-ui/react-tooltip ^1.2.8
-
-## Utilities
-
-- lodash ^4.17.24 — general utilities (listed as production dependency; not found in use within `src/` at time of analysis)
 
 ## Linting & Formatting
 

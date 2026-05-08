@@ -97,7 +97,7 @@ export default async function RootLayout({
             )}
             id="footer"
           >
-            <footer className="z-10 flex h-full w-full flex-col items-center justify-between gap-4 text-sm text-text-secondary md:flex-row lg:items-end">
+            <div className="z-10 flex h-full w-full flex-col items-center justify-between gap-4 text-sm text-text-secondary md:flex-row lg:items-end">
               <div className="flex flex-col gap-3">
                 <strong
                   className={twMerge(
@@ -127,7 +127,7 @@ export default async function RootLayout({
               </div>
 
               <SocialMedia />
-            </footer>
+            </div>
           </footer>
         </AppProvider>
       </body>

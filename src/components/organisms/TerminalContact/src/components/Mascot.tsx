@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
 const BUBBLE_MESSAGES = [

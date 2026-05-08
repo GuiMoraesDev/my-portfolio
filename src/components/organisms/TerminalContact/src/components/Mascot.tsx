@@ -1,6 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion, useInView } from "motion/react";
+import {
+  AnimatePresence,
+  motion,
+  useInView,
+  useReducedMotion,
+} from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
 const BUBBLE_MESSAGES = [
@@ -23,6 +28,7 @@ type TerminalMascotProps = {
 export const TerminalMascot = ({ isOpen }: TerminalMascotProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef);
+  const reducedMotion = useReducedMotion();
   const [isHovered, setIsHovered] = useState(false);
   const [currentMessage, setCurrentMessage] = useState<string | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -35,7 +41,7 @@ export const TerminalMascot = ({ isOpen }: TerminalMascotProps) => {
       clearTimeout(timerRef.current);
     };
 
-    if (!isInView || isOpen) {
+    if (!isInView || isOpen || reducedMotion) {
       resetState();
       return;
     }
@@ -80,12 +86,12 @@ export const TerminalMascot = ({ isOpen }: TerminalMascotProps) => {
       cancelled = true;
       resetState();
     };
-  }, [isInView, isHovered, isOpen]);
+  }, [isInView, isHovered, isOpen, reducedMotion]);
 
   return (
     <motion.div
       ref={containerRef}
-      animate={{ y: [0, -4, 0], scale: [1, 1.03, 1] }}
+      animate={reducedMotion ? {} : { y: [0, -4, 0], scale: [1, 1.03, 1] }}
       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       className="relative flex h-full flex-col items-center"
       onMouseEnter={() => setIsHovered(true)}
@@ -117,7 +123,7 @@ export const TerminalMascot = ({ isOpen }: TerminalMascotProps) => {
         <motion.g
           id="right-leg"
           className="origin-center"
-          animate={{ translateY: [0, -1, -2, -3, -2, -1] }}
+          animate={reducedMotion ? {} : { translateY: [0, -1, -2, -3, -2, -1] }}
           transition={{
             duration: 1,
             repeat: Infinity,
@@ -152,7 +158,7 @@ export const TerminalMascot = ({ isOpen }: TerminalMascotProps) => {
         <motion.g
           id="left-leg"
           className="origin-center"
-          animate={{ translateY: [-3, -2, -1, 0, -1, -2] }}
+          animate={reducedMotion ? {} : { translateY: [-3, -2, -1, 0, -1, -2] }}
           transition={{
             duration: 1,
             repeat: Infinity,
@@ -188,7 +194,7 @@ export const TerminalMascot = ({ isOpen }: TerminalMascotProps) => {
           <path
             d="M198.634 26.4596C198.634 35.3099 191.459 42.4845 182.609 42.4845C173.758 42.4845 166.584 35.3099 166.584 26.4596C166.584 17.6094 173.758 10.4348 182.609 10.4348C191.459 10.4348 198.634 17.6094 198.634 26.4596Z"
             fill="#00B4D8"
-            className="animate-pulse"
+            className={reducedMotion ? undefined : "animate-pulse"}
           />
           <path
             fillRule="evenodd"
@@ -290,7 +296,7 @@ export const TerminalMascot = ({ isOpen }: TerminalMascotProps) => {
           <motion.g
             id="brown-eye"
             className="origin-center"
-            animate={{ scaleY: [1, 0.1, 1] }}
+            animate={reducedMotion ? {} : { scaleY: [1, 0.1, 1] }}
             transition={{
               duration: 0.2,
               repeat: Infinity,
@@ -311,7 +317,7 @@ export const TerminalMascot = ({ isOpen }: TerminalMascotProps) => {
 
           <motion.g
             className="origin-center"
-            animate={{ scaleY: [1, 0.1, 1] }}
+            animate={reducedMotion ? {} : { scaleY: [1, 0.1, 1] }}
             transition={{
               duration: 0.2,
               delay: 0.5,
@@ -334,7 +340,7 @@ export const TerminalMascot = ({ isOpen }: TerminalMascotProps) => {
 
           <motion.g
             className="origin-center"
-            animate={{ scaleY: [1, 0.1, 1] }}
+            animate={reducedMotion ? {} : { scaleY: [1, 0.1, 1] }}
             transition={{
               duration: 0.2,
               repeat: Infinity,

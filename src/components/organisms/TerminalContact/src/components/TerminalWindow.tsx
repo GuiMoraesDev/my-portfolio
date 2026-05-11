@@ -165,12 +165,12 @@ const MascotPixel = ({ className }: { className?: string }) => (
       y="0"
       width="6"
       height="6"
-      fill="#00B7BC"
+      fill="#49213b"
       className="animate-pulse"
     />
-    <rect x="24" y="5" width="10" height="3" fill="#1B3137" />
+    <rect x="24" y="5" width="10" height="3" fill="#421138" />
     {/* Head */}
-    <rect x="2" y="8" width="36" height="16" fill="#00B7BC" />
+    <rect x="2" y="8" width="36" height="16" fill="#49213b" />
     {/* Visor */}
     <rect x="4" y="10" width="32" height="10" fill="white" />
 
@@ -187,7 +187,7 @@ const MascotPixel = ({ className }: { className?: string }) => (
       y="12"
       width="6"
       height="6"
-      fill="#91513C"
+      fill="#57123f"
     />
     <motion.rect
       className="origin-center"
@@ -202,7 +202,7 @@ const MascotPixel = ({ className }: { className?: string }) => (
       y="12"
       width="6"
       height="6"
-      fill="#C6966D"
+      fill="#ce8bb3"
     />
     <motion.rect
       className="origin-center"
@@ -219,18 +219,18 @@ const MascotPixel = ({ className }: { className?: string }) => (
       fill="#FFBF36"
     />
     {/* Body */}
-    <rect x="2" y="26" width="36" height="18" fill="#00B7BC" />
+    <rect x="2" y="26" width="36" height="18" fill="#49213b" />
     {/* Right panel */}
-    <rect x="28" y="26" width="10" height="18" fill="#1C6E77" />
+    <rect x="28" y="26" width="10" height="18" fill="#57123f" />
     {/* Red button */}
-    <rect x="30" y="29" width="6" height="6" fill="#F36353" />
+    <rect x="30" y="29" width="6" height="6" fill="#ce8bb3" />
     {/* Orange button */}
-    <rect x="30" y="37" width="5" height="5" fill="#FFBF3F" />
+    <rect x="30" y="37" width="5" height="5" fill="#daa8c6" />
     {/* Legs */}
-    <rect x="6" y="44" width="10" height="5" fill="#00B7BC" />
-    <rect x="24" y="44" width="10" height="5" fill="#00B7BC" />
+    <rect x="6" y="44" width="10" height="5" fill="#49213b" />
+    <rect x="24" y="44" width="10" height="5" fill="#49213b" />
     {/* Feet */}
-    <rect x="3" y="47" width="16" height="5" fill="#04363D" />
-    <rect x="21" y="47" width="16" height="5" fill="#04363D" />
+    <rect x="3" y="47" width="16" height="5" fill="#0d020d" />
+    <rect x="21" y="47" width="16" height="5" fill="#0d020d" />
   </svg>
 );

@@ -1,9 +1,7 @@
 {
   "links": {
     "home": "Início",
-    "philosophy": "Filosofia",
-    "blog": "Blog",
-    "get-in-touch": "Entre em contato"
+    "philosophy": "Filosofia"
   },
   "presentation": {
     "name": "Olá, sou",
@@ -49,11 +47,6 @@
       "heading": "Leia antes de reescrever",
       "body": "Código antigo carrega decisões tomadas sob pressões que eu não estava lá para ver. Antes de tocar em qualquer coisa, encontro o que é estrutural — as peças das quais outras dependem silenciosamente. Me movo de forma incremental, um passo seguro de cada vez, para que o time ganhe confiança na base de código sem o risco de uma reescrita completa que troca problemas conhecidos por desconhecidos."
     }
-  },
-  "articles": {
-    "title": "Artigos",
-    "quote": "Escrevo quando processo algo que vale compartilhar. Textos práticos sobre arquitetura, tradeoffs e problemas que encontrei em projetos reais.",
-    "all-articles": "Ver todos os artigos"
   },
   "footer": {
     "title": "Que bom ter você aqui!",

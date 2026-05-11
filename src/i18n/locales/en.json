@@ -1,9 +1,7 @@
 {
   "links": {
     "home": "Home",
-    "philosophy": "Philosophy",
-    "blog": "Blog",
-    "get-in-touch": "Get in touch"
+    "philosophy": "Philosophy"
   },
   "presentation": {
     "name": "Hi, I'm",
@@ -49,11 +47,6 @@
       "heading": "Read before you rewrite",
       "body": "Old code carries decisions made under pressures I wasn't there for. Before touching anything, I find what's load-bearing — the pieces other things quietly depend on. I move incrementally, one safe step at a time, so the team gains confidence in the codebase without the risk of a big-bang rewrite that trades known problems for unknown ones."
     }
-  },
-  "articles": {
-    "title": "Writing",
-    "quote": "I write when I've worked through something worth sharing. Practical pieces on architecture, tradeoffs, and problems I've run into in real codebases.",
-    "all-articles": "View all posts"
   },
   "footer": {
     "title": "Nice to have you here!",

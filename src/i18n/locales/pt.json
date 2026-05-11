@@ -1,6 +1,7 @@
 {
   "links": {
     "home": "Início",
+    "philosophy": "Filosofia",
     "blog": "Blog",
     "get-in-touch": "Entre em contato"
   },
@@ -30,6 +31,23 @@
       "label": "Como colaboro",
       "heading": "Quero que as pessoas ao meu redor se saiam bem",
       "body": "Tenho mais satisfação em desbloquear alguém do que em entregar algo sozinho. Um time que se move bem vale mais do que qualquer resultado individual. Código é feito por pessoas para pessoas, e clareza é o que torna isso possível."
+    }
+  },
+  "philosophy": {
+    "hero": {
+      "label": "Filosofia",
+      "heading": "Como penso sobre construir software",
+      "body": "Esses são os princípios aos quais sempre volto — não regras que sigo cegamente, mas padrões que encontrei úteis em projetos de tamanhos, idades e pressões diferentes."
+    },
+    "from-scratch": {
+      "label": "Começando do zero",
+      "heading": "As restrições são o design",
+      "body": "Quando há uma lousa em branco, a parte mais difícil não é construir — é decidir o que ainda não construir. Começo definindo as bordas: o que esse sistema nunca deve se tornar. Essa clareza molda cada decisão inicial, dos modelos de dados à estrutura de pastas, e evita a deriva lenta que faz projetos novos parecerem código legado dois anos depois."
+    },
+    "legacy": {
+      "label": "Trabalhando com código legado",
+      "heading": "Leia antes de reescrever",
+      "body": "Código antigo carrega decisões tomadas sob pressões que eu não estava lá para ver. Antes de tocar em qualquer coisa, encontro o que é estrutural — as peças das quais outras dependem silenciosamente. Me movo de forma incremental, um passo seguro de cada vez, para que o time ganhe confiança na base de código sem o risco de uma reescrita completa que troca problemas conhecidos por desconhecidos."
     }
   },
   "articles": {

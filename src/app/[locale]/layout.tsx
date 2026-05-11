@@ -53,7 +53,10 @@ export default async function RootLayout({
 
   const t = await getTranslations();
 
-  const NAV_LINKS = [{ href: "#presentation", label: t("links.home") }];
+  const NAV_LINKS = [
+    { href: "/", label: t("links.home") },
+    { href: "/philosophy", label: t("links.philosophy") },
+  ];
 
   return (
     <html
@@ -100,7 +103,7 @@ export default async function RootLayout({
 
           <footer
             className={twMerge(
-              "relative z-10 container flex h-full w-full max-w-480 flex-col items-center justify-between gap-4 gap-16 py-10 font-body text-sm text-white max-ultra:px-[10vw] md:flex-row lg:items-end",
+              "relative z-10 container flex h-full w-full flex-col items-center justify-between gap-16 py-10 font-body text-sm text-white max-ultra:px-[10vw] md:flex-row lg:items-end",
               "before:absolute before:bottom-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:bg-black/90 before:opacity-95 before:content-['']",
             )}
             id="footer"

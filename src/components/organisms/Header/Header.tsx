@@ -32,6 +32,7 @@ export const Header = () => {
 
   return (
     <header
+      data-testid="header"
       className={twMerge(
         "sticky top-0 z-20 container flex h-14 w-full shrink-0 flex-col items-center justify-between gap-10 font-body md:h-20",
         "before:absolute before:top-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:border-b before:border-teal-300/20 before:bg-ink-900 before:opacity-90 before:content-['']",
@@ -86,6 +87,7 @@ const MenuWrapper = ({ children, isOpen, onToggleMenu }: MenuWrapperProps) => {
         <button
           onClick={onToggleMenu}
           type="button"
+          data-testid="menu-toggle"
           className="z-20 rounded-sm text-text-secondary transition hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300"
           title="menu"
           aria-label="Toggle navigation menu"
@@ -151,6 +153,7 @@ const LanguageSwitcher = () => {
       <button
         disabled={isPending}
         type="button"
+        data-testid="language-switcher"
         aria-label={
           locale === "en"
             ? "Switch language to Portuguese"

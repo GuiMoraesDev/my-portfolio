@@ -4,19 +4,6 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { TerminalContact } from "./TerminalContact";
 
 beforeEach(() => {
-  // jsdom does not implement HTMLDialogElement methods — simulate open/close via attribute
-  HTMLDialogElement.prototype.showModal = jest.fn<() => void>(function (
-    this: HTMLDialogElement,
-  ) {
-    this.setAttribute("open", "");
-  });
-  HTMLDialogElement.prototype.close = jest.fn<() => void>(function (
-    this: HTMLDialogElement,
-  ) {
-    this.removeAttribute("open");
-  });
-
-  // jsdom does not implement scrollIntoView
   Element.prototype.scrollIntoView = jest.fn<() => void>();
 });
 
@@ -32,24 +19,25 @@ describe("TerminalContact", () => {
       expect(screen.getByTestId("terminal-open-button")).not.toBeNull();
     });
 
-    it("calls showModal when clicked", () => {
+    it("opens the dialog when clicked", () => {
       render(<TerminalContact />);
       openTerminal();
-      expect(HTMLDialogElement.prototype.showModal).toHaveBeenCalledTimes(1);
+      expect(screen.getByTestId("terminal-dialog")).not.toBeNull();
     });
   });
 
   describe("dialog", () => {
-    it("renders the dialog", () => {
+    it("renders the dialog after opening", () => {
       render(<TerminalContact />);
+      openTerminal();
       expect(screen.getByTestId("terminal-dialog")).not.toBeNull();
     });
 
-    it("calls close when the close button is clicked", () => {
+    it("closes the dialog when the close button is clicked", () => {
       render(<TerminalContact />);
       openTerminal();
       fireEvent.click(screen.getByTestId("terminal-close-button"));
-      expect(HTMLDialogElement.prototype.close).toHaveBeenCalledTimes(1);
+      expect(screen.queryByTestId("terminal-dialog")).toBeNull();
     });
 
     it("shows the terminal path in the header", () => {

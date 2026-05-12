@@ -1,10 +1,25 @@
 import "@/styles/globals.css";
 
 import type { Metadata } from "next";
+import { Michroma, Space_Grotesk } from "next/font/google";
 
 import { Wave } from "@/components/molecules/Wave";
 import { Header } from "@/components/organisms/Header";
 import { AppProvider } from "@/provider/AppProvider";
+
+const michroma = Michroma({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-michroma",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.guimoraes.dev"),
@@ -48,7 +63,7 @@ export default async function RootLayout({
 
   return (
     <html
-      className="flex scroll-pt-20 items-center justify-center scroll-smooth"
+      className={`${michroma.variable} ${spaceGrotesk.variable} flex scroll-pt-20 items-center justify-center scroll-smooth`}
       data-scroll-behavior="smooth"
       lang={locale}
     >

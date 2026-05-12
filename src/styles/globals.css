@@ -1,11 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Michroma&family=Space+Grotesk:wght@300..700&display=swap");
-
 @import "tailwindcss";
 
 @theme {
-  --font-title: "Michroma", sans-serif;
-  --font-body: "Space Grotesk", sans-serif;
+  --font-title: var(--font-michroma);
+  --font-body: var(--font-space-grotesk);
 
   /* Core palette */
   --color-plum-50: #f2e2ec;

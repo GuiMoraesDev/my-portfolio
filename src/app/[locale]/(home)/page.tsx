@@ -3,8 +3,6 @@ import { getTranslations } from "next-intl/server";
 import { SocialMedia } from "@/components/molecules/SocialMedia";
 import { TerminalContact } from "@/components/organisms/TerminalContact";
 
-export const dynamic = "force-static";
-
 export default async function Home() {
   const t = await getTranslations();
 

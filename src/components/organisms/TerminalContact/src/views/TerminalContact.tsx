@@ -1,5 +1,6 @@
 "use client";
 
+import { DialogOverlay } from "@radix-ui/react-dialog";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
@@ -28,12 +29,11 @@ export const TerminalContact = () => {
       </DialogTrigger>
 
       <DialogPortal>
-        <DialogContent
-          data-testid="terminal-dialog"
-          className="fixed inset-0 z-100 flex items-center justify-center bg-ink-900/50 p-0"
-        >
-          <TerminalWindow />
-        </DialogContent>
+        <DialogOverlay className="fixed inset-0 top-0 left-0 z-100 flex h-dvh w-dvw items-center justify-center bg-ink-900/50">
+          <DialogContent data-testid="terminal-dialog">
+            <TerminalWindow />
+          </DialogContent>
+        </DialogOverlay>
       </DialogPortal>
     </DialogRoot>
   );

@@ -168,7 +168,16 @@ export const useControlCommandLine = () => {
         return {
           lines: [
             { type: "output", text: t("commands.whoami.line1") },
-            { type: "output", text: t("commands.whoami.line2") },
+            {
+              type: "link",
+              text: "Github",
+              href: GITHUB_URL,
+            },
+            {
+              type: "link",
+              text: "LinkedIn",
+              href: LINKEDIN_URL,
+            },
           ],
         };
 

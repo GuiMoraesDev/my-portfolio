@@ -31,6 +31,10 @@ export default async function Home() {
         {t("presentation.subtitle")}
       </p>
 
+      <p className="motion-enter motion-enter-delay-3 text-sm tracking-wide text-text-secondary/50">
+        {t("presentation.stack")}
+      </p>
+
       <SocialMedia className="justify-start" />
 
       <section className="absolute top-0 right-0 -translate-x-1/3">

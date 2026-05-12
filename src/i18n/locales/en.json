@@ -6,14 +6,15 @@
   "presentation": {
     "name": "Hi, I'm",
     "title": "Senior Software Engineer",
-    "subtitle": "I build frontend architectures that hold up over time. My focus is making the architectural and design calls that keep teams from slowing down.",
+    "subtitle": "I build frontend systems that teams can keep moving in. My focus is the structural decisions that matter before they become expensive to change.",
+    "stack": "React · Next.js · TypeScript · Node.js · Express · MongoDB · PostgreSQL",
     "my-resume": "My resume"
   },
   "how-i-work": {
     "think": {
       "label": "How I think",
       "heading": "The code is not the product. The solution is.",
-      "body": "Messy code is not always a sign of bad decisions. Sometimes it was the right call at the time. I refactor when it starts slowing people down, not because it bothers me aesthetically, but when it is worth it and it gives the team more confidence to move."
+      "body": "Messy code is not always a sign of bad decisions. Sometimes it was the right call at the time. I refactor when it starts slowing people down, not because the code bothers me aesthetically, but when the gain is real."
     },
     "decide": {
       "label": "How I decide",
@@ -28,24 +29,24 @@
     "collaborate": {
       "label": "How I collaborate",
       "heading": "I want the people around me to do well",
-      "body": "I get more satisfaction from unblocking someone than from shipping something alone. A team that moves well is worth more than any individual output. Code is written by people for people, and clarity is what makes that work."
+      "body": "I get more satisfaction from unblocking someone than from shipping something alone. A team that moves well is worth more than any individual output."
     }
   },
   "philosophy": {
     "hero": {
       "label": "Philosophy",
       "heading": "How I think about building software",
-      "body": "These are the principles I keep coming back to — not rules I follow blindly, but patterns I've found useful across projects of different sizes, ages, and pressures."
+      "body": "These are the principles I keep coming back to. Not rules I follow blindly, but patterns that have held up across projects at very different stages."
     },
     "from-scratch": {
       "label": "Starting from scratch",
       "heading": "Constraints are the design",
-      "body": "When there's a blank slate, the hardest part isn't building — it's deciding what not to build yet. I start by defining the edges: what this system must never become. That clarity shapes every early decision, from data models to folder structure, and prevents the slow drift that makes greenfield projects feel like legacy code two years in."
+      "body": "When there's a blank slate, the hardest part isn't building. It's deciding what not to build yet. I start by defining the edges: what this system must never become. That clarity shapes every early decision, from data models to folder structure, and prevents the slow drift that makes greenfield projects feel like legacy code two years in."
     },
     "legacy": {
       "label": "Working with legacy code",
       "heading": "Read before you rewrite",
-      "body": "Old code carries decisions made under pressures I wasn't there for. Before touching anything, I find what's load-bearing — the pieces other things quietly depend on. I move incrementally, one safe step at a time, so the team gains confidence in the codebase without the risk of a big-bang rewrite that trades known problems for unknown ones."
+      "body": "Old code carries decisions made under pressures I wasn't there for. Before touching anything, I find what's load-bearing — the pieces other things quietly depend on. I move incrementally, one safe step at a time, so the team builds confidence in the codebase without betting everything on a full rewrite."
     }
   },
   "footer": {
@@ -59,7 +60,7 @@
     "description": "Interactive terminal to explore my portfolio and get in touch.",
     "input-placeholder": "type a command...",
     "input-label": "Terminal input",
-    "tagline": "Full-stack developer",
+    "tagline": "Senior Software Engineer · React · Next.js · TypeScript",
     "welcome": "Welcome. Type '/help' for available commands.",
     "commands": {
       "help": {
@@ -91,8 +92,7 @@
         "opening-linkedin": "Opening LinkedIn..."
       },
       "whoami": {
-        "line1": "Guilherme Moraes — Senior Software Engineer",
-        "line2": "Building frontend systems that hold up over time."
+        "line1": "Guilherme Moraes, Senior Software Engineer"
       }
     },
     "errors": {

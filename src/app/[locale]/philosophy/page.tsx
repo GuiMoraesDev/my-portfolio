@@ -1,12 +1,13 @@
 import { getTranslations } from "next-intl/server";
-import { type ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
+
+import { SocialMedia } from "@/components/molecules/SocialMedia";
 
 export default async function Philosophy() {
   const t = await getTranslations();
 
   return (
-    <PageWrapper>
+    <div className="relative z-10 mt-auto flex w-full flex-col justify-end gap-8 font-body text-text-primary">
       <header className="flex w-full flex-col gap-4 border-b border-white/5 pb-16">
         <p className="motion-enter text-xs font-medium tracking-widest text-accent-500 uppercase">
           {t("philosophy.hero.label")}
@@ -51,7 +52,40 @@ export default async function Philosophy() {
           body={t("how-i-work.collaborate.body")}
         />
       </div>
-    </PageWrapper>
+
+      <footer
+        className={twMerge(
+          "relative container flex h-full w-full flex-col items-center justify-between gap-4 py-10 font-body text-sm text-white md:flex-row lg:items-end",
+          "before:absolute before:bottom-0 before:left-1/2 before:-z-10 before:h-full before:w-screen before:-translate-x-1/2 before:bg-black/90 before:opacity-95 before:content-['']",
+        )}
+        id="footer"
+      >
+        <div className="flex flex-col gap-3">
+          <strong
+            className={twMerge(
+              "mb-2 text-2xl leading-normal tracking-wide",
+              "inline-block animate-gradient-x bg-linear-to-r from-plum-200 via-plum-400 to-plum-50 bg-clip-text text-transparent",
+            )}
+          >
+            {t("footer.title")}
+          </strong>
+
+          <p className="inline-block leading-normal tracking-wide">
+            {t("footer.contact-me-by")}
+            <a href="mailto:guimoraes.dev@gmail.com" className="ml-1 underline">
+              guimoraes.dev@gmail.com
+            </a>
+          </p>
+
+          <span className="inline-block leading-relaxed tracking-wider">
+            <span className="mr-1 uppercase">{t("footer.made-with-love")}</span>{" "}
+            © {new Date().getFullYear()} Guilherme Moraes
+          </span>
+        </div>
+
+        <SocialMedia />
+      </footer>
+    </div>
   );
 }
 
@@ -73,15 +107,4 @@ const ContentBlock = ({ label, heading, body }: ContentBlockProps) => (
       {body}
     </p>
   </section>
-);
-
-const PageWrapper = ({ className, ...props }: ComponentProps<"div">) => (
-  <div
-    className={twMerge(
-      "relative z-10 flex w-full max-w-480 flex-col items-start py-8 font-body max-ultra:px-[10vw] md:py-12 lg:py-16",
-      "mt-8 mb-8 md:mt-12 md:mb-12 lg:mt-16 lg:mb-16",
-      className,
-    )}
-    {...props}
-  />
 );

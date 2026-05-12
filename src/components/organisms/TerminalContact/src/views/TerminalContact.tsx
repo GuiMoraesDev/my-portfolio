@@ -19,7 +19,7 @@ export const TerminalContact = () => {
         type="button"
         aria-label={t("open-label")}
         onClick={() => setIsOpen(true)}
-        className="flex size-20 cursor-pointer items-center justify-center"
+        className="flex size-14 cursor-pointer md:size-32"
       >
         <TerminalMascot isOpen={isOpen} />
       </button>

@@ -1,4 +1,3 @@
-import { DownloadIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { type ComponentProps } from "react";
@@ -24,7 +23,10 @@ export const SocialMedia = async ({
         rel="noopener noreferrer"
         className="motion-hover-lift order-2 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300 md:order-1"
       >
-        <Icon name="Github" size="md" />
+        <Icon
+          name="Github"
+          className="transition-transform duration-300 hover:scale-110"
+        />
         <span className="text-sm tracking-wider text-white">GitHub</span>
       </Link>
 
@@ -34,16 +36,23 @@ export const SocialMedia = async ({
         rel="noopener noreferrer"
         className="motion-hover-lift order-2 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300 md:order-1"
       >
-        <Icon name="LinkedIn" size="md" />
+        <Icon
+          name="LinkedIn"
+          className="transition-transform duration-300 hover:scale-110"
+        />
         <span className="text-sm tracking-wider text-white">LinkedIn</span>
       </Link>
 
       <Link
         href="/GM-Resume.pdf"
         target="_blank"
-        className="motion-hover-lift group order-1 flex w-full cursor-pointer items-center justify-center gap-2 rounded-md bg-plum-500/90 p-4 shadow-sm transition-colors duration-200 hover:bg-plum-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300 md:w-auto"
+        rel="noopener noreferrer"
+        className={twMerge(
+          "motion-hover-lift group order-1 flex w-full cursor-pointer items-center justify-center gap-2 rounded-md p-4 transition-colors duration-200 hover:bg-radial focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300 md:w-auto",
+          "border-2 border-plum-500/90 from-plum-700/40 to-plum-700 transition-colors duration-300",
+        )}
       >
-        <DownloadIcon className="h-6 w-6" />
+        <Icon name="Download" className="group-hover:animate-download" />
         <span className="text-sm tracking-wider whitespace-nowrap text-white">
           {t("my-resume")}
         </span>

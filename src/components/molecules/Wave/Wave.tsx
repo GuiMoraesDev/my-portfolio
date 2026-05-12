@@ -1,11 +1,17 @@
-export const Wave = () => {
+import { type ComponentProps } from "react";
+import { twMerge } from "tailwind-merge";
+
+export const Wave = ({ className, ...props }: ComponentProps<"div">) => {
   return (
-    <div className="flex h-16 w-screen -rotate-12 items-center justify-center xl:min-h-[20vh]">
+    <div
+      className={twMerge("flex h-16 shrink-0 overflow-hidden", className)}
+      {...props}
+    >
       <svg
         viewBox="0 0 800 450"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid slice"
-        className="absolute h-auto w-full scale-x-105"
+        className="absolute top-1/5 left-1/2 h-auto w-full -translate-x-1/2 -translate-y-1/3 md:top-0"
       >
         <defs>
           <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">

@@ -1,13 +1,7 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import {
-  type ReactNode,
-  useMemo,
-  useRef,
-  useState,
-  useTransition,
-} from "react";
+import { useMemo, useState, useTransition } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Icon } from "@/components/atoms/Icon";
@@ -34,13 +28,46 @@ export const Header = () => {
     <header
       data-testid="header"
       className={twMerge(
-        "sticky top-0 z-20 container flex h-14 w-full shrink-0 flex-col items-center justify-between gap-10 font-body md:h-20",
+        "sticky top-0 z-20 container flex h-14 w-full shrink-0 flex-col items-start justify-center gap-10 font-body md:h-20",
         "before:absolute before:top-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:border-b before:border-teal-300/20 before:bg-ink-900 before:opacity-90 before:content-['']",
       )}
     >
-      <nav className="relative flex h-full w-full items-center justify-between">
-        <MenuWrapper isOpen={isOpen} onToggleMenu={handleToggleMenu}>
-          <ul className="relative flex flex-col gap-x-10 gap-y-6 md:flex-row md:items-center">
+      <button
+        onClick={handleToggleMenu}
+        type="button"
+        data-testid="menu-toggle"
+        className="z-20 rounded-sm text-text-secondary transition hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300 md:hidden"
+        title="menu"
+        aria-label="Toggle navigation menu"
+        aria-expanded={isOpen}
+        aria-controls="mobile-nav-links"
+      >
+        <Icon name={isOpen ? "Cross" : "HamburgerMenu"} />
+      </button>
+
+      <div
+        data-is-open={isOpen}
+        className={twMerge(
+          "max-md:invisible max-md:absolute max-md:top-0 max-md:left-0 max-md:h-0 max-md:overflow-hidden max-md:transition-[height,visibility]",
+          "max-md:before:absolute max-md:before:top-0 max-md:before:left-0 max-md:before:h-screen max-md:before:w-screen max-md:before:origin-top-left max-md:before:scale-0 max-md:before:bg-plum-900 max-md:before:transition max-md:before:content-['']",
+          "max-md:data-[is-open=true]:visible max-md:data-[is-open=true]:fixed max-md:data-[is-open=true]:h-screen max-md:data-[is-open=true]:w-screen max-md:data-[is-open=true]:px-10 max-md:data-[is-open=true]:py-12",
+          "max-md:data-[is-open=true]:before:scale-100",
+          "md:relative md:flex md:h-auto md:w-full md:items-center md:justify-between",
+        )}
+      >
+        <nav
+          data-is-open={isOpen}
+          className={twMerge(
+            "flex flex-col justify-between gap-12",
+            "max-md:invisible max-md:data-[is-open=true]:visible",
+            "md:w-full md:flex-row md:items-center md:justify-between",
+          )}
+        >
+          <ul
+            className={twMerge(
+              "relative flex flex-col gap-x-10 gap-y-6 md:flex-row md:items-center",
+            )}
+          >
             {NAV_LINKS.map(({ href, label }) => {
               const isActive = pathname === href;
 
@@ -63,65 +90,10 @@ export const Header = () => {
             })}
           </ul>
 
-          <section className="relative flex flex-col gap-4 md:flex-row md:items-center">
-            <LanguageSwitcher />
-          </section>
-        </MenuWrapper>
-      </nav>
-    </header>
-  );
-};
-
-type MenuWrapperProps = {
-  children: ReactNode;
-  isOpen: boolean;
-  onToggleMenu: VoidFunction;
-};
-
-const MenuWrapper = ({ children, isOpen, onToggleMenu }: MenuWrapperProps) => {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
-  return (
-    <>
-      <div className="relative flex items-center md:hidden" ref={wrapperRef}>
-        <button
-          onClick={onToggleMenu}
-          type="button"
-          data-testid="menu-toggle"
-          className="z-20 rounded-sm text-text-secondary transition hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300"
-          title="menu"
-          aria-label="Toggle navigation menu"
-          aria-expanded={isOpen}
-          aria-controls="mobile-nav-links"
-        >
-          <Icon name={isOpen ? "Cross" : "HamburgerMenu"} />
-        </button>
-
-        <section
-          data-is-open={isOpen}
-          className={twMerge(
-            "invisible absolute top-0 left-0 h-0 overflow-hidden transition-[height,pb,pt,visibility]",
-            "data-[is-open=true]:visible data-[is-open=true]:fixed data-[is-open=true]:h-screen data-[is-open=true]:w-screen data-[is-open=true]:px-10 data-[is-open=true]:py-12",
-            "before:absolute before:top-0 before:left-0 before:h-screen before:w-screen before:origin-top-left before:scale-0 before:bg-plum-900 before:p-5 before:transition before:content-['']",
-            "data-[is-open=true]:before:scale-100",
-          )}
-        >
-          <nav
-            data-is-open={isOpen}
-            className={twMerge(
-              "flex flex-col gap-12",
-              "invisible data-[is-open=true]:visible",
-            )}
-          >
-            {children}
-          </nav>
-        </section>
+          <LanguageSwitcher />
+        </nav>
       </div>
-
-      <nav className="relative hidden w-full items-center justify-between md:flex">
-        {children}
-      </nav>
-    </>
+    </header>
   );
 };
 

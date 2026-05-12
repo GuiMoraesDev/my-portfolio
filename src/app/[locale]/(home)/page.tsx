@@ -34,7 +34,7 @@ export default async function Home() {
         {t("presentation.subtitle")}
       </p>
 
-      <p className="motion-enter motion-enter-delay-3 text-sm tracking-wide text-text-secondary/50">
+      <p className="motion-enter motion-enter-delay-3 text-sm tracking-wide text-text-muted">
         {t("presentation.stack")}
       </p>
 

@@ -1,22 +1,20 @@
-import {
-  Cross2Icon,
-  HamburgerMenuIcon,
-  DownloadIcon,
-  QuoteIcon,
-} from "@radix-ui/react-icons";
 import { type ComponentPropsWithRef } from "react";
 import { type VariantProps, tv } from "tailwind-variants";
 
+import { Cross2 } from "./CustomIcons/cross2";
+import { Download } from "./CustomIcons/download";
 import { Github } from "./CustomIcons/github";
+import { Hamburger } from "./CustomIcons/hamburger";
 import { LinkedIn } from "./CustomIcons/linkedin";
+import { Quote } from "./CustomIcons/quote";
 
 const icons = {
   Github,
   LinkedIn,
-  Cross: Cross2Icon,
-  HamburgerMenu: HamburgerMenuIcon,
-  Download: DownloadIcon,
-  Quote: QuoteIcon,
+  Cross: Cross2,
+  HamburgerMenu: Hamburger,
+  Download,
+  Quote,
 };
 
 const iconVariants = tv({

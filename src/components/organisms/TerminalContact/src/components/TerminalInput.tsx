@@ -30,7 +30,7 @@ export const TerminalInput = (props: TerminalInputProps) => {
   return (
     <>
       {filteredSuggestions.length > 0 && (
-        <div className="shrink-0 border-t border-border-subtle bg-terminal-surface font-mono text-sm">
+        <div className="shrink-0 border-t border-border-subtle bg-terminal-surface font-mono">
           {filteredSuggestions.map((cmd, i) => (
             <button
               key={cmd.name}
@@ -51,7 +51,7 @@ export const TerminalInput = (props: TerminalInputProps) => {
         </div>
       )}
 
-      <footer className="flex shrink-0 items-center gap-2 border-t border-border-subtle px-4 py-3 font-mono text-sm">
+      <footer className="flex shrink-0 items-center gap-2 border-t border-border-subtle px-4 py-3 font-mono">
         <span aria-hidden className="text-plum-300 select-none">
           $
         </span>

@@ -1,7 +1,17 @@
+import loadDynamic from "next/dynamic";
 import { getTranslations } from "next-intl/server";
 
 import { SocialMedia } from "@/components/molecules/SocialMedia";
-import { TerminalContact } from "@/components/organisms/TerminalContact";
+
+const TerminalContact = loadDynamic(
+  () =>
+    import("@/components/organisms/TerminalContact").then((m) => ({
+      default: m.TerminalContact,
+    })),
+  { ssr: false },
+);
+
+export const dynamic = "force-static";
 
 export default async function Home() {
   const t = await getTranslations();

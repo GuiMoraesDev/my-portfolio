@@ -151,7 +151,11 @@ const LanguageSwitcher = () => {
       <button
         disabled={isPending}
         type="button"
-        aria-label={locale === "en" ? "Switch language to Portuguese" : "Switch language to English"}
+        aria-label={
+          locale === "en"
+            ? "Switch language to Portuguese"
+            : "Switch language to English"
+        }
         onClick={handleLanguageChange}
         className="relative inline-flex h-8 w-fit cursor-pointer items-center gap-1 rounded-sm border border-plum-200 p-1 text-xs font-semibold tracking-widest uppercase"
       >

@@ -1,52 +1,47 @@
 {
   "links": {
     "home": "Início",
-    "philosophy": "Filosofia"
+    "principles": "Filosofia"
   },
   "presentation": {
     "name": "Olá, sou",
     "title": "Engenheiro de Software Sênior",
-    "subtitle": "Construo sistemas de frontend em que times conseguem continuar avançando. Meu foco está nas decisões estruturais que importam antes de ficarem caras de mudar.",
+    "subtitle": "Construo sistemas de frontend em que times conseguem continuar avançando. Me preocupo mais com as decisões estruturais, as que ficam caras de desfazer depois que o projeto ganha momentum.",
     "stack": "React · Next.js · TypeScript · Node.js · Express · MongoDB · PostgreSQL",
     "my-resume": "Meu currículo"
+  },
+  "principles": {
+    "hero": {
+      "label": "Princípios de Engenharia",
+      "heading": "Como penso sobre decisões de produto e engenharia.",
+      "body": "Não são valores que eu declaro ter. São posições que fui chegando depois de construir coisas em estágios bem diferentes. Algumas eu acertei de primeira. A maioria não."
+    }
   },
   "how-i-work": {
     "think": {
       "label": "Como penso",
-      "heading": "O código não é o produto. A solução é.",
-      "body": "Código bagunçado nem sempre é sinal de má decisão. Às vezes foi a escolha certa na época. Refatoro quando começa a travar o time, não por estética, mas quando o ganho é real."
+      "heading": "Adiciono complexidade só quando consigo nomear exatamente o que quebra sem ela.",
+      "body": "Camadas de estado, frameworks de abstração, bibliotecas de animação. Cada uma tem um custo além da construção inicial. Recorro a elas quando o problema é real e nomeado, não antes. Sistemas mais simples são mais fáceis de mudar e de passar adiante."
     },
     "decide": {
       "label": "Como decido",
-      "heading": "Prefiro o simples por padrão",
-      "body": "Complexidade tem um custo. Só adiciono quando há uma razão clara pra isso, e me certifico de que essa razão está documentada. Na maioria das vezes, simples é suficiente."
+      "heading": "Prefiro simples. Quando vou mais pesado, anoto o porquê.",
+      "body": "Decisões sem contexto viram dívida técnica de outra forma. Seis meses depois, o código ainda está lá, mas o raciocínio não. Documento os tradeoffs conforme os faço para que quem ler depois aprenda a coisa certa a partir daquilo."
     },
     "ship": {
       "label": "Como entrego",
-      "heading": "Sou responsável pelo que coloco em produção",
-      "body": "O código tem que ser fácil de ler, entender e mudar sem precisar me encontrar primeiro."
+      "heading": "Me movo em um ritmo que quem vem depois consegue continuar.",
+      "body": "Entrega rápida e sistemas limpos não são opostos. Nomenclatura, estrutura e interfaces se acumulam com o tempo, pra melhor ou pior. Entrego de um jeito que não cria uma parede para quem vem depois."
     },
     "collaborate": {
       "label": "Como colaboro",
-      "heading": "Quero que as pessoas ao meu redor se saiam bem",
-      "body": "Tenho mais satisfação em desbloquear alguém do que em entregar algo sozinho. Um time que se move bem vale mais do que qualquer resultado individual."
-    }
-  },
-  "philosophy": {
-    "hero": {
-      "label": "Filosofia",
-      "heading": "Como penso sobre construir software",
-      "body": "Esses são os princípios aos quais sempre volto. Não regras que sigo cegamente, mas padrões que se mostraram úteis em projetos em estágios muito diferentes."
+      "heading": "Um time que se move bem vale mais do que qualquer resultado individual.",
+      "body": "Desbloquear alguém bate entregar algo sozinho. PRs bem escoped, código legível, decisões claras. Nada disso entra no roadmap, mas é o que mantém o time andando de verdade."
     },
-    "from-scratch": {
-      "label": "Começando do zero",
-      "heading": "As restrições são o design",
-      "body": "Quando há uma lousa em branco, a parte mais difícil não é construir. É decidir o que ainda não construir. Começo definindo as bordas: o que esse sistema nunca deve se tornar. Essa clareza molda cada decisão inicial, dos modelos de dados à estrutura de pastas, e evita a deriva lenta que faz projetos novos parecerem código legado dois anos depois."
-    },
-    "legacy": {
-      "label": "Trabalhando com código legado",
-      "heading": "Leia antes de reescrever",
-      "body": "Código antigo carrega decisões tomadas sob pressões que eu não estava lá para ver. Antes de tocar em qualquer coisa, encontro o que é estrutural — as peças das quais outras dependem silenciosamente. Me movo de forma incremental, um passo seguro de cada vez, para que o time ganhe confiança na base de código sem apostar tudo em uma reescrita completa."
+    "start": {
+      "label": "Como começo",
+      "heading": "Direção antes de velocidade.",
+      "body": "A primeira pergunta nunca é qual framework ou stack usar. É o que o usuário precisa realmente resolver. Com isso claro, a arquitetura segue. Sem isso, você só está construindo rápido na direção errada."
     }
   },
   "footer": {

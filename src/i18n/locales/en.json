@@ -1,14 +1,21 @@
 {
   "links": {
     "home": "Home",
-    "philosophy": "Philosophy"
+    "principles": "Principles"
   },
   "presentation": {
     "name": "Hi, I'm",
     "title": "Senior Software Engineer",
-    "subtitle": "I build frontend systems that teams can keep moving in. My focus is the structural decisions that matter before they become expensive to change.",
+    "subtitle": "I build frontend systems that teams can keep moving in. I care most about structural decisions, the kind that get expensive to undo once the codebase has momentum.",
     "stack": "React · Next.js · TypeScript · Node.js · Express · MongoDB · PostgreSQL",
     "my-resume": "My resume"
+  },
+  "principles": {
+    "hero": {
+      "label": "Engineering Principles",
+      "heading": "How I think about product and engineering decisions.",
+      "body": "Not values I claim to have. Positions I've ended up at after building things at different stages. Some I got right the first time. Most I didn't."
+    }
   },
   "how-i-work": {
     "think": {
@@ -18,35 +25,23 @@
     },
     "decide": {
       "label": "How I decide",
-      "heading": "I default to simple",
-      "body": "Complexity is a cost. I add it only when there is a clear reason for it, and I make sure that reason is documented. Most of the time, simple is enough."
+      "heading": "Go simple or write down why.",
+      "body": "The code outlasts the reasoning behind it. Without context, whoever comes next fills in the gaps with assumptions. Documented tradeoffs are the only thing that closes that gap."
     },
     "ship": {
       "label": "How I ship",
-      "heading": "I own what I put out",
-      "body": "The code has to be easy to read, understand, and change without having to find me first."
+      "heading": "I move at a speed the next person can build on.",
+      "body": "Fast delivery and clean systems aren't opposites. Naming, structure, and interfaces compound over time, for better or worse. Team speed is to write for the person who comes next."
     },
     "collaborate": {
       "label": "How I collaborate",
-      "heading": "I want the people around me to do well",
-      "body": "I get more satisfaction from unblocking someone than from shipping something alone. A team that moves well is worth more than any individual output."
-    }
-  },
-  "philosophy": {
-    "hero": {
-      "label": "Philosophy",
-      "heading": "How I think about building software",
-      "body": "These are the principles I keep coming back to. Not rules I follow blindly, but patterns that have held up across projects at very different stages."
+      "heading": "A team that moves well is worth more than any individual output.",
+      "body": "Unblocking someone beats shipping alone. Well-scoped PRs, readable code, clear decisions. None of it goes on a roadmap, but it's what keeps a team actually moving."
     },
-    "from-scratch": {
-      "label": "Starting from scratch",
-      "heading": "Constraints are the design",
-      "body": "When there's a blank slate, the hardest part isn't building. It's deciding what not to build yet. I start by defining the edges: what this system must never become. That clarity shapes every early decision, from data models to folder structure, and prevents the slow drift that makes greenfield projects feel like legacy code two years in."
-    },
-    "legacy": {
-      "label": "Working with legacy code",
-      "heading": "Read before you rewrite",
-      "body": "Old code carries decisions made under pressures I wasn't there for. Before touching anything, I find what's load-bearing — the pieces other things quietly depend on. I move incrementally, one safe step at a time, so the team builds confidence in the codebase without betting everything on a full rewrite."
+    "start": {
+      "label": "How I start",
+      "heading": "Direction before momentum.",
+      "body": "The first question is never which framework or stack. It's what the user actually needs to accomplish. Once that's clear, the architecture follows. Without it, you're just building fast in the wrong direction."
     }
   },
   "footer": {

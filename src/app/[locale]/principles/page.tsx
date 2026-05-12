@@ -3,20 +3,20 @@ import { twMerge } from "tailwind-merge";
 
 import { SocialMedia } from "@/components/molecules/SocialMedia";
 
-export default async function Philosophy() {
+export default async function Principles() {
   const t = await getTranslations();
 
   return (
     <div className="relative z-10 mt-auto flex w-full flex-col justify-end gap-8 font-body text-text-primary">
       <header className="flex w-full flex-col gap-4 border-b border-white/5 pb-16">
         <p className="motion-enter text-xs font-medium tracking-widest text-accent-500 uppercase">
-          {t("philosophy.hero.label")}
+          {t("principles.hero.label")}
         </p>
         <h1 className="motion-enter motion-enter-delay-1 font-title text-3xl leading-tight font-bold tracking-tight text-text-primary md:text-5xl">
-          {t("philosophy.hero.heading")}
+          {t("principles.hero.heading")}
         </h1>
         <p className="motion-enter motion-enter-delay-2 max-w-[65ch] text-lg leading-relaxed tracking-wide text-text-secondary">
-          {t("philosophy.hero.body")}
+          {t("principles.hero.body")}
         </p>
       </header>
 
@@ -32,14 +32,9 @@ export default async function Philosophy() {
           body={t("how-i-work.decide.body")}
         />
         <ContentBlock
-          label={t("philosophy.from-scratch.label")}
-          heading={t("philosophy.from-scratch.heading")}
-          body={t("philosophy.from-scratch.body")}
-        />
-        <ContentBlock
-          label={t("philosophy.legacy.label")}
-          heading={t("philosophy.legacy.heading")}
-          body={t("philosophy.legacy.body")}
+          label={t("how-i-work.start.label")}
+          heading={t("how-i-work.start.heading")}
+          body={t("how-i-work.start.body")}
         />
         <ContentBlock
           label={t("how-i-work.ship.label")}

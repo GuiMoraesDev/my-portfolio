@@ -34,7 +34,7 @@ export const Header = () => {
     <header
       className={twMerge(
         "sticky top-0 z-20 container flex h-16 w-full shrink-0 flex-col items-center justify-between gap-10 font-body md:h-20",
-        "before:absolute before:top-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:border-b before:border-teal-300/20 before:bg-[#12131A] before:opacity-90 before:content-['']",
+        "before:absolute before:top-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:border-b before:border-teal-300/20 before:bg-ink-900 before:opacity-90 before:content-['']",
       )}
     >
       <nav className="relative flex h-full w-full items-center justify-between">

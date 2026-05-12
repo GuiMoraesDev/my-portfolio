@@ -52,7 +52,7 @@ export default async function RootLayout({
       data-scroll-behavior="smooth"
       lang={locale}
     >
-      <body className="flex min-h-dvh w-full flex-col items-center gap-3 overflow-x-hidden bg-[#12131A] text-text-primary max-ultra:px-[10vw]">
+      <body className="flex min-h-dvh w-full flex-col items-center gap-3 overflow-x-hidden bg-ink-900 text-text-primary max-ultra:px-[10vw]">
         <AppProvider>
           <Header />
 

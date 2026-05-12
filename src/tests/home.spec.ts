@@ -4,15 +4,17 @@ import enTranslations from "../i18n/locales/en.json";
 import ptTranslations from "../i18n/locales/pt.json";
 
 const clickLanguageSwitcher = async (page: Page) => {
-  const visibleSwitcher = page.locator(
-    '[data-testid="language-switcher"]:visible',
-  );
+  const switcher = page.getByTestId("language-switcher");
 
-  if ((await visibleSwitcher.count()) === 0) {
+  const isSwitcherVisible = await switcher.isVisible();
+
+  if (!isSwitcherVisible) {
     await page.getByTestId("menu-toggle").click();
   }
 
-  await visibleSwitcher.click();
+  await expect(switcher).toBeVisible();
+
+  await switcher.click();
 };
 
 const interpolate = (template: string, vars: Record<string, string>) =>

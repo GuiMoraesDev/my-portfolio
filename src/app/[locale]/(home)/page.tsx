@@ -7,7 +7,7 @@ export default async function Home() {
   const t = await getTranslations();
 
   return (
-    <div className="relative mb-10 flex h-full w-full flex-col justify-end gap-8 font-body text-text-primary">
+    <div className="relative mb-10 flex h-full w-full flex-col justify-end gap-6 font-body text-text-primary">
       <header className="flex flex-col gap-4 md:gap-6">
         <p className="motion-enter text-sm font-medium tracking-widest md:text-base lg:text-lg">
           {t("presentation.name")}

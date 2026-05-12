@@ -52,14 +52,16 @@ export default async function RootLayout({
       data-scroll-behavior="smooth"
       lang={locale}
     >
-      <body className="flex min-h-dvh w-full flex-col items-center gap-3 overflow-x-hidden bg-ink-900 text-text-primary max-ultra:px-[10vw]">
+      <body className="flex min-h-dvh w-full flex-col items-center gap-3 overflow-x-hidden bg-ink-900 text-text-primary">
         <AppProvider>
-          <Header />
+          <main className="container flex flex-1 flex-col font-body text-text-primary max-ultra:px-[10vw]">
+            <Header />
 
-          <main className="container flex flex-1 flex-col gap-[20vh] font-body text-text-primary">
-            <Wave className="mb-auto" />
+            <div className="flex flex-1 flex-col gap-[16vh]">
+              <Wave className="mb-auto" />
 
-            {children}
+              {children}
+            </div>
           </main>
         </AppProvider>
       </body>

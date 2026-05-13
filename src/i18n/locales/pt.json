@@ -1,47 +1,47 @@
 {
   "links": {
     "home": "Início",
-    "principles": "Filosofia"
+    "principles": "Princípios"
   },
   "presentation": {
-    "name": "Olá, sou",
+    "name": "Oi, meu nome é",
     "title": "Engenheiro de Software Sênior",
-    "subtitle": "Construo sistemas de frontend em que times conseguem continuar avançando. Me preocupo mais com as decisões estruturais, as que ficam caras de desfazer depois que o projeto ganha momentum.",
-    "stack": "React · Next.js · TypeScript · Node.js · Express · MongoDB · PostgreSQL",
+    "subtitle": "Construo sistemas de frontend confiáveis e de fácil manutenção. Já trabalhei em projetos de diferentes estágios, em times multidisciplinares e de diversas culturas e países. De startups em fase inicial a empresas com milhões em ARR. Design systems, web apps e ciclos completos de produto.",
+    "stack": "React · Next.js · TypeScript · Playwright · Jest · Node.js · Express · MongoDB · PostgreSQL",
     "my-resume": "Meu currículo"
   },
   "principles": {
     "hero": {
       "label": "Princípios de Engenharia",
       "heading": "Como penso sobre decisões de produto e engenharia.",
-      "body": "Não são valores que eu declaro ter. São posições que fui chegando depois de construir coisas em estágios bem diferentes. Algumas eu acertei de primeira. A maioria não."
+      "body": "Não são só valores que eu declaro ter. São entendimentos que fui chegando depois de construir projetos em estágios bem diferentes. Algumas acertei de primeira, mas a maioria veio com a experiência."
     }
   },
   "how-i-work": {
     "think": {
-      "label": "Como penso",
-      "heading": "Adiciono complexidade só quando consigo nomear exatamente o que quebra sem ela.",
-      "body": "Camadas de estado, frameworks de abstração, bibliotecas de animação. Cada uma tem um custo além da construção inicial. Recorro a elas quando o problema é real e nomeado, não antes. Sistemas mais simples são mais fáceis de mudar e de passar adiante."
+      "label": "Como eu penso",
+      "heading": "O código não é o produto. A solução é.",
+      "body": "Código bagunçado nem sempre é sinal de decisão errada. Às vezes era a escolha certa naquele momento. A refatoração vem quando começa a travar as pessoas, não porque o código incomoda esteticamente, mas quando o ganho é concreto."
     },
     "decide": {
-      "label": "Como decido",
-      "heading": "Prefiro simples. Quando vou mais pesado, anoto o porquê.",
-      "body": "Decisões sem contexto viram dívida técnica de outra forma. Seis meses depois, o código ainda está lá, mas o raciocínio não. Documento os tradeoffs conforme os faço para que quem ler depois aprenda a coisa certa a partir daquilo."
+      "label": "Como eu decido",
+      "heading": "Comece simples ou anota o porquê.",
+      "body": "O código deve sobreviver ao raciocínio por trás dele. Sem contexto, so sobra suposições pra quem vem depois. Tradeoffs documentados são a única coisa que fecha essa brecha."
     },
     "ship": {
-      "label": "Como entrego",
-      "heading": "Me movo em um ritmo que quem vem depois consegue continuar.",
-      "body": "Entrega rápida e sistemas limpos não são opostos. Nomenclatura, estrutura e interfaces se acumulam com o tempo, pra melhor ou pior. Entrego de um jeito que não cria uma parede para quem vem depois."
+      "label": "Como eu entrego",
+      "heading": "Otimize para a próxima pessoa, não para a próxima implementação.",
+      "body": "Entrega rápida e sistemas limpos não são opostos. Nomenclatura, estrutura e interfaces se acumulam com o tempo, pra melhor ou pior. Velocidade de time é escrever pensando em quem vem depois."
     },
     "collaborate": {
-      "label": "Como colaboro",
-      "heading": "Um time que se move bem vale mais do que qualquer resultado individual.",
-      "body": "Desbloquear alguém bate entregar algo sozinho. PRs bem escoped, código legível, decisões claras. Nada disso entra no roadmap, mas é o que mantém o time andando de verdade."
+      "label": "Como eu colaboro",
+      "heading": "Trabalhar em equipe, não individualmente.",
+      "body": "Desbloquear alguém é melhor que entregar algo sozinho. PRs bem escopados, código legível, decisões claras. Nada disso entra no roadmap, mas é o que mantém o time andando de verdade."
     },
     "start": {
-      "label": "Como começo",
-      "heading": "Direção antes de velocidade.",
-      "body": "A primeira pergunta nunca é qual framework ou stack usar. É o que o usuário precisa realmente resolver. Com isso claro, a arquitetura segue. Sem isso, você só está construindo rápido na direção errada."
+      "label": "Como eu começo",
+      "heading": "Direção antes de momentum.",
+      "body": "A primeira pergunta nunca é qual framework ou stack usar. É o que o usuário precisa realmente resolver. Com isso claro, a arquitetura segue. Sem isso, você só vai chegar mais cedo no lugar errado."
     }
   },
   "footer": {
@@ -55,7 +55,7 @@
     "description": "Terminal interativo para explorar meu portfólio e entrar em contato.",
     "input-placeholder": "digite um comando...",
     "input-label": "Entrada do terminal",
-    "tagline": "Engenheiro de Software Sênior",
+    "tagline": "Engenheiro de Software Sênior · React · Next.js · TypeScript",
     "welcome": "Bem-vindo. Digite '/help' para ver os comandos.",
     "commands": {
       "help": {
@@ -77,8 +77,8 @@
       },
       "games": {
         "description": "mostrar jogos que criei",
-        "rps-title": "Pedra Papel Tesoura",
-        "rps-description": "jogo clássico de mão, jogue contra a IA ou em multiplayer em tempo real."
+        "rps-title": "Rock Paper Scissors",
+        "rps-description": "O jogo clássico de pedra, papel e tesoure, com opções multi jogador em tempo real ou contra a IA que aprende com você."
       },
       "open": {
         "github-description": "abrir perfil do GitHub",
@@ -87,7 +87,10 @@
         "opening-linkedin": "Abrindo LinkedIn..."
       },
       "whoami": {
-        "line1": "Guilherme Moraes, Engenheiro de Software Sênior"
+        "line1": "Guilherme Moraes — Engenheiro de Software Sênior",
+        "line2": "{years}anos construindo sistemas front-end confiáveis ​​em projetos em diferentes estágios.",
+        "line3": "Desde startups em estágio inicial até empresas com faturamento anual recorrente multimilionário. Projetamos sistemas, aplicativos web e ciclos de produto completos.",
+        "line4": "Tenho experiência com diversas ferramentas como React, Next.js, TypeScript, Playwright e outras."
       }
     },
     "errors": {

@@ -164,22 +164,24 @@ export const useControlCommandLine = () => {
     const rawArgs = trimmed.slice(cmd.length).trim();
 
     switch (cmd) {
-      case "whoami":
+      case "whoami": {
+        const start = new Date(2019, 5, 11);
+        const now = new Date();
+        const years =
+          now.getFullYear() -
+          start.getFullYear() -
+          (now < new Date(now.getFullYear(), 5, 11) ? 1 : 0);
         return {
           lines: [
             { type: "output", text: t("commands.whoami.line1") },
-            {
-              type: "link",
-              text: "Github",
-              href: GITHUB_URL,
-            },
-            {
-              type: "link",
-              text: "LinkedIn",
-              href: LINKEDIN_URL,
-            },
+            { type: "output", text: t("commands.whoami.line2", { years }) },
+            { type: "output", text: t("commands.whoami.line3") },
+            { type: "output", text: t("commands.whoami.line4") },
+            { type: "link", text: "Github", href: GITHUB_URL },
+            { type: "link", text: "LinkedIn", href: LINKEDIN_URL },
           ],
         };
+      }
 
       case "echo":
         return { lines: rawArgs ? [{ type: "output", text: rawArgs }] : [] };

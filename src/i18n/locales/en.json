@@ -6,42 +6,42 @@
   "presentation": {
     "name": "Hi, I'm",
     "title": "Senior Software Engineer",
-    "subtitle": "I build frontend systems that teams can keep moving in. I care most about structural decisions, the kind that get expensive to undo once the codebase has momentum.",
-    "stack": "React · Next.js · TypeScript · Node.js · Express · MongoDB · PostgreSQL",
+    "subtitle": "I build reliable and maintainable frontend systems. I have worked on projects at different stages, in multidisciplinary teams from diverse cultures and countries, from early-stage startups to companies with millions in ARR. My expertise includes design systems, web apps, and complete product lifecycles.",
+    "stack": "React · Next.js · TypeScript · Playwright · Jest · Node.js · Express · MongoDB · PostgreSQL",
     "my-resume": "My resume"
   },
   "principles": {
     "hero": {
       "label": "Engineering Principles",
       "heading": "How I think about product and engineering decisions.",
-      "body": "Not values I claim to have. Positions I've ended up at after building things at different stages. Some I got right the first time. Most I didn't."
+      "body": "Not just values I claim to have. These are insights I've come to after building projects at very different stages. Some I got right the first time, but most came with experience."
     }
   },
   "how-i-work": {
     "think": {
       "label": "How I think",
       "heading": "The code is not the product. The solution is.",
-      "body": "Messy code is not always a sign of bad decisions. Sometimes it was the right call at the time. I refactor when it starts slowing people down, not because the code bothers me aesthetically, but when the gain is real."
+      "body": "Messy code is not always a sign of bad decisions. Sometimes it was the right call at the time. Refactoring comes when you start working as people, not because the code is aesthetically displeasing, but when the gain is real."
     },
     "decide": {
       "label": "How I decide",
-      "heading": "Go simple or write down why.",
-      "body": "The code outlasts the reasoning behind it. Without context, whoever comes next fills in the gaps with assumptions. Documented tradeoffs are the only thing that closes that gap."
+      "heading": "Start it simple or write down why.",
+      "body": "The code outlasts the reasoning behind it. Without context, all that's left is speculation for those who come after. Documented tradeoffs are the only thing that closes that gap."
     },
     "ship": {
       "label": "How I ship",
-      "heading": "I move at a speed the next person can build on.",
+      "heading": "Optimize for the next person, not the next deploy.",
       "body": "Fast delivery and clean systems aren't opposites. Naming, structure, and interfaces compound over time, for better or worse. Team speed is to write for the person who comes next."
     },
     "collaborate": {
       "label": "How I collaborate",
-      "heading": "A team that moves well is worth more than any individual output.",
+      "heading": "To work as a team, not as an individual contributor.",
       "body": "Unblocking someone beats shipping alone. Well-scoped PRs, readable code, clear decisions. None of it goes on a roadmap, but it's what keeps a team actually moving."
     },
     "start": {
       "label": "How I start",
       "heading": "Direction before momentum.",
-      "body": "The first question is never which framework or stack. It's what the user actually needs to accomplish. Once that's clear, the architecture follows. Without it, you're just building fast in the wrong direction."
+      "body": "The first question is never which framework or stack to use. It's what the user actually needs to solve. With that clear, the architecture follows. Without that, you'll just arrive at the wrong place sooner."
     }
   },
   "footer": {
@@ -78,7 +78,7 @@
       "games": {
         "description": "show games I've built",
         "rps-title": "Rock Paper Scissors",
-        "rps-description": "classic hand game, play against AI or in real-time multiplayer."
+        "rps-description": "The classic game of rock, paper, treasure, with real-time multiplayer options or against AI that learns from you."
       },
       "open": {
         "github-description": "open GitHub profile",
@@ -87,7 +87,10 @@
         "opening-linkedin": "Opening LinkedIn..."
       },
       "whoami": {
-        "line1": "Guilherme Moraes, Senior Software Engineer"
+        "line1": "Guilherme Moraes, Senior Software Engineer",
+        "line2": "{years} years building reliable frontend systems across projects at different stages.",
+        "line3": "From early-stage startups to multi-million dollar ARR companies. Design systems, web apps, and full product cycles.",
+        "line4": "I'm experienced with multiple tools like React, Next.js, TypeScript, playwright and more."
       }
     },
     "errors": {

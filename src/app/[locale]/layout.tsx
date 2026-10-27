@@ -1,25 +1,26 @@
 import "@/styles/globals.css";
 
 import type { Metadata } from "next";
-import { Michroma, Space_Grotesk } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 
-import { Wave } from "@/components/molecules/Wave";
+import { Footer } from "@/components/organisms/Footer";
 import { Header } from "@/components/organisms/Header";
 import { AppProvider } from "@/provider/AppProvider";
 
-const michroma = Michroma({
-  weight: "400",
+const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-michroma",
+  variable: "--font-geist",
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
-  weight: ["300", "400", "500", "600", "700"],
+const geistMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-geist-mono",
   display: "swap",
 });
+
+const description =
+  "Senior Software Engineer building reliable, maintainable frontend systems with React, Next.js and TypeScript.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.guimoraes.dev"),
@@ -37,12 +38,10 @@ export const metadata: Metadata = {
   creator: "Guilherme Moraes",
   publisher: "Guilherme Moraes",
   title: "Guilherme Moraes | Software engineer",
-  description:
-    "I'm specialist in creating apps using Next.js, TypeScript, Node.js, automated tests, and more!",
+  description,
   openGraph: {
     title: "Guilherme Moraes",
-    description:
-      "I'm specialist in creating apps using Next.js, TypeScript, Node.js, automated tests, and more!",
+    description,
     url: "https://www.guimoraes.dev/",
     siteName: "Guilherme Moraes | Software engineer",
     locale: "en",
@@ -63,21 +62,19 @@ export default async function RootLayout({
 
   return (
     <html
-      className={`${michroma.variable} ${spaceGrotesk.variable} flex scroll-pt-20 items-center justify-center scroll-smooth`}
+      className={`${geist.variable} ${geistMono.variable} scroll-pt-20 scroll-smooth antialiased`}
       data-scroll-behavior="smooth"
       lang={locale}
     >
-      <body className="flex min-h-dvh w-full flex-col items-center gap-3 overflow-x-hidden bg-ink-900 text-text-primary">
+      <body className="flex min-h-dvh w-full flex-col overflow-x-hidden bg-bg-canvas font-body text-text-primary">
         <AppProvider>
-          <main className="container flex flex-1 flex-col font-body text-text-primary max-ultra:px-[10vw]">
-            <Header />
+          <Header />
 
-            <div className="flex flex-1 flex-col gap-[16vh]">
-              <Wave className="mb-auto" />
-
-              {children}
-            </div>
+          <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col px-4 md:px-8">
+            {children}
           </main>
+
+          <Footer />
         </AppProvider>
       </body>
     </html>

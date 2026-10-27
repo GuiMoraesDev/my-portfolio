@@ -1,14 +1,45 @@
 {
   "links": {
     "home": "Home",
-    "principles": "Principles"
+    "principles": "Principles",
+    "contact": "Contact"
   },
   "presentation": {
-    "name": "Hi, I'm",
     "title": "Senior Software Engineer",
-    "subtitle": "I build reliable and maintainable frontend systems. I have worked on projects at different stages, in multidisciplinary teams from diverse cultures and countries, from early-stage startups to companies with millions in ARR. My expertise includes design systems, web apps, and complete product lifecycles.",
+    "subtitle": "{years} years across early-stage startups and companies with millions in ARR, working in multidisciplinary teams from different cultures and countries.",
     "stack": "React · Next.js · TypeScript · Playwright · Jest · Node.js · Express · MongoDB · PostgreSQL",
-    "my-resume": "My resume"
+    "my-resume": "My resume",
+    "headline": "I build frontend systems that stay reliable as products and teams grow.",
+    "email-me": "Email me"
+  },
+  "home": {
+    "focus": {
+      "label": "What I do",
+      "design-systems": {
+        "title": "Design systems",
+        "body": "Component libraries and tokens that keep product teams consistent without slowing them down."
+      },
+      "web-apps": {
+        "title": "Web apps",
+        "body": "Fast, accessible React and Next.js applications, covered by tests that catch what matters."
+      },
+      "product": {
+        "title": "Full product lifecycle",
+        "body": "From the first question about the user's problem to shipping, measuring, and iterating."
+      }
+    },
+    "stack": {
+      "label": "Tools I work with"
+    },
+    "projects": {
+      "label": "Side projects",
+      "cta": "Play it"
+    },
+    "principles": {
+      "label": "Principles",
+      "heading": "How I approach engineering decisions.",
+      "cta": "Read all principles"
+    }
   },
   "principles": {
     "hero": {
@@ -45,8 +76,8 @@
     }
   },
   "footer": {
-    "title": "Nice to have you here!",
-    "contact-me-by": "Contact me by",
+    "title": "Let's build something reliable together.",
+    "body": "Open to senior frontend and full-stack roles. The fastest way to reach me is email.",
     "made-with-love": "Made with coffee"
   },
   "terminal": {
@@ -99,12 +130,6 @@
       "try-help": "type '/help' for available commands",
       "unknown-target": "unknown target: {target}"
     },
-    "mascot": {
-      "bubble-0": "Hey, let's talk",
-      "bubble-1": "Click on me!",
-      "bubble-2": "I don't bite... probably",
-      "hover-0": "Hey, it tickles...",
-      "hover-1": "Ok fine, I like it"
-    }
+    "hint": "Prefer the command line?"
   }
 }

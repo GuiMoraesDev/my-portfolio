@@ -1,14 +1,45 @@
 {
   "links": {
     "home": "Início",
-    "principles": "Princípios"
+    "principles": "Princípios",
+    "contact": "Contato"
   },
   "presentation": {
-    "name": "Oi, meu nome é",
     "title": "Engenheiro de Software Sênior",
-    "subtitle": "Construo sistemas de frontend confiáveis e de fácil manutenção. Já trabalhei em projetos de diferentes estágios, em times multidisciplinares e de diversas culturas e países. De startups em fase inicial a empresas com milhões em ARR. Design systems, web apps e ciclos completos de produto.",
+    "subtitle": "{years} anos entre startups em fase inicial e empresas com milhões em ARR, em times multidisciplinares de diferentes culturas e países.",
     "stack": "React · Next.js · TypeScript · Playwright · Jest · Node.js · Express · MongoDB · PostgreSQL",
-    "my-resume": "Meu currículo"
+    "my-resume": "Meu currículo",
+    "headline": "Construo sistemas de frontend que continuam confiáveis enquanto produtos e times crescem.",
+    "email-me": "Me mande um e-mail"
+  },
+  "home": {
+    "focus": {
+      "label": "O que eu faço",
+      "design-systems": {
+        "title": "Design systems",
+        "body": "Bibliotecas de componentes e tokens que mantêm os times de produto consistentes sem desacelerá-los."
+      },
+      "web-apps": {
+        "title": "Web apps",
+        "body": "Aplicações React e Next.js rápidas e acessíveis, cobertas por testes que pegam o que importa."
+      },
+      "product": {
+        "title": "Ciclo completo de produto",
+        "body": "Da primeira pergunta sobre o problema do usuário até a entrega, a medição e a iteração."
+      }
+    },
+    "stack": {
+      "label": "Ferramentas que uso"
+    },
+    "projects": {
+      "label": "Projetos pessoais",
+      "cta": "Jogar"
+    },
+    "principles": {
+      "label": "Princípios",
+      "heading": "Como abordo decisões de engenharia.",
+      "cta": "Ler todos os princípios"
+    }
   },
   "principles": {
     "hero": {
@@ -45,8 +76,8 @@
     }
   },
   "footer": {
-    "title": "Que bom ter você aqui!",
-    "contact-me-by": "Entre em contato comigo por",
+    "title": "Vamos construir algo confiável juntos.",
+    "body": "Aberto a posições sênior de frontend e full-stack. O jeito mais rápido de falar comigo é por e-mail.",
     "made-with-love": "Feito com café"
   },
   "terminal": {
@@ -99,12 +130,6 @@
       "try-help": "digite '/help' para ver os comandos disponíveis",
       "unknown-target": "destino desconhecido: {target}"
     },
-    "mascot": {
-      "bubble-0": "Olá, vamos conversar",
-      "bubble-1": "Clique em mim!",
-      "bubble-2": "Eu não mordo... provavelmente",
-      "hover-0": "Ei, está fazendo cócegas...",
-      "hover-1": "Tá bom, eu gostei"
-    }
+    "hint": "Prefere a linha de comando?"
   }
 }

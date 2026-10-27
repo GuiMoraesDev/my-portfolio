@@ -2,14 +2,14 @@
 
 import loadDynamic from "next/dynamic";
 
-import { MascotLoading } from "./src/components/MascotLoading";
+import { TerminalTriggerPlaceholder } from "./src/components/TerminalTrigger";
 
 const TerminalContact = loadDynamic(
   () =>
     import("./src/views/TerminalContact").then((m) => ({
       default: m.TerminalContact,
     })),
-  { ssr: false, loading: MascotLoading },
+  { ssr: false, loading: TerminalTriggerPlaceholder },
 );
 
 export { TerminalContact };

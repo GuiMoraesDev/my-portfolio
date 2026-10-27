@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-title: var(--font-michroma);
-  --font-body: var(--font-space-grotesk);
+  --font-title: var(--font-geist);
+  --font-body: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
 
   /* Core palette */
   --color-plum-50: #f2e2ec;
@@ -16,10 +17,10 @@
   --color-plum-900: #0d020d;
   --color-cyan-400: #1ff1da;
   --color-rose-400: #a47972;
-  --color-ink-950: #07060b;
-  --color-ink-900: #111019;
+  --color-ink-950: #0a0a0c;
+  --color-ink-900: #131316;
 
-  --color-accent-500: #ebb220;
+  --color-accent-500: #e9b35a;
 
   /* Terminal UI chrome */
   --color-terminal-surface: #0d0d0d;
@@ -32,11 +33,11 @@
   /* Semantic colors */
   --color-bg-canvas: var(--color-ink-950);
   --color-bg-elevated: var(--color-ink-900);
-  --color-text-primary: #f7f5fb;
-  --color-text-secondary: #d8d3e3;
-  --color-text-muted: #b8afca;
-  --color-border-subtle: #2b2638;
-  --color-border-strong: #413957;
+  --color-text-primary: #ededef;
+  --color-text-secondary: #a8a8b3;
+  --color-text-muted: #7a7a85;
+  --color-border-subtle: #232329;
+  --color-border-strong: #3a3a44;
 
   --breakpoint-ultra: 2000px;
 
@@ -44,6 +45,13 @@
   --animate-fill-dash: dash 1s linear forwards, fill 0.4s 0.6s linear forwards;
   --animate-download: download 650ms linear infinite;
   --animate-gradient-x: gradient-x 3s ease infinite;
+  --animate-terminal-caret: caret 1s steps(1) infinite;
+
+  @keyframes caret {
+    50% {
+      opacity: 0;
+    }
+  }
 
   @keyframes gradient-x {
     0%,
@@ -139,6 +147,10 @@
     animation-delay: 120ms;
   }
 
+  .motion-enter-delay-3 {
+    animation-delay: 180ms;
+  }
+
   .motion-hover-lift {
     transition:
       transform 200ms ease,
@@ -164,14 +176,14 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .animate-wave,
     .animate-terminal-caret {
       animation: none;
     }
 
     .motion-enter,
     .motion-enter-delay-1,
-    .motion-enter-delay-2 {
+    .motion-enter-delay-2,
+    .motion-enter-delay-3 {
       animation: none;
     }
 

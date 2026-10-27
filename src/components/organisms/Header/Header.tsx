@@ -5,13 +5,13 @@ import { useMemo, useState, useTransition } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Icon } from "@/components/atoms/Icon";
-import { usePathname, useRouter } from "@/i18n/navigation";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
+
+const focusRing =
+  "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const handleToggleMenu = () => setIsOpen((state) => !state);
 
   const pathname = usePathname();
   const t = useTranslations("links");
@@ -20,77 +20,82 @@ export const Header = () => {
     () => [
       { href: "/", label: t("home") },
       { href: "/principles", label: t("principles") },
+      { href: "#contact", label: t("contact") },
     ],
     [t],
   );
 
+  const closeMenu = () => setIsOpen(false);
+
   return (
     <header
       data-testid="header"
-      className={twMerge(
-        "sticky top-0 z-20 container flex h-14 w-full shrink-0 flex-col items-start justify-center gap-10 font-body md:h-20",
-        "before:absolute before:top-0 before:left-1/2 before:h-full before:w-screen before:-translate-x-1/2 before:border-b before:border-teal-300/20 before:bg-ink-900 before:opacity-90 before:content-['']",
-      )}
+      className="sticky top-0 z-20 w-full border-b border-border-subtle bg-bg-canvas/80 backdrop-blur-md"
     >
-      <button
-        onClick={handleToggleMenu}
-        type="button"
-        data-testid="menu-toggle"
-        className="z-20 rounded-sm text-text-secondary transition hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300 md:hidden"
-        title="menu"
-        aria-label="Toggle navigation menu"
-        aria-expanded={isOpen}
-        aria-controls="mobile-nav-links"
-      >
-        <Icon name={isOpen ? "Cross" : "HamburgerMenu"} />
-      </button>
-
-      <div
-        data-is-open={isOpen}
-        className={twMerge(
-          "max-md:invisible max-md:absolute max-md:top-0 max-md:left-0 max-md:h-0 max-md:overflow-hidden max-md:transition-[height,visibility]",
-          "max-md:before:absolute max-md:before:top-0 max-md:before:left-0 max-md:before:h-screen max-md:before:w-screen max-md:before:origin-top-left max-md:before:scale-0 max-md:before:bg-plum-900 max-md:before:transition max-md:before:content-['']",
-          "max-md:data-[is-open=true]:visible max-md:data-[is-open=true]:fixed max-md:data-[is-open=true]:h-screen max-md:data-[is-open=true]:w-screen max-md:data-[is-open=true]:px-10 max-md:data-[is-open=true]:py-12",
-          "max-md:data-[is-open=true]:before:scale-100",
-          "md:relative md:flex md:h-auto md:w-full md:items-center md:justify-between",
-        )}
-      >
-        <nav
-          data-is-open={isOpen}
+      <div className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-4 md:h-16 md:px-8">
+        <Link
+          href="/"
+          onClick={closeMenu}
           className={twMerge(
-            "flex flex-col justify-between gap-12",
-            "max-md:invisible max-md:data-[is-open=true]:visible",
-            "md:w-full md:flex-row md:items-center md:justify-between",
+            "rounded-sm font-mono text-sm font-medium tracking-tight text-text-primary",
+            focusRing,
           )}
         >
-          <ul
-            className={twMerge(
-              "relative flex flex-col gap-x-10 gap-y-6 md:flex-row md:items-center",
-            )}
-          >
-            {NAV_LINKS.map(({ href, label }) => {
-              const isActive = pathname === href;
+          guimoraes<span className="text-accent-500">.dev</span>
+        </Link>
 
-              return (
-                <li key={label}>
-                  <Link
-                    href={href}
-                    onClick={handleToggleMenu}
-                    className={twMerge(
-                      "text-sm font-medium tracking-widest uppercase transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300",
-                      isActive
-                        ? "border-b border-text-primary pb-0.5 text-text-primary"
-                        : "text-text-secondary hover:text-text-primary",
-                    )}
-                  >
-                    {label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+        <button
+          onClick={() => setIsOpen((state) => !state)}
+          type="button"
+          data-testid="menu-toggle"
+          className={twMerge(
+            "rounded-sm text-text-secondary transition hover:text-text-primary md:hidden",
+            focusRing,
+          )}
+          title="menu"
+          aria-label="Toggle navigation menu"
+          aria-expanded={isOpen}
+          aria-controls="nav-links"
+        >
+          <Icon name={isOpen ? "Cross" : "HamburgerMenu"} size="sm" />
+        </button>
 
-          <LanguageSwitcher />
+        <nav
+          id="nav-links"
+          data-is-open={isOpen}
+          className={twMerge(
+            "max-md:absolute max-md:top-full max-md:left-0 max-md:hidden max-md:w-full max-md:border-b max-md:border-border-subtle max-md:bg-bg-canvas max-md:px-4 max-md:py-6",
+            "max-md:data-[is-open=true]:block",
+          )}
+        >
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-8">
+            <ul className="flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
+              {NAV_LINKS.map(({ href, label }) => {
+                const isActive = pathname === href;
+
+                return (
+                  <li key={href}>
+                    <Link
+                      href={href}
+                      onClick={closeMenu}
+                      aria-current={isActive ? "page" : undefined}
+                      className={twMerge(
+                        "rounded-sm text-sm transition",
+                        focusRing,
+                        isActive
+                          ? "text-text-primary"
+                          : "text-text-secondary hover:text-text-primary",
+                      )}
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <LanguageSwitcher />
+          </div>
         </nav>
       </div>
     </header>
@@ -113,49 +118,34 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <>
-      {isPending && (
-        <div className="fixed top-0 left-0 z-100 flex h-full w-full items-center justify-center bg-gray-600/40 text-2xl">
-          {locale === "pt"
-            ? "Loading english version..."
-            : "Carregando versão português..."}
-        </div>
+    <button
+      disabled={isPending}
+      type="button"
+      data-testid="language-switcher"
+      aria-label={
+        locale === "en"
+          ? "Switch language to Portuguese"
+          : "Switch language to English"
+      }
+      onClick={handleLanguageChange}
+      className={twMerge(
+        "inline-flex h-7 w-fit cursor-pointer items-center rounded-md border border-border-subtle p-0.5 font-mono text-[11px] tracking-wide uppercase transition disabled:cursor-wait disabled:opacity-60",
+        focusRing,
       )}
-
-      <button
-        disabled={isPending}
-        type="button"
-        data-testid="language-switcher"
-        aria-label={
-          locale === "en"
-            ? "Switch language to Portuguese"
-            : "Switch language to English"
-        }
-        onClick={handleLanguageChange}
-        className="relative inline-flex h-8 w-fit cursor-pointer items-center gap-1 rounded-sm border border-plum-200 p-1 text-xs font-semibold tracking-widest uppercase"
-      >
+    >
+      {(["pt", "en"] as const).map((option) => (
         <span
+          key={option}
           className={twMerge(
-            "rounded-xs px-2 py-0.5 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300 disabled:cursor-not-allowed",
-            locale === "pt"
-              ? "bg-plum-100 text-plum-900"
-              : "text-text-secondary hover:text-text-primary",
+            "rounded-sm px-2 py-0.5 transition",
+            locale === option
+              ? "bg-text-primary text-bg-canvas"
+              : "text-text-muted hover:text-text-primary",
           )}
         >
-          PT-BR
+          {option === "pt" ? "PT-BR" : "EN"}
         </span>
-
-        <span
-          className={twMerge(
-            "rounded-xs px-2 py-0.5 transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum-300 disabled:cursor-not-allowed",
-            locale === "en"
-              ? "bg-plum-100 text-plum-900"
-              : "text-text-secondary hover:text-text-primary",
-          )}
-        >
-          EN
-        </span>
-      </button>
-    </>
+      ))}
+    </button>
   );
 };

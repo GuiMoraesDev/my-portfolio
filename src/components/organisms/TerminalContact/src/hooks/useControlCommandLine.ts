@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { findSuggestion } from "../utils/suggestion";
 
 import { GITHUB_URL, LINKEDIN_URL } from "@/constants/socialMedia";
+import { getYearsOfExperience } from "@/utils/yearsOfExperience";
 
 export type TerminalLine = {
   type: "input" | "output" | "error" | "link";
@@ -165,12 +166,7 @@ export const useControlCommandLine = () => {
 
     switch (cmd) {
       case "whoami": {
-        const start = new Date(2019, 5, 11);
-        const now = new Date();
-        const years =
-          now.getFullYear() -
-          start.getFullYear() -
-          (now < new Date(now.getFullYear(), 5, 11) ? 1 : 0);
+        const years = getYearsOfExperience();
         return {
           lines: [
             { type: "output", text: t("commands.whoami.line1") },

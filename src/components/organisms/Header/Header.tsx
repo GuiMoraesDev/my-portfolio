@@ -5,6 +5,7 @@ import { useMemo, useState, useTransition } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { Icon } from "@/components/atoms/Icon";
+import { ContactModal } from "@/components/organisms/ContactModal";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 
 const focusRing =
@@ -16,13 +17,7 @@ export const Header = () => {
   const pathname = usePathname();
   const t = useTranslations("links");
 
-  const NAV_LINKS = useMemo(
-    () => [
-      { href: "/", label: t("home") },
-      { href: "#contact", label: t("contact") },
-    ],
-    [t],
-  );
+  const NAV_LINKS = useMemo(() => [{ href: "/", label: t("home") }], [t]);
 
   const closeMenu = () => setIsOpen(false);
 
@@ -91,6 +86,17 @@ export const Header = () => {
                   </li>
                 );
               })}
+
+              <li>
+                <ContactModal
+                  label={t("contact")}
+                  onOpen={closeMenu}
+                  className={twMerge(
+                    "cursor-pointer rounded-sm text-sm text-text-secondary transition hover:text-text-primary",
+                    focusRing,
+                  )}
+                />
+              </li>
             </ul>
 
             <LanguageSwitcher />

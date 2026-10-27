@@ -35,6 +35,13 @@
       "cta": "Jogar"
     }
   },
+  "contact": {
+    "title": "Fale comigo",
+    "description": "O jeito mais rápido de falar comigo é por e-mail. Costumo responder em um ou dois dias.",
+    "copy": "Copiar e-mail",
+    "copied": "Copiado",
+    "close-label": "Fechar janela de contato"
+  },
   "footer": {
     "title": "Vamos construir algo confiável juntos.",
     "body": "Aberto a posições sênior de frontend e full-stack. O jeito mais rápido de falar comigo é por e-mail.",

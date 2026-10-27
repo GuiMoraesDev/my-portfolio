@@ -35,6 +35,13 @@
       "cta": "Play it"
     }
   },
+  "contact": {
+    "title": "Get in touch",
+    "description": "The fastest way to reach me is email. I usually reply within a day or two.",
+    "copy": "Copy email",
+    "copied": "Copied",
+    "close-label": "Close contact dialog"
+  },
   "footer": {
     "title": "Let's build something reliable together.",
     "body": "Open to senior frontend and full-stack roles. The fastest way to reach me is email.",

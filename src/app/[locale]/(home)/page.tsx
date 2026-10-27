@@ -29,7 +29,6 @@ export default async function Home() {
           </h1>
 
           <p className="motion-enter motion-enter-delay-2 max-w-[58ch] text-lg leading-relaxed text-text-secondary">
-            <span className="text-text-primary">Guilherme Moraes</span> —{" "}
             {t("presentation.subtitle", { years: getYearsOfExperience() })}
           </p>
         </div>

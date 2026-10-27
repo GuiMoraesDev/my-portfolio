@@ -32,7 +32,16 @@
     },
     "projects": {
       "label": "Projetos pessoais",
-      "cta": "Jogar"
+      "cta": "Jogar",
+      "cta-code": "Ver código",
+      "taskflow": {
+        "title": "taskflow",
+        "description": "Plugin para Claude Code com um fluxo orientado a planejamento: planos do tamanho de um PR, critérios de aceite definidos antes, testes vermelhos antes de verdes, uma tarefa por commit, quality gates e documentação sempre sincronizada."
+      },
+      "cria-virtual": {
+        "title": "cria-virtual",
+        "description": "Mod para Claude Code: um mascote pixelado flutuando acima do prompt que reage ao que o Claude está fazendo e mostra informações da sessão."
+      }
     }
   },
   "contact": {

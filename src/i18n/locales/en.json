@@ -32,7 +32,16 @@
     },
     "projects": {
       "label": "Side projects",
-      "cta": "Play it"
+      "cta": "Play it",
+      "cta-code": "View code",
+      "taskflow": {
+        "title": "taskflow",
+        "description": "Claude Code plugin for a plan-first workflow: PR-sized plans, acceptance criteria up front, tests red before green, one task per commit, quality gates, and docs kept in sync."
+      },
+      "cria-virtual": {
+        "title": "cria-virtual",
+        "description": "Claude Code mod: a floating pixel mascot above the prompt that reacts to what Claude is doing and shows session info."
+      }
     }
   },
   "contact": {

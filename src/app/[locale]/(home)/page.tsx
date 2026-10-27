@@ -5,8 +5,6 @@ import { getYearsOfExperience } from "@/utils/yearsOfExperience";
 
 const FOCUS_AREAS = ["design-systems", "web-apps", "product"] as const;
 
-const RPS_URL = "https://rock-paper-scissor.guimoraes.dev/";
-
 export default async function Home() {
   const t = await getTranslations();
 
@@ -66,30 +64,32 @@ export default async function Home() {
       </Section>
 
       <Section label={t("home.projects.label")}>
-        <a
-          href={RPS_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex flex-col gap-3 rounded-lg border border-border-subtle bg-bg-elevated p-6 transition hover:border-border-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 md:flex-row md:items-center md:justify-between md:gap-8"
-        >
-          <div className="flex flex-col gap-2">
-            <h3 className="font-medium">
-              {t("terminal.commands.games.rps-title")}
-            </h3>
-            <p className="max-w-[60ch] text-sm leading-relaxed text-text-secondary">
-              {t("terminal.commands.games.rps-description")}
-            </p>
-          </div>
-          <span className="font-mono text-sm whitespace-nowrap text-accent-500">
-            {t("home.projects.cta")}{" "}
-            <span
-              aria-hidden
-              className="inline-block transition group-hover:translate-x-1"
-            >
-              →
-            </span>
-          </span>
-        </a>
+        <ul className="flex flex-col gap-3">
+          {[
+            {
+              href: "https://github.com/GuiMoraesDev/taskflow",
+              title: t("home.projects.taskflow.title"),
+              description: t("home.projects.taskflow.description"),
+              cta: t("home.projects.cta-code"),
+            },
+            {
+              href: "https://github.com/GuiMoraesDev/cria-virtual",
+              title: t("home.projects.cria-virtual.title"),
+              description: t("home.projects.cria-virtual.description"),
+              cta: t("home.projects.cta-code"),
+            },
+            {
+              href: "https://rock-paper-scissor.guimoraes.dev/",
+              title: t("terminal.commands.games.rps-title"),
+              description: t("terminal.commands.games.rps-description"),
+              cta: t("home.projects.cta"),
+            },
+          ].map((project) => (
+            <li key={project.href}>
+              <ProjectCard {...project} />
+            </li>
+          ))}
+        </ul>
       </Section>
     </div>
   );
@@ -107,4 +107,36 @@ const Section = ({ label, children }: SectionProps) => (
     </h2>
     <div>{children}</div>
   </section>
+);
+
+type ProjectCardProps = {
+  href: string;
+  title: string;
+  description: string;
+  cta: string;
+};
+
+const ProjectCard = ({ href, title, description, cta }: ProjectCardProps) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group flex flex-col gap-3 rounded-lg border border-border-subtle bg-bg-elevated p-6 transition hover:border-border-strong focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500 md:flex-row md:items-center md:justify-between md:gap-8"
+  >
+    <div className="flex flex-col gap-2">
+      <h3 className="font-medium">{title}</h3>
+      <p className="max-w-[60ch] text-sm leading-relaxed text-text-secondary">
+        {description}
+      </p>
+    </div>
+    <span className="font-mono text-sm whitespace-nowrap text-accent-500">
+      {cta}{" "}
+      <span
+        aria-hidden
+        className="inline-block transition group-hover:translate-x-1"
+      >
+        →
+      </span>
+    </span>
+  </a>
 );

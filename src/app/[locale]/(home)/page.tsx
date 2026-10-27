@@ -16,7 +16,7 @@ export default async function Home() {
     <div className="flex flex-col gap-24 md:gap-32">
       <section
         data-testid="presentation"
-        className="flex min-h-[calc(100dvh-4rem)] flex-col justify-center gap-8 py-16"
+        className="flex flex-col justify-center gap-8 pt-10 md:pt-24"
       >
         <div className="flex flex-col gap-5">
           <p

@@ -1,7 +1,6 @@
 {
   "links": {
     "home": "Home",
-    "principles": "Principles",
     "contact": "Contact"
   },
   "presentation": {
@@ -34,45 +33,6 @@
     "projects": {
       "label": "Side projects",
       "cta": "Play it"
-    },
-    "principles": {
-      "label": "Principles",
-      "heading": "How I approach engineering decisions.",
-      "cta": "Read all principles"
-    }
-  },
-  "principles": {
-    "hero": {
-      "label": "Engineering Principles",
-      "heading": "How I think about product and engineering decisions.",
-      "body": "Not just values I claim to have. These are insights I've come to after building projects at very different stages. Some I got right the first time, but most came with experience."
-    }
-  },
-  "how-i-work": {
-    "think": {
-      "label": "How I think",
-      "heading": "The code is not the product. The solution is.",
-      "body": "Messy code is not always a sign of bad decisions. Sometimes it was the right call at the time. Refactoring comes when you start working as people, not because the code is aesthetically displeasing, but when the gain is real."
-    },
-    "decide": {
-      "label": "How I decide",
-      "heading": "Start it simple or write down why.",
-      "body": "The code outlasts the reasoning behind it. Without context, all that's left is speculation for those who come after. Documented tradeoffs are the only thing that closes that gap."
-    },
-    "ship": {
-      "label": "How I ship",
-      "heading": "Optimize for the next person, not the next deploy.",
-      "body": "Fast delivery and clean systems aren't opposites. Naming, structure, and interfaces compound over time, for better or worse. Team speed is to write for the person who comes next."
-    },
-    "collaborate": {
-      "label": "How I collaborate",
-      "heading": "To work as a team, not as an individual contributor.",
-      "body": "Unblocking someone beats shipping alone. Well-scoped PRs, readable code, clear decisions. None of it goes on a roadmap, but it's what keeps a team actually moving."
-    },
-    "start": {
-      "label": "How I start",
-      "heading": "Direction before momentum.",
-      "body": "The first question is never which framework or stack to use. It's what the user actually needs to solve. With that clear, the architecture follows. Without that, you'll just arrive at the wrong place sooner."
     }
   },
   "footer": {

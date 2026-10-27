@@ -1,7 +1,6 @@
 {
   "links": {
     "home": "Início",
-    "principles": "Princípios",
     "contact": "Contato"
   },
   "presentation": {
@@ -34,45 +33,6 @@
     "projects": {
       "label": "Projetos pessoais",
       "cta": "Jogar"
-    },
-    "principles": {
-      "label": "Princípios",
-      "heading": "Como abordo decisões de engenharia.",
-      "cta": "Ler todos os princípios"
-    }
-  },
-  "principles": {
-    "hero": {
-      "label": "Princípios de Engenharia",
-      "heading": "Como penso sobre decisões de produto e engenharia.",
-      "body": "Não são só valores que eu declaro ter. São entendimentos que fui chegando depois de construir projetos em estágios bem diferentes. Algumas acertei de primeira, mas a maioria veio com a experiência."
-    }
-  },
-  "how-i-work": {
-    "think": {
-      "label": "Como eu penso",
-      "heading": "O código não é o produto. A solução é.",
-      "body": "Código bagunçado nem sempre é sinal de decisão errada. Às vezes era a escolha certa naquele momento. A refatoração vem quando começa a travar as pessoas, não porque o código incomoda esteticamente, mas quando o ganho é concreto."
-    },
-    "decide": {
-      "label": "Como eu decido",
-      "heading": "Comece simples ou anota o porquê.",
-      "body": "O código deve sobreviver ao raciocínio por trás dele. Sem contexto, so sobra suposições pra quem vem depois. Tradeoffs documentados são a única coisa que fecha essa brecha."
-    },
-    "ship": {
-      "label": "Como eu entrego",
-      "heading": "Otimize para a próxima pessoa, não para a próxima implementação.",
-      "body": "Entrega rápida e sistemas limpos não são opostos. Nomenclatura, estrutura e interfaces se acumulam com o tempo, pra melhor ou pior. Velocidade de time é escrever pensando em quem vem depois."
-    },
-    "collaborate": {
-      "label": "Como eu colaboro",
-      "heading": "Trabalhar em equipe, não individualmente.",
-      "body": "Desbloquear alguém é melhor que entregar algo sozinho. PRs bem escopados, código legível, decisões claras. Nada disso entra no roadmap, mas é o que mantém o time andando de verdade."
-    },
-    "start": {
-      "label": "Como eu começo",
-      "heading": "Direção antes de momentum.",
-      "body": "A primeira pergunta nunca é qual framework ou stack usar. É o que o usuário precisa realmente resolver. Com isso claro, a arquitetura segue. Sem isso, você só vai chegar mais cedo no lugar errado."
     }
   },
   "footer": {

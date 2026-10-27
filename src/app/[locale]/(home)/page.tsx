@@ -1,12 +1,9 @@
 import { getTranslations } from "next-intl/server";
 
 import { SocialMedia } from "@/components/molecules/SocialMedia";
-import { Link } from "@/i18n/navigation";
 import { getYearsOfExperience } from "@/utils/yearsOfExperience";
 
 const FOCUS_AREAS = ["design-systems", "web-apps", "product"] as const;
-
-const FEATURED_PRINCIPLES = ["think", "decide", "ship"] as const;
 
 const RPS_URL = "https://rock-paper-scissor.guimoraes.dev/";
 
@@ -93,34 +90,6 @@ export default async function Home() {
             </span>
           </span>
         </a>
-      </Section>
-
-      <Section label={t("home.principles.label")}>
-        <div className="flex flex-col gap-8">
-          <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
-            {t("home.principles.heading")}
-          </h2>
-
-          <ol className="flex flex-col divide-y divide-border-subtle border-y border-border-subtle">
-            {FEATURED_PRINCIPLES.map((principle, index) => (
-              <li key={principle} className="flex gap-6 py-5">
-                <span className="font-mono text-sm text-text-muted">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <p className="text-lg">
-                  {t(`how-i-work.${principle}.heading`)}
-                </p>
-              </li>
-            ))}
-          </ol>
-
-          <Link
-            href="/principles"
-            className="w-fit rounded-sm text-sm text-text-secondary underline underline-offset-4 transition hover:text-text-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-500"
-          >
-            {t("home.principles.cta")} →
-          </Link>
-        </div>
       </Section>
     </div>
   );

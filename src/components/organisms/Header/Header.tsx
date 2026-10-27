@@ -19,7 +19,6 @@ export const Header = () => {
   const NAV_LINKS = useMemo(
     () => [
       { href: "/", label: t("home") },
-      { href: "/principles", label: t("principles") },
       { href: "#contact", label: t("contact") },
     ],
     [t],

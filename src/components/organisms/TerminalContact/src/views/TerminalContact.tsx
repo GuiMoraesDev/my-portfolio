@@ -4,7 +4,10 @@ import { DialogOverlay } from "@radix-ui/react-dialog";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
-import { TerminalMascot } from "../components/Mascot";
+import {
+  TerminalTriggerLabel,
+  terminalTriggerClassName,
+} from "../components/TerminalTrigger";
 import { TerminalWindow } from "../components/TerminalWindow";
 
 import {
@@ -22,10 +25,9 @@ export const TerminalContact = () => {
     <DialogRoot open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger
         data-testid="terminal-open-button"
-        aria-label={t("open-label")}
-        className="flex size-14 cursor-pointer md:size-32"
+        className={terminalTriggerClassName}
       >
-        <TerminalMascot isOpen={isOpen} />
+        <TerminalTriggerLabel label={t("open-label")} />
       </DialogTrigger>
 
       <DialogPortal>

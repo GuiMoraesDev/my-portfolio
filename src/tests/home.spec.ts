@@ -231,6 +231,20 @@ test.describe("Terminal", () => {
   });
 });
 
+test.describe("Contact modal", () => {
+  test.use({ locale: "en-US", viewport: { width: 1280, height: 800 } });
+
+  test("opens from the header and closes with Escape", async ({ page }) => {
+    await page.goto("/");
+
+    await page.getByTestId("contact-open-button").click();
+    await expect(page.getByTestId("contact-dialog")).toBeVisible();
+
+    await page.keyboard.press("Escape");
+    await expect(page.getByTestId("contact-dialog")).not.toBeVisible();
+  });
+});
+
 test.describe("Page elements", () => {
   test("if the page has title", async ({ page }) => {
     await page.goto("/");

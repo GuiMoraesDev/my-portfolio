@@ -1,52 +1,59 @@
 {
   "links": {
     "home": "Início",
-    "principles": "Princípios"
+    "contact": "Contato"
   },
   "presentation": {
-    "name": "Oi, meu nome é",
     "title": "Engenheiro de Software Sênior",
-    "subtitle": "Construo sistemas de frontend confiáveis e de fácil manutenção. Já trabalhei em projetos de diferentes estágios, em times multidisciplinares e de diversas culturas e países. De startups em fase inicial a empresas com milhões em ARR. Design systems, web apps e ciclos completos de produto.",
+    "subtitle": "{years} anos entre startups em fase inicial e empresas com milhões em ARR, em times multidisciplinares de diferentes culturas e países.",
     "stack": "React · Next.js · TypeScript · Playwright · Jest · Node.js · Express · MongoDB · PostgreSQL",
-    "my-resume": "Meu currículo"
+    "my-resume": "Meu currículo",
+    "headline": "Construo sistemas de frontend que continuam confiáveis enquanto produtos e times crescem.",
+    "email-me": "Me mande um e-mail"
   },
-  "principles": {
-    "hero": {
-      "label": "Princípios de Engenharia",
-      "heading": "Como penso sobre decisões de produto e engenharia.",
-      "body": "Não são só valores que eu declaro ter. São entendimentos que fui chegando depois de construir projetos em estágios bem diferentes. Algumas acertei de primeira, mas a maioria veio com a experiência."
+  "home": {
+    "focus": {
+      "label": "O que eu faço",
+      "design-systems": {
+        "title": "Design systems",
+        "body": "Bibliotecas de componentes e tokens que mantêm os times de produto consistentes sem desacelerá-los."
+      },
+      "web-apps": {
+        "title": "Web apps",
+        "body": "Aplicações React e Next.js rápidas e acessíveis, cobertas por testes que pegam o que importa."
+      },
+      "product": {
+        "title": "Ciclo completo de produto",
+        "body": "Da primeira pergunta sobre o problema do usuário até a entrega, a medição e a iteração."
+      }
+    },
+    "stack": {
+      "label": "Ferramentas que uso"
+    },
+    "projects": {
+      "label": "Projetos pessoais",
+      "cta": "Jogar",
+      "cta-code": "Ver código",
+      "taskflow": {
+        "title": "taskflow",
+        "description": "Plugin para Claude Code com um fluxo orientado a planejamento: planos do tamanho de um PR, critérios de aceite definidos antes, testes vermelhos antes de verdes, uma tarefa por commit, quality gates e documentação sempre sincronizada."
+      },
+      "cria-virtual": {
+        "title": "cria-virtual",
+        "description": "Mod para Claude Code: um mascote pixelado flutuando acima do prompt que reage ao que o Claude está fazendo e mostra informações da sessão."
+      }
     }
   },
-  "how-i-work": {
-    "think": {
-      "label": "Como eu penso",
-      "heading": "O código não é o produto. A solução é.",
-      "body": "Código bagunçado nem sempre é sinal de decisão errada. Às vezes era a escolha certa naquele momento. A refatoração vem quando começa a travar as pessoas, não porque o código incomoda esteticamente, mas quando o ganho é concreto."
-    },
-    "decide": {
-      "label": "Como eu decido",
-      "heading": "Comece simples ou anota o porquê.",
-      "body": "O código deve sobreviver ao raciocínio por trás dele. Sem contexto, so sobra suposições pra quem vem depois. Tradeoffs documentados são a única coisa que fecha essa brecha."
-    },
-    "ship": {
-      "label": "Como eu entrego",
-      "heading": "Otimize para a próxima pessoa, não para a próxima implementação.",
-      "body": "Entrega rápida e sistemas limpos não são opostos. Nomenclatura, estrutura e interfaces se acumulam com o tempo, pra melhor ou pior. Velocidade de time é escrever pensando em quem vem depois."
-    },
-    "collaborate": {
-      "label": "Como eu colaboro",
-      "heading": "Trabalhar em equipe, não individualmente.",
-      "body": "Desbloquear alguém é melhor que entregar algo sozinho. PRs bem escopados, código legível, decisões claras. Nada disso entra no roadmap, mas é o que mantém o time andando de verdade."
-    },
-    "start": {
-      "label": "Como eu começo",
-      "heading": "Direção antes de momentum.",
-      "body": "A primeira pergunta nunca é qual framework ou stack usar. É o que o usuário precisa realmente resolver. Com isso claro, a arquitetura segue. Sem isso, você só vai chegar mais cedo no lugar errado."
-    }
+  "contact": {
+    "title": "Fale comigo",
+    "description": "O jeito mais rápido de falar comigo é por e-mail. Costumo responder em um ou dois dias.",
+    "copy": "Copiar e-mail",
+    "copied": "Copiado",
+    "close-label": "Fechar janela de contato"
   },
   "footer": {
-    "title": "Que bom ter você aqui!",
-    "contact-me-by": "Entre em contato comigo por",
+    "title": "Vamos construir algo confiável juntos.",
+    "body": "Aberto a posições sênior de frontend e full-stack. O jeito mais rápido de falar comigo é por e-mail.",
     "made-with-love": "Feito com café"
   },
   "terminal": {
@@ -99,12 +106,6 @@
       "try-help": "digite '/help' para ver os comandos disponíveis",
       "unknown-target": "destino desconhecido: {target}"
     },
-    "mascot": {
-      "bubble-0": "Olá, vamos conversar",
-      "bubble-1": "Clique em mim!",
-      "bubble-2": "Eu não mordo... provavelmente",
-      "hover-0": "Ei, está fazendo cócegas...",
-      "hover-1": "Tá bom, eu gostei"
-    }
+    "hint": "Prefere a linha de comando?"
   }
 }

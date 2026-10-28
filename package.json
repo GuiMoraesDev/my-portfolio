@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
-    "@sentry/nextjs": "^10.53.1",
+    "@sentry/nextjs": "^10.77.1",
     "@tailwindcss/postcss": "^4.3.0",
     "mixpanel-browser": "^2.78.0",
     "motion": "^12.38.0",

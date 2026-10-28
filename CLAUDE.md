@@ -27,33 +27,40 @@ npm run test:unit -- --testPathPattern=<filename>
 
 **Component organization follows Atomic Design:**
 
-- `src/components/atoms/` — primitive UI elements (Icon, etc.)
-- `src/components/molecules/` — composed atoms (BentoCell, LanguageSwitcher, Wave, SocialMedia)
-- `src/components/organisms/` — feature-level components
+- `src/components/atoms/` — primitive UI elements (Icon, Dialog — a thin re-export of Radix Dialog parts)
+- `src/components/molecules/` — composed atoms (SocialMedia: resume, email, GitHub and LinkedIn CTAs)
+- `src/components/organisms/` — feature-level components (Header, Footer, ContactModal, TerminalContact)
 
 Each component folder uses an `index.ts` barrel re-export and keeps the implementation in a same-named `.tsx` file.
 
-**TerminalContact organism** (`src/components/organisms/TerminalContact/`) is the most complex component. It has its own internal `src/` tree:
+**Pages:** only the home page exists (`src/app/[locale]/(home)/page.tsx`): hero, focus areas, stack, side projects. `Header` and `Footer` are rendered by `src/app/[locale]/layout.tsx` on every page. The header's Contact item opens `ContactModal`; the footer holds the "Open terminal" entry point.
 
-- `views/TerminalContact.tsx` — top-level orchestrator; owns the `<dialog>` element and framer-motion drag wrapper
-- `components/TerminalWindow.tsx` — renders terminal lines and scroll behavior
+**TerminalContact organism** (`src/components/organisms/TerminalContact/`) is the most complex component. It is loaded client-only via `next/dynamic` and has its own internal `src/` tree:
+
+- `views/TerminalContact.tsx` — top-level orchestrator; owns the Radix dialog and its trigger
+- `components/TerminalTrigger.tsx` — the text "$ Open terminal" trigger and its loading placeholder
+- `components/TerminalWindow.tsx` — renders terminal lines, scroll behavior and the `motion` drag wrapper
 - `components/TerminalInput.tsx` — input field and autocomplete suggestions
-- `components/Mascot.tsx` — animated mascot button that opens the terminal
 - `hooks/useControlCommandLine.ts` — all command dispatch logic (slash commands + plain commands, history)
 - `hooks/useTerminalInput.ts` — input state, keyboard navigation, history traversal
 - `utils/suggestion.ts` — Levenshtein-based typo suggestion for unknown commands
 
-**Providers** (`src/provider/AppProvider.tsx`) wrap the app with TanStack Query, next-intl `NextIntlClientProvider`, Vercel Analytics, and SpeedInsights.
+**Providers** (`src/provider/AppProvider.tsx`) wrap the app with next-intl (`LanguageProvider`) and Mixpanel (`MixpanelProvider`).
 
-**Styling** uses Tailwind CSS v4 with `tailwind-merge` and `tailwind-variants`. Canonical class ordering is enforced by ESLint (`eslint-plugin-tailwind-canonical-classes`).
+**Utilities** live in `src/utils/` (e.g. `getYearsOfExperience`, shared by the hero and the terminal's `whoami`). Contact links and the resume path live in `src/constants/socialMedia.ts`.
+
+**Posts:** `src/posts/` holds Markdown drafts and templates that are not rendered yet (e.g. `draft/Engineering principles.md`, moved out of the removed `/principles` page).
+
+**Styling** uses Tailwind CSS v4 with `tailwind-merge` and `tailwind-variants`. Canonical class ordering is enforced by ESLint (`eslint-plugin-tailwind-canonical-classes`). Theme tokens live in `src/styles/globals.css`: prefer the semantic ones (e.g. `bg-bg-canvas`, `bg-bg-elevated`, `text-text-primary/secondary/muted`, `border-border-subtle/strong`, `text-accent-500`). Fonts are Geist (`font-body`/`font-title`) and Geist Mono (`font-mono`). The `plum-*` and `terminal-*` colors are only used inside the terminal window.
 
 **Observability**: Sentry is integrated via `@sentry/nextjs` with source map upload. `src/instrumentation.ts` / `src/instrumentation-client.ts` initialize it.
 
 ## Testing
 
 - Unit tests (Jest + jsdom + Testing Library) live alongside source files as `*.test.ts(x)`.
-- `next-intl` is mocked in `__mocks__/next-intl.ts` for unit tests.
-- E2E tests (Playwright) live in `src/tests/`.
+- `next-intl` is mocked in `__mocks__/next-intl.ts` for unit tests. The mock resolves English strings from a namespace, so client components must call `useTranslations("namespace")`; a bare `useTranslations()` returns raw keys in tests.
+- E2E tests (Playwright) live in `src/tests/` and run on 5 projects (Chromium, Firefox, WebKit, mobile Chrome, mobile Safari). Install browsers locally with `npx playwright install`.
+- CI (`.github/workflows/ci.yaml`) runs type-check + lint, unit tests and e2e on every PR to `main`. The e2e job is pinned to `ubuntu-24.04` because the current Playwright can't install browsers on `ubuntu-latest` (26.04).
 - `modulePathIgnorePatterns` excludes `src/tests/` from Jest.
 
 ## Conventions

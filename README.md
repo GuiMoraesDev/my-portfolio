@@ -1,49 +1,48 @@
 # My portfolio
 
-[![next](https://img.shields.io/badge/nextjs-16.2.4-white?logo=Next.js)](https://nextjs.org/)
+[![next](https://img.shields.io/badge/nextjs-16-white?logo=Next.js)](https://nextjs.org/)
 [![typescript](https://img.shields.io/badge/typescript-%5E5.9.3-blue?logo=Typescript)](https://www.typescriptlang.org/)
-[![@tanstack/react-query](https://img.shields.io/badge/@tanstack/react--query-%5E5.100.6-FF4154?logo=ReactQuery)](https://tanstack.com/query/v5)
-[![tailwindcss](https://img.shields.io/badge/tailwind-%5E4.2.4-06B6D4?logo=tailwindcss)](https://tailwindcss.com/docs/installation)
-[![next-intl](https://img.shields.io/badge/next--intl-%5E4.11.0-blue)](https://next-intl-docs.vercel.app/)
+[![tailwindcss](https://img.shields.io/badge/tailwind-%5E4.3.0-06B6D4?logo=tailwindcss)](https://tailwindcss.com/docs/installation)
+[![next-intl](https://img.shields.io/badge/next--intl-%5E4.12.0-blue)](https://next-intl-docs.vercel.app/)
 [![motion](https://img.shields.io/badge/motion-%5E12.38.0-purple)](https://motion.dev/)
+[![playwright](https://img.shields.io/badge/playwright-e2e-2EAD33?logo=Playwright)](https://playwright.dev/)
 </br>
 <small>Every badge is a link to its docs</small>
 
-<a href="https://www.linkedin.com/in/guimoraesdev/">
-  <img src="./public/cover/800p.png" alt="" height="300px"/>
-</a>
+## About 📖
 
-</br>
-
-## Description of that project 📖
-
-A SSR website to be my personal portfolio.
+My personal portfolio: an SSR Next.js site in English and Portuguese with a hero, focus areas, stack, side projects, a contact modal and an interactive terminal you can open from the footer.
 
 ## Project Links
 
-- 📝[Figma Project](https://www.figma.com/file/JCTgadu9Hf6FMQ26lBiUFN/Personal-Website?type=design&node-id=717%3A2&mode=design&t=4KCXdVFsUCtmVLOm-1)
-- 📱[Production Link](https://www.guimoraes.dev/)
+- 📱 [Production](https://www.guimoraes.dev/)
+- 📝 [Figma](https://www.figma.com/file/JCTgadu9Hf6FMQ26lBiUFN/Personal-Website?type=design&node-id=717%3A2&mode=design&t=4KCXdVFsUCtmVLOm-1)
 
 ## Requirements 🛑
-
-For development, you will need Node LTS installed.
 
 - [Node LTS](https://nodejs.org/en/download/)
 
 ## Running the project 🧰
 
-Create a copy of the `.env.example` file, rename it to `.env.local` and add your own keys.
+Copy `.env.example` to `.env.local` and fill in your keys:
 
-Install all dependencies:
+| Variable | Used by |
+|---|---|
+| `SENTRY_AUTH_TOKEN` | Source map upload at build time |
+| `NEXT_PUBLIC_SENTRY_DSN` | Sentry error reporting |
+| `NEXT_PUBLIC_MIXPANEL_TOKEN` | Mixpanel analytics |
+
+Install dependencies and start the dev server:
 
 ```sh
 npm install
+npm run dev
 ```
 
-Run the development server:
+For e2e tests, install the Playwright browsers once:
 
 ```sh
-npm run dev
+npx playwright install
 ```
 
 ## Available Scripts
@@ -60,8 +59,24 @@ npm run dev
 | `npm run test:e2e` | Run end-to-end tests with Playwright |
 | `npm run test:e2e:ui` | Run Playwright tests with UI |
 
+## Project structure 🗂️
+
+```
+src/
+├── app/[locale]/        # App Router pages (next-intl locale segment, hidden from URLs)
+├── components/          # Atomic Design: atoms, molecules, organisms
+├── constants/           # Contact links and resume path
+├── i18n/                # Routing config and en/pt translations
+├── posts/               # Markdown drafts and templates (not rendered yet)
+├── provider/            # next-intl and Mixpanel providers
+├── styles/              # Tailwind v4 theme tokens and global styles
+├── tests/               # Playwright e2e tests
+└── utils/               # Shared helpers
+```
+
 ## Project Maintenance 👨‍🔧
 
-- Project follows [Angular Commit Guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format).
-- Uses [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) to organize components.
-- [Husky](https://typicode.github.io/husky/) runs commit hooks before every commit to check types and linting — do not bypass it.
+- Commits follow the [Angular commit guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format).
+- Components are organized with [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/).
+- [Husky](https://typicode.github.io/husky/) checks types and lint before every commit; do not bypass it.
+- CI runs type check, lint, unit and e2e tests on every pull request to `main`.

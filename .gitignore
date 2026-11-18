@@ -48,3 +48,8 @@ next-env.d.ts
 
 # Claude Code
 .claude/
+
+# Other package managers (project uses npm)
+pnpm-lock.yaml
+pnpm-workspace.yaml
+yarn.lock

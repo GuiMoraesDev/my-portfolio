@@ -45,7 +45,7 @@ Each component folder uses an `index.ts` barrel re-export and keeps the implemen
 - `hooks/useTerminalInput.ts` — input state, keyboard navigation, history traversal
 - `utils/suggestion.ts` — Levenshtein-based typo suggestion for unknown commands
 
-**Providers** (`src/provider/AppProvider.tsx`) wrap the app with next-intl (`LanguageProvider`) and Mixpanel (`MixpanelProvider`).
+**Providers** (`src/provider/AppProvider.tsx`) wrap the app with next-intl (`LanguageProvider`) and render Vercel Analytics. Sentry and Vercel Analytics only run in production (`src/utils/tracking.ts`; Vercel previews excluded).
 
 **Utilities** live in `src/utils/` (e.g. `getYearsOfExperience`, shared by the hero and the terminal's `whoami`). Contact links and the resume path live in `src/constants/socialMedia.ts`.
 

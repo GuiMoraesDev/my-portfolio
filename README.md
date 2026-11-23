@@ -30,7 +30,6 @@ Copy `.env.example` to `.env.local` and fill in your keys:
 |---|---|
 | `SENTRY_AUTH_TOKEN` | Source map upload at build time |
 | `NEXT_PUBLIC_SENTRY_DSN` | Sentry error reporting |
-| `NEXT_PUBLIC_MIXPANEL_TOKEN` | Mixpanel analytics |
 
 Install dependencies and start the dev server:
 
@@ -68,7 +67,7 @@ src/
 ├── constants/           # Contact links and resume path
 ├── i18n/                # Routing config and en/pt translations
 ├── posts/               # Markdown drafts and templates (not rendered yet)
-├── provider/            # next-intl and Mixpanel providers
+├── provider/            # next-intl provider and Vercel Analytics
 ├── styles/              # Tailwind v4 theme tokens and global styles
 ├── tests/               # Playwright e2e tests
 └── utils/               # Shared helpers
